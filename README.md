@@ -16,6 +16,10 @@ Alternatively, you can make your own custom build via our [THEOportal](https://p
 
 ## Installation
 
+***It's considered good practice to run `pod repo update` before adding new pods to your Podfile.  
+This will help find newly added pods by updating the list of references to the public spec repos.  
+If you just installed Cocoapods or are already up-to-date, then this step can be skipped.***
+
 Add pod 'THEOplayerSDK-basic', '~> 2.82' similar to the following to your Podfile:
 
 ```swift

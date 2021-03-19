@@ -157,7 +157,7 @@ This could be due to a couple of reasons:
 * You incorrectly configured your `Podfile`, or forgot to run `pod install --repo-update` to install your `Podfile`.
 * You used an older version of Cocoapods. You can check your version through `pod --version`.
 Run `(sudo) gem install cocoapods` to upgrade to the latest version.
-* You opened your `xcodeproj` instead of your `xcodeworkspace`.
+* You opened your `xcodeproj` instead of your `xcworkspace`. (Open your `xcworkspace` instead!)
 * Xcode is being weird. Close your Workspace, uninstall your pods through `pod deintegrate`, and install them again through `pod install --repo-update`.
 
 ## License

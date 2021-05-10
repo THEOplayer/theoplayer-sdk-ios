@@ -148,6 +148,11 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   var wrapperAdSystems: [Swift.String] { get }
   var wrapperCreativeIds: [Swift.String] { get }
   var vastMediaBitrate: Swift.Int { get }
+  var universalAdIds: [THEOplayerSDK.UniversalAdId] { get }
+}
+public protocol UniversalAdId {
+  var adIdValue: Swift.String { get }
+  var adIdRegistry: Swift.String { get }
 }
 public enum AdIntegrationKind : Swift.String, Swift.Codable {
   case defaultKind

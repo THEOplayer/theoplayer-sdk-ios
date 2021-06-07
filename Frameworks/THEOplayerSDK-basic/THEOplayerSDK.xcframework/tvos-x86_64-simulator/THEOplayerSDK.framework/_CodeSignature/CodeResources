@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		Xahr2/vQnhJUsgdG30J6H081hUw=
+		HINhnY5OY4y9Klk5CsDTjiA6uAQ=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		isaPo59YAnoFpnr+RJY7PgFo084=
+		l+7FdjweZPxRyt/r1b5dD8TZonI=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/THEOplayerSDK-Swift.h</key>
 		<data>
-		KHlSSEBG1/lJyqsayS7LGg/Mny8=
+		2gok+xd2pPis0g7ZOAFHVHAwAIY=
 		</data>
 		<key>Headers/THEOplayerSDK.h</key>
 		<data>
@@ -62,31 +62,39 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MPxDJTz9ZwgmW8cS4MLqr49os8M=
+		zoLU4LsASFlAD9GUd/nxtU932gU=
+		</data>
+		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64-apple-tvos-simulator.swiftsourceinfo</key>
+		<data>
+		e4MbbC/Bc34KSb+iW+bGbyg5Gd8=
+		</data>
+		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64.swiftsourceinfo</key>
+		<data>
+		e4MbbC/Bc34KSb+iW+bGbyg5Gd8=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
-		XBvfS0JYQc6WBWDujrB15DI4hJo=
+		87+ireuvm6v1rbSZOKQFz9aOlBI=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		I92C2C1AAbrzTVetV14kE1iHEqc=
+		7daNaYInFasJasz8QfPWWcgTZL8=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		hAjjRBxe3WLkQQ9c0aYpj3rpHMk=
+		unyiSWIuh62P4rwuwH17f4KELXs=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		XBvfS0JYQc6WBWDujrB15DI4hJo=
+		87+ireuvm6v1rbSZOKQFz9aOlBI=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		I92C2C1AAbrzTVetV14kE1iHEqc=
+		7daNaYInFasJasz8QfPWWcgTZL8=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		hAjjRBxe3WLkQQ9c0aYpj3rpHMk=
+		unyiSWIuh62P4rwuwH17f4KELXs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -99,22 +107,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Xahr2/vQnhJUsgdG30J6H081hUw=
+			HINhnY5OY4y9Klk5CsDTjiA6uAQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			7qEVpL/1N1aTykXzdoWltXJTmtnfvPSGRvoRviYov6Y=
+			nOeF3euS1kOu4rmL4UIksQcyTB9YgXpZbDkQfVqFwqo=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			isaPo59YAnoFpnr+RJY7PgFo084=
+			l+7FdjweZPxRyt/r1b5dD8TZonI=
 			</data>
 			<key>hash2</key>
 			<data>
-			kTbjaeCV3eFeMt49DgUOTLr+XbAN5ywJ3LA7Jeu8PTk=
+			x+B4/jz34yuKzN5+8qUWBXzVNFFnO+opeNyRnyRtFuU=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -231,11 +239,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KHlSSEBG1/lJyqsayS7LGg/Mny8=
+			2gok+xd2pPis0g7ZOAFHVHAwAIY=
 			</data>
 			<key>hash2</key>
 			<data>
-			OZQdMPYQJDjwSsazaKdcGwuq+tmVOs4qG2Fw2m8IEzo=
+			v47/beySlP5jtPE7+UFWMEwVbGqOJ4Ct4ZhkWl2MU1c=
 			</data>
 		</dict>
 		<key>Headers/THEOplayerSDK.h</key>
@@ -249,70 +257,92 @@
 			/WMmoQZkb1SidzeeeH7rCJo9YDpHC2GF3ZKUx76Z3ug=
 			</data>
 		</dict>
+		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64-apple-tvos-simulator.swiftsourceinfo</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			e4MbbC/Bc34KSb+iW+bGbyg5Gd8=
+			</data>
+			<key>hash2</key>
+			<data>
+			YO7PL64yG1NhiJc4CnSQX1PnU8ZQluCYlLJf2jt1Nrw=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64.swiftsourceinfo</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			e4MbbC/Bc34KSb+iW+bGbyg5Gd8=
+			</data>
+			<key>hash2</key>
+			<data>
+			YO7PL64yG1NhiJc4CnSQX1PnU8ZQluCYlLJf2jt1Nrw=
+			</data>
+		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XBvfS0JYQc6WBWDujrB15DI4hJo=
+			87+ireuvm6v1rbSZOKQFz9aOlBI=
 			</data>
 			<key>hash2</key>
 			<data>
-			byVgh8TTEPBETyw94gHH/IsMp8qrdsC9bGydadYs+Q8=
+			9lOr65ndLIW26WF8OT6zB71hMegbTvf7bY6KLClLg2o=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			I92C2C1AAbrzTVetV14kE1iHEqc=
+			7daNaYInFasJasz8QfPWWcgTZL8=
 			</data>
 			<key>hash2</key>
 			<data>
-			XeUR1H/atuvkIH/Qbv9oE68feaz/9wPToK1oDnhgNn0=
+			ws94/M5jSYqteMyaMWwUP+AmWSCCdGMaa5XpERiHABI=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hAjjRBxe3WLkQQ9c0aYpj3rpHMk=
+			unyiSWIuh62P4rwuwH17f4KELXs=
 			</data>
 			<key>hash2</key>
 			<data>
-			fOjEci/AwEUzwWK0biVbMh+RdsxTfSEtzfCfiN0W2eQ=
+			fo+0ntd2qkN/8MCZSUNtCKio9Wr3IIWPzk2abzKh8v8=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XBvfS0JYQc6WBWDujrB15DI4hJo=
+			87+ireuvm6v1rbSZOKQFz9aOlBI=
 			</data>
 			<key>hash2</key>
 			<data>
-			byVgh8TTEPBETyw94gHH/IsMp8qrdsC9bGydadYs+Q8=
+			9lOr65ndLIW26WF8OT6zB71hMegbTvf7bY6KLClLg2o=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			I92C2C1AAbrzTVetV14kE1iHEqc=
+			7daNaYInFasJasz8QfPWWcgTZL8=
 			</data>
 			<key>hash2</key>
 			<data>
-			XeUR1H/atuvkIH/Qbv9oE68feaz/9wPToK1oDnhgNn0=
+			ws94/M5jSYqteMyaMWwUP+AmWSCCdGMaa5XpERiHABI=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hAjjRBxe3WLkQQ9c0aYpj3rpHMk=
+			unyiSWIuh62P4rwuwH17f4KELXs=
 			</data>
 			<key>hash2</key>
 			<data>
-			fOjEci/AwEUzwWK0biVbMh+RdsxTfSEtzfCfiN0W2eQ=
+			fo+0ntd2qkN/8MCZSUNtCKio9Wr3IIWPzk2abzKh8v8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

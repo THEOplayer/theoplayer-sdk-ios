@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
 // swift-module-flags: -target i386-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerSDK
 import AVFoundation
 import AVKit
@@ -37,16 +37,16 @@ public enum AdPreloadType : Swift.String, Swift.Encodable {
   public init(images: [THEOplayerSDK.ChromecastMetadataImage]? = nil, releaseDate: Swift.String? = nil, releaseYear: Swift.Int? = nil, title: Swift.String? = nil, subtitle: Swift.String? = nil, type: THEOplayerSDK.ChromecastMetadataType? = .GENERIC, metadataKeys: [Swift.String : Any]? = nil)
   required convenience public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  @objc override public init(metadataKeys: [Swift.String : Any]?, title: Swift.String? = super)
   @objc deinit
+  @objc override public init(metadataKeys: [Swift.String : Any]?, title: Swift.String? = super)
 }
 @objc public class ChromecastMetadataImage : ObjectiveC.NSObject, Swift.Codable {
   @objc public var src: Swift.String
   @objc public var width: Swift.Int
   @objc public var height: Swift.Int
   @objc public init(src: Swift.String, width: Swift.Int = 0, height: Swift.Int = 0)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -61,61 +61,61 @@ public enum ChromecastMetadataType : Swift.String, Swift.Codable {
     get
   }
 }
-public class EzdrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class EzdrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
-public class ComcastDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class ComcastDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var releasePid: Swift.String
   public var token: Swift.String
   public var accountId: Swift.String
   public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   var cue: THEOplayerSDK.TextTrackCue { get }
 }
-public class CueEnterEvent : THEOplayerSDK.CueEventProtocol {
+@_hasMissingDesignatedInitializers public class CueEnterEvent : THEOplayerSDK.CueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
-public class CueExitEvent : THEOplayerSDK.CueEventProtocol {
+@_hasMissingDesignatedInitializers public class CueExitEvent : THEOplayerSDK.CueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
-public class CueUpdateEvent : THEOplayerSDK.CueEventProtocol {
+@_hasMissingDesignatedInitializers public class CueUpdateEvent : THEOplayerSDK.CueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
 @objc public protocol ContentProtectionIntegration : AnyObject {
@@ -161,7 +161,7 @@ public enum ErrorCategory : Swift.Int32, Swift.Codable, Swift.CaseIterable {
     get
   }
 }
-public class CastError {
+@_hasMissingDesignatedInitializers public class CastError {
   final public let errorCode: THEOplayerSDK.ErrorCode
   final public let description: Swift.String?
   @objc deinit
@@ -200,8 +200,8 @@ public protocol EventDispatcherProtocol {
   @objc public init(src: Swift.String, timeOffset: Swift.String? = nil, skipOffset: Swift.String? = nil)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @available(iOS 11.0, *)
 extension SourceDescription {
@@ -216,24 +216,24 @@ extension SourceDescription {
   public var integration: THEOplayerSDK.AnalyticsIntegration?
   @objc public var customerKey: Swift.String {
     get
-    }
+  }
   public var heartbeatInterval: Swift.Int? {
     get
-    }
+  }
   @objc public var gatewayUrl: Swift.String? {
     get
-    }
+  }
   @objc public var contentMetadata: THEOplayerSDK.ConvivaContentMetadata {
     get
-    }
+  }
   public var manualSessionControl: Swift.Bool? {
     get
-    }
+  }
   public init(customerKey: Swift.String, heartbeatInterval: Swift.Int? = nil, gatewayURL: Swift.String? = nil, contentMetadata: THEOplayerSDK.ConvivaContentMetadata, manualSessionControl: Swift.Bool? = false)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum ReadyState : Swift.Int {
   case HAVE_NOTHING
@@ -254,8 +254,8 @@ public enum ReadyState : Swift.Int {
   public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType? = nil)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public protocol DRMConfiguration : Swift.Decodable, Swift.Encodable {
   var headers: [[Swift.String : Swift.String]]? { get }
@@ -317,22 +317,22 @@ public protocol EventProtocol {
   var type: Swift.String { get }
   var date: Foundation.Date { get }
 }
-public class AudioQuality {
+@_hasMissingDesignatedInitializers public class AudioQuality {
   public var audioSamplingRate: Swift.Int {
     get
-    }
+  }
   public var bandwidth: Swift.Int {
     get
-    }
+  }
   public var codecs: Swift.String {
     get
-    }
+  }
   public var id: Swift.Int {
     get
-    }
+  }
   public var name: Swift.String {
     get
-    }
+  }
   @objc deinit
 }
 extension THEOplayer {
@@ -406,12 +406,12 @@ public protocol TextTrack : THEOplayerSDK.Track {
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }
-public class UplynkDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class UplynkDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public protocol AdDescription : Swift.Decodable, Swift.Encodable {
   var integration: THEOplayerSDK.AdIntegration? { get }
@@ -425,7 +425,7 @@ public enum AdIntegration : Swift.String, Swift.Codable {
     get
   }
 }
-@objc public class SourceDescription : ObjectiveC.NSObject, Swift.Codable {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SourceDescription : ObjectiveC.NSObject, Swift.Codable {
   @objc public var sources: [THEOplayerSDK.TypedSource] {
     @objc get
     @objc set
@@ -448,7 +448,7 @@ public enum AdIntegration : Swift.String, Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@objc public class Response : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class Response : ObjectiveC.NSObject, Swift.Codable {
   @objc public var request: THEOplayerSDK.Request
   @objc public var url: Swift.String
   @objc public var status: Swift.Int
@@ -457,14 +457,14 @@ public enum AdIntegration : Swift.String, Swift.Codable {
   @objc public var body: Foundation.Data
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
-@objc public class CertificateResponse : THEOplayerSDK.Response {
+@_hasMissingDesignatedInitializers @objc public class CertificateResponse : THEOplayerSDK.Response {
   @objc public init(certificateRequest: THEOplayerSDK.CertificateRequest, url: Swift.String, status: Swift.Int, statusText: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data)
   @objc deinit
 }
-@objc public class LicenseResponse : THEOplayerSDK.Response {
+@_hasMissingDesignatedInitializers @objc public class LicenseResponse : THEOplayerSDK.Response {
   @objc public init(licenseRequest: THEOplayerSDK.LicenseRequest, url: Swift.String, status: Swift.Int, statusText: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data)
   @objc deinit
 }
@@ -489,73 +489,73 @@ public protocol AdErrorEventProtocol : THEOplayerSDK.EventProtocol {
 public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   var ad: THEOplayerSDK.AdBreak? { get }
 }
-public class AdEvent : THEOplayerSDK.AdEventProtocol {
+@_hasMissingDesignatedInitializers public class AdEvent : THEOplayerSDK.AdEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var ad: THEOplayerSDK.Ad? {
     get
-    }
+  }
   public var currentTime: Swift.Double? {
     get
-    }
+  }
   @objc deinit
 }
-public class AdBeginEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdBeginEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdEndEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdEndEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdFirstQuartileEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdFirstQuartileEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdMidpointEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdMidpointEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdThirdQuartileEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdThirdQuartileEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdLoadedEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdLoadedEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdImpressionEvent : THEOplayerSDK.AdEvent {
+@_hasMissingDesignatedInitializers public class AdImpressionEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-public class AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {
+@_hasMissingDesignatedInitializers public class AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var ad: THEOplayerSDK.Ad? {
     get
-    }
+  }
   public var error: Swift.String? {
     get
-    }
+  }
   @objc deinit
 }
-public class AdBreakEvent : THEOplayerSDK.AdBreakEventProtocol {
+@_hasMissingDesignatedInitializers public class AdBreakEvent : THEOplayerSDK.AdBreakEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var ad: THEOplayerSDK.AdBreak? {
     get
-    }
+  }
   @objc deinit
 }
-public class AdBreakBeginEvent : THEOplayerSDK.AdBreakEvent {
+@_hasMissingDesignatedInitializers public class AdBreakBeginEvent : THEOplayerSDK.AdBreakEvent {
   @objc deinit
 }
-public class AdBreakEndEvent : THEOplayerSDK.AdBreakEvent {
+@_hasMissingDesignatedInitializers public class AdBreakEndEvent : THEOplayerSDK.AdBreakEvent {
   @objc deinit
 }
 public enum SkippedAdStrategy : Swift.String, Swift.Encodable, Swift.CaseIterable {
@@ -577,24 +577,24 @@ public class VerizonMediaConfiguration : Swift.Encodable {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class IrdetoDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class IrdetoDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
-public class AspectRatioChangeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class AspectRatioChangeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var aspectRatio: THEOplayerSDK.AspectRatio {
     get
-    }
+  }
   @objc deinit
 }
 public protocol AVPlayerError : THEOplayerSDK.THEOError {
@@ -637,7 +637,7 @@ public protocol RelatedContent : THEOplayerSDK.EventDispatcherProtocol {
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }
-public class AdType : Swift.Codable {
+@_hasMissingDesignatedInitializers public class AdType : Swift.Codable {
   public static let linear: Swift.String
   public static let nonlinear: Swift.String
   public static let unknown: Swift.String
@@ -686,12 +686,13 @@ public struct PlayerEventTypes {
 }
 public class PiPConfiguration : Swift.Codable {
   public var retainPresentationModeOnSourceChange: Swift.Bool
-  public init(retainPresentationModeOnSourceChange: Swift.Bool = false)
+  public var nativePictureInPicture: Swift.Bool
+  public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false)
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class GoogleDAILiveConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
+@_hasMissingDesignatedInitializers public class GoogleDAILiveConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
   public var assetKey: Swift.String
   public init(assetKey: Swift.String, apiKey: Swift.String, authToken: Swift.String?, streamActivityMonitorID: Swift.String?, adTagParameters: [Swift.String : Swift.String]?)
   override public func encode(to encoder: Swift.Encoder) throws
@@ -710,6 +711,8 @@ public enum PresentationMode : Swift.String {
 public protocol PictureInPicture {
   var currentCorner: THEOplayerSDK.PictureInPictureCorner? { get }
   func configure(movable: Swift.Bool?, defaultCorner: THEOplayerSDK.PictureInPictureCorner?, scale: Swift.Float?, visibility: Swift.Double?, margin: THEOplayerSDK.THEOMargins?)
+  @available(iOS 14.0, tvOS 14.0, *)
+  var nativePictureInPictureDelegate: AVKit.AVPictureInPictureControllerDelegate? { get set }
 }
 extension PictureInPicture {
   public func configure(movable: Swift.Bool?, defaultCorner: THEOplayerSDK.PictureInPictureCorner?, scale: Swift.Float?)
@@ -729,20 +732,20 @@ public struct VRDirection {
   public var yaw: Swift.Double
   public init(pitch: Swift.Double? = 0, roll: Swift.Double? = 0, yaw: Swift.Double? = 0)
 }
-public class EventedArray<Element> : THEOplayerSDK.THEOArray<Element>, THEOplayerSDK.EventDispatcherProtocol {
+@_inheritsConvenienceInitializers public class EventedArray<Element> : THEOplayerSDK.THEOArray<Element>, THEOplayerSDK.EventDispatcherProtocol {
   public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   public func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
-  override public init()
   @objc deinit
+  override public init()
 }
-public class KeyOSDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class KeyOSDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var customdata: Swift.String?
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public protocol Cache : THEOplayerSDK.EventDispatcherProtocol {
   var status: THEOplayerSDK.CacheStatus { get }
@@ -821,67 +824,67 @@ extension THEOplayer {
   @available(*, deprecated, message: "Use destroy() instead")
   public func unload()
 }
-public class CueChangeEvent : THEOplayerSDK.TrackEventProtocol {
+@_hasMissingDesignatedInitializers public class CueChangeEvent : THEOplayerSDK.TrackEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var track: THEOplayerSDK.Track {
     get
-    }
+  }
   @objc deinit
 }
 public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   var cue: THEOplayerSDK.TextTrackCue { get }
 }
-public class AddCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
+@_hasMissingDesignatedInitializers public class AddCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
-public class RemoveCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
+@_hasMissingDesignatedInitializers public class RemoveCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
-public class EnterCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
+@_hasMissingDesignatedInitializers public class EnterCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
-public class ExitCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
+@_hasMissingDesignatedInitializers public class ExitCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var cue: THEOplayerSDK.TextTrackCue {
     get
-    }
+  }
   @objc deinit
 }
 public protocol NetworkError : THEOplayerSDK.THEOError {
@@ -889,10 +892,10 @@ public protocol NetworkError : THEOplayerSDK.THEOError {
   var status: Swift.Int { get }
   var errorComment: Swift.String? { get }
 }
-public class EventType<T> where T : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class EventType<T> where T : THEOplayerSDK.EventProtocol {
   public var name: Swift.String {
     get
-    }
+  }
   @objc deinit
 }
 public struct AudioTrackListEventTypes {
@@ -914,16 +917,16 @@ public struct TextTrackCueEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
-public class AzureDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class AzureDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var token: Swift.String
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
-public class FairPlayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfigurationProtocol {
+@_hasMissingDesignatedInitializers public class FairPlayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfigurationProtocol {
   public var fairplay: THEOplayerSDK.KeySystemConfiguration
   public var integration: THEOplayerSDK.DRMIntegration?
   public var headers: [[Swift.String : Swift.String]]?
@@ -935,21 +938,21 @@ public class FairPlayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfigurationPr
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-public class GoogleDAIVodConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
+@_hasMissingDesignatedInitializers public class GoogleDAIVodConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
   public var contentSourceID: Swift.String
   public var videoID: Swift.String
   public init(videoID: Swift.String, contentSourceID: Swift.String, apiKey: Swift.String, authToken: Swift.String?, streamActivityMonitorID: Swift.String?, adTagParameters: [Swift.String : Swift.String]?)
   override public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
-public class VerimatrixDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class VerimatrixDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
-@objc public class EventDispatcher : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
+@objc @_hasMissingDesignatedInitializers public class EventDispatcher : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
   @objc public func getMinimizeFunction() -> Swift.String
   public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   public func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
@@ -1008,16 +1011,16 @@ public enum THEOErrorCode : Swift.Int32, Swift.Codable, Swift.CaseIterable {
 public class VerizonMediaUiConfiguration : Swift.Encodable {
   public var contentNotification: Swift.Bool {
     get
-    }
+  }
   public var adNotification: Swift.Bool {
     get
-    }
+  }
   public var assetMarkers: Swift.Bool {
     get
-    }
+  }
   public var adBreakMarkers: Swift.Bool {
     get
-    }
+  }
   public init(contentNotification: Swift.Bool = true, adNotification: Swift.Bool = true, assetMarkers: Swift.Bool = true, adBreakMarkers: Swift.Bool = true)
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -1029,19 +1032,19 @@ public struct CachingTaskEventTypes {
   public static var STATE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.CacheEvent>
   public static var PROGRESS: THEOplayerSDK.EventType<THEOplayerSDK.CacheEvent>
 }
-public class NetworkErrorEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class NetworkErrorEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var error: THEOplayerSDK.NetworkError? {
     get
-    }
+  }
   @objc deinit
 }
-public class DRMTodayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class DRMTodayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var token: Swift.String?
   public var userId: Swift.String?
   public var sessionId: Swift.String?
@@ -1049,9 +1052,9 @@ public class DRMTodayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil, token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public protocol AdBreak {
   var ads: [THEOplayerSDK.Ad] { get }
@@ -1067,19 +1070,19 @@ public protocol AdBreak {
   @objc public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
-@objc public class CertificateRequest : THEOplayerSDK.Request {
+@_inheritsConvenienceInitializers @objc public class CertificateRequest : THEOplayerSDK.Request {
+  @objc deinit
   @objc override public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
   required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
 }
-@objc public class LicenseRequest : THEOplayerSDK.Request {
+@_hasMissingDesignatedInitializers @objc public class LicenseRequest : THEOplayerSDK.Request {
   @objc public var fairplaySkdUrl: Swift.String?
   @objc public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?, fairplaySkdUrl: Swift.String?, useCredentials: Swift.Bool)
-  @objc override public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
   @objc deinit
+  @objc override public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
 }
 public protocol MediaTrackList : THEOplayerSDK.EventDispatcherProtocol {
   var count: Swift.Int { get }
@@ -1166,161 +1169,161 @@ public enum StreamType : Swift.String, Swift.Codable {
     get
   }
 }
-public class CurrentTimeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class CurrentTimeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var currentTime: Swift.Double {
     get
-    }
+  }
   @objc deinit
 }
-public class PlayEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class PlayEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class PlayingEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class PlayingEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class PauseEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class PauseEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class ProgressEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class ProgressEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class SeekingEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class SeekingEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class SeekedEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class SeekedEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class WaitingEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class WaitingEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class TimeUpdateEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class TimeUpdateEvent : THEOplayerSDK.CurrentTimeEvent {
   public var currentProgramDateTime: Foundation.Date? {
     get
-    }
+  }
   @objc deinit
 }
-public class EndedEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class EndedEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class RateChangeEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class RateChangeEvent : THEOplayerSDK.CurrentTimeEvent {
   public var playbackRate: Swift.Double {
     get
-    }
+  }
   @objc deinit
 }
-public class DurationChangeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class DurationChangeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var duration: Swift.Double? {
     get
-    }
+  }
   @objc deinit
 }
-public class SourceChangeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class SourceChangeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var source: THEOplayerSDK.SourceDescription? {
     get
-    }
+  }
   @objc deinit
 }
-public class ReadyStateEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class ReadyStateEvent : THEOplayerSDK.CurrentTimeEvent {
   public var readyState: THEOplayerSDK.ReadyState {
     get
-    }
+  }
   @objc deinit
 }
-public class ReadyStateChangeEvent : THEOplayerSDK.ReadyStateEvent {
+@_hasMissingDesignatedInitializers public class ReadyStateChangeEvent : THEOplayerSDK.ReadyStateEvent {
   @objc deinit
 }
-public class LoadedMetaDataEvent : THEOplayerSDK.ReadyStateEvent {
+@_hasMissingDesignatedInitializers public class LoadedMetaDataEvent : THEOplayerSDK.ReadyStateEvent {
   @objc deinit
 }
-public class LoadedDataEvent : THEOplayerSDK.ReadyStateEvent {
+@_hasMissingDesignatedInitializers public class LoadedDataEvent : THEOplayerSDK.ReadyStateEvent {
   @objc deinit
 }
-public class LoadStartEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class LoadStartEvent : THEOplayerSDK.CurrentTimeEvent {
   @objc deinit
 }
-public class CanPlayEvent : THEOplayerSDK.ReadyStateEvent {
+@_hasMissingDesignatedInitializers public class CanPlayEvent : THEOplayerSDK.ReadyStateEvent {
   @objc deinit
 }
-public class CanPlayThroughEvent : THEOplayerSDK.ReadyStateEvent {
+@_hasMissingDesignatedInitializers public class CanPlayThroughEvent : THEOplayerSDK.ReadyStateEvent {
   @objc deinit
 }
-public class ErrorEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class ErrorEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var error: Swift.String {
     get
-    }
+  }
   public var errorObject: THEOplayerSDK.THEOError? {
     get
-    }
+  }
   @objc deinit
 }
-public class PresentationModeChangeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class PresentationModeChangeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var presentationMode: THEOplayerSDK.PresentationMode {
     get
-    }
+  }
   @objc deinit
 }
-public class VolumeChangeEvent : THEOplayerSDK.CurrentTimeEvent {
+@_hasMissingDesignatedInitializers public class VolumeChangeEvent : THEOplayerSDK.CurrentTimeEvent {
   public var volume: Swift.Float {
     get
-    }
+  }
   @objc deinit
 }
-public class ResizeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class ResizeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class DestroyEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class DestroyEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class VudrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class VudrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var token: Swift.String
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public enum StereoMode : Swift.String, Swift.Codable {
   case horizontal
@@ -1336,8 +1339,8 @@ public enum StereoMode : Swift.String, Swift.Codable {
   public var stereoMode: THEOplayerSDK.StereoMode?
   @objc public var vr360: Swift.Bool
   public init(vr360: Swift.Bool = true, stereoMode: THEOplayerSDK.StereoMode? = nil)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -1387,7 +1390,7 @@ extension THEOArray {
 extension THEOArray where Element : Swift.Equatable {
   public func contains(_ element: Element) -> Swift.Bool
 }
-public class Metrics : Swift.Codable {
+@_hasMissingDesignatedInitializers public class Metrics : Swift.Codable {
   @objc deinit
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -1404,7 +1407,7 @@ public struct AdsEventTypes {
   public static var AD_BREAK_BEGIN: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakBeginEvent>
   public static var AD_BREAK_END: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakEndEvent>
 }
-@objc public class YouboraOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class YouboraOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription {
   public var integration: THEOplayerSDK.AnalyticsIntegration?
   @objc convenience public init(accountCode: Swift.String)
   @objc public func put(key: Swift.String, value: Swift.String)
@@ -1413,7 +1416,7 @@ public struct AdsEventTypes {
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
-public class CustomAttribute : Swift.Codable {
+@_hasMissingDesignatedInitializers public class CustomAttribute : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   convenience required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -1426,7 +1429,7 @@ public enum DateRangeCustomAttributesError : Swift.Error {
   }
   public func hash(into hasher: inout Swift.Hasher)
 }
-public class CustomAttributes : Swift.Codable {
+@_hasMissingDesignatedInitializers public class CustomAttributes : Swift.Codable {
   public func getDouble(for key: Swift.String) throws -> Swift.Double?
   public func getString(for key: Swift.String) throws -> Swift.String?
   public func getBytes(for key: Swift.String) throws -> Foundation.Data?
@@ -1435,10 +1438,10 @@ public class CustomAttributes : Swift.Codable {
   convenience required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-public class CachingTaskStateChangeEvent : THEOplayerSDK.CacheEvent {
+@_hasMissingDesignatedInitializers public class CachingTaskStateChangeEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
 }
-public class CachingTaskProgressEvent : THEOplayerSDK.CacheEvent {
+@_hasMissingDesignatedInitializers public class CachingTaskProgressEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
 }
 public class GoogleIMAConfiguration : Swift.Codable {
@@ -1633,16 +1636,16 @@ public struct ChromecastEventTypes {
 public struct THEOMargins {
   public var top: Swift.Int {
     get
-    }
+  }
   public var right: Swift.Int {
     get
-    }
+  }
   public var bottom: Swift.Int {
     get
-    }
+  }
   public var left: Swift.Int {
     get
-    }
+  }
   public init(top: Swift.Int, right: Swift.Int, bottom: Swift.Int, left: Swift.Int)
   public init(horizontal: Swift.Int, vertical: Swift.Int)
   public init(all: Swift.Int)
@@ -1660,7 +1663,7 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   @objc var parsedBodyData: Foundation.Data? { get }
   @objc var promise: THEOplayerSDK.Promise? { get }
 }
-@objc public class RelatedContentSource : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class RelatedContentSource : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let duration: Swift.String?
   @objc final public let image: Swift.String
   @objc final public let link: Swift.String?
@@ -1668,24 +1671,24 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   @objc final public let title: Swift.String?
   @objc convenience public init(image: Swift.String, link: Swift.String, duration: Swift.String? = nil, title: Swift.String? = nil)
   @objc convenience public init(image: Swift.String, source: THEOplayerSDK.SourceDescription, duration: Swift.String? = nil, title: Swift.String? = nil)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-public class VREvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class VREvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class VRDirectionChangeEvent : THEOplayerSDK.VREvent {
+@_hasMissingDesignatedInitializers public class VRDirectionChangeEvent : THEOplayerSDK.VREvent {
   @objc deinit
 }
-public class VRStereoChangeEvent : THEOplayerSDK.VREvent {
+@_hasMissingDesignatedInitializers public class VRStereoChangeEvent : THEOplayerSDK.VREvent {
   @objc deinit
 }
 @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
@@ -1698,13 +1701,13 @@ public class VRStereoChangeEvent : THEOplayerSDK.VREvent {
   @objc override dynamic public init()
   @objc deinit
 }
-@objc public class TimeRange : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc public class TimeRange : ObjectiveC.NSObject {
   @objc public var start: Swift.Double {
     get
-    }
+  }
   @objc public var end: Swift.Double {
     get
-    }
+  }
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1736,29 +1739,29 @@ extension NSNotification.Name {
 }
 public let PictureInPictureOldCornerUserInfoKey: Swift.String
 public let PictureInPictureNewCornerUserInfoKey: Swift.String
-public class VimondDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class VimondDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
-public class AxinomDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class AxinomDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var token: Swift.String
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public struct YospaceServerSideAdInsertionConfiguration : THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
   public var integration: THEOplayerSDK.SSAIIntegrationId?
   public let streamType: THEOplayerSDK.StreamType
   public let logLevel: THEOplayerSDK.YospaceLogLevelConfiguration
   public init(streamType: THEOplayerSDK.StreamType = StreamType.live, logLevel: THEOplayerSDK.YospaceLogLevelConfiguration = YospaceLogLevelConfiguration())
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public struct YospaceLogLevelConfiguration : Swift.Codable {
   public let polling: Swift.Bool
@@ -1768,10 +1771,10 @@ public struct YospaceLogLevelConfiguration : Swift.Codable {
   public let http: Swift.Bool
   public let rawXml: Swift.Bool
   public init(polling: Swift.Bool = false, id3Tags: Swift.Bool = false, parsing: Swift.Bool = false, reports: Swift.Bool = false, http: Swift.Bool = false, rawXml: Swift.Bool = false)
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
-public class GoogleDAIConfiguration : THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
+@_hasMissingDesignatedInitializers public class GoogleDAIConfiguration : THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
   public var integration: THEOplayerSDK.SSAIIntegrationId?
   public var availabilityType: THEOplayerSDK.StreamType
   public var apiKey: Swift.String
@@ -1790,12 +1793,12 @@ public class GoogleDAIConfiguration : THEOplayerSDK.ServerSideAdInsertionConfigu
   @objc public var label: Swift.String?
   public var format: THEOplayerSDK.TextTrackFormat?
   public init(src: Swift.String, srclang: Swift.String, isDefault: Swift.Bool? = nil, kind: THEOplayerSDK.TextTrackKind? = nil, label: Swift.String? = nil, format: THEOplayerSDK.TextTrackFormat? = nil)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@objc public class Promise : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers public class Promise : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1835,7 +1838,7 @@ public struct NetworkEventTypes {
 public class THEOplayer : THEOplayerSDK.EventDispatcherProtocol {
   public var isDestroyed: Swift.Bool {
     get
-    }
+  }
   public init(configuration: THEOplayerSDK.THEOplayerConfiguration? = nil)
   convenience public init(with frame: CoreGraphics.CGRect, configuration: THEOplayerSDK.THEOplayerConfiguration? = nil)
   public static var version: Swift.String {
@@ -1953,19 +1956,19 @@ public class THEOplayer : THEOplayerSDK.EventDispatcherProtocol {
   public func destroy()
   @objc deinit
 }
-public class AirPlayEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class AirPlayEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class AirPlayStateChangeEvent : THEOplayerSDK.AirPlayEvent {
+@_hasMissingDesignatedInitializers public class AirPlayStateChangeEvent : THEOplayerSDK.AirPlayEvent {
   public var state: THEOplayerSDK.PlayerCastState? {
     get
-    }
+  }
   @objc deinit
 }
 public protocol CompanionAd {
@@ -1993,31 +1996,31 @@ public enum AgamaServiceName : Swift.String, Swift.Codable {
 @objc public class AgamaSourceConfiguration : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription {
   @objc public var asset: Swift.String {
     get
-    }
+  }
   public var streamType: THEOplayerSDK.StreamType {
     get
-    }
+  }
   public var serviceName: THEOplayerSDK.AgamaServiceName? {
     get
-    }
+  }
   @objc public var cdn: Swift.String? {
     get
-    }
+  }
   @objc public var contentTitle: Swift.String? {
     get
-    }
+  }
   @objc public var contentType: Swift.String? {
     get
-    }
+  }
   @objc public var contentDescription: Swift.String? {
     get
-    }
+  }
   public var integration: THEOplayerSDK.AnalyticsIntegration?
   public init(asset: Swift.String, streamType: THEOplayerSDK.StreamType, serviceName: THEOplayerSDK.AgamaServiceName? = nil, cdn: Swift.String? = nil, contentTitle: Swift.String? = nil, contentType: Swift.String? = nil, contentDescription: Swift.String? = nil)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension THEOplayer {
   public var cast: THEOplayerSDK.Cast? {
@@ -2047,102 +2050,102 @@ public class WidevineDRMConfiguration : THEOplayerSDK.WidevineDRMConfigurationPr
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-public class StateChangeEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class StateChangeEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var state: THEOplayerSDK.PlayerCastState {
     get
-    }
+  }
   @objc deinit
 }
-public class CastErrorEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class CastErrorEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var error: THEOplayerSDK.CastError {
     get
-    }
+  }
   @objc deinit
 }
 public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   var track: THEOplayerSDK.Track { get }
 }
-public class TrackChangeEvent : THEOplayerSDK.TrackEventProtocol {
+@_hasMissingDesignatedInitializers public class TrackChangeEvent : THEOplayerSDK.TrackEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var track: THEOplayerSDK.Track {
     get
-    }
+  }
   @objc deinit
 }
-public class AddTrackEvent : THEOplayerSDK.TrackEventProtocol {
+@_hasMissingDesignatedInitializers public class AddTrackEvent : THEOplayerSDK.TrackEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var track: THEOplayerSDK.Track {
     get
-    }
+  }
   @objc deinit
 }
-public class RemoveTrackEvent : THEOplayerSDK.TrackEventProtocol {
+@_hasMissingDesignatedInitializers public class RemoveTrackEvent : THEOplayerSDK.TrackEventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   public var track: THEOplayerSDK.Track {
     get
-    }
+  }
   @objc deinit
 }
 @objc public class ConvivaContentMetadata : ObjectiveC.NSObject, Swift.Codable {
   @objc public var assetName: Swift.String {
     get
-    }
+  }
   public var live: Swift.Bool? {
     get
-    }
+  }
   public var defaultBitrateKbps: Swift.Int? {
     get
-    }
+  }
   @objc public var defaultResource: Swift.String? {
     get
-    }
+  }
   public var duration: Swift.Int? {
     get
-    }
+  }
   public var encodedFrameRate: Swift.Int? {
     get
-    }
+  }
   @objc public var applicationName: Swift.String? {
     get
-    }
+  }
   @objc public var viewerId: Swift.String? {
     get
-    }
+  }
   @objc public var custom: [Swift.String : Swift.String]? {
     get
-    }
+  }
   public init(assetName: Swift.String, live: Swift.Bool? = nil, defaultBitrateKbps: Swift.Int? = nil, defaultResource: Swift.String? = nil, duration: Swift.Int? = nil, encodedFrameRate: Swift.Int? = nil, applicationName: Swift.String? = nil, viewerId: Swift.String? = nil, custom: [Swift.String : Swift.String]? = nil)
   public func encode(to encoder: Swift.Encoder) throws
   required convenience public init(from decoder: Swift.Decoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public protocol AnalyticsDescription : Swift.Decodable, Swift.Encodable {
   var integration: THEOplayerSDK.AnalyticsIntegration? { get }
@@ -2153,10 +2156,10 @@ public enum AnalyticsIntegration : Swift.String, Swift.Codable {
   case conviva
   case agama
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
 }
 public struct TextTrackListEventTypes {
   public static var ADD_TRACK: THEOplayerSDK.EventType<THEOplayerSDK.AddTrackEvent>
@@ -2167,24 +2170,24 @@ public struct TextTrackListEventTypes {
   public var integration: THEOplayerSDK.AnalyticsIntegration?
   @objc public var config: Swift.String {
     get
-    }
+  }
   public var logLevel: THEOplayerSDK.AgamaLogging {
     get
-    }
+  }
   @objc public var application: Swift.String {
     get
-    }
+  }
   @objc public var applicationVersion: Swift.String {
     get
-    }
+  }
   @objc public var userAccountID: Swift.String? {
     get
-    }
+  }
   public init(config: Swift.String, logLevel: THEOplayerSDK.AgamaLogging = .fatal, application: Swift.String? = nil, applicationVersion: Swift.String? = nil, userAccountID: Swift.String? = nil)
   required convenience public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum AgamaLogging : Swift.Int32, Swift.Codable {
   case fatal
@@ -2204,28 +2207,28 @@ public protocol AirPlay : THEOplayerSDK.EventDispatcherProtocol {
   func start()
   func stop()
 }
-public class CacheEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class CacheEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class CacheStateChangeEvent : THEOplayerSDK.CacheEvent {
+@_hasMissingDesignatedInitializers public class CacheStateChangeEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
 }
-public class XstreamDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers public class XstreamDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
   public var ticketAcquisitionURL: Swift.String
   public var sessionId: Swift.String?
   public var streamId: Swift.String
   public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  @objc deinit
 }
 public struct AirPlayEventTypes {
   public static var STATE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.AirPlayStateChangeEvent>
@@ -2235,25 +2238,25 @@ public struct RelatedContentEventTypes {
   public static var RELATED_CONTENT_SHOW: THEOplayerSDK.EventType<THEOplayerSDK.UiRelatedContentShowEvent>
   public static var RELATED_CONTENT_HIDE: THEOplayerSDK.EventType<THEOplayerSDK.UiRelatedContentHideEvent>
 }
-public class RelatedContentEvent : THEOplayerSDK.EventProtocol {
+@_hasMissingDesignatedInitializers public class RelatedContentEvent : THEOplayerSDK.EventProtocol {
   public var type: Swift.String {
     get
-    }
+  }
   public var date: Foundation.Date {
     get
-    }
+  }
   @objc deinit
 }
-public class RelatedContentChangeEvent : THEOplayerSDK.RelatedContentEvent {
+@_hasMissingDesignatedInitializers public class RelatedContentChangeEvent : THEOplayerSDK.RelatedContentEvent {
   @objc deinit
 }
-public class UiRelatedContentShowEvent : THEOplayerSDK.RelatedContentEvent {
+@_hasMissingDesignatedInitializers public class UiRelatedContentShowEvent : THEOplayerSDK.RelatedContentEvent {
   @objc deinit
 }
-public class UiRelatedContentHideEvent : THEOplayerSDK.RelatedContentEvent {
+@_hasMissingDesignatedInitializers public class UiRelatedContentHideEvent : THEOplayerSDK.RelatedContentEvent {
   @objc deinit
 }
-@objc public class MoatOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class MoatOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription {
   public var integration: THEOplayerSDK.AnalyticsIntegration?
   @objc convenience public init(partnerCode: Swift.String, locationServicesEnabled: Swift.Bool = true, IDFACollectionEnabled: Swift.Bool = true, debugLoggingEnabled: Swift.Bool = false)
   required convenience public init(from decoder: Swift.Decoder) throws
@@ -2282,6 +2285,7 @@ extension THEOplayerSDK.LicenseType : Swift.RawRepresentable {}
 extension THEOplayerSDK.DRMIntegration : Swift.Equatable {}
 extension THEOplayerSDK.DRMIntegration : Swift.Hashable {}
 extension THEOplayerSDK.DRMIntegration : Swift.RawRepresentable {}
+extension THEOplayerSDK.Preload : Swift.Equatable {}
 extension THEOplayerSDK.Preload : Swift.Hashable {}
 extension THEOplayerSDK.Preload : Swift.RawRepresentable {}
 extension THEOplayerSDK.KeySystemId : Swift.Equatable {}
@@ -2298,6 +2302,7 @@ extension THEOplayerSDK.SkippedAdStrategy : Swift.RawRepresentable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackMode : Swift.RawRepresentable {}
+extension THEOplayerSDK.PresentationMode : Swift.Equatable {}
 extension THEOplayerSDK.PresentationMode : Swift.Hashable {}
 extension THEOplayerSDK.PresentationMode : Swift.RawRepresentable {}
 extension THEOplayerSDK.CacheStatus : Swift.Equatable {}
@@ -2309,8 +2314,10 @@ extension THEOplayerSDK.CachingTaskStatus : Swift.RawRepresentable {}
 extension THEOplayerSDK.THEOErrorCode : Swift.Equatable {}
 extension THEOplayerSDK.THEOErrorCode : Swift.Hashable {}
 extension THEOplayerSDK.THEOErrorCode : Swift.RawRepresentable {}
+extension THEOplayerSDK.TextTrackKind : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackKind : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackKind : Swift.RawRepresentable {}
+extension THEOplayerSDK.TextTrackFormat : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackFormat : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackFormat : Swift.RawRepresentable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Equatable {}

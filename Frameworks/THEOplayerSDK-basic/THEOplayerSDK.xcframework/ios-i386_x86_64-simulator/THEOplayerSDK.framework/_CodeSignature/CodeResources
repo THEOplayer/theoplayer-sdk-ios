@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		jQk26bJ/at2EYSlEcrYWTwC7HvY=
+		RR+YT+JLJtg8oSWgo4RAOFiieRA=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		ywmdn/RHMKbtUPiakqdNXBeW7TM=
+		aZdChE0K+TDH4sfJMWmkNcOtKsw=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -38,15 +38,15 @@
 		</data>
 		<key>Assets/theoplayer.d.js</key>
 		<data>
-		zKaHCop5VIQpP3eeoGx4SsYuSuI=
+		O7zzPgpYI0MdOcuYJqhQgzzoVGw=
 		</data>
 		<key>Assets/theoplayer.e.js</key>
 		<data>
-		3rGmcqIz0aH/jTHQOTGzx+n5m8M=
+		btFAILMrq9K5GZXh/HzrTFmO5N4=
 		</data>
 		<key>Assets/theoplayer.p.js</key>
 		<data>
-		haKDk7t3lYndp6QeRYiD9P59qIg=
+		jFo8BhXNUV+b4uaWPSUfij02GzE=
 		</data>
 		<key>Assets/tvos-application.js</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		a4dujJe/epx7hqxHfoQyRDUN0Q4=
+		rEukhfjq9hCWBjpYA9IWxxamDWM=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/i386-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -155,22 +155,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jQk26bJ/at2EYSlEcrYWTwC7HvY=
+			RR+YT+JLJtg8oSWgo4RAOFiieRA=
 			</data>
 			<key>hash2</key>
 			<data>
-			cySC93AvFvWpbuknky23zODGzA9m8ArFxftAFYno3vM=
+			JDVBhCtuXObVc2UXRpelrrMUT4Kv0ccMQm+d3GiChUQ=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ywmdn/RHMKbtUPiakqdNXBeW7TM=
+			aZdChE0K+TDH4sfJMWmkNcOtKsw=
 			</data>
 			<key>hash2</key>
 			<data>
-			WbUU2PJ3xJCUviC/uqOpuuOgRX3JG/S7M1dqj4+av60=
+			CrOB80vyH2KECpOvCoVkhR/PAJqbta1IVq5X+qcwv6k=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -243,33 +243,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zKaHCop5VIQpP3eeoGx4SsYuSuI=
+			O7zzPgpYI0MdOcuYJqhQgzzoVGw=
 			</data>
 			<key>hash2</key>
 			<data>
-			x4/NV+pqRYwYulOSEPaJygrFTllDZLmhRHtlwO1VA44=
+			hDgyFwv/7GollZ1HbBTZ7cSwYlHs53ZTcOF/SjbY8hw=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.e.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3rGmcqIz0aH/jTHQOTGzx+n5m8M=
+			btFAILMrq9K5GZXh/HzrTFmO5N4=
 			</data>
 			<key>hash2</key>
 			<data>
-			INGMGA9QztAhNMb6SkkJCvFf23UNi0EEmpA3Tveyt9s=
+			SsDfmCgdrisxW2rPjon9k/cLISXHodSMsL1tO+O/tS0=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.p.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			haKDk7t3lYndp6QeRYiD9P59qIg=
+			jFo8BhXNUV+b4uaWPSUfij02GzE=
 			</data>
 			<key>hash2</key>
 			<data>
-			oRP0FhkvQHptwt6jFg6AQZzU613mp8UWzg1Sbc5ToKU=
+			vombMM6WrFLnlPzQbFX86QbiAkOSmH/mSrZ3FoofKC0=
 			</data>
 		</dict>
 		<key>Assets/tvos-application.js</key>

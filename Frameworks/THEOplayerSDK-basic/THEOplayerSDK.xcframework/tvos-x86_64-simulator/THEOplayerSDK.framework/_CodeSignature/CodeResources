@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		GlKcPYwscOFKbSru0Cj3gxM2dpU=
+		CqkEr22S8uvmYbNQJ8PjwUbjZdQ=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		WOwOLO2WviTHt5rI+WkBfQLEnMA=
+		+01Iid2Hr6i81Od+SE0IHBWSwbg=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HerlnuS6uv0a72Xc+JHTgEoZwtc=
+		YKm0drz5PTR4mLw3HPo0sNPaWqE=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64-apple-tvos-simulator.swiftsourceinfo</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		unyiSWIuh62P4rwuwH17f4KELXs=
+		1SJaVgqynJITR1d3YFeAE9PdmZM=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		unyiSWIuh62P4rwuwH17f4KELXs=
+		1SJaVgqynJITR1d3YFeAE9PdmZM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,22 +107,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GlKcPYwscOFKbSru0Cj3gxM2dpU=
+			CqkEr22S8uvmYbNQJ8PjwUbjZdQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fr5gaOID6OMbvGt+WKb/Uv+J4GAAhEd0uNZnlF0W3N8=
+			Gjt8h1jm5XfmmYAGzT5v+hzvk5Bmr8Ozb1933mLe9go=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WOwOLO2WviTHt5rI+WkBfQLEnMA=
+			+01Iid2Hr6i81Od+SE0IHBWSwbg=
 			</data>
 			<key>hash2</key>
 			<data>
-			zVsexsDyZmSq38b/Y4Uq4OWOcO2JCnV6+0705pcsGdI=
+			nL37vGko3iMq6O7Qt8jZ51E+g2x5Mn/wX4Bz1Os0Q9k=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -305,11 +305,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			unyiSWIuh62P4rwuwH17f4KELXs=
+			1SJaVgqynJITR1d3YFeAE9PdmZM=
 			</data>
 			<key>hash2</key>
 			<data>
-			fo+0ntd2qkN/8MCZSUNtCKio9Wr3IIWPzk2abzKh8v8=
+			YkKbnxrUHSLANLgcJ5pfR4Aotfy2JeAyRTBwqmPTMko=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -338,11 +338,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			unyiSWIuh62P4rwuwH17f4KELXs=
+			1SJaVgqynJITR1d3YFeAE9PdmZM=
 			</data>
 			<key>hash2</key>
 			<data>
-			fo+0ntd2qkN/8MCZSUNtCKio9Wr3IIWPzk2abzKh8v8=
+			YkKbnxrUHSLANLgcJ5pfR4Aotfy2JeAyRTBwqmPTMko=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

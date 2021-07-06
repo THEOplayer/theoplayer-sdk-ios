@@ -19,7 +19,7 @@
             var element = document.querySelector('.player-div');
             var player = chromeless ? new THEOplayer.ChromelessPlayer(element, configuration) : new THEOplayer.Player(element, configuration);
             if (configuration.pip) {
-                setupPictureInPicture(player)
+                setupPictureInPicture(player, configuration.pip.nativePictureInPicture);
             }
             window["player"] = THEOplayer.players.getPlayerByUID(player.uid);
         }

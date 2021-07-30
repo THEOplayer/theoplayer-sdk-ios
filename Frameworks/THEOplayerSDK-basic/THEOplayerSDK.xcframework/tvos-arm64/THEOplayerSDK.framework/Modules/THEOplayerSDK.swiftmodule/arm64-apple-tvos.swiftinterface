@@ -332,6 +332,11 @@ public struct TextTrackCueEventTypes {
   override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
   override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
 }
+public class UIConfiguration : Swift.Encodable {
+  public init(language: Swift.String)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
 @objc public class TextTrackDescription : ObjectiveC.NSObject, Swift.Codable {
   public var isDefault: Swift.Bool?
   public var kind: THEOplayerSDK.TextTrackKind?
@@ -1126,7 +1131,7 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   var uid: Swift.Int { get }
 }
 @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
-  public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil)
+  public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil)
   @objc deinit
   @objc override dynamic public init()
   public func encode(to encoder: Swift.Encoder) throws

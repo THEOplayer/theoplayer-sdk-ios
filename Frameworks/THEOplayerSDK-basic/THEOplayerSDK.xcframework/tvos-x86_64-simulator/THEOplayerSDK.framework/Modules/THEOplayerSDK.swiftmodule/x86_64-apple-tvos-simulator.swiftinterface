@@ -1190,6 +1190,7 @@ public protocol TextTrackCue : THEOplayerSDK.EventDispatcherProtocol {
   var contentDictionary: [Swift.String : Swift.String]? { get }
   var endTime: Swift.Double? { get }
   var id: Swift.String { get }
+  var uid: Swift.Double { get }
   var startTime: Swift.Double? { get }
   var track: THEOplayerSDK.TextTrack? { get }
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol

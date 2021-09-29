@@ -188,8 +188,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
+@import UIKit;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -207,45 +209,1575 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class THEOplayerABRStrategyConfiguration;
+
+/// The ABR object enables control of the adaptive bitrate behavior of the player.
+SWIFT_PROTOCOL_NAMED("ABRConfiguration")
+@protocol THEOplayerABRConfiguration
+/// The strategy to use to drive the adaptive bitrate behavior of the player.
+@property (nonatomic, strong) THEOplayerABRStrategyConfiguration * _Nonnull strategy;
+/// The amount of seconds of video to buffer in advance.
+@property (nonatomic) double targetBuffer;
+/// The desired limit, in bits per second, of network bandwidth consumption. Defaults to 0, which indicates there is no limit.
+@property (nonatomic) double preferredPeakBitRate;
+/// The desired maximum resolution of a video that is to be downloaded. Defaults to CGSizeZero, which indicates there is no limit on the video resolution.
+@property (nonatomic) CGSize preferredMaximumResolution;
+@end
+
+
+/// The ABRMetadata struct specifies extra metadata that can be used to drive the ABR behavior of the player.
+SWIFT_CLASS_NAMED("ABRMetadata")
+@interface THEOplayerABRMetadata : NSObject
+/// Constructs an ABRMetadata struct given a bitrate.
+/// \param bitrate The initial bitrate to cap the player ABR to.
+///
+- (nonnull instancetype)initWithBitrate:(double)bitrate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum THEOplayerABRStrategyType : NSInteger;
+
+/// An object specifying strategy and metadata that the player will use for initial playback.
+SWIFT_CLASS_NAMED("ABRStrategyConfiguration")
+@interface THEOplayerABRStrategyConfiguration : NSObject
+/// Constructs an ABRStrategyConfiguration given an ABRStrategyType enum member and an ABRMetadata struct.
+/// \param type The <code>ABRStrategyType</code> to be used.
+///
+/// \param metadata the <code>ABRMetadata</code> to be used.
+///
+- (nonnull instancetype)initWithType:(enum THEOplayerABRStrategyType)type metadata:(THEOplayerABRMetadata * _Nullable)metadata OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The different adaptive bitrate (ABR) strategies.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerABRStrategyType, "ABRStrategyType", open) {
+/// The player will optimize ABR behavior to focus on the performance of the player.
+/// remark:
+///
+/// This strategy initiates playback with the lowest quality suitable for the device which often means faster start-up time.
+  THEOplayerABRStrategyTypePERFORMANCE SWIFT_COMPILE_NAME("performance") = 1,
+/// The player will optimize ABR behavior to focus on displaying the best visual quality to the end-user as fast as possible.
+/// remark:
+///
+/// This does not mean that the playback will start with the highest quality, only that it will switch to it faster.
+  THEOplayerABRStrategyTypeQUALITY SWIFT_COMPILE_NAME("quality") = 2,
+/// The player will optimize ABR behavior to focus on displaying the most optimal quality based on the ABR metadata passed in with the ABRStrategyConfiguration, by initially capping the bitrate to match the provided bitrate in the ABR metadata.
+/// remark:
+///
+/// This is the default strategy.
+  THEOplayerABRStrategyTypeBANDWIDTH SWIFT_COMPILE_NAME("bandwidth") = 3,
+};
+
+
+/// A basic error that is thrown by THEOPlayer.
+SWIFT_PROTOCOL_NAMED("THEOBaseError")
+@protocol THEOplayerTHEOBaseError
+/// The name of the error.
+/// remark:
+///
+/// Example: <code> "THEOError"</code>
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// The message of the error aimed at the user.
+@property (nonatomic, readonly, copy) NSString * _Nonnull message;
+/// A stack-trace up until the error occured.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable stack;
+@end
+
+enum THEOplayerTHEOErrorCode : int32_t;
+enum THEOplayerErrorCategory : int32_t;
+
+/// An error that is thrown by THEOplayer.
+SWIFT_PROTOCOL_NAMED("THEOError")
+@protocol THEOplayerTHEOError <THEOplayerTHEOBaseError>
+/// The date at which the error occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull timestamp;
+/// A THEOErrorCode that indicates the type of error that has occurred.
+@property (nonatomic, readonly) enum THEOplayerTHEOErrorCode code;
+/// An <code>ErrorCategory</code> that indicates the category of the error that has occurred.
+@property (nonatomic, readonly) enum THEOplayerErrorCategory category;
+/// The underlying cause of this error, if known.
+@property (nonatomic, readonly, strong) id <THEOplayerTHEOBaseError> _Nullable cause;
+@end
+
+
+/// An error that is thrown by AVPlayer.
+SWIFT_PROTOCOL_NAMED("AVPlayerError")
+@protocol THEOplayerAVPlayerError <THEOplayerTHEOError>
+@end
+
+
+
+/// The Event API which can be used to represent an event.
+SWIFT_PROTOCOL_NAMED("EventProtocol")
+@protocol THEOplayerEventProtocol
+/// The textual representation of the type of event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The <code>Date</code> at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+@end
+
+@protocol THEOplayerAd;
+
+SWIFT_PROTOCOL_NAMED("AdEventProtocol_Objc")
+@protocol THEOplayerAdEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerAd> _Nullable ad;
+@end
+
+@class NSNumber;
+
+SWIFT_CLASS_NAMED("AdEvent")
+@interface THEOplayerAdEventProtocol : NSObject <THEOplayerAdEventProtocol>
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+@property (nonatomic, readonly, strong) id <THEOplayerAd> _Nullable ad;
+@property (nonatomic, readonly, strong) NSNumber * _Nullable currentTime;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Thrown to indicate that an ad has begun.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdBeginEvent")
+@interface THEOplayerAdBeginEvent : THEOplayerAdEventProtocol
+@end
+
+@protocol THEOplayerAdBreak;
+
+SWIFT_PROTOCOL_NAMED("AdBreakEventProtocol_Objc")
+@protocol THEOplayerAdBreakEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerAdBreak> _Nullable ad_Objc;
+@end
+
+
+SWIFT_CLASS_NAMED("AdBreakEvent")
+@interface THEOplayerAdBreakEvent : NSObject <THEOplayerAdBreakEventProtocol>
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+@property (nonatomic, readonly, strong, getter=ad_Objc) id <THEOplayerAdBreak> _Nullable ad;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Thrown to indicate that an ad has begun.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdBreakBeginEvent")
+@interface THEOplayerAdBreakBeginEvent : THEOplayerAdBreakEvent
+@end
+
+
+/// Thrown to indicate that an ad has begun.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdBreakEndEvent")
+@interface THEOplayerAdBreakEndEvent : THEOplayerAdBreakEvent
+@end
+
+
+
+
+/// An AdBreak is an object that represents a collection of ads that are scheduled at a certain time.
+SWIFT_PROTOCOL_NAMED("AdBreak_Objc")
+@protocol THEOplayerAdBreak
+/// An array of all the ads that are available in the current AdBreak.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAd>> * _Nonnull ads;
+/// Indicates the duration of the ad break, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Ads are lazily loaded. This property becomes available when all ads are loaded.
+///   </li>
+///   <li>
+///     If the maximum duration is not set, it will return -1.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) NSInteger maxDuration;
+/// Indicates the remaining duration of the ad break, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Ads are lazily loaded. This property becomes available when all ads are loaded.
+///   </li>
+///   <li>
+///     This feature is not available in the Google IMA integration and will default to -1.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) double maxRemainingDuration;
+/// The time offset at which point the content will be paused to play the ad break, in seconds.
+@property (nonatomic, readonly) NSInteger timeOffset;
+@end
+
+enum THEOplayerAdIntegration : NSInteger;
+
+SWIFT_PROTOCOL_NAMED("AdDescription_Objc")
+@protocol THEOplayerAdDescription
+/// The integration type of the ad break.
+@property (nonatomic, readonly) enum THEOplayerAdIntegration integration;
+@end
+
+
+/// Thrown to indicate that an ad has ended.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdEndEvent")
+@interface THEOplayerAdEndEvent : THEOplayerAdEventProtocol
+@end
+
+
+SWIFT_PROTOCOL_NAMED("AdErrorEventProtocol_Objc")
+@protocol THEOplayerAdErrorEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerAd> _Nullable ad_Objc;
+@property (nonatomic, readonly, copy) NSString * _Nullable error;
+@end
+
+
+/// Thrown to indicate that an ad has encountered an error.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+///   <li>
+///     error : the error message
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdErrorEvent")
+@interface THEOplayerAdErrorEvent : NSObject <THEOplayerAdErrorEventProtocol>
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+@property (nonatomic, readonly, strong, getter=ad_Objc) id <THEOplayerAd> _Nullable ad;
+@property (nonatomic, readonly, copy) NSString * _Nullable error;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+
+/// Thrown to indicate that the first quartile of an ad was watched.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdFirstQuartileEvent")
+@interface THEOplayerAdFirstQuartileEvent : THEOplayerAdEventProtocol
+@end
+
+
+/// Thrown to indicate that an ad impression was fired.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdImpressionEvent")
+@interface THEOplayerAdImpressionEvent : THEOplayerAdEventProtocol
+@end
+
+/// The integration of the ad break.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegration, "AdIntegration", open) {
+  THEOplayerAdIntegrationNONE SWIFT_COMPILE_NAME("none") = 0,
+  THEOplayerAdIntegrationTHEO SWIFT_COMPILE_NAME("theo") = 1,
+  THEOplayerAdIntegrationGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 3,
+};
+
+/// The integration kind of the <code>Ad</code>.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationKind", open) {
+/// The ad has no specified integration type.
+  THEOplayerAdIntegrationKindDEFAULT_KIND SWIFT_COMPILE_NAME("defaultKind") = 1,
+/// The ad is of integration type THEO.
+  THEOplayerAdIntegrationKindTHEO SWIFT_COMPILE_NAME("theo") = 2,
+/// The ad is of integration type FreeWheel.
+  THEOplayerAdIntegrationKindFREEWHEEL SWIFT_COMPILE_NAME("freewheel") = 3,
+};
+
+
+/// Thrown to indicate that an ad was loaded.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdLoadedEvent")
+@interface THEOplayerAdLoadedEvent : THEOplayerAdEventProtocol
+@end
+
+
+/// Thrown to indicate that the middle of an ad was watched.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdMidpointEvent")
+@interface THEOplayerAdMidPointEvent : THEOplayerAdEventProtocol
+@end
+
+/// The type of ad Preload. This indicates in which manner the advertisements will be downloaded in advance.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdPreloadType, "AdPreloadType", open) {
+/// No preloading.
+  THEOplayerAdPreloadTypeNONE SWIFT_COMPILE_NAME("NONE") = 0,
+/// Preload midrolls and postrolls.
+/// remark:
+/// For Google IMA the preload starts 4 seconds before ad playback.
+  THEOplayerAdPreloadTypeMIDROLL_AND_POSTROLL SWIFT_COMPILE_NAME("MIDROLL_AND_POSTROLL") = 1,
+};
+
+
+/// Thrown to indicate that the third quartile of an ad was watched.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdThirdQuartileEvent")
+@interface THEOplayerAdThirdQuartileEvent : THEOplayerAdEventProtocol
+@end
+
+
+/// The type of <code>Ad</code> specifying whether it will interrupt the content or not.
+SWIFT_CLASS_NAMED("AdType")
+@interface THEOplayerAdType : NSObject
+/// Linear advertisements interrupt the video content. They appear before (as pre-roll), after (as post-roll) or during (as mid-roll) the video content.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull linear;)
++ (NSString * _Nonnull)linear SWIFT_WARN_UNUSED_RESULT;
+/// Non-linear advertisements appear during video content, without disrupting playback.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull nonlinear;)
++ (NSString * _Nonnull)nonlinear SWIFT_WARN_UNUSED_RESULT;
+/// The type of the advertisement is unknown.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull unknown;)
++ (NSString * _Nonnull)unknown SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol THEOplayerCompanionAd;
+
+/// An Ad is an abstract object that represents a single ad, which is a creative in the VAST specification.
+/// remark:
+/// See <code>LinearAd</code> and <code>NonLinearAd</code>
+SWIFT_PROTOCOL_NAMED("Ad_Objc")
+@protocol THEOplayerAd
+/// A reference to the <code>AdBreak</code> of which the ad is a part of.
+@property (nonatomic, readonly, strong) id <THEOplayerAdBreak> _Nullable adBreak;
+/// An array of <code>CompanionAd</code>s associated to the ad, if available within the same Creatives element.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerCompanionAd>> * _Nonnull companions;
+/// Either ‘linear’ or ‘nonlinear’, depending on the concrete implementer.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The identifier of the creative, provided in the VAST-file.
+@property (nonatomic, readonly, copy) NSString * _Nullable id;
+/// When the Ad can be skipped, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable skipOffset;
+/// The URI of the the ad content.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when the ad is skippable.
+///   </li>
+///   <li>
+///     Only available for <code>LinearAd</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nullable resourceURI;
+/// The width of the advertisement, in pixels.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable width;
+/// The height of the advertisement, in pixels.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable height;
+/// The kind of the ad integration.
+/// remark:
+/// For possible values, see <code>AdIntegrationKind</code>
+@property (nonatomic, readonly) enum THEOplayerAdIntegrationKind integration;
+@end
+
+@protocol THEOplayerTextTrackCue;
+
+/// The base <code>TextTrack</code> cue Event protocol.
+SWIFT_PROTOCOL_NAMED("TextTrackCueEventProtocol_Objc")
+@protocol THEOplayerTextTrackCueEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+@end
+
+
+/// Fired when <code>TextTrackEventTypes.ADD_CUE</code> occurs for  the list of <code>TextTrackCue</code>s.
+SWIFT_CLASS_NAMED("AddCueEvent")
+@interface THEOplayerAddCueEvent : NSObject <THEOplayerTextTrackCueEventProtocol>
+/// The textual representation of the type of event, “addcue”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code> that was added.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@protocol THEOplayerTrack;
+
+/// The base <code>Track</code> Event protocol.
+SWIFT_PROTOCOL_NAMED("TrackEventProtocol_Objc")
+@protocol THEOplayerTrackEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
+@end
+
+
+/// Fired when <code>TextTrackListEventTypes.ADD_TRACK</code> occurs for a <code>TextTrackList</code>.
+SWIFT_CLASS_NAMED("AddTrackEvent")
+@interface THEOplayerAddTrackEvent : NSObject <THEOplayerTrackEventProtocol>
+/// The textual representation of the type of event, “addtrack”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>Track</code> which was just added to the track list.
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class THEOplayerGoogleIMAConfiguration;
+
+/// The advertisement configuration of the player.
+SWIFT_CLASS_NAMED("AdsConfiguration")
+@interface THEOplayerAdsConfiguration : NSObject
+/// Constructs an AdsConfiguration object.
+/// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
+///
+/// \param preload The preload type of the ad, whether media files of mid- and postrolls are preloaded, defaults to MIDROLL_AND_POSTROLL.
+///
+/// \param googleImaConfiguration The configuration of the Google Interactive Media Ads, defaults to nil.
+///
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleImaConfiguration:(THEOplayerGoogleIMAConfiguration * _Nullable)googleImaConfiguration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The types of Ads events.
+SWIFT_CLASS_NAMED("AdsEventTypes_Objc")
+@interface THEOplayerAdsEventTypes : NSObject
+/// Fired when <code>AdBeginEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbegin;)
++ (NSString * _Nonnull)adbegin SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdEndEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adend;)
++ (NSString * _Nonnull)adend SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdErrorEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aderror;)
++ (NSString * _Nonnull)aderror SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdFirstQuartileEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adfirstquartile;)
++ (NSString * _Nonnull)adfirstquartile SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdMidpointEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull admidpoint;)
++ (NSString * _Nonnull)admidpoint SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdThirdQuartileEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adthirdquartile;)
++ (NSString * _Nonnull)adthirdquartile SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdLoadedEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adloaded;)
++ (NSString * _Nonnull)adloaded SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdImpressionEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adimpression;)
++ (NSString * _Nonnull)adimpression SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdBreakBeginEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakbegin;)
++ (NSString * _Nonnull)adbreakbegin SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdBreakEndEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakend;)
++ (NSString * _Nonnull)adbreakend SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol THEOplayerScheduledAd;
+@protocol THEOplayerEventListener;
+@protocol THEOplayerOmid;
+
+/// The Ads object helps you configure and control ads within THEOplayer.
+SWIFT_PROTOCOL_NAMED("Ads_Objc")
+@protocol THEOplayerAds
+/// Requests whether a linear ad is currently playing.
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestPlaying:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
+/// Requests an array of the currently active ads.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Can be linear and/or non linear.
+///   </li>
+///   <li>
+///     If there are no ads playing, the method returns an empty array.
+///   </li>
+/// </ul>
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestCurrentAds:(void (^ _Nonnull)(NSArray<id <THEOplayerAd>> * _Nullable, NSError * _Nullable))completionHandler;
+/// Requests the active AdBreak that contains the currently playing ad(s).
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestCurrentAdBreak:(void (^ _Nonnull)(id <THEOplayerAdBreak> _Nullable, NSError * _Nullable))completionHandler;
+/// Requests an array of ads that still need to be played.
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestScheduledAds:(void (^ _Nonnull)(NSArray<id <THEOplayerScheduledAd>> * _Nullable, NSError * _Nullable))completionHandler;
+/// Schedules an ad.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     It will be added on top of the already existing ad(s).
+///   </li>
+///   <li>
+///     If you want to replace the ads with new ones or set ads while setting up the player, you should set a <code>SourceDescription</code> with an <code>AdDescription</code>.
+///   </li>
+/// </ul>
+/// \param adDescription The ad to schedule.
+///
+- (void)scheduleWithAdDescription:(id <THEOplayerAdDescription> _Nonnull)adDescription;
+/// Skips the current linear ad.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This is only possible if the player has already played beyond the time where it can be skipped.
+///   </li>
+///   <li>
+///     This will have no effect when the current linear ad is not (yet) skippable.
+///   </li>
+/// </ul>
+- (void)skip;
+/// Adds the given event listener of the given ad event type.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type The type of the added event listener. See <code>AdsEventTypes</code> for possible values, limited to “ad…”, e.g. “adbegin”.
+///
+/// \param listener Closure called when event is dispatched. Cast may be needed to the required class.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given ad event type.
+/// \param type The type of the removed event listener. See <code>AdsEventTypes</code> for possible values.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+/// The Open Measurement API.
+/// remark:
+/// Only available if the Google DAI Feature is enabled.
+@property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
+@end
+
+/// The logging levels of the Agama process.
+typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerAgamaLogging, "AgamaLogging", open) {
+/// Designates severe error events that will abort the Agama process.
+  THEOplayerAgamaLoggingFATAL SWIFT_COMPILE_NAME("fatal") = 0,
+/// Designates error events that might still allow the Agama process to continue.
+  THEOplayerAgamaLoggingERROR SWIFT_COMPILE_NAME("error") = 1,
+/// Designates potential harmful messages from the Agama process.
+  THEOplayerAgamaLoggingWARNING SWIFT_COMPILE_NAME("warning") = 2,
+/// Informational messages that highlight the Agama process.
+  THEOplayerAgamaLoggingINFO SWIFT_COMPILE_NAME("info") = 3,
+/// Detailed messages that are useful to debug the Agama process.
+  THEOplayerAgamaLoggingDEBUG SWIFT_COMPILE_NAME("debug") = 4,
+};
+
+enum THEOplayerAnalyticsIntegration : NSInteger;
+
+/// The description of the used analytics.
+SWIFT_PROTOCOL_NAMED("AnalyticsDescription")
+@protocol THEOplayerAnalyticsDescription
+@property (nonatomic, readonly) enum THEOplayerAnalyticsIntegration integration;
+@end
 
 
 /// The Agama player configuration.
 /// since:
 /// v.2.61.0
-SWIFT_CLASS("_TtC13THEOplayerSDK24AgamaPlayerConfiguration")
-@interface AgamaPlayerConfiguration : NSObject
+SWIFT_CLASS_NAMED("AgamaPlayerConfiguration")
+@interface THEOplayerAgamaPlayerConfiguration : NSObject <THEOplayerAnalyticsDescription>
+/// The analytics integration that is being used, in this case <code>AnalyticsIntegration.agama</code>.
+@property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
 /// The configuration string for the EMP client.
-@property (nonatomic, readonly, copy) NSString * _Nonnull config SWIFT_DEPRECATED_OBJC("Swift property 'AgamaPlayerConfiguration.config' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull config;
+/// The log level at which warnings/errors will be printed. Defaults to fatal (on crash)
+@property (nonatomic, readonly) enum THEOplayerAgamaLogging logLevel;
 /// The application name that will be used.
-@property (nonatomic, readonly, copy) NSString * _Nonnull application SWIFT_DEPRECATED_OBJC("Swift property 'AgamaPlayerConfiguration.application' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull application;
 /// The version of the application that currently is being used.
-@property (nonatomic, readonly, copy) NSString * _Nonnull applicationVersion SWIFT_DEPRECATED_OBJC("Swift property 'AgamaPlayerConfiguration.applicationVersion' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull applicationVersion;
 /// The identifier of the account that can be used. This will be visible to detect your device on the Agama dashboard.
-@property (nonatomic, readonly, copy) NSString * _Nullable userAccountID SWIFT_DEPRECATED_OBJC("Swift property 'AgamaPlayerConfiguration.userAccountID' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable userAccountID;
+/// Constructs an AgamaPlayerConfiguration object.
+/// \param config Configuration string EXP: ‘agg_server_ip=http://127.0.0.1:8191/report;report_interval=60;id_report_interval=240;operator_id=fooSoo’
+///
+/// \param logLevel AgamaLogging. Defaults to <code>AgamaLogging.fatal</code>.
+///
+/// \param application Application’s name, it will be automatically detected from the host app if nil is provided. Defaults to nil.
+///
+/// \param applicationVersion Application’s version, it will be automatically detected from the host app if nil is provided. Defaults to nil.
+///
+- (nonnull instancetype)initWithConfig:(NSString * _Nonnull)config logLevel:(enum THEOplayerAgamaLogging)logLevel application:(NSString * _Nullable)application applicationVersion:(NSString * _Nullable)applicationVersion userAccountID:(NSString * _Nullable)userAccountID OBJC_DESIGNATED_INITIALIZER;
+/// Constructs an AgamaPlayerConfiguration object.
+/// \param config Configuration string EXP: ‘agg_server_ip=http://127.0.0.1:8191/report;report_interval=60;id_report_interval=240;operator_id=fooSoo’
+///
+- (nonnull instancetype)initWithConfig:(NSString * _Nonnull)config;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+/// The different Agama Service names.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAgamaServiceName, "AgamaServiceName", open) {
+/// Live.
+  THEOplayerAgamaServiceNameNONE SWIFT_COMPILE_NAME("none") = 0,
+/// Live.
+  THEOplayerAgamaServiceNameLIVE SWIFT_COMPILE_NAME("live") = 1,
+/// Subscription video on demand.
+  THEOplayerAgamaServiceNameSVOD SWIFT_COMPILE_NAME("svod") = 2,
+/// Near video on demand.
+  THEOplayerAgamaServiceNameNVOD SWIFT_COMPILE_NAME("nvod") = 3,
+/// Transactional video on demand.
+  THEOplayerAgamaServiceNameTVOD SWIFT_COMPILE_NAME("tvod") = 4,
+/// Advertising video on demand.
+  THEOplayerAgamaServiceNameAVOD SWIFT_COMPILE_NAME("avod") = 5,
+/// Catch up tv.
+  THEOplayerAgamaServiceNameCATCH_UP_TV SWIFT_COMPILE_NAME("catchuptv") = 6,
+};
+
+enum THEOplayerStreamType : NSInteger;
 
 /// Configure Agama analytics pre-integration.
-SWIFT_CLASS("_TtC13THEOplayerSDK24AgamaSourceConfiguration")
-@interface AgamaSourceConfiguration : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull asset SWIFT_DEPRECATED_OBJC("Swift property 'AgamaSourceConfiguration.asset' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@property (nonatomic, readonly, copy) NSString * _Nullable cdn SWIFT_DEPRECATED_OBJC("Swift property 'AgamaSourceConfiguration.cdn' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@property (nonatomic, readonly, copy) NSString * _Nullable contentTitle SWIFT_DEPRECATED_OBJC("Swift property 'AgamaSourceConfiguration.contentTitle' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@property (nonatomic, readonly, copy) NSString * _Nullable contentType SWIFT_DEPRECATED_OBJC("Swift property 'AgamaSourceConfiguration.contentType' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-@property (nonatomic, readonly, copy) NSString * _Nullable contentDescription SWIFT_DEPRECATED_OBJC("Swift property 'AgamaSourceConfiguration.contentDescription' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+SWIFT_CLASS_NAMED("AgamaSourceConfiguration")
+@interface THEOplayerAgamaSourceConfiguration : NSObject <THEOplayerAnalyticsDescription>
+@property (nonatomic, readonly, copy) NSString * _Nonnull asset;
+@property (nonatomic, readonly) enum THEOplayerStreamType streamType;
+@property (nonatomic, readonly) enum THEOplayerAgamaServiceName serviceName;
+@property (nonatomic, readonly, copy) NSString * _Nullable cdn;
+@property (nonatomic, readonly, copy) NSString * _Nullable contentTitle;
+@property (nonatomic, readonly, copy) NSString * _Nullable contentType;
+@property (nonatomic, readonly, copy) NSString * _Nullable contentDescription;
+/// The analytics integration.
+@property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
+/// Constructs an AgamaSourceConfiguration object.
+/// \param asset The name of the Asset.
+///
+/// \param streamType Type of stream can either be vod or live.
+///
+/// \param serviceName The name of the service.
+///
+/// \param cdn A string indicating the content distribution network that the content is being served from.
+///
+/// \param contentTitle Title of the content.
+///
+/// \param contentType Type of the content. Suggested values are ‘trailer’, ‘movie’, ‘news’, ‘documentary’, …
+///
+/// \param contentDescription Description of the content.
+///
+- (nonnull instancetype)initWithAsset:(NSString * _Nonnull)asset streamType:(enum THEOplayerStreamType)streamType serviceName:(enum THEOplayerAgamaServiceName)serviceName cdn:(NSString * _Nullable)cdn contentTitle:(NSString * _Nullable)contentTitle contentType:(NSString * _Nullable)contentType contentDescription:(NSString * _Nullable)contentDescription;
+/// Constructs an AgamaSourceConfiguration object.
+/// \param asset The name of the Asset.
+///
+/// \param streamType Type of stream can either be vod or live.
+///
+- (nonnull instancetype)initWithAsset:(NSString * _Nonnull)asset streamType:(enum THEOplayerStreamType)streamType;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+/// The <code>AirPlay</code> event object.
+SWIFT_CLASS_NAMED("AirPlayEvent")
+@interface THEOplayerAirPlayEvent : NSObject <THEOplayerEventProtocol>
+/// The type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("AirPlayEventTypes_Objc")
+@interface THEOplayerAirPlayEventTypes : NSObject
+/// Fired when <code>AirPlayStateChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull statechange;)
++ (NSString * _Nonnull)statechange SWIFT_WARN_UNUSED_RESULT;
++ (void)setStatechange:(NSString * _Nonnull)value;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+enum THEOplayerPlayerCastState : NSInteger;
+
+/// Fired when the <code>AirPlay.state</code> changes.
+SWIFT_CLASS_NAMED("AirPlayStateChangeEvent")
+@interface THEOplayerAirPlayStateChangeEvent : THEOplayerAirPlayEvent
+/// Indicates the state of AirPlay.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+@end
+
+
+/// The AirPlay API.
+SWIFT_PROTOCOL_NAMED("Airplay_Objc")
+@protocol THEOplayerAirplay
+/// Whether the player is casting.
+@property (nonatomic, readonly) BOOL casting;
+/// The state of the casting process.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+/// Start a casting session with the player’s source.
+- (void)start;
+/// Stop the active casting session.
+- (void)stop;
+/// Adds the given event listener of the given type.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// Example:
+/// \code
+/// let eventListener = theoplayer.addEventListener(type: AirPlayEventTypes.STATE_CHANGE, listener: handleAirplayEvent)
+///
+/// \endcode\param type Event type of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerAirPlayEvent * _Nonnull))listener;
+/// Removes the given event listener of the given type.
+/// Example:
+/// \code
+/// theoplayer.removeEventListener(type: AirPlayEventTypes.STATE_CHANGE, listener: eventListener)
+///
+/// \endcode\param type Event type of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// The different kinds of analytics integrations.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAnalyticsIntegration, "AnalyticsIntegration", open) {
+/// Youbora analytics.
+  THEOplayerAnalyticsIntegrationYOUBORA SWIFT_COMPILE_NAME("youbora") = 1,
+/// Moat analytics.
+  THEOplayerAnalyticsIntegrationMOAT SWIFT_COMPILE_NAME("moat") = 2,
+/// Conviva analytics.
+  THEOplayerAnalyticsIntegrationCONVIVA SWIFT_COMPILE_NAME("conviva") = 3,
+/// Agama analytics.
+  THEOplayerAnalyticsIntegrationAGAMA SWIFT_COMPILE_NAME("agama") = 4,
+};
+
+/// Specifies an aspect ratio for the player when in fullscreen mode.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAspectRatio, "AspectRatio", open) {
+/// Scales the theoplayer so that all content fits inside its bounding box, keeping the original aspect ratio of the content.
+/// remark:
+/// This might result in black bars on the side if aspect ratio of the content does not match the screen. The content will never be cropped.
+  THEOplayerAspectRatioFIT SWIFT_COMPILE_NAME("fit") = 1,
+/// Scales the theoplayer so that the content fills up the entire bounding box, keeping the original aspect ratio of the content.
+/// remark:
+/// This might result in cropped content. It will never show black bars.
+  THEOplayerAspectRatioFILL SWIFT_COMPILE_NAME("fill") = 2,
+/// Scales the theoplayer so that all content fits inside the bounding box which will be stretched to fill the entire bounding box.
+/// remark:
+/// This does not keep the original aspect ratio, content may look stretched out. Will not show black bars. The content will not be cropped.
+  THEOplayerAspectRatioASPECT_FILL SWIFT_COMPILE_NAME("aspectFill") = 3,
+};
+
+
+/// Thrown when the aspect ratio property of the player has changed.
+SWIFT_CLASS_NAMED("AspectRatioChangeEvent")
+@interface THEOplayerAspectRatioChangeEvent : NSObject <THEOplayerEventProtocol>
+/// Type of the event, defaults to “aspectratiochange”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The new <code>AspectRatio</code> of the view.
+@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Represents the quality of an <code>AudioTrack</code>.
+SWIFT_CLASS_NAMED("AudioQuality")
+@interface THEOplayerAudioQuality : NSObject
+/// The sampling rate, in samples per second.
+/// remark:
+/// 44100 samples per second is expressed as 44100Hz.
+@property (nonatomic, readonly) NSInteger audioSamplingRate;
+/// The required bandwidth for the quality as defined in the manifest.
+@property (nonatomic, readonly) NSInteger bandwidth;
+/// The codecs of the quality as defined in the manifest.
+@property (nonatomic, readonly, copy) NSString * _Nonnull codecs;
+/// The identifier of the quality.
+@property (nonatomic, readonly) NSInteger id;
+/// The name of the quality as defined in the manifest.
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The types of <code>AudioTrackList</code> events.
+SWIFT_CLASS_NAMED("AudioTrackListEventTypes_Objc")
+@interface THEOplayerAudioTrackListEventTypes : NSObject
+/// Fired when <code>AddTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addtrack;)
++ (NSString * _Nonnull)addtrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RemoveTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull removetrack;)
++ (NSString * _Nonnull)removetrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>TrackChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull change;)
++ (NSString * _Nonnull)change SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol THEOplayerMediaTrack;
+
+/// A MediaTrackList lists all available MediaTrack objects that the player can play. It contains MediaTrack objects, which are either AudioTracks or VideoTracks.
+SWIFT_PROTOCOL_NAMED("MediaTrackList_Objc")
+@protocol THEOplayerMediaTrackList
+/// The number of media tracks in the list of media tracks.
+@property (nonatomic, readonly) NSInteger count;
+/// Returns the MediaTrack object representing the media track at the <em>index</em> position in the player’s list of audio or video tracks.
+/// \param index Position of the returned MediaTrack.
+///
+///
+/// returns:
+///
+/// The MediaTrack at the <em>index</em> position.
+- (id <THEOplayerMediaTrack> _Nonnull)get:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+/// An AudioTrackList lists all available AudioTrack objects that the player can play.
+SWIFT_PROTOCOL_NAMED("AudioTrackList_Objc")
+@protocol THEOplayerAudioTrackList <THEOplayerMediaTrackList>
+/// Adds the given event listener of the given AudioTrackListEventType.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type AudioTrackListEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerTrackEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given AudioTrackListEventType.
+/// \param type AudioTrackListEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// A track object.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Either a TextTrack or a MediaTrack.
+///   </li>
+///   <li>
+///     A specific track type (e.g. <code>TextTrack</code>) will always be used.
+///   </li>
+/// </ul>
+SWIFT_PROTOCOL_NAMED("Track_Objc")
+@protocol THEOplayerTrack
+/// The kind of the track.
+/// remark:
+///
+/// The values for this property depend on the specific type of the track.
+@property (nonatomic, readonly, copy) NSString * _Nonnull kind;
+/// The language of the track.
+/// remark:
+///
+/// This is often an ISO639/2 language string.
+/// Example:
+/// \code
+/// "fra" for French
+///
+/// \endcode
+/// returns:
+///
+/// The language of the track.
+@property (nonatomic, readonly, copy) NSString * _Nonnull language;
+/// The label of the track.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     An empty string if there is no track.
+///   </li>
+///   <li>
+///     When the label is an empty string, you should introduce a custom one.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nonnull label;
+/// The identifier of the track.
+/// remark:
+///
+/// This identifier can be used to destinguished between related tracks, e.g. tracks in the same list.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// A unique identifier of the track.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This identifier is unique across tracks of a THEOplayer instance and can be used to distinguish between tracks.
+///   </li>
+///   <li>
+///     This identifier is a randomly generated number.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) NSInteger uid;
+/// Adds the given event listener of the given TextTrackEventType.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type TextTrackEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given TextTrackEventType.
+/// \param type TextTrackEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// A MediaTrack is an element that represents a single video or audio track that can be played by the player.
+SWIFT_PROTOCOL_NAMED("MediaTrack_Objc")
+@protocol THEOplayerMediaTrack <THEOplayerTrack>
+/// Indicates whether the track is enabled.
+/// remark:
+///
+/// Options are:
+/// <ul>
+///   <li>
+///     true: The track will be enabled. If another track was currently enabled, that track will be disabled and the player will switch to this track.
+///   </li>
+///   <li>
+///     false: The track will be disabled. Given that only one track can be active, this means no audio/video will be played.
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL enabled;
+@end
+
+
+/// An AudioTrack object is an element that represents a single audio track that can be played by the player.
+SWIFT_PROTOCOL_NAMED("AudioTrack_Objc")
+@protocol THEOplayerAudioTrack <THEOplayerMediaTrack>
+/// Indicates whether the track is enabled.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     true: The track will be enabled. If another track was enabled, that track will be deselected and the player will switch to this track.
+///   </li>
+///   <li>
+///     false: AudioTrack can not be disabled. If you want to disable audio, please use the theoplayer.muted = true.
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL enabled;
+@end
+
+enum THEOplayerDRMIntegration : NSInteger;
+
+/// The DRMConfiguration object provides a set of DRM parameters for DRM streaming.
+SWIFT_PROTOCOL_NAMED("DRMConfiguration_Objc")
+@protocol THEOplayerDRMConfiguration
+/// Optionally specifies request headers that should be sent with any license requests to the DRM server. This is a plain object where the keys of the object are header names and corresponding values are header values.
+@property (nonatomic, readonly, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable headers;
+/// An object of key/value pairs which can be used to pass in specific parameters related to a source into a <code>ContentProtectionIntegration</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Type of values other than primitive types or Codable will be ignored.
+///   </li>
+///   <li>
+///     When using a <code>Codable</code> object as a value, it will be internally mapped to Dictionary<String, Any>,
+///     so when you receive it back in your implementation of <code>ContentProtectionIntegrationFactory</code>,
+///     you need to decode it using <code>JSONDecoder().decode(integrationParameters[customObjectKey], CustomObjectClass.self)</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable integrationParameters;
+/// DRM integration.
+/// remark:
+///
+/// Nil if no integration is specified.
+@property (nonatomic, readonly) enum THEOplayerDRMIntegration integration;
+/// The custom integration identifier of the DRM integration.
+@property (nonatomic, readonly, copy) NSString * _Nullable customIntegrationId;
+@end
+
+@class THEOplayerKeySystemConfiguration;
+
+/// The FairPlay DRM configuration.
+SWIFT_PROTOCOL_NAMED("FairPlayDRMConfigurationProtocol_Objc")
+@protocol THEOplayerFairPlayDRMConfigurationProtocol <THEOplayerDRMConfiguration>
+@property (nonatomic, readonly, strong) THEOplayerKeySystemConfiguration * _Nonnull fairplay;
+@end
+
+enum THEOplayerLicenseType : NSInteger;
+
+/// The FairPlayDRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming.
+SWIFT_CLASS_NAMED("FairPlayDRMConfiguration")
+@interface THEOplayerFairPlayDRMConfiguration : NSObject <THEOplayerFairPlayDRMConfigurationProtocol>
+/// The FairPlay <code>KeySystemConfiguration</code>.
+@property (nonatomic, strong) THEOplayerKeySystemConfiguration * _Nonnull fairplay;
+/// The identifier of the DRM integration.
+@property (nonatomic) enum THEOplayerDRMIntegration integration;
+/// The FairPlay headers.
+@property (nonatomic, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable headers;
+/// The FairPlay integration parameters.
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable integrationParameters;
+/// The custom integration identifier.
+@property (nonatomic, copy) NSString * _Nullable customIntegrationId;
+/// Constructs a FairPlay DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The FairPlay headers.
+///
+/// \param licenseType The type of FairPlay license.
+///
+/// \param integrationParameters The FairPlay integration parameters.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers licenseType:(enum THEOplayerLicenseType)licenseType integrationParameters:(NSDictionary<NSString *, id> * _Nullable)integrationParameters;
+/// Constructs a FairPlay DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL;
+/// Constructs a FairPlay DRMConfiguration.
+/// \param customIntegrationId The custom integration identifier.
+///
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The FairPlay headers.
+///
+/// \param licenseType The type of FairPlay license.
+///
+/// \param integrationParameters The FairPlay integration parameters.
+///
+- (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId licenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers licenseType:(enum THEOplayerLicenseType)licenseType integrationParameters:(NSDictionary<NSString *, id> * _Nullable)integrationParameters;
+/// Constructs a FairPlay DRMConfiguration.
+/// \param customIntegrationId The custom integration identifier.
+///
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId licenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The AxinomDRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Axinom integration.
+SWIFT_CLASS_NAMED("AxinomDRMConfiguration")
+@interface THEOplayerAxinomDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The Axinom token.
+@property (nonatomic, copy) NSString * _Nonnull token;
+/// Constructs a Axinom DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+/// \param headers The Axinom headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Axinom DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
+@end
+
+
+/// The Azure DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Azure integration.
+SWIFT_CLASS_NAMED("AzureDRMConfiguration")
+@interface THEOplayerAzureDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The Azure token.
+@property (nonatomic, copy) NSString * _Nonnull token;
+/// Constructs a Azure DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+/// \param headers The Azure headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Azure DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
+@end
+
+
+
+/// The <code>Cache</code> event object.
+SWIFT_CLASS_NAMED("CacheEvent")
+@interface THEOplayerCacheEvent : NSObject <THEOplayerEventProtocol>
+/// The type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The <code>CacheEvent</code> types.
+SWIFT_CLASS_NAMED("CacheEventTypes_Objc")
+@interface THEOplayerCacheEventTypes : NSObject
+/// Fired when the <code>Cache.status</code> changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull statechange;)
++ (NSString * _Nonnull)statechange SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when the <code>Cache.status</code> changes.
+SWIFT_CLASS_NAMED("CacheStateChangeEvent")
+@interface THEOplayerCacheStateChangeEvent : THEOplayerCacheEvent
+@end
+
+/// Indicates the status of the <code>Cache</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     <code>CacheStatus.uninitialised</code>: means that previously persisted tasks are not yet available.
+///   </li>
+///   <li>
+///     <code>CacheStatus.initialised</code>: means that previously persisted tasks are available in the tasks property.
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCacheStatus, "CacheStatus", open) {
+  THEOplayerCacheStatusUNINITIALISED SWIFT_COMPILE_NAME("uninitialised") = 1,
+  THEOplayerCacheStatusINITIALISED SWIFT_COMPILE_NAME("initialised") = 2,
+};
+
+@protocol THEOplayerCachingTask;
+@class THEOplayerSourceDescription;
+@class THEOplayerCachingParameters;
+
+/// The caching API allows to store a streaming source on the user’s device.
+SWIFT_PROTOCOL_NAMED("Cache_Objc")
+@protocol THEOplayerCache
+/// Indicates the <code>CacheStatus</code>.
+@property (nonatomic, readonly) enum THEOplayerCacheStatus status;
+/// The list of all caching tasks.
+/// remark:
+/// The list should be regarded as read-only. To remove a task, invoke <code>CachingTask.remove()</code>.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerCachingTask>> * _Nonnull tasks;
+/// Creates a <code>CachingTask</code> which will be used to cache the provided source, abiding to the provided parameters.
+/// \param source The source to be cached.
+///
+/// \param parameters The optional caching parameters.
+///
+///
+/// returns:
+/// The created <code>CachingTask</code>.
+- (id <THEOplayerCachingTask> _Nullable)createTaskWithSource:(THEOplayerSourceDescription * _Nonnull)source parameters:(THEOplayerCachingParameters * _Nullable)parameters;
+/// Adds the event listener of the given <code>EventType</code>.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>CacheEventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerCacheEvent * _Nonnull))listener;
+/// Removes the event listener for the given <code>EventType</code>.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>CacheEventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// The configuration of a caching task.
+SWIFT_CLASS_NAMED("CachingParameters")
+@interface THEOplayerCachingParameters : NSObject
+/// The expiration date for the cached data.
+/// remark:
+/// Has to be in the future. Data will remain in the cache until at least the provided date if enough disk space is available. The default expiration date is 30 minutes from the start of the caching task.
+@property (nonatomic, copy) NSDate * _Nonnull expirationDate;
+/// An approximation of the desired bandwidth, defaults to the highest bandwidth possible.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This will take the quality with the lowest bandwidth that is higher than the specified bandwidth in bits per second.
+///   </li>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable bandwidth;
+/// Constructs a <code>CachingParameters</code>.
+/// \param expirationDate The expiration date of the cached data.
+///
+/// \param bandwidth The upper bandwidth limit of the quality to cache. Supports integer format.
+///
+- (nonnull instancetype)initWithExpirationDate:(NSDate * _Nonnull)expirationDate bandwidth:(NSNumber * _Nullable)bandwidth OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a <code>CachingParameters</code>.
+/// \param expirationDate The expiration date of the cached data.
+///
+- (nonnull instancetype)initWithExpirationDate:(NSDate * _Nonnull)expirationDate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The <code>CachingTask</code> event types.
+SWIFT_CLASS_NAMED("CachingTaskEventTypes_Objc")
+@interface THEOplayerCachingTaskEventTypes : NSObject
+/// Fired when the <code>CachingTask.status</code> changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull statechange;)
++ (NSString * _Nonnull)statechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when the <code>CachingTask</code> downloads additional segments.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull progress;)
++ (NSString * _Nonnull)progress SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The caching task license controller which can be used to renew the license.
+SWIFT_PROTOCOL_NAMED("CachingTaskLicense_Objc")
+@protocol THEOplayerCachingTaskLicense
+/// Renews all the licenses associated with this caching task.
+/// remark:
+/// Uses the DRM configuration provided at task creation time for license renewal.
+- (void)renew;
+/// Renews all the licenses associated with this caching task.
+/// \param drmConfiguation The <code>DRMConfiguration</code> used for license renewal.
+///
+- (void)renew:(id <THEOplayerDRMConfiguration> _Nonnull)drmConfiguation;
+@end
+
+
+/// Fired when the <code>CachingTask</code> downloads additional segments.
+SWIFT_CLASS_NAMED("CachingTaskProgressEvent")
+@interface THEOplayerCachingTaskProgressEvent : THEOplayerCacheEvent
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes.
+SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
+@interface THEOplayerCachingTaskStateChangeEvent : THEOplayerCacheEvent
+@end
+
+/// The status of a caching task.
+/// <ul>
+///   <li>
+///     <code>CachingTaskStatus.idle</code>: The task has been created, but has not started downloading content.
+///   </li>
+///   <li>
+///     <code>CachingTaskStatus.loading</code>: The task is currently downloading the content.
+///   </li>
+///   <li>
+///     <code>CachingTaskStatus.done</code>: The task has finished downloading all content.
+///   </li>
+///   <li>
+///     <code>CachingTaskStatus.error</code>: The task has encountered an error while downloading or evicting content.
+///   </li>
+///   <li>
+///     <code>CachingTaskStatus.evicted</code>: All data associated with the task has been removed because the task expired or the user invoked the remove method.
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCachingTaskStatus, "CachingTaskStatus", open) {
+  THEOplayerCachingTaskStatusIDLE SWIFT_COMPILE_NAME("idle") = 1,
+  THEOplayerCachingTaskStatusLOADING SWIFT_COMPILE_NAME("loading") = 2,
+  THEOplayerCachingTaskStatusDONE SWIFT_COMPILE_NAME("done") = 3,
+  THEOplayerCachingTaskStatusERROR SWIFT_COMPILE_NAME("error") = 4,
+  THEOplayerCachingTaskStatusEVICTED SWIFT_COMPILE_NAME("evicted") = 5,
+};
+
+@class THEOplayerTimeRange;
+
+/// Represents a caching task.
+SWIFT_PROTOCOL_NAMED("CachingTask_Objc")
+@protocol THEOplayerCachingTask
+/// The identifier of the task.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// The current <code>CachingTaskStatus</code>.
+@property (nonatomic, readonly) enum THEOplayerCachingTaskStatus status;
+/// The <code>SourceDescription</code> processed by this caching task.
+@property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nonnull source;
+/// The <code>CachingParameters</code> for this caching task.
+/// remark:
+/// These parameters can not be modified after creating a task. Instead, a new task should be created with different parameters.
+@property (nonatomic, readonly, strong) THEOplayerCachingParameters * _Nonnull parameters;
+/// The amount of content that will be available after this task has finished, in seconds.
+@property (nonatomic, readonly) double duration;
+/// List of <code>TimeRange</code> indicating which data is currently cached.
+@property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull cached;
+/// The amount of content that has already been cached, in seconds.
+@property (nonatomic, readonly) double secondsCached;
+/// The percentage of content that has already been cached, between 0 and 1.
+@property (nonatomic, readonly) double percentageCached;
+/// The amount of bytes that have already been cached.
+@property (nonatomic, readonly) NSUInteger bytesCached;
+/// Starts downloading the stream and stores it on the device.
+/// remark:
+/// An element will only be cached if it is not yet present in the cache.
+- (void)start;
+/// Removes the task and tries to evict all associated streaming elements.
+/// remark:
+/// An element referenced by multiple tasks will only be evicted if all associated tasks are removed.
+- (void)remove;
+/// Pauses downloading the stream.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The cachingtask can be resumed later on through the use of the <code>start()</code> method.
+///   </li>
+///   <li>
+///     This how-to-guide explains how to save the progress of a task and what the limitations are: https://docs.theoplayer.com/how-to-guides/07-miscellaneous/10-saving-cachingtask-progress-ios.md
+///   </li>
+/// </ul>
+- (void)pause;
+/// A controller for license related queries and operations.
+@property (nonatomic, readonly, strong) id <THEOplayerCachingTaskLicense> _Nonnull license;
+/// Adds the event listener of the given <code>EventType</code>.
+/// remark:
+/// When attaching a listener on the wrong object, the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>CachingTaskEventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerCacheEvent * _Nonnull))listener;
+/// Removes the event listener of the given CachingTaskEventType.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>CachingTaskEventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// Represents the base for all other player events.
+SWIFT_CLASS_NAMED("PlayerEvent")
+@interface THEOplayerPlayerEvent : NSObject <THEOplayerEventProtocol>
+/// A textual representation of the type of the event
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Represents the player events that return the currentTime property.
+SWIFT_CLASS_NAMED("CurrentTimeEvent")
+@interface THEOplayerCurrentTimeEvent : THEOplayerPlayerEvent
+/// The current time of the player.
+@property (nonatomic, readonly) double currentTime;
+@end
+
+enum THEOplayerReadyState : NSInteger;
+
+/// The base event for all events that change the <code>ReadyState</code> of the player.
+SWIFT_CLASS_NAMED("ReadyStateEvent")
+@interface THEOplayerReadyStateEvent : THEOplayerCurrentTimeEvent
+/// The <code>ReadyState</code> of the player.
+@property (nonatomic, readonly) enum THEOplayerReadyState readyState;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.CAN_PLAY</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player already has some data and can play, with a readyState property value of 3: HAVE_FUTURE_DATA.
+///   </li>
+///   <li>
+///     The player does not have sufficient future data to guarantee a smooth playthrough.
+///   </li>
+///   <li>
+///     With the current playback rate, until the end of the stream, the player might have to stop for further buffering of the media data.
+///   </li>
+///   <li>
+///     Fired to indicate that the player can now continue playback, usually after a ‘waiting’ event.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("CanPlayEvent")
+@interface THEOplayerCanPlayEvent : THEOplayerReadyStateEvent
+@end
+
+
+/// Fired when <code>PlayerEventTypes.CAN_PLAY_THROUGH</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player has sufficient data to offer a smooth playthrough.
+///   </li>
+///   <li>
+///     With the current playback rate, until the end of the stream, the player won’t have to stop for further buffering of the media data.
+///   </li>
+///   <li>
+///     Fired to indicate that the player can now continue playback uninterrupted with a readyState property value of 4: HAVE_ENOUGH_DATA.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("CanPlayThroughEvent")
+@interface THEOplayerCanPlayThroughEvent : THEOplayerReadyStateEvent
+@end
+
+enum THEOplayerCastStrategy : NSInteger;
+
+/// Describes the configuration of the Cast integrations.
+SWIFT_CLASS_NAMED("CastConfiguration")
+@interface THEOplayerCastConfiguration : NSObject
+/// Creates a Cast configuration.
+- (nonnull instancetype)initWithStrategy:(enum THEOplayerCastStrategy)strategy;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("ChromeCastEvent")
+@interface THEOplayerChromeCastEvent : NSObject <THEOplayerEventProtocol>
+/// The type of error.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The creation date of the error.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class THEOplayerCastError;
+
+/// Thrown to indicate that there was an error while casting / trying to cast.
+SWIFT_CLASS_NAMED("CastErrorEvent")
+@interface THEOplayerCastErrorEvent : THEOplayerChromeCastEvent
+/// The error thrown by the Chromecast.
+@property (nonatomic, readonly, strong) THEOplayerCastError * _Nonnull error;
+@end
+
+enum THEOplayerErrorCode : NSInteger;
+
+/// The cast error.
+SWIFT_CLASS_NAMED("CastError_Objc")
+@interface THEOplayerCastError : NSObject
+/// The error code of the cast error.
+@property (nonatomic, readonly) enum THEOplayerErrorCode errorCode;
+/// The description of the cast error.
+@property (nonatomic, copy) NSString * _Nullable errorDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The cast strategies that specify the ways an existing chromecast session can be joined.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCastStrategy, "CastStrategy", open) {
+/// The player will automatically join a cast session at startup if one exists when play is called.
+  THEOplayerCastStrategyAUTO SWIFT_COMPILE_NAME("auto") = 1,
+/// The player will take over an existing session if there is one and the cast button is clicked.
+  THEOplayerCastStrategyMANUAL SWIFT_COMPILE_NAME("manual") = 2,
+/// The player will not be affected by any existing cast sessions.
+  THEOplayerCastStrategyDISABLED SWIFT_COMPILE_NAME("disabled") = 3,
+};
+
+@protocol THEOplayerChromecast;
+
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+SWIFT_PROTOCOL_NAMED("Cast_Objc")
+@protocol THEOplayerCast
+/// Whether THEOplayer is currently connected with a casting device.
+@property (nonatomic, readonly) BOOL casting;
+/// A Chromecast integration object that allows you to cast to Chromecast and inspect its state.
+@property (nonatomic, readonly, strong) id <THEOplayerChromecast> _Nullable chromecast;
+/// An AirPlay integration object that allows you to cast to AirPlay and inspect its state.
+@property (nonatomic, readonly, strong) id <THEOplayerAirplay> _Nullable airPlay;
+@end
 
 
 /// A request, either for a <code>CertificateRequest</code> or a <code>LicenseRequest</code>.
-SWIFT_CLASS("_TtC13THEOplayerSDK7Request")
-@interface Request : NSObject
+SWIFT_CLASS_NAMED("Request")
+@interface THEOplayerRequest : NSObject
 /// The URL for the certificate server. By default, this will equal the certificate URL configured in the `KeySystemConfiguration``.
-@property (nonatomic, copy) NSString * _Nonnull url SWIFT_DEPRECATED_OBJC("Swift property 'Request.url' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull url;
 /// The method of the HTTP request, for example: GET, POST or PUT.
 /// remark:
 ///
@@ -257,9 +1789,9 @@ SWIFT_CLASS("_TtC13THEOplayerSDK7Request")
 ///     Will be equal to POST for all license requests.
 ///   </li>
 /// </ul>
-@property (nonatomic, copy) NSString * _Nonnull method SWIFT_DEPRECATED_OBJC("Swift property 'Request.method' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull method;
 /// The HTTP request headers to be sent to the server.
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers SWIFT_DEPRECATED_OBJC("Swift property 'Request.headers' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
 /// The body of the certificate request.
 /// remark:
 ///
@@ -271,7 +1803,7 @@ SWIFT_CLASS("_TtC13THEOplayerSDK7Request")
 ///     For POST requests (such as with Widevine): the body will contain the two bytes in an array as specified in the certificate request protocol.
 ///   </li>
 /// </ul>
-@property (nonatomic, copy) NSData * _Nullable body SWIFT_DEPRECATED_OBJC("Swift property 'Request.body' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSData * _Nullable body;
 /// Creates a new HTTP request for the given URL.
 /// \param url The URL of the license or certificate server.
 ///
@@ -281,57 +1813,57 @@ SWIFT_CLASS("_TtC13THEOplayerSDK7Request")
 ///
 /// \param body The body of the request.
 ///
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'Request.init(url:method:headers:body:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 /// A certificate request.
-SWIFT_CLASS("_TtC13THEOplayerSDK18CertificateRequest")
-@interface CertificateRequest : Request
+SWIFT_CLASS_NAMED("CertificateRequest")
+@interface THEOplayerCertificateRequest : THEOplayerRequest
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 /// A completion handler that should be called with the actual certificate, or an <code>Error</code> in case of failure.
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK27CertificateResponseCallback_")
-@protocol CertificateResponseCallback
+SWIFT_PROTOCOL_NAMED("CertificateResponseCallback")
+@protocol THEOplayerCertificateResponseCallback
 - (void)respondWithCertificate:(NSData * _Nonnull)certificate;
 - (void)errorWithError:(NSError * _Nonnull)error;
 @end
 
 
 /// A completion handler that should be called with the modified <code>CertificateRequest</code>.
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK26CertificateRequestCallback_")
-@protocol CertificateRequestCallback <CertificateResponseCallback>
-- (void)requestWithRequest:(CertificateRequest * _Nonnull)request;
+SWIFT_PROTOCOL_NAMED("CertificateRequestCallback")
+@protocol THEOplayerCertificateRequestCallback <THEOplayerCertificateResponseCallback>
+- (void)requestWithRequest:(THEOplayerCertificateRequest * _Nonnull)request;
 @end
 
 
 /// The response, either of a <code>LicenseResponse</code> or for a <code>CertificateResponse</code> request.
-SWIFT_CLASS("_TtC13THEOplayerSDK8Response")
-@interface Response : NSObject
+SWIFT_CLASS_NAMED("Response")
+@interface THEOplayerResponse : NSObject
 /// The request for which the response is being returned.
-@property (nonatomic, strong) Request * _Nonnull request SWIFT_DEPRECATED_OBJC("Swift property 'Response.request' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, strong) THEOplayerRequest * _Nonnull request;
 /// The URL from which the response was returned. This might have been redirected transparently.
-@property (nonatomic, copy) NSString * _Nonnull url SWIFT_DEPRECATED_OBJC("Swift property 'Response.url' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull url;
 /// The status code as returned in the HTTP response.
-@property (nonatomic) NSInteger status SWIFT_DEPRECATED_OBJC("Swift property 'Response.status' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) NSInteger status;
 /// The status text as returned in the HTTP response.
-@property (nonatomic, copy) NSString * _Nonnull statusText SWIFT_DEPRECATED_OBJC("Swift property 'Response.statusText' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull statusText;
 /// The HTTP headers as returned by the server.
-@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers SWIFT_DEPRECATED_OBJC("Swift property 'Response.headers' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull headers;
 /// The body of the response.
-@property (nonatomic, copy) NSData * _Nonnull body SWIFT_DEPRECATED_OBJC("Swift property 'Response.body' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSData * _Nonnull body;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 /// The certificate response.
-SWIFT_CLASS("_TtC13THEOplayerSDK19CertificateResponse")
-@interface CertificateResponse : Response
+SWIFT_CLASS_NAMED("CertificateResponse")
+@interface THEOplayerCertificateResponse : THEOplayerResponse
 /// Creates a CertificateResponse.
 /// \param certificateRequest The <code>CertificateRequest</code> for which the response is being returned.
 ///
@@ -345,14 +1877,29 @@ SWIFT_CLASS("_TtC13THEOplayerSDK19CertificateResponse")
 ///
 /// \param body The body of the response.
 ///
-- (nonnull instancetype)initWithCertificateRequest:(CertificateRequest * _Nonnull)certificateRequest url:(NSString * _Nonnull)url status:(NSInteger)status statusText:(NSString * _Nonnull)statusText headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nonnull)body OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'CertificateResponse.init(certificateRequest:url:status:statusText:headers:body:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithCertificateRequest:(THEOplayerCertificateRequest * _Nonnull)certificateRequest url:(NSString * _Nonnull)url status:(NSInteger)status statusText:(NSString * _Nonnull)statusText headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nonnull)body OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 
+
+SWIFT_CLASS_NAMED("ChromecastEventTypes_Objc")
+@interface THEOplayerChromecastEventTypes : NSObject
+/// Fired when <code>StateChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull statechange;)
++ (NSString * _Nonnull)statechange SWIFT_WARN_UNUSED_RESULT;
++ (void)setStatechange:(NSString * _Nonnull)value;
+/// Fired when <code>CastErrorEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull error;)
++ (NSString * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
++ (void)setError:(NSString * _Nonnull)value;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// The MetadataDescription object is used to describe content.
-SWIFT_CLASS("_TtC13THEOplayerSDK19MetadataDescription")
-@interface MetadataDescription : NSObject
+SWIFT_CLASS_NAMED("MetadataDescription")
+@interface THEOplayerMetadataDescription : NSObject
 /// A dictionary of metadata.
 /// remark:
 ///
@@ -364,46 +1911,78 @@ SWIFT_CLASS("_TtC13THEOplayerSDK19MetadataDescription")
 ///     The metadata value is to be passed as a dictionary value. The value must be of type Any.
 ///   </li>
 /// </ul>
-@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable metadataKeys SWIFT_DEPRECATED_OBJC("Swift property 'MetadataDescription.metadataKeys' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable metadataKeys;
 /// The title of the content.
-@property (nonatomic, copy) NSString * _Nullable title SWIFT_DEPRECATED_OBJC("Swift property 'MetadataDescription.title' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nullable title;
 /// Constructs a MetadataDescription object.
 /// \param metadataKeys A dictionary of metadata.
 ///
 /// \param title The title of the content, defaults to nil.
 ///
-- (nonnull instancetype)initWithMetadataKeys:(NSDictionary<NSString *, id> * _Nullable)metadataKeys title:(NSString * _Nullable)title OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'MetadataDescription.init(metadataKeys:title:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithMetadataKeys:(NSDictionary<NSString *, id> * _Nullable)metadataKeys title:(NSString * _Nullable)title OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a MetadataDescription object.
+/// \param metadataKeys A dictionary of metadata.
+///
+- (nonnull instancetype)initWithMetadataKeys:(NSDictionary<NSString *, id> * _Nullable)metadataKeys;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class ChromecastMetadataImage;
+@class THEOplayerChromecastMetadataImage;
+enum THEOplayerChromecastMetadataType : NSInteger;
 
 /// The description of the metadata used by Chromecast.
-SWIFT_CLASS("_TtC13THEOplayerSDK29ChromecastMetadataDescription")
-@interface ChromecastMetadataDescription : MetadataDescription
+SWIFT_CLASS_NAMED("ChromecastMetadataDescription")
+@interface THEOplayerChromecastMetadataDescription : THEOplayerMetadataDescription
 /// An array of ChromecastMetadataImages.
-@property (nonatomic, copy) NSArray<ChromecastMetadataImage *> * _Nullable images SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataDescription.images' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<THEOplayerChromecastMetadataImage *> * _Nullable images;
 /// The release date using the following string format: “YYYY-MM-DD”
 /// remark:
 ///
 /// e.g. 2017-03-14
-@property (nonatomic, copy) NSString * _Nullable releaseDate SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataDescription.releaseDate' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nullable releaseDate;
 /// The subtitle / short explanation about the content.
-@property (nonatomic, copy) NSString * _Nullable subtitle SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataDescription.subtitle' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nullable subtitle;
+/// The release year as an integer number.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable releaseYear;
+/// The type. Defaults to “generic” if unset.
+@property (nonatomic, readonly) enum THEOplayerChromecastMetadataType type;
+/// Constructs a ChromecastMetadataDescription.
+/// \param type The ChromecastMetadataType of the current source.
+///
+/// \param images List of content images for the current source.
+///
+/// \param releaseDate The release date of the current source.
+///
+/// \param releaseYear The release year as an integer number. Supports integer format.
+///
+/// \param title The title of the content.
+///
+/// \param subtitle The subtitle of the content.
+///
+/// \param metadataKeys The keys for the ChromecastMetadata.
+///
+- (nonnull instancetype)initWithType:(enum THEOplayerChromecastMetadataType)type images:(NSArray<THEOplayerChromecastMetadataImage *> * _Nullable)images releaseDate:(NSString * _Nullable)releaseDate releaseYear:(NSNumber * _Nullable)releaseYear title:(NSString * _Nullable)title subtitle:(NSString * _Nullable)subtitle metadataKeys:(NSDictionary<NSString *, id> * _Nullable)metadataKeys;
 - (nonnull instancetype)initWithMetadataKeys:(NSDictionary<NSString *, id> * _Nullable)metadataKeys title:(NSString * _Nullable)title SWIFT_UNAVAILABLE;
 @end
 
 
 /// The metadata of a Chromecast image.
-SWIFT_CLASS("_TtC13THEOplayerSDK23ChromecastMetadataImage")
-@interface ChromecastMetadataImage : NSObject
+SWIFT_CLASS_NAMED("ChromecastMetadataImage")
+@interface THEOplayerChromecastMetadataImage : NSObject
 /// The URL to the metadata image.
-@property (nonatomic, copy) NSString * _Nonnull src SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataImage.src' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull src;
 /// The width of the image, in pixels.
-@property (nonatomic) NSInteger width SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataImage.width' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) NSInteger width;
 /// The height of the image, in pixels.
-@property (nonatomic) NSInteger height SWIFT_DEPRECATED_OBJC("Swift property 'ChromecastMetadataImage.height' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) NSInteger height;
 /// Constructs a ChromecastMetadataImage.
 /// \param src The URL of the image.
 ///
@@ -411,19 +1990,208 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23ChromecastMetadataImage")
 ///
 /// \param height The height of the image, in pixels. Defaults to 0.
 ///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src width:(NSInteger)width height:(NSInteger)height OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'ChromecastMetadataImage.init(src:width:height:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src width:(NSInteger)width height:(NSInteger)height OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a ChromecastMetadataImage.
+/// \param src The URL of the image.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class LicenseRequest;
-@protocol LicenseRequestCallback;
-@class LicenseResponse;
-@protocol LicenseResponseCallback;
+/// The Chromecast metadata type.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerChromecastMetadataType, "ChromecastMetadataType", open) {
+  THEOplayerChromecastMetadataTypeNONE SWIFT_COMPILE_NAME("NONE") = 0,
+  THEOplayerChromecastMetadataTypeAUDIO SWIFT_COMPILE_NAME("AUDIO") = 1,
+  THEOplayerChromecastMetadataTypeTV_SHOW SWIFT_COMPILE_NAME("TV_SHOW") = 2,
+  THEOplayerChromecastMetadataTypeGENERIC SWIFT_COMPILE_NAME("GENERIC") = 3,
+  THEOplayerChromecastMetadataTypeMOVIE SWIFT_COMPILE_NAME("MOVIE") = 4,
+};
+
+
+/// Chromecast, also known as Google Cast, is a casting device designed by Google.
+SWIFT_PROTOCOL_NAMED("Chromecast_Objc")
+@protocol THEOplayerChromecast
+/// Whether THEOplayer is casting to a chromecast and has control over the current chromecast session.
+@property (nonatomic, readonly) BOOL casting;
+/// The last error thrown by chromecast.
+@property (nonatomic, readonly, strong) THEOplayerCastError * _Nullable error;
+/// The name of the chromecast device that THEOplayer is casting to.
+/// remark:
+///
+/// This value is nil if THEOplayer is not controlling the current chromecast session.
+@property (nonatomic, readonly, copy) NSString * _Nullable receiverName;
+/// The source to be used for casting.
+@property (nonatomic, strong) THEOplayerSourceDescription * _Nullable source;
+/// Indicates the state of the casting process.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+/// Start casting to the chromecast. A dialog will prompt to choose the device.
+- (void)start;
+/// Stop casting to the chromecast.
+- (void)stop;
+/// Join an active chromecast session.
+- (void)join;
+/// Leave an active chromecast session without affecting other devices.
+- (void)leave;
+/// Adds the given event listener of the given <code>ChromecastEventType</code>.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type ChromecastEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerChromeCastEvent * _Nonnull))listener;
+/// Removes the given event listener of the given <code>ChromecastEventType</code>.
+/// \param type ChromecastEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// Represents Comcast MPX DRM Configuration.
+SWIFT_CLASS_NAMED("ComcastDRMConfiguration")
+@interface THEOplayerComcastDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The PID of the media for which the license is being requested.
+@property (nonatomic, copy) NSString * _Nonnull releasePid;
+/// The Comcast Authorization Token.
+@property (nonatomic, copy) NSString * _Nonnull token;
+/// The identifier of the Comcast account.
+@property (nonatomic, copy) NSString * _Nonnull accountId;
+/// Constructs an Comcast DRM Configuration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param releasePid The PID of the media for which the license is being requested.
+///
+/// \param token The Comcast Token.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param accountId The identifier of the Comcast account.
+///
+/// \param headers The Comcast Headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL releasePid:(NSString * _Nonnull)releasePid token:(NSString * _Nonnull)token accountId:(NSString * _Nonnull)accountId certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs an Comcast DRM Configuration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param releasePid The PID of the media for which the license is being requested.
+///
+/// \param token The Comcast Token.
+///
+/// \param accountId The identifier of the Comcast account.
+///
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL releasePid:(NSString * _Nonnull)releasePid token:(NSString * _Nonnull)token accountId:(NSString * _Nonnull)accountId certificateURL:(NSString * _Nonnull)certificateURL;
+@end
+
+
+/// Represents a companion ad which is displayed besides the player.
+/// remark:
+/// It doesn’t extend the properties of <code>Ad</code>.
+SWIFT_PROTOCOL_NAMED("CompanionAd_Objc")
+@protocol THEOplayerCompanionAd
+/// An identifier of the element in which the companion ad should be appended, if available.
+@property (nonatomic, readonly, copy) NSString * _Nullable adSlotId;
+/// An alternative description for the companion ad.
+@property (nonatomic, readonly, copy) NSString * _Nullable altText;
+/// The website of the advertisement.
+@property (nonatomic, readonly, copy) NSString * _Nullable clickThrough;
+/// The height of the companion ad, in pixels.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable height;
+/// The URI of the ad content.
+@property (nonatomic, readonly, copy) NSString * _Nullable resourceURI;
+/// The width of the companion ad, in pixels.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable width;
+/// The type of the companion ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+@end
+
+
+/// An error related to content protection.
+SWIFT_PROTOCOL_NAMED("ContentProtectionError_Objc")
+@protocol THEOplayerContentProtectionError <THEOplayerTHEOError>
+/// The URL that was used in the request.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when <code>THEOError.code</code> is <code>THEOErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</code> or <code>THEOErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nullable url;
+/// The status code from the HTTP response.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when <code>THEOError.code</code> is <code>THEOErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</code> or <code>THEOErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</code>.
+///   </li>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable status;
+/// The status text from the HTTP response.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when <code>THEOError.code</code> is <code>THEOErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</code> or <code>THEOErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nullable statusText;
+/// The body contained in the HTTP response.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when <code>THEOError.code</code> is <code>THEOErrorCode.CONTENT_PROTECTION_CERTIFICATE_ERROR</code> or <code>THEOErrorCode.CONTENT_PROTECTION_LICENSE_ERROR</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nullable response;
+/// The internal error code from the CDM.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available when <code>THEOError.code</code> is <code>THEOErrorCode.CONTENT_PROTECTION_INTERNAL_ERROR</code>.
+///   </li>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable systemCode;
+@end
+
+@class THEOplayerLicenseRequest;
+@protocol THEOplayerLicenseRequestCallback;
+@class THEOplayerLicenseResponse;
+@protocol THEOplayerLicenseResponseCallback;
 
 /// This ContentProtectionIntegration defines some methods to alter license and certificate requests and responses.
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
-@protocol ContentProtectionIntegration
+SWIFT_PROTOCOL_NAMED("ContentProtectionIntegration")
+@protocol THEOplayerContentProtectionIntegration
 @optional
 /// Handler which will be called when an HTTP request for a new certificate is about to be sent.
 /// remark:
@@ -448,7 +2216,7 @@ SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
 ///
 /// \param callback The <code>CertificateRequestCallback</code> that should be called with the modified <code>CertificateRequest</code>.
 ///
-- (void)onCertificateRequestWithRequest:(CertificateRequest * _Nonnull)request callback:(id <CertificateRequestCallback> _Nonnull)callback;
+- (void)onCertificateRequestWithRequest:(THEOplayerCertificateRequest * _Nonnull)request callback:(id <THEOplayerCertificateRequestCallback> _Nonnull)callback;
 /// Handler which will be called when an HTTP request for a certificate returns a response.
 /// remark:
 ///
@@ -468,7 +2236,7 @@ SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
 ///
 /// \param callback The <code>CertificateResponseCallback</code> completion handler that should be called with the modified <code>CertificateResponse</code>.
 ///
-- (void)onCertificateResponseWithResponse:(CertificateResponse * _Nonnull)response callback:(id <CertificateResponseCallback> _Nonnull)callback;
+- (void)onCertificateResponseWithResponse:(THEOplayerCertificateResponse * _Nonnull)response callback:(id <THEOplayerCertificateResponseCallback> _Nonnull)callback;
 /// Handler which will be called when an HTTP request for a new license is about to be sent.
 /// remark:
 ///
@@ -488,7 +2256,7 @@ SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
 ///
 /// \param callback The <code>LicenseRequestCallback</code> that should be called with the modified <code>LicenseRequest</code>.
 ///
-- (void)onLicenseRequestWithRequest:(LicenseRequest * _Nonnull)request callback:(id <LicenseRequestCallback> _Nonnull)callback;
+- (void)onLicenseRequestWithRequest:(THEOplayerLicenseRequest * _Nonnull)request callback:(id <THEOplayerLicenseRequestCallback> _Nonnull)callback;
 /// Handler which will be called when an HTTP request for a license returns an response.
 /// remark:
 ///
@@ -508,7 +2276,7 @@ SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
 ///
 /// \param callback The <code>LicenseResponseCallback</code> that should be called with the modified <code>LicenseResponse</code>.
 ///
-- (void)onLicenseResponseWithResponse:(LicenseResponse * _Nonnull)response callback:(id <LicenseResponseCallback> _Nonnull)callback;
+- (void)onLicenseResponseWithResponse:(THEOplayerLicenseResponse * _Nonnull)response callback:(id <THEOplayerLicenseResponseCallback> _Nonnull)callback;
 /// A function to extract the Fairplay content ID from the key URI, as given by the URI attribute of the <code>#EXT-X-KEY</code> tag in the HLS playlist (m3u8).
 /// remark:
 ///
@@ -529,37 +2297,519 @@ SWIFT_PROTOCOL("_TtP13THEOplayerSDK28ContentProtectionIntegration_")
 - (NSString * _Nonnull)extractFairplayContentIdWithSkdUrl:(NSString * _Nonnull)skdUrl SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class ConvivaContentMetadata;
+
+/// Factory pattern to create<code>ContentProtectionIntegration</code>.
+SWIFT_PROTOCOL_NAMED("ContentProtectionIntegrationFactory_Objc")
+@protocol THEOplayerContentProtectionIntegrationFactory
+- (id <THEOplayerContentProtectionIntegration> _Nonnull)buildWithConfiguration:(id <THEOplayerDRMConfiguration> _Nonnull)configuration SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class THEOplayerConvivaContentMetadata;
 
 /// The configuration of the Conviva Integration.
-SWIFT_CLASS("_TtC13THEOplayerSDK20ConvivaConfiguration")
-@interface ConvivaConfiguration : NSObject
+SWIFT_CLASS_NAMED("ConvivaConfiguration")
+@interface THEOplayerConvivaConfiguration : NSObject <THEOplayerAnalyticsDescription>
+/// The identifier of the Conviva integration.
+@property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
 /// The Conviva customer key.
-@property (nonatomic, readonly, copy) NSString * _Nonnull customerKey SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaConfiguration.customerKey' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull customerKey;
+/// The interval at which metrics are reported, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable heartbeatInterval;
 /// The URL of your Conviva gateway.
-@property (nonatomic, readonly, copy) NSString * _Nullable gatewayUrl SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaConfiguration.gatewayUrl' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable gatewayUrl;
 /// Specifies the Conviva metadata.
-@property (nonatomic, readonly, strong) ConvivaContentMetadata * _Nonnull contentMetadata SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaConfiguration.contentMetadata' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) THEOplayerConvivaContentMetadata * _Nonnull contentMetadata;
+/// By default, the player will automatically create a Conviva session when playback is started and cleanup the session when playback reaches the end of the content. When this option is set to <code>true</code>, the player will NOT perform automatic session creation and cleanup. Instead, the session must be created manually using createSession and cleanupSession.
+@property (nonatomic, readonly) BOOL manualSessionControl;
+/// Conviva Configuration
+/// \param customerKey The Conviva customer key.
+///
+/// \param contentMetadata Specifies the Conviva metadata.
+///
+/// \param manualSessionControl By default, the player will automatically create a Conviva session when playback is started and cleanup the session when playback reaches the end of the content. When this option is set to <code>true</code>, the player will NOT perform automatic session creation and cleanup. Instead, the session must be created manually using createSession and cleanupSession.
+///
+/// \param heartbeatInterval The Conviva heartbeat interval, in seconds. Supports integer format.
+///
+/// \param gatewayURL The Conviva gateway URL.
+///
+- (nonnull instancetype)initWithCustomerKey:(NSString * _Nonnull)customerKey contentMetadata:(THEOplayerConvivaContentMetadata * _Nonnull)contentMetadata manualSessionControl:(BOOL)manualSessionControl heartbeatInterval:(NSNumber * _Nullable)heartbeatInterval gatewayURL:(NSString * _Nullable)gatewayURL;
+/// Conviva Configuration
+/// \param customerKey The Conviva customer key.
+///
+/// \param contentMetadata Specifies the Conviva metadata.
+///
+- (nonnull instancetype)initWithCustomerKey:(NSString * _Nonnull)customerKey contentMetadata:(THEOplayerConvivaContentMetadata * _Nonnull)contentMetadata;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 /// The Conviva content metadata.
-SWIFT_CLASS("_TtC13THEOplayerSDK22ConvivaContentMetadata")
-@interface ConvivaContentMetadata : NSObject
+SWIFT_CLASS_NAMED("ConvivaContentMetadata")
+@interface THEOplayerConvivaContentMetadata : NSObject
 /// The name of the asset.
-@property (nonatomic, readonly, copy) NSString * _Nonnull assetName SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaContentMetadata.assetName' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull assetName;
+/// Whether a live asset is being tracked.
+/// remark:
+/// False refers to a VOD stream.
+@property (nonatomic, readonly) BOOL live;
+/// The default bitrate of the asset, in kbps.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable defaultBitrateKbps;
 /// The default resource.
-@property (nonatomic, readonly, copy) NSString * _Nullable defaultResource SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaContentMetadata.defaultResource' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable defaultResource;
+/// The duration of the asset, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+/// The encoded frame rate of the asset, in frames per second.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable encodedFrameRate;
 /// The application name.
-@property (nonatomic, readonly, copy) NSString * _Nullable applicationName SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaContentMetadata.applicationName' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable applicationName;
 /// The identifier of the viewer.
-@property (nonatomic, readonly, copy) NSString * _Nullable viewerId SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaContentMetadata.viewerId' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable viewerId;
 /// A  Map of custom Conviva tags.
-@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable custom SWIFT_DEPRECATED_OBJC("Swift property 'ConvivaContentMetadata.custom' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable custom;
+/// Conviva Metadata
+/// \param assetName The name of the asset to pass to Conviva.
+///
+/// \param live Whether it is a live asset.
+///
+/// \param defaultBitrateKbps Use this property to set a default Bitrate, in kbps. Supports integer format.
+///
+/// \param defaultResource Use this property to set a default resource to be logged to Conviva.
+///
+/// \param duration Use this property to set the duration of the asset to be logged to Conviva, in seconds. Supports integer format.
+///
+/// \param encodedFrameRate Use this property to set the encoded frame rate, in frames per second. Supports integer format.
+///
+/// \param applicationName Use this property to change the application name logged to Conviva.
+///
+/// \param viewerId Use this property to set a custom viewer ID over a randomly generated one.
+///
+/// \param custom Use this property to set custom Conviva tags.
+///
+- (nonnull instancetype)initWithAssetName:(NSString * _Nonnull)assetName live:(BOOL)live defaultBitrateKbps:(NSNumber * _Nullable)defaultBitrateKbps defaultResource:(NSString * _Nullable)defaultResource duration:(NSNumber * _Nullable)duration encodedFrameRate:(NSNumber * _Nullable)encodedFrameRate applicationName:(NSString * _Nullable)applicationName viewerId:(NSString * _Nullable)viewerId custom:(NSDictionary<NSString *, NSString *> * _Nullable)custom;
+/// Conviva Metadata
+/// \param assetName The name of the asset to pass to Conviva.
+///
+- (nonnull instancetype)initWithAssetName:(NSString * _Nonnull)assetName;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCrossOrigin, "CrossOrigin", open) {
+  THEOplayerCrossOriginNONE SWIFT_COMPILE_NAME("none") = 0,
+  THEOplayerCrossOriginANONYMOUS SWIFT_COMPILE_NAME("anonymous") = 1,
+  THEOplayerCrossOriginUSE_CREDENTIALS SWIFT_COMPILE_NAME("useCredentials") = 2,
+};
+
+
+/// Fired when <code>TextTrackEventTypes.CUE_CHANGE</code> occurs for  the list of <code>TextTrackCue</code>s.
+SWIFT_CLASS_NAMED("CueChangeEvent")
+@interface THEOplayerCueChangeEvent : NSObject <THEOplayerTrackEventProtocol>
+/// The textual representation of the type of event, “cuechange”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrack</code>for which the <code>TextTrackCue</code> changed.
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The base <code>TextTrackCue</code> Event protocol.
+SWIFT_PROTOCOL_NAMED("CueEventProtocol_Objc")
+@protocol THEOplayerCueEventProtocol <THEOplayerEventProtocol>
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+@end
+
+
+/// Fired when <code>TextTrackCueEventTypes.ENTER</code> occurs for a <code>TextTrackCue</code>.
+SWIFT_CLASS_NAMED("CueEnterEvent")
+@interface THEOPlayerCueEnterEvent : NSObject <THEOplayerCueEventProtocol>
+/// The textual representation of the type of event, “enter”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code>which was entered.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// Fired when <code>TextTrackCueEventTypes.EXIT</code> occurs for a <code>TextTrackCue</code>.
+SWIFT_CLASS_NAMED("CueExitEvent")
+@interface THEOplayerCueExitEvent : NSObject <THEOplayerCueEventProtocol>
+/// The textual representation of the type of event, “exit”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code>which was exited.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Fired when <code>TextTrackCueEventTypes.UPDATE</code> occurs for a <code>TextTrackCue</code>.
+SWIFT_CLASS_NAMED("CueUpdateEvent")
+@interface THEOplayerCueUpdateEvent : NSObject <THEOplayerCueEventProtocol>
+/// The textual representation of the type of event, “update”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code>which was updated.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+/// The CustomAttribute object of the date range cue.
+/// remark:
+/// The attribute type does not include the ‘X-’ prefix present in the manifest.
+SWIFT_CLASS_NAMED("CustomAttribute")
+@interface THEOplayerCustomAttribute : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// An array of <code>CustomAttribute</code> objects for the dateRangeCue.
+SWIFT_CLASS_NAMED("CustomAttributes")
+@interface THEOplayerCustomAttributes : NSObject
+/// The NSNumber value from the CustomAttribute list. Supports double-precision floating-point format.
+- (NSNumber * _Nullable)getDouble:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+/// The String value from the CustomAttribute list.
+- (NSString * _Nullable)getString:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+/// The byte buffer from the CustomAttribute list.
+- (NSData * _Nullable)getBytes:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
+/// The CustomAttribute list as a dictionary.
+- (NSDictionary<NSString *, THEOplayerCustomAttribute *> * _Nonnull)getAttributesAsDictionary SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The identifier for the DRM integration.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerDRMIntegration, "DRMIntegration", open) {
+  THEOplayerDRMIntegrationNONE SWIFT_COMPILE_NAME("none") = 0,
+  THEOplayerDRMIntegrationAZURE SWIFT_COMPILE_NAME("azure") = 1,
+  THEOplayerDRMIntegrationUPLYNK SWIFT_COMPILE_NAME("uplynk") = 2,
+  THEOplayerDRMIntegrationVIMOND SWIFT_COMPILE_NAME("vimond") = 3,
+  THEOplayerDRMIntegrationEZDRM SWIFT_COMPILE_NAME("ezdrm") = 4,
+  THEOplayerDRMIntegrationAXINOM SWIFT_COMPILE_NAME("axinom") = 5,
+  THEOplayerDRMIntegrationKEYOS SWIFT_COMPILE_NAME("keyos") = 6,
+  THEOplayerDRMIntegrationVERIMATRIX SWIFT_COMPILE_NAME("verimatrix") = 7,
+  THEOplayerDRMIntegrationCOMCAST SWIFT_COMPILE_NAME("comcast") = 8,
+  THEOplayerDRMIntegrationIRDETO SWIFT_COMPILE_NAME("irdeto") = 9,
+  THEOplayerDRMIntegrationDRMTODAY SWIFT_COMPILE_NAME("drmtoday") = 10,
+  THEOplayerDRMIntegrationXSTREAM SWIFT_COMPILE_NAME("xstream") = 11,
+  THEOplayerDRMIntegrationVUDRM SWIFT_COMPILE_NAME("vudrm") = 12,
+  THEOplayerDRMIntegrationCUSTOM SWIFT_COMPILE_NAME("custom") = 13,
+};
+
+
+/// The DRMtoday DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with DRMtoday integration.
+SWIFT_CLASS_NAMED("DRMTodayDRMConfiguration")
+@interface THEOplayerDRMTodayDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The authentication token.
+/// remark:
+///
+/// This attribute is required when you use the Up-front Authentication flow to make the license request.
+@property (nonatomic, copy) NSString * _Nullable token;
+/// The user ID.
+/// remark:
+///
+/// This attribute is required when you use the User Authentication Callback flow to make the license request.
+@property (nonatomic, copy) NSString * _Nullable userId;
+/// The session ID.
+/// remark:
+///
+/// This attribute is required when you use the User Authentication Callback flow to make the license request.
+@property (nonatomic, copy) NSString * _Nullable sessionId;
+/// The merchant ID.
+/// remark:
+///
+/// This attribute is required when you use the User Authentication Callback flow to make the license request.
+@property (nonatomic, copy) NSString * _Nullable merchant;
+/// Constructs a DRMToday DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The DRMToday headers, defaults to nil.
+///
+/// \param token The DRMToday token, defaults to nil.
+///
+/// \param userId The DRMToday user ID, defaults to nil.
+///
+/// \param sessionId The DRMToday session ID, defaults to nil.
+///
+/// \param merchant The DRMToday merchant, default to nil.
+///
+/// \param licenseType The type of license, defaults to <code>temporary</code>.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers token:(NSString * _Nullable)token userId:(NSString * _Nullable)userId sessionId:(NSString * _Nullable)sessionId merchant:(NSString * _Nullable)merchant licenseType:(enum THEOplayerLicenseType)licenseType OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol THEOplayerTextTrack;
+
+/// A TextTrackCue object represents an individual cue and provides methods and properties to access the data and events to act on changes to cue state. Depending on the TextTrack’s type, a cue might have different properties.
+SWIFT_PROTOCOL_NAMED("TextTrackCue_Objc")
+@protocol THEOplayerTextTrackCue
+/// The cue’s content.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The type depends of the cue type.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) id _Nullable content;
+/// If the cue’s type is WebVtt, the contentString is used. It contains the text track cue text in raw unparsed form.
+@property (nonatomic, readonly, copy) NSString * _Nullable contentString;
+/// If the cue’s type is WebVtt, the contentDictionary is used. It contains the text track cue info in a dictionary.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, NSString *> * _Nullable contentDictionary;
+/// The time in seconds and relative to a THEOplayer instance’s currentTime at which the cue becomes inactive.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable endTime;
+/// The cue’s unique ID.
+@property (nonatomic, readonly, copy) NSString * _Nonnull id;
+/// The time in seconds and relative to a THEOplayer instance’s currentTime at which the cue becomes active.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable startTime;
+/// The track the given cue belongs to.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrack> _Nullable track;
+/// Adds the given event listener of the given TextTrackCueEventType.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type TextTrackCueEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerCueEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given TextTrackCueEventType.
+/// \param type TextTrackCueEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// Represents the HLS date range cue which is a part of the metadata text track.
+SWIFT_PROTOCOL_NAMED("DateRangeCue_Objc")
+@protocol THEOplayerDateRangeCue <THEOplayerTextTrackCue>
+/// Identifier of some set of attributes with associated value semantics.
+@property (nonatomic, readonly, copy) NSString * _Nullable attributeClass;
+/// Returns the date at which the DateRange begins.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull startDate;
+/// Returns the date at which the DateRange ends. The date will be equal to or later than the startDate.
+@property (nonatomic, readonly, copy) NSDate * _Nullable endDate;
+/// Returns the duration in seconds of the timed metadata.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+/// Returns the expected duration in seconds of the timed metadata. Use this whenever the exact duration is not known.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable plannedDuration;
+/// Returns true if the end of this DateRange is equal to the startDate of the Following Range.
+/// remark:
+///
+/// The Following Range is the DateRange of the same CLASS that has the earliest startDate after the startDate of the range in question.
+@property (nonatomic, readonly) BOOL endOnNext;
+/// Returns the SCTE ‘cmd’ splice_info_section.
+@property (nonatomic, readonly, copy) NSData * _Nullable scte35Cmd;
+/// Returns the SCTE ‘out’ splice_info_section.
+@property (nonatomic, readonly, copy) NSData * _Nullable scte35Out;
+/// Returns the SCTE ‘in’ splice_info_section.
+@property (nonatomic, readonly, copy) NSData * _Nullable scte35In;
+/// Returns all client-defined attributes. The attribute name does not include the ‘X-’ prefix.
+@property (nonatomic, readonly, strong) THEOplayerCustomAttributes * _Nonnull customAttributes;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerDateRangeCustomAttributesError, "DateRangeCustomAttributesError", open) {
+  THEOplayerDateRangeCustomAttributesErrorCAST_FAILED SWIFT_COMPILE_NAME("castFailed") = 1,
+};
+static NSString * _Nonnull const THEOplayerDateRangeCustomAttributesErrorDomain = @"THEOplayerSDK.DateRangeCustomAttributesError";
+
+
+/// Fired when <code>PlayerEventTypes.DESTROY</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     After receiving this event, the player should not be used anymore.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("DestroyEvent")
+@interface THEOplayerDestroyEvent : THEOplayerPlayerEvent
+@end
+
+
+/// Fired when <code>PlayerEventTypes.DURATION_CHANGE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     One of the cases where the duration is updated, is when you set a new source.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("DurationChangeEvent")
+@interface THEOplayerDurationChangeEvent : THEOplayerPlayerEvent
+/// The new duration of the content, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.ENDED</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     currentTime has reached the end of the current source.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("EndedEvent")
+@interface THEOplayerEndedEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// Fired when <code>TextTrackEventTypes.ENTER_CUE</code> occurs for  the list of <code>TextTrackCue</code>s.
+SWIFT_CLASS_NAMED("EnterCueEvent")
+@interface THEOplayerEnterCueEvent : NSObject <THEOplayerTextTrackCueEventProtocol>
+/// The textual representation of the type of event, “entercue”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code> that entered.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The Error category a <code>TheoErrorCode</code> belongs to.
+typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerErrorCategory, "ErrorCategory", open) {
+/// Clusters all errors related to the configuration.
+  THEOplayerErrorCategoryCONFIGURATION SWIFT_COMPILE_NAME("CONFIGURATION") = 1,
+/// Clusters all errors related to the license.
+  THEOplayerErrorCategoryLICENSE SWIFT_COMPILE_NAME("LICENSE") = 2,
+/// Clusters all errors related to the source.
+  THEOplayerErrorCategorySOURCE SWIFT_COMPILE_NAME("SOURCE") = 3,
+/// Clusters all errors related to the manifest.
+  THEOplayerErrorCategoryMANIFEST SWIFT_COMPILE_NAME("MANIFEST") = 4,
+/// Clusters all errors related to the media.
+  THEOplayerErrorCategoryMEDIA SWIFT_COMPILE_NAME("MEDIA") = 5,
+/// Clusters all errors related to the network.
+  THEOplayerErrorCategoryNETWORK SWIFT_COMPILE_NAME("NETWORK") = 6,
+/// Clusters all errors related to the content protection.
+  THEOplayerErrorCategoryCONTENT_PROTECTION SWIFT_COMPILE_NAME("CONTENT_PROTECTION") = 7,
+/// Clusters all errors related to the subtitles.
+  THEOplayerErrorCategorySUBTITLE SWIFT_COMPILE_NAME("SUBTITLE") = 8,
+/// Clusters all errors related to VR.
+  THEOplayerErrorCategoryVR SWIFT_COMPILE_NAME("VR") = 9,
+/// Clusters all errors related to ads.
+  THEOplayerErrorCategoryADS SWIFT_COMPILE_NAME("ADS") = 10,
+/// Clusters all errors related to fullscreen.
+  THEOplayerErrorCategoryFULLSCREEN SWIFT_COMPILE_NAME("FULLSCREEN") = 11,
+};
+
+/// The different types of errors.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerErrorCode, "ErrorCode", open) {
+  THEOplayerErrorCodeCANCEL SWIFT_COMPILE_NAME("cancel") = 1,
+  THEOplayerErrorCodeTIMEOUT SWIFT_COMPILE_NAME("timeout") = 2,
+  THEOplayerErrorCodeRECEIVER_UNAVAILABLE SWIFT_COMPILE_NAME("receiverUnavailable") = 3,
+  THEOplayerErrorCodeEXTENSION_MISSING SWIFT_COMPILE_NAME("extensionMissing") = 4,
+  THEOplayerErrorCodeSESSION_ERROR SWIFT_COMPILE_NAME("sessionError") = 5,
+  THEOplayerErrorCodeCHANNEL_ERROR SWIFT_COMPILE_NAME("channelError") = 6,
+  THEOplayerErrorCodeINVALID_PARAMETER SWIFT_COMPILE_NAME("invalidParameter") = 7,
+  THEOplayerErrorCodeLOAD_MEDIA_FAILED SWIFT_COMPILE_NAME("loadMediaFailed") = 8,
+  THEOplayerErrorCodeEXTENSION_NOT_COMPATIBLE SWIFT_COMPILE_NAME("extensionNotCompatible") = 9,
+  THEOplayerErrorCodeAPI_NOT_INITIALIZED SWIFT_COMPILE_NAME("apiNotInitialized") = 10,
+};
+
+
+/// Fired when <code>PlayerEventTypes.ERROR</code> occurs for the <code>THEOplayer</code>.
+SWIFT_CLASS_NAMED("ErrorEvent")
+@interface THEOplayerErrorEvent : THEOplayerPlayerEvent
+/// The textual representation of the error that happened.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Can be an error message or a representation of the error object.
+///   </li>
+///   <li>
+///     Returns an empty string if the error is unknown.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nonnull error;
+/// A more descriptive <code>THEOError</code>containing information about the error.
+@property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable errorObject;
 @end
 
 
@@ -572,25 +2822,391 @@ SWIFT_CLASS("_TtC13THEOplayerSDK15EventDispatcher")
 @end
 
 
+/// Classes that comform to this protocol can add and remove event listeners.
+SWIFT_PROTOCOL_NAMED("EventDispatcherProtocol_Objc")
+@protocol THEOplayerEventDispatcherProtocol
+/// Adds the given event listener of the given type.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// Example:
+/// \code
+/// let eventListener = theoplayer.addEventListener(type: PlayerEventTypes.PLAY, listener: handlePlayEvent)
+///
+/// \endcode\param type Event type of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListener_ObjcWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerEventProtocol> _Nonnull))listener SWIFT_WARN_UNUSED_RESULT;
+/// Removes the given event listener of the given type.
+/// Example:
+/// \code
+/// theoplayer.removeEventListener(type: PlayerEventTypes.PLAY, listener: eventListener)
+///
+/// \endcode\param type Event type of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListener_ObjcWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
 
-/// Key system configuration.
-SWIFT_CLASS("_TtC13THEOplayerSDK22KeySystemConfiguration")
-@interface KeySystemConfiguration : NSObject
-/// Specifies the URL of the licensing server.
-@property (nonatomic, copy) NSURL * _Nullable licenseAcquisitionURL SWIFT_DEPRECATED_OBJC("Swift property 'KeySystemConfiguration.licenseAcquisitionURL' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
-/// Specifies the URL of the FairPlay certificate server.
-@property (nonatomic, copy) NSURL * _Nullable certificateURL SWIFT_DEPRECATED_OBJC("Swift property 'KeySystemConfiguration.certificateURL' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+
+SWIFT_PROTOCOL_NAMED("EventListener")
+@protocol THEOplayerEventListener
+@end
+
+
+
+/// Fired when <code>TextTrackEventTypes.EXIT_CUE</code> occurs for  the list of <code>TextTrackCue</code>s.
+SWIFT_CLASS_NAMED("ExitCueEvent")
+@interface THEOplayerExitCueEvent : NSObject <THEOplayerTextTrackCueEventProtocol>
+/// The textual representation of the type of event, “exitcue”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code> that exited.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
+/// The EZDRM DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with EZDRM integration.
+SWIFT_CLASS_NAMED("EzdrmDRMConfiguration")
+@interface THEOplayerEzdrmDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// Constructs a EZDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The EZDRM headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
+/// The types of events related to fullscreen.
+SWIFT_CLASS_NAMED("FullscreenEventTypes_Objc")
+@interface THEOplayerFullscreenEventTypes : NSObject
+/// Fired when the view’s aspect ratio changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aspectratiochange;)
++ (NSString * _Nonnull)aspectratiochange SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The Fullscreen object helps you configure the settings of the fullscreen mode.
+SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
+@protocol THEOplayerFullscreen
+/// Specifies how to handle the aspect ratio of the content.
+@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio;
+/// The supported interface orientations for fullscreen mode as a <code>UIInterfaceOrientationMask</code>.
+@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
+/// Sets the current fullscreen aspect ratio.
+/// \param aspectRatio The <code>AspectRatio</code> to be used by the player.
+///
+- (void)setAspectRatioWithAspectRatio:(enum THEOplayerAspectRatio)aspectRatio;
+/// Sets the supported interface orientations for fullscreen mode.
+/// \param supportedInterfaceOrientations The supported interface orientations.
+///
+- (void)setSupportedInterfaceOrientationsWithSupportedInterfaceOrientations:(UIInterfaceOrientationMask)supportedInterfaceOrientations;
+/// Adds the event listener of the given <code>EventType</code>.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>FullscreenEventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerAspectRatioChangeEvent * _Nonnull))listener;
+/// Removes the event listener for the given <code>EventType</code>.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>FullscreenEventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+enum THEOplayerSSAIIntegrationId : NSInteger;
+
+/// The ServerSideAdInsertionConfiguration protocol which specifies information to play a stream with server-side-inserted ads.
+/// remark:
+///
+/// To integrate with specific SSAI vendors, check the Server-Side Ad Insertion pre-integration API.
+SWIFT_PROTOCOL_NAMED("ServerSideAdInsertionConfiguration")
+@protocol THEOplayerServerSideAdInsertionConfiguration
+/// Specifies an identifier for a supported SSAI integration.
+/// remark:
+///
+/// Check the Server-Side Ad Insertion pre-integration API for more information.
+@property (nonatomic, readonly) enum THEOplayerSSAIIntegrationId integration;
+@end
+
+
+/// The Google DAI configuration.
+SWIFT_CLASS_NAMED("GoogleDAIConfiguration")
+@interface THEOplayerGoogleDAIConfiguration : NSObject <THEOplayerServerSideAdInsertionConfiguration>
+/// The identifier for the SSAI pre-integration, defaults to GoogleDAISSAIIntegrationID.
+@property (nonatomic) enum THEOplayerSSAIIntegrationId integration;
+/// The type of the requested stream.
+@property (nonatomic) enum THEOplayerStreamType availabilityType;
+/// The API key for the stream request.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This key is used to verify applications that are attempting to access the content.
+///   </li>
+///   <li>
+///     This key is configured through the Google Ad Manager UI.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nonnull apiKey;
+/// The authorization token for the stream request.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This token is used instead of the API key for stricter content authorization.
+///   </li>
+///   <li>
+///     The publisher can control individual content streams authorizations based on this token.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable authToken;
+/// The identifier for a stream activity monitor session.
+@property (nonatomic, copy) NSString * _Nullable streamActivityMonitorID;
+/// The ad tag parameters added to stream request.
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable adTagParameters;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Represents a configuration for server-side ad insertion with the Google DAI pre-integration for live streams.
+SWIFT_CLASS_NAMED("GoogleDAILiveConfiguration")
+@interface THEOplayerGoogleDAILiveConfiguration : THEOplayerGoogleDAIConfiguration
+/// The identifier for the video content source for live streams.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This property is required for live streams.
+///   </li>
+///   <li>
+///     The asset key can be found in the Google Ad Manager UI.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nonnull assetKey;
+/// The builder for the Google DAI live configuration.
+/// \param assetKey The identifier for the video content source for live streams.
+///
+/// \param apiKey The API key for the stream request.
+///
+/// \param authToken The authorization token for the stream request.
+///
+/// \param streamActivityMonitorID The identifier for a stream activity monitor session.
+///
+/// \param adTagParameters The ad tag parameter added to stream request.
+///
+- (nonnull instancetype)initWithAssetKey:(NSString * _Nonnull)assetKey apiKey:(NSString * _Nonnull)apiKey authToken:(NSString * _Nullable)authToken streamActivityMonitorID:(NSString * _Nullable)streamActivityMonitorID adTagParameters:(NSDictionary<NSString *, NSString *> * _Nullable)adTagParameters OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Represents a configuration for server-side ad insertion with the Google DAI pre-integration for vod streams.
+SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
+@interface THEOplayerGoogleDAIVodConfiguration : THEOplayerGoogleDAIConfiguration
+/// The identifier for the publisher content for on-demand streams.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The publisher content comes from a CMS.
+///   </li>
+///   <li>
+///     This property is required for on-demand streams.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nonnull contentSourceID;
+/// The identifier for the video content source for on-demand streams.
+/// remark:
+///
+/// This property is required for on-demand streams.
+@property (nonatomic, copy) NSString * _Nonnull videoID;
+/// The builder for the Google DAI configuration.
+/// \param videoID The identifier for the video content source.
+///
+/// \param apiKey The key for the stream request.
+///
+/// \param authToken The authorization token for the stream request.
+///
+/// \param streamActivityMonitorID The identifier for a stream activity monitor.
+///
+/// \param adTagParameters The ad parameters that are added to the stream request.
+///
+- (nonnull instancetype)initWithVideoID:(NSString * _Nonnull)videoID contentSourceID:(NSString * _Nonnull)contentSourceID apiKey:(NSString * _Nonnull)apiKey authToken:(NSString * _Nullable)authToken streamActivityMonitorID:(NSString * _Nullable)streamActivityMonitorID adTagParameters:(NSDictionary<NSString *, NSString *> * _Nullable)adTagParameters OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Describes the configuration of the Google Interactive Media Ads.
+SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
+@interface THEOplayerGoogleIMAConfiguration : NSObject
+/// Creates a GoogleIMAConfiguration object.
+/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
+///
+- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma OBJC_DESIGNATED_INITIALIZER;
+/// Creates a GoogleIMAConfiguration object.
+/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
+///
+- (nonnull instancetype)init;
+@end
+
+@protocol THEOplayerUniversalAdId;
+
+/// A GoogleImaAd is a concrete implementation of an <code>Ad</code> which represents a Google IMA ad.
+SWIFT_PROTOCOL_NAMED("GoogleImaAd_Objc")
+@protocol THEOplayerGoogleImaAd <THEOplayerAd>
+/// The source ad server information included in the ad response.
+@property (nonatomic, readonly, copy) NSString * _Nullable adSystem;
+/// The identifier of the selected creative for the ad.
+@property (nonatomic, readonly, copy) NSString * _Nullable creativeId;
+/// The list of wrapper ad identifiers as specified in the VAST response.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull wrapperAdIds;
+/// The list of wrapper ad systems as specified in the VAST response.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull wrapperAdSystems;
+/// The list of wrapper creative identifiers.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull wrapperCreativeIds;
+/// The bitrate of the currently playing creative as listed in the VAST response.
+@property (nonatomic, readonly) NSInteger vastMediaBitrate;
+/// The list of universal ad ID information of the selected creative for the ad.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerUniversalAdId>> * _Nonnull universalAdIds;
+@end
+
+
+/// ID3 Text Track cue. Content type is [String:String].
+SWIFT_PROTOCOL_NAMED("Id3Cue_Objc")
+@protocol THEOplayerId3Cue <THEOplayerTextTrackCue>
+@end
+
+
+/// The Irdeto DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Irdeto integration.
+SWIFT_CLASS_NAMED("IrdetoDRMConfiguration")
+@interface THEOplayerIrdetoDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// Constructs an Irdeto DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param crmId The crm identifier.
+///
+/// \param accountId The account identifier.
+///
+/// \param contentId The content identifier.
+///
+/// \param keyId The keyId.
+///
+/// \param applicationId The application identifier.
+///
+/// \param sessionId The session identifier, defaults to nil.
+///
+/// \param ticket The ticket, defaults to nil.
+///
+/// \param headers The Irdeto headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL crmId:(NSString * _Nonnull)crmId accountId:(NSString * _Nonnull)accountId contentId:(NSString * _Nonnull)contentId keyId:(NSString * _Nonnull)keyId applicationId:(NSString * _Nonnull)applicationId sessionId:(NSString * _Nullable)sessionId ticket:(NSString * _Nullable)ticket headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs an Irdeto DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param crmId The crm identifier.
+///
+/// \param accountId The account identifier.
+///
+/// \param contentId The content identifier.
+///
+/// \param keyId The keyId.
+///
+/// \param applicationId The application identifier.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL crmId:(NSString * _Nonnull)crmId accountId:(NSString * _Nonnull)accountId contentId:(NSString * _Nonnull)contentId keyId:(NSString * _Nonnull)keyId applicationId:(NSString * _Nonnull)applicationId;
+@end
+
+
+/// The KeyOS DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with KeyOS integration.
+SWIFT_CLASS_NAMED("KeyOSDRMConfiguration")
+@interface THEOplayerKeyOSDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The KeyOS custom data.
+@property (nonatomic, copy) NSString * _Nullable customdata;
+/// Constructs a KeyOS DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param customdata The KeyOs custom data.
+///
+/// \param headers The KeyOs headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL customdata:(NSString * _Nullable)customdata headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a KeyOS DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param customdata The KeyOs custom data.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL customdata:(NSString * _Nullable)customdata;
+@end
+
+
+/// Key system configuration.
+SWIFT_CLASS_NAMED("KeySystemConfiguration")
+@interface THEOplayerKeySystemConfiguration : NSObject
+/// Specifies the URL of the licensing server.
+@property (nonatomic, copy) NSURL * _Nullable licenseAcquisitionURL;
+/// Specifies the URL of the FairPlay certificate server.
+@property (nonatomic, copy) NSURL * _Nullable certificateURL;
+@property (nonatomic) enum THEOplayerLicenseType licenseType;
+/// Constructs a KeySystemConfiguration.
+/// \param licenseAcquisitionURL The URL of the licensing server,.
+///
+/// \param certificateURL The URL of the certificate server.
+///
+/// \param licenseType The type of license, defaults to <code>LicenseType.temporary</code>.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nullable)licenseAcquisitionURL certificateURL:(NSString * _Nullable)certificateURL licenseType:(enum THEOplayerLicenseType)licenseType;
+/// Constructs a KeySystemConfiguration.
+/// \param licenseAcquisitionURL The URL of the licensing server,.
+///
+/// \param certificateURL The URL of the certificate server.
+///
+/// \param licenseType The type of license, defaults to <code>LicenseType.temporary</code>.
+///
+- (nonnull instancetype)init;
+@end
+
+/// Name of the key system.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerKeySystemId, "KeySystemId", open) {
+  THEOplayerKeySystemIdWIDEVINE SWIFT_COMPILE_NAME("WIDEVINE") = 1,
+  THEOplayerKeySystemIdFAIRPLAY SWIFT_COMPILE_NAME("FAIRPLAY") = 2,
+  THEOplayerKeySystemIdPLAYREADY SWIFT_COMPILE_NAME("PLAYREADY") = 3,
+};
+
+
 /// A license request.
-SWIFT_CLASS("_TtC13THEOplayerSDK14LicenseRequest")
-@interface LicenseRequest : Request
+SWIFT_CLASS_NAMED("LicenseRequest")
+@interface THEOplayerLicenseRequest : THEOplayerRequest
 /// The SKD URL
 /// - Remark: For example (skd://fb64ba7c5bd34bf188cf9ba76ab8370e) as extracted from the #EXT-X-KEY tag in the HLS playlist.
-@property (nonatomic, copy) NSString * _Nullable fairplaySkdUrl SWIFT_DEPRECATED_OBJC("Swift property 'LicenseRequest.fairplaySkdUrl' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nullable fairplaySkdUrl;
 /// Creates a new LicenseRequest for the given URL.
 /// \param url The URL of the license or certificate server.
 ///
@@ -602,29 +3218,29 @@ SWIFT_CLASS("_TtC13THEOplayerSDK14LicenseRequest")
 ///
 /// \param fairplaySkdUrl The SKD URL as extracted from the #EXT-X-KEY tag in the HLS playlist.
 ///
-- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body fairplaySkdUrl:(NSString * _Nullable)fairplaySkdUrl useCredentials:(BOOL)useCredentials OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'LicenseRequest.init(url:method:headers:body:fairplaySkdUrl:useCredentials:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body fairplaySkdUrl:(NSString * _Nullable)fairplaySkdUrl useCredentials:(BOOL)useCredentials OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithUrl:(NSString * _Nonnull)url method:(NSString * _Nonnull)method headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nullable)body SWIFT_UNAVAILABLE;
 @end
 
 
 /// A completion handler that should be called with the actual license, or an <code>Error</code> in case of failure.
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK23LicenseResponseCallback_")
-@protocol LicenseResponseCallback
+SWIFT_PROTOCOL_NAMED("LicenseResponseCallback")
+@protocol THEOplayerLicenseResponseCallback
 - (void)respondWithLicense:(NSData * _Nonnull)license;
 - (void)errorWithError:(NSError * _Nonnull)error;
 @end
 
 
 /// A completion handler that should be called with the modified <code>LicenseRequest</code>.
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK22LicenseRequestCallback_")
-@protocol LicenseRequestCallback <LicenseResponseCallback>
-- (void)requestWithRequest:(LicenseRequest * _Nonnull)request;
+SWIFT_PROTOCOL_NAMED("LicenseRequestCallback")
+@protocol THEOplayerLicenseRequestCallback <THEOplayerLicenseResponseCallback>
+- (void)requestWithRequest:(THEOplayerLicenseRequest * _Nonnull)request;
 @end
 
 
 /// The license response.
-SWIFT_CLASS("_TtC13THEOplayerSDK15LicenseResponse")
-@interface LicenseResponse : Response
+SWIFT_CLASS_NAMED("LicenseResponse")
+@interface THEOplayerLicenseResponse : THEOplayerResponse
 /// Creates a LicenseResponse.
 /// \param licenseRequest The <code>LicenseRequest</code> for which the response is being returned.
 ///
@@ -638,15 +3254,137 @@ SWIFT_CLASS("_TtC13THEOplayerSDK15LicenseResponse")
 ///
 /// \param body The body of the response.
 ///
-- (nonnull instancetype)initWithLicenseRequest:(LicenseRequest * _Nonnull)licenseRequest url:(NSString * _Nonnull)url status:(NSInteger)status statusText:(NSString * _Nonnull)statusText headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nonnull)body OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'LicenseResponse.init(licenseRequest:url:status:statusText:headers:body:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithLicenseRequest:(THEOplayerLicenseRequest * _Nonnull)licenseRequest url:(NSString * _Nonnull)url status:(NSInteger)status statusText:(NSString * _Nonnull)statusText headers:(NSDictionary<NSString *, NSString *> * _Nonnull)headers body:(NSData * _Nonnull)body OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The  LicenseTypes for the DRM configuration.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerLicenseType, "LicenseType", open) {
+  THEOplayerLicenseTypeNONE SWIFT_COMPILE_NAME("none") = 0,
+  THEOplayerLicenseTypeTEMPORARY SWIFT_COMPILE_NAME("temporary") = 1,
+  THEOplayerLicenseTypePERSISTENT SWIFT_COMPILE_NAME("persistent") = 2,
+};
+
+@protocol THEOplayerMediaFile;
+
+/// Represents a linear ad in the VAST specification. It extends the properties of the <code>Ad</code> object.
+SWIFT_PROTOCOL_NAMED("LinearAd_Objc")
+@protocol THEOplayerLinearAd <THEOplayerAd>
+/// The duration of the LinearAd, as provided by the VAST file, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports integer format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+/// An array of mediafiles, which provides some meta data retrieved from the VAST file.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerMediaFile>> * _Nonnull mediaFiles;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.LOAD_START</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player begins looking for media data, as part of the resource selection algorithm.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("LoadStartEvent")
+@interface THEOplayerLoadStartEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// Fired when <code>PlayerEventTypes.LOADED_DATA</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player is able to render the content for the first time, from the current position.
+///   </li>
+///   <li>
+///     Thrown the first time the readyState property goes from 1: HAVE_METADATA to 2: HAVE_CURRENT_DATA.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("LoadedDataEvent")
+@interface THEOplayerLoadedDataEvent : THEOplayerReadyStateEvent
+@end
+
+
+/// Fired when <code>PlayerEventTypes.LOADED_META_DATA</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player has just determined the duration and dimensions of the media resource.
+///   </li>
+///   <li>
+///     Thrown the first time the readyState property goes from 0: HAVE_NOTHING to 1: HAVE_METADATA.
+///   </li>
+///   <li>
+///     Additionally, the text tracks are ready.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("LoadedMetaDataEvent")
+@interface THEOplayerLoadedMetaDataEvent : THEOplayerReadyStateEvent
+@end
+
+
+/// Represents the metadata of a media file with ad content.
+/// remark:
+/// This metadata is retrieved from the VAST file.
+SWIFT_PROTOCOL_NAMED("MediaFile")
+@protocol THEOplayerMediaFile
+/// The delivery type.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Can be either ‘progressive’ or ‘streaming’.
+///   </li>
+///   <li>
+///     Currently we only support ‘progressive’.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nonnull delivery;
+/// The URI of the VAST content.
+@property (nonatomic, readonly, copy) NSString * _Nonnull resourceURI;
+/// The MIME type for the file container.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The native height of the video file, in pixels.
+@property (nonatomic, readonly) NSInteger height;
+/// The native width of the video file, in pixels.
+@property (nonatomic, readonly) NSInteger width;
 @end
 
 
 
 
+
+/// The metrics API which can be used to gather information related to the quality-of-service and video playback experience.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Values will be updated periodically.
+///   </li>
+/// </ul>
+/// since:
+/// v2.46.0.
+SWIFT_CLASS_NAMED("Metrics")
+@interface THEOplayerMetrics : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 /// Configure Moat analytics pre-integration.
-SWIFT_CLASS("_TtC13THEOplayerSDK11MoatOptions")
-@interface MoatOptions : NSObject
+SWIFT_CLASS_NAMED("MoatOptions")
+@interface THEOplayerMoatOptions : NSObject <THEOplayerAnalyticsDescription>
+/// The type of <code>AnalyticsIntegration</code>.
+@property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 /// Constructs a MoatOptions object.
@@ -659,31 +3397,514 @@ SWIFT_CLASS("_TtC13THEOplayerSDK11MoatOptions")
 /// \param debugLoggingEnabled If ‘true’ and a ‘MOAT_LOGGING’ environment variable is set in Xcode, then the SDK will log information to assist in the implementation and testing process. Defaults to false.
 ///
 - (nonnull instancetype)initWithPartnerCode:(NSString * _Nonnull)partnerCode locationServicesEnabled:(BOOL)locationServicesEnabled IDFACollectionEnabled:(BOOL)IDFACollectionEnabled debugLoggingEnabled:(BOOL)debugLoggingEnabled;
+/// Constructs a MoatOptions object.
+/// \param partnerCode The Moat partnerCode.
+///
+- (nonnull instancetype)initWithPartnerCode:(NSString * _Nonnull)partnerCode;
 @end
 
 
 
-SWIFT_CLASS("_TtC13THEOplayerSDK7Promise")
-@interface Promise : NSObject
+/// A network error.
+SWIFT_PROTOCOL_NAMED("NetworkError")
+@protocol THEOplayerNetworkError <THEOplayerTHEOError>
+/// The URL that was used.
+@property (nonatomic, readonly, copy) NSString * _Nullable url;
+/// The HTTP status code.
+@property (nonatomic, readonly) NSInteger status;
+/// The error comment which might contain the HTTP status code.
+/// remark:
+/// Example: <code>"HTTP 403: Forbidden"</code>.
+@property (nonatomic, readonly, copy) NSString * _Nullable errorComment;
+@end
+
+
+/// Fired when <code>NetworkEventTypes.ERROR</code> occurs for the <code>THEOplayer</code>.
+SWIFT_CLASS_NAMED("NetworkErrorEvent")
+@interface THEOplayerNetworkErrorEvent : NSObject <THEOplayerEventProtocol>
+/// The textual representation of the type of event, ‘networkerror’.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// A <code>NetworkError</code> instance containing information about the error.
+@property (nonatomic, readonly, strong) id <THEOplayerNetworkError> _Nullable error;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class SourceDescription;
+
+/// The types of Network events.
+SWIFT_CLASS_NAMED("NetworkEventTypes_Objc")
+@interface THEOplayerNetworkEventTypes : NSObject
+/// Fired when <code>NetworkErrorEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull error;)
++ (NSString * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The Network API.
+SWIFT_PROTOCOL_NAMED("Network_Objc")
+@protocol THEOplayerNetwork
+/// Adds the given event listener of the given type.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// Example:
+/// \code
+/// let eventListener = theoplayer.addEventListener(type: NetworkEventTypes.ERROR, listener: handlePlayEvent)
+///
+/// \endcode\param type Event type of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerNetworkErrorEvent * _Nonnull))listener;
+/// Removes the given event listener of the given type.
+/// Example:
+/// \code
+/// theoplayer.removeEventListener(type: NetworkEventTypes.ERROR, listener: eventListener)
+///
+/// \endcode\param type Event type of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// Represents a non-linear ad in the VAST specification. It extends the properties of the <code>Ad</code> object.
+SWIFT_PROTOCOL_NAMED("NonLinearAd_Objc")
+@protocol THEOplayerNonLinearAd <THEOplayerAd>
+/// The url that redirects to the website of the advertiser.
+@property (nonatomic, readonly, copy) NSString * _Nullable clickThrough;
+@end
+
+@class THEOplayerOmidFriendlyObstruction;
+
+/// The Open Measurement Interface Definition API which can be used to configure the ad viewability measurements conforming to the OMID standards.
+SWIFT_PROTOCOL_NAMED("Omid")
+@protocol THEOplayerOmid
+/// Adds the passed <code>OmidFriendlyObstruction</code> as a friendly obstruction.
+/// \param friendlyObstruction The friendly obstruction to be added.
+///
+- (void)addFriendlyObstructionWithFriendlyObstruction:(THEOplayerOmidFriendlyObstruction * _Nonnull)friendlyObstruction;
+/// Removes all the previously added friendly obstructions.
+- (void)removeFriendlyObstructions;
+@end
+
+@class UIView;
+enum THEOplayerOmidFriendlyObstructionPurpose : NSInteger;
+
+/// Represents a friendly obstruction instance for OMID.
+SWIFT_CLASS_NAMED("OmidFriendlyObstruction")
+@interface THEOplayerOmidFriendlyObstruction : NSObject
+/// Constructs an <code>OmidFriendlyObstruction</code>.
+/// \param view The view element of the friendly obstruction.
+///
+/// \param purpose The purpose of the friendly obstruction.
+///
+/// \param detailedReason Text to explain the reason to add the view as a friendly obstruction.
+///
+- (nonnull instancetype)initWithView:(UIView * _Nonnull)view purpose:(enum THEOplayerOmidFriendlyObstructionPurpose)purpose detailedReason:(NSString * _Nullable)detailedReason OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The list of purposes for which an obstruction would be registered as friendly.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerOmidFriendlyObstructionPurpose, "OmidFriendlyObstructionPurpose", open) {
+/// The obstruction was added to offer the functionality to close the ad.
+  THEOplayerOmidFriendlyObstructionPurposeCLOSE_AD SWIFT_COMPILE_NAME("closeAd") = 1,
+/// The obstruction was added as a part of the media controls, e.g. a pause button.
+  THEOplayerOmidFriendlyObstructionPurposeMEDIA_CONTROLS SWIFT_COMPILE_NAME("mediaControls") = 2,
+/// The obstruction that was added is transparent and does not impact viewability.
+/// remark:
+/// Can, for example, be used to capture user taps.
+  THEOplayerOmidFriendlyObstructionPurposeNOT_VISIBLE SWIFT_COMPILE_NAME("notVisible") = 3,
+/// The obstruction was added for another, possibly unknown, reason.
+  THEOplayerOmidFriendlyObstructionPurposeOTHER SWIFT_COMPILE_NAME("other") = 4,
+};
+
+
+/// Fired when <code>PlayerEventTypes.PAUSE</code> occurs for the <code>THEOplayer</code>.
+SWIFT_CLASS_NAMED("PauseEvent")
+@interface THEOplayerPauseEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// Describes the configuration of the picture-in-picture feature.
+SWIFT_CLASS_NAMED("PiPConfiguration")
+@interface THEOplayerPiPConfiguration : NSObject
+/// Whether the presentation mode should be retained on source changes. Defaults to false.
+@property (nonatomic) BOOL retainPresentationModeOnSourceChange;
+/// Enable the Native Picture in Picture. Defaults to false.
+/// remark:
+///
+/// This has a minimum requirement of iOS 14.0 and does not work on simulators.
+/// since:
+/// v2.85.2
+@property (nonatomic) BOOL nativePictureInPicture;
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init;
+@end
+
+/// The corner of the PiP view
+/// note:
+///
+/// The PiP corner can be observed with the Notification.Name.PictureInPictureMoved notification
+/// <ul>
+///   <li>
+///     topLeft: The PiP view will be positioned at the top left corner of the screen
+///   </li>
+///   <li>
+///     topRight: The PiP view will be positioned at the top right corner of the screen
+///   </li>
+///   <li>
+///     bottomLeft: The PiP view will be positioned at the bottom left corner of the screen
+///   </li>
+///   <li>
+///     bottomRight: The PiP view will be positioned at the bottom right corner of the screen
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPictureInPictureCorner, "PictureInPictureCorner", open) {
+  THEOplayerPictureInPictureCornerTOP_LEFT SWIFT_COMPILE_NAME("topLeft") = 1,
+  THEOplayerPictureInPictureCornerTOP_RIGHT SWIFT_COMPILE_NAME("topRight") = 2,
+  THEOplayerPictureInPictureCornerBOTTOM_LEFT SWIFT_COMPILE_NAME("bottomLeft") = 3,
+  THEOplayerPictureInPictureCornerBOTTOM_RIGHT SWIFT_COMPILE_NAME("bottomRight") = 4,
+};
+
+@class THEOplayerTHEOMargins;
+@protocol AVPictureInPictureControllerDelegate;
+
+/// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
+SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
+@protocol THEOplayerPictureInPicture
+/// The current <code>PictureInPictureCorner</code> the PiP view is displayed in.
+/// precondition:
+/// The presentation mode of the player must be <code>PresentationMode.pictureInPicture</code>.
+@property (nonatomic, readonly) enum THEOplayerPictureInPictureCorner currentCorner;
+/// Configures the picture-in-picture (PiP) view.
+/// \param movable Indicates wheter or not the PiP view is movable.
+///
+/// \param defaultCorner Indicates the default corner at which the PiP view will appear when entering PiP mode.
+///
+/// \param scale Indicates the scale of the PiP view, defaults to 0.33.
+///
+/// \param visibility The maximum percentage of the original player position that should be visible to enable picture-in-picture automatically, from 0 to 1. If not configured, picture-in-picture can only be turned on by setting <code>presentationMode</code> to <code>pictureInPicture</code>.  Supports double-precision floating-point format.
+///
+/// \param margin The <code>THEOMargins</code> value indicating the distance between the PiP view and the screen.
+///
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale visibility:(NSNumber * _Nullable)visibility margin:(THEOplayerTHEOMargins * _Nullable)margin;
+/// Configures the picture-in-picture (PiP) view
+/// \param movable Indicates whether the PiP view is movable.
+///
+/// \param defaultCorner Indicates the default corner at which the PiP view will appear when entering PiP mode.
+///
+/// \param scale Indicates the scale of the PiP view, defaults to 0.33.
+///
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale;
+/// Configures the picture-in-picture (PiP) view.
+/// \param movable Indicates whether the PiP view is movable.
+///
+/// \param defaultCorner Indicates the default corner at which the PiP view will appear when entering PiP mode.
+///
+/// \param scale Indicates the scale of the PiP view, defaults to 0.33.
+///
+/// \param visibility The maximum percentage of the original player position that should be visible to enable picture-in-picture automatically, from 0 to 1. If not configured, picture-in-picture can only be turned on by setting <code>presentationMode</code> to <code>pictureInPicture</code>. Supports double-precision floating-point format.
+///
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale visibility:(NSNumber * _Nullable)visibility;
+/// Configures the picture-in-picture (PiP) view.
+/// \param movable Indicates whether the PiP view is movable.
+///
+/// \param defaultCorner Indicates the default corner at which the PiP view will appear when entering PiP mode.
+///
+/// \param scale Indicates the scale of the PiP view, defaults to 0.33.
+///
+/// \param margin The <code>THEOMargins</code> value indicating the distance between the PiP view and the screen.
+///
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale margin:(THEOplayerTHEOMargins * _Nonnull)margin;
+/// The protocol that defines the methods to respond to Picture in Picture events.
+/// remark:
+/// For more informations check https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate. Only supported when <code>PiPConfiguration.nativePictureInPicture</code> is set to <code>true</code>.
+@property (nonatomic, strong) id <AVPictureInPictureControllerDelegate> _Nullable nativePictureInPictureDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14.0);
+@end
+
+
+/// Fired when <code>PlayerEventTypes.PLAY</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The player is no longer paused.
+///   </li>
+///   <li>
+///     Triggered when play() has returned or when autoplay has caused playback to begin.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("PlayEvent")
+@interface THEOplayerPlayEvent : THEOplayerCurrentTimeEvent
+@end
+
+/// Indicates the state of the casting processs.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPlayerCastState, "PlayerCastState", open) {
+  THEOplayerPlayerCastStateNONE SWIFT_COMPILE_NAME("none") = 0,
+/// There is a cast device detected, but that THEOplayer is not casting or controlling the current cast session.
+  THEOplayerPlayerCastStateAVAILABLE SWIFT_COMPILE_NAME("available") = 1,
+/// THEOplayer is casting to the cast device.
+  THEOplayerPlayerCastStateCONNECTED SWIFT_COMPILE_NAME("connected") = 2,
+/// There is no cast device detected or that the device is not available (e.g. not powered, not connected to the internet).
+  THEOplayerPlayerCastStateUNAVAILABLE SWIFT_COMPILE_NAME("unavailable") = 3,
+/// THEOplayer is in the process of connecting to the cast device.
+  THEOplayerPlayerCastStateCONNECTING SWIFT_COMPILE_NAME("connecting") = 4,
+};
+
+
+
+/// The types of Player events.
+SWIFT_CLASS_NAMED("PlayerEventTypes_Objc")
+@interface THEOplayerPlayerEventTypes : NSObject
+/// Fired when <code>PlayEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull play;)
++ (NSString * _Nonnull)play SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>PlayingEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull playing;)
++ (NSString * _Nonnull)playing SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>PauseEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull pause;)
++ (NSString * _Nonnull)pause SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>ProgressEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull progress;)
++ (NSString * _Nonnull)progress SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>SeekingEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull seeking;)
++ (NSString * _Nonnull)seeking SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>SeekedEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull seeked;)
++ (NSString * _Nonnull)seeked SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>WaitingEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull waiting;)
++ (NSString * _Nonnull)waiting SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>TimeUpdateEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull timeupdate;)
++ (NSString * _Nonnull)timeupdate SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>EndedEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ended;)
++ (NSString * _Nonnull)ended SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RateChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull ratechange;)
++ (NSString * _Nonnull)ratechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>DurationChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull durationchange;)
++ (NSString * _Nonnull)durationchange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>SourceChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull sourcechange;)
++ (NSString * _Nonnull)sourcechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>ReadyStateChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull readystatechange;)
++ (NSString * _Nonnull)readystatechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>LoadedMetaDataEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull loadedmetadata;)
++ (NSString * _Nonnull)loadedmetadata SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>LoadedDataEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull loadeddata;)
++ (NSString * _Nonnull)loadeddata SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>LoadStartEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull loadstart;)
++ (NSString * _Nonnull)loadstart SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>CanPlayEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull canplay;)
++ (NSString * _Nonnull)canplay SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>CanPlayThroughEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull canplaythrough;)
++ (NSString * _Nonnull)canplaythrough SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>ErrorEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull error;)
++ (NSString * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>PresentationModeChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull presentationmodechange;)
++ (NSString * _Nonnull)presentationmodechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>VolumeChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull volumechange;)
++ (NSString * _Nonnull)volumechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>ResizeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull resize;)
++ (NSString * _Nonnull)resize SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>DestroyEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull destroy;)
++ (NSString * _Nonnull)destroy SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.PLAYING</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Playback is ready to start after having been paused or delayed due to lack of media data.
+///   </li>
+///   <li>
+///     Even if this event fires, the player might still not be potentially playing, e.g. if the player is paused for user interaction or paused for in-band content.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("PlayingEvent")
+@interface THEOplayerPlayingEvent : THEOplayerCurrentTimeEvent
+@end
+
+/// The preload strategy of the player. The strategy specifies what data to load on source change.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPreload, "Preload", open) {
+/// The player will not load any data.
+  THEOplayerPreloadNONE SWIFT_COMPILE_NAME("none") = 0,
+/// The player will load the metadata and the media.
+  THEOplayerPreloadAUTO SWIFT_COMPILE_NAME("auto") = 1,
+/// The player will load the metadata.
+/// remark:
+/// Only available on iOS.
+  THEOplayerPreloadMETADATA SWIFT_COMPILE_NAME("metadata") = 2,
+};
+
+/// The presentation mode specifies how the player will be displayed.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPresentationMode, "PresentationMode", open) {
+/// The player is shown in its original location in the view.
+  THEOplayerPresentationModeINLINE SWIFT_COMPILE_NAME("inline") = 1,
+/// The player fills the entire screen and overlays all the other view controllers.
+  THEOplayerPresentationModeFULLSCREEN SWIFT_COMPILE_NAME("fullscreen") = 2,
+/// The player is shown in a window that overlays all the views. Further configurations can be made through <code>PictureInPicture.configure</code>
+  THEOplayerPresentationModePICTURE_IN_PICTURE SWIFT_COMPILE_NAME("pictureInPicture") = 3,
+};
+
+
+/// Fired when <code>PlayerEventTypes.PRESENTATION_MODE_CHANGE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Can be triggered when switching from inline to fullscreen, or the other way around.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("PresentationModeChangeEvent")
+@interface THEOplayerPresentationModeChangeEvent : THEOplayerPlayerEvent
+/// The new <code>PresentationMode</code> of the player.
+@property (nonatomic, readonly) enum THEOplayerPresentationMode presentationMode;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.PROGRESS</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Triggered when the player is fetching media data.
+///   </li>
+///   <li>
+///     For progress in time, please see <code>TimeUpdateEvent</code>.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("ProgressEvent")
+@interface THEOplayerProgressEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+SWIFT_CLASS_NAMED("Promise")
+@interface THEOplayerPromise : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Fired when <code>PlayerEventTypes.RATE_CHANGE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The effective playback rate changes, which is the speed at which the media resource plays, as a multiple of its intrinsic speed.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("RateChangeEvent")
+@interface THEOplayerRateChangeEvent : THEOplayerCurrentTimeEvent
+/// The new rate of playback of the player.
+@property (nonatomic, readonly) double playbackRate;
+@end
+
+/// The ready state of the player.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerReadyState, "ReadyState", open) {
+/// The player has no information about the duration of its source.
+  THEOplayerReadyStateHAVE_NOTHING SWIFT_COMPILE_NAME("HAVE_NOTHING") = 1,
+/// The player has information about the duration of its source.
+  THEOplayerReadyStateHAVE_METADATA SWIFT_COMPILE_NAME("HAVE_METADATA") = 2,
+/// The player has its current frame in its buffer.
+  THEOplayerReadyStateHAVE_CURRENT_DATA SWIFT_COMPILE_NAME("HAVE_CURRENT_DATA") = 3,
+/// The player has enough data for the current playback position, as well as for at least a little bit of time into the future (at least two frames of video, for example).
+  THEOplayerReadyStateHAVE_FUTURE_DATA SWIFT_COMPILE_NAME("HAVE_FUTURE_DATA") = 4,
+/// The player has enough data available, and the download rate is high enough that the media can be played through to the end without interruption.
+  THEOplayerReadyStateHAVE_ENOUGH_DATA SWIFT_COMPILE_NAME("HAVE_ENOUGH_DATA") = 5,
+};
+
+
+/// Fired when <code>PlayerEventTypes.READY_STATE_CHANGE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     For all possible values, see <code>ReadyState</code>.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("ReadyStateChangeEvent")
+@interface THEOplayerReadyStateChangeEvent : THEOplayerReadyStateEvent
+@end
+
+
+
+/// The <code>RelatedContent</code> event object.
+SWIFT_CLASS_NAMED("RelatedContentEvent")
+@interface THEOplayerRelatedContentEvent : NSObject <THEOplayerEventProtocol>
+/// The type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Fired when the <code>RelatedContent.sources</code> change.
+SWIFT_CLASS_NAMED("RelatedContentChangeEvent")
+@interface THEOplayerRelatedContentChangeEvent : THEOplayerRelatedContentEvent
+@end
+
+
+
+/// The <code>RelatedContentEvent</code> types.
+SWIFT_CLASS_NAMED("RelatedContentEventTypes_Objc")
+@interface THEOplayerRelatedContentEventTypes : NSObject
+/// Fired when the <code>RelatedContent.sources</code> change.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull relatedcontentchange;)
++ (NSString * _Nonnull)relatedcontentchange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when the <code>RelatedContent</code> UI is displayed.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull relatedcontentshow;)
++ (NSString * _Nonnull)relatedcontentshow SWIFT_WARN_UNUSED_RESULT;
+/// Fired when the <code>RelatedContent</code> UI is dismissed.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull relatedcontenthide;)
++ (NSString * _Nonnull)relatedcontenthide SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 /// The Related Content Source object. Can be used to show additional content, besides the content currently shown, that might also be of interest to the viewer.
-SWIFT_CLASS("_TtC13THEOplayerSDK20RelatedContentSource")
-@interface RelatedContentSource : NSObject
+SWIFT_CLASS_NAMED("RelatedContentSource")
+@interface THEOplayerRelatedContentSource : NSObject
 /// The duration property can be used to display a duration on the tile of the related content video.
-@property (nonatomic, readonly, copy) NSString * _Nullable duration SWIFT_DEPRECATED_OBJC("Swift property 'RelatedContentSource.duration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable duration;
 /// The image property can be used to set the background image on the tile of the related content video.
-@property (nonatomic, readonly, copy) NSString * _Nonnull image SWIFT_DEPRECATED_OBJC("Swift property 'RelatedContentSource.image' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nonnull image;
 /// The link property can be used to specify a target URL to navigate to, when clicking the tile of the related content video. Specifying a link will redirect to a new page.
-@property (nonatomic, readonly, copy) NSString * _Nullable link SWIFT_DEPRECATED_OBJC("Swift property 'RelatedContentSource.link' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable link;
 /// A source object specifying the source to play. Specifying a source will reset the player’s SourceDescription and allow the same player to play the new source without the need to redirect to a new page.
-@property (nonatomic, readonly, strong) SourceDescription * _Nullable source SWIFT_DEPRECATED_OBJC("Swift property 'RelatedContentSource.source' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
 /// The title property can be used to display a title on the tile of the related content video.
-@property (nonatomic, readonly, copy) NSString * _Nullable title SWIFT_DEPRECATED_OBJC("Swift property 'RelatedContentSource.title' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
 /// Constructs a RelatedContentSource with link
 /// \param image The URL of the background image on the tile of the related content video.
 ///
@@ -694,6 +3915,12 @@ SWIFT_CLASS("_TtC13THEOplayerSDK20RelatedContentSource")
 /// \param title The title that will be displayed on the tile of the related content video. Defaults to nil.
 ///
 - (nonnull instancetype)initWithImage:(NSString * _Nonnull)image link:(NSString * _Nonnull)link duration:(NSString * _Nullable)duration title:(NSString * _Nullable)title;
+/// Constructs a RelatedContentSource with link
+/// \param image The URL of the background image on the tile of the related content video.
+///
+/// \param link The target URL to navigate to, when clicking the tile of the related content video. Specifying a link will redirect to a new page.
+///
+- (nonnull instancetype)initWithImage:(NSString * _Nonnull)image link:(NSString * _Nonnull)link;
 /// Constructs a RelatedContentSource with <code>SourceDescription</code>.
 /// \param image The URL of the background image on the tile of the related content video.
 ///
@@ -703,21 +3930,169 @@ SWIFT_CLASS("_TtC13THEOplayerSDK20RelatedContentSource")
 ///
 /// \param title The title that will be displayed on the tile of the related content video. Defaults to nil.
 ///
-- (nonnull instancetype)initWithImage:(NSString * _Nonnull)image source:(SourceDescription * _Nonnull)source duration:(NSString * _Nullable)duration title:(NSString * _Nullable)title;
+- (nonnull instancetype)initWithImage:(NSString * _Nonnull)image source:(THEOplayerSourceDescription * _Nonnull)source duration:(NSString * _Nullable)duration title:(NSString * _Nullable)title;
+/// Constructs a RelatedContentSource with <code>SourceDescription</code>.
+/// \param image The URL of the background image on the tile of the related content video.
+///
+/// \param source A source object specifying the source to play. Specifying a source will reset the player’s SourceDescription and allow the same player to play the new source without the need to redirect to a new page.
+///
+- (nonnull instancetype)initWithImage:(NSString * _Nonnull)image source:(THEOplayerSourceDescription * _Nonnull)source;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The Related Content API can be used to show new content related to the current content.
+SWIFT_PROTOCOL_NAMED("RelatedContent_Objc")
+@protocol THEOplayerRelatedContent
+/// List of the current <code>RelatedContentSource</code>.
+@property (nonatomic, copy) NSArray<THEOplayerRelatedContentSource *> * _Nonnull sources;
+/// Show the related content screen.
+- (void)show;
+/// Hide the related content screen.
+- (void)hide;
+/// Whether the related content screen is showing.
+@property (nonatomic, readonly) BOOL showing;
+/// Adds the event listener of the given <code>EventType</code>.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>RelatedContentEventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerRelatedContentEvent * _Nonnull))listener;
+/// Removes the event listener for the given <code>EventType</code>.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>RelatedContentEventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// Fired when <code>TextTrackEventTypes.REMOVE_CUE</code> occurs for the list of <code>TextTrackCue</code>s.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The only use for this event is to identify which cue was removed!
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("RemoveCueEvent")
+@interface THEOplayerRemoveCueEvent : NSObject <THEOplayerTextTrackCueEventProtocol>
+/// The textual representation of the type of event, “removecue”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>TextTrackCue</code> that was removed.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Fired when <code>TextTrackListEventTypes.REMOVE_TRACK</code> occurs for a <code>TextTrackList</code>.
+SWIFT_CLASS_NAMED("RemoveTrackEvent")
+@interface THEOplayerRemoveTrackEvent : NSObject <THEOplayerTrackEventProtocol>
+/// The textual representation of the type of event, “removetrack”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>Track</code> which was just removed from the track list.
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 
-@class TypedSource;
-@class TextTrackDescription;
+/// Fired when <code>PlayerEventTypes.RESIZE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The playing video has been resized.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("ResizeEvent")
+@interface THEOplayerResizeEvent : THEOplayerPlayerEvent
+@end
+
+
+/// The SSAI integration identifier.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerSSAIIntegrationId, "SSAIIntegrationId", open) {
+/// The configuration with this identifier is a GoogleDaiConfiguration.
+  THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID SWIFT_COMPILE_NAME("GoogleDAISSAIIntegrationID") = 1,
+/// The configuration with this identifier is a YoSpaceDescription.
+  THEOplayerSSAIIntegrationIdYOSPACE_SSAI_INTEGRATION_ID SWIFT_COMPILE_NAME("YospaceSSAIIntegrationID") = 2,
+};
+
+
+/// An ad that is scheduled to appear at a certain point.
+SWIFT_PROTOCOL_NAMED("ScheduledAd_Objc")
+@protocol THEOplayerScheduledAd
+/// A reference to the <code>AdBreak</code> of which the ad is a part of.
+@property (nonatomic, readonly, strong) id <THEOplayerAdBreak> _Nonnull adBreak;
+/// The URI of the ad content.
+@property (nonatomic, readonly, copy) NSString * _Nonnull resourceURI;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.SEEKED</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This event means that the player has completed seeking, thus <code>THEOplayer.seeking</code> will return false.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("SeekedEvent")
+@interface THEOplayerSeekedEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// Fired when <code>PlayerEventTypes.SEEKING</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This event means that the player is currently seeking, thus <code>THEOplayer.seeking</code> will return true.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("SeekingEvent")
+@interface THEOplayerSeekingEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// The strategies that can be applied when an ad break is skipped by a seek.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerSkippedAdStrategy, "SkippedAdStrategy", open) {
+/// Plays all the ads skipped due to a seek.
+  THEOplayerSkippedAdStrategyPLAY_ALL SWIFT_COMPILE_NAME("PLAY_ALL") = 1,
+/// Plays none of the ads skipped due to a seek.
+  THEOplayerSkippedAdStrategyPLAY_NONE SWIFT_COMPILE_NAME("PLAY_NONE") = 2,
+/// Plays the last ad skipped due to a seek.
+  THEOplayerSkippedAdStrategyPLAY_LAST SWIFT_COMPILE_NAME("PLAY_LAST") = 3,
+};
+
+
+/// Fired when <code>PlayerEventTypes.SOURCE_CHANGE</code> occurs for the <code>THEOplayer</code>.
+SWIFT_CLASS_NAMED("SourceChangeEvent")
+@interface THEOplayerSourceChangeEvent : THEOplayerPlayerEvent
+/// The new <code>SourceDescription</code> that was set.
+@property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
+@end
+
+@class THEOplayerTypedSource;
+@class THEOplayerTextTrackDescription;
 
 /// The <code>SourceDescription</code> object is used to describe a configuration of a source for a THEOplayer instance.
-SWIFT_CLASS("_TtC13THEOplayerSDK17SourceDescription")
-@interface SourceDescription : NSObject
+SWIFT_CLASS_NAMED("SourceDescription")
+@interface THEOplayerSourceDescription : NSObject
 /// Represents the source of the media to be played.
-@property (nonatomic, copy) NSArray<TypedSource *> * _Nonnull sources SWIFT_DEPRECATED_OBJC("Swift property 'SourceDescription.sources' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<THEOplayerTypedSource *> * _Nonnull sources;
 /// The textTracks property can be used to add an array of side-loaded text tracks to the player.
 /// remark:
 ///
@@ -729,31 +4104,164 @@ SWIFT_CLASS("_TtC13THEOplayerSDK17SourceDescription")
 ///     Each text track should be described as a TextTrackDescription.
 ///   </li>
 /// </ul>
-@property (nonatomic, copy) NSArray<TextTrackDescription *> * _Nullable textTracks SWIFT_DEPRECATED_OBJC("Swift property 'SourceDescription.textTracks' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackDescription *> * _Nullable textTracks;
 /// The poster property can be used to specify a content poster per source.
 /// remark:
 ///
 /// The player’s content poster will be updated as soon as a new source with valid poster is set, or when the player’s own poster property is altered.
-@property (nonatomic, copy) NSURL * _Nullable poster SWIFT_DEPRECATED_OBJC("Swift property 'SourceDescription.poster' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSURL * _Nullable poster;
 /// Metadata that can be used to describe content, e.g. when casting to chromecast.
-@property (nonatomic, strong) MetadataDescription * _Nullable metadata SWIFT_DEPRECATED_OBJC("Swift property 'SourceDescription.metadata' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, strong) THEOplayerMetadataDescription * _Nullable metadata;
+/// Constructs a SourceDescription.
+/// \param sources An array of TypedSource which represent the media to be played.
+///
+/// \param textTracks An array of side-loaded text tracks represented as a TextTrackDescription.
+///
+/// \param ads An array of ads represented as an AdDescription.
+///
+/// \param poster The player’s content poster.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads poster:(NSString * _Nullable)poster metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+/// Constructs a SourceDescription.
+/// \param sources An array of TypedSource which represent the media to be played.
+///
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources;
+/// Constructs a SourceDescription.
+/// \param source An array of TypedSource which represent the media to be played.
+///
+/// \param textTracks An array of side-loaded text tracks represented as a TextTrackDescription.
+///
+/// \param ads An array of ads represented as an AdDescription.
+///
+/// \param poster The player’s content poster.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads poster:(NSString * _Nullable)poster metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+/// Constructs a SourceDescription.
+/// \param source An array of TypedSource which represent the media to be played.
+///
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-@class VRConfiguration;
+@class THEOplayerVRConfiguration;
 
-@interface SourceDescription (SWIFT_EXTENSION(THEOplayerSDK))
+@interface THEOplayerSourceDescription (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>VRConfiguration</code>  used to configure VR video playback.
-@property (nonatomic, strong) VRConfiguration * _Nullable vr SWIFT_DEPRECATED_OBJC("Swift property 'SourceDescription.vr' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, strong) THEOplayerVRConfiguration * _Nullable vr;
+/// Constructs a <code>SourceDescription</code>.
+/// remark:
+/// A known limitation is that only the first source will play.
+/// \param sources List of <code>TypedSource</code> which represent the media to be played. Only the first source will play.
+///
+/// \param ads List of ads represented as an <code>AdDescription</code>.
+///
+/// \param textTracks List of side-loaded text tracks represented as a <code>TextTrackDescription</code>.
+///
+/// \param poster The url of the the poster image that will be visible the moment the source is set if autoplay is disabled.
+///
+/// \param analytics List of pre-integrated analytics services of the player.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+/// \param vr The VR configuration for this source.
+///
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
+/// Constructs a <code>SourceDescription</code>.
+/// \param source A <code>TypedSource</code> which represents the media to be played.
+///
+/// \param ads List of ads represented as an <code>AdDescription</code>.
+///
+/// \param textTracks List of side-loaded text tracks represented as a <code>TextTrackDescription</code>.
+///
+/// \param poster The url of the the poster image that will be visible the moment the source is set if autoplay is disabled.
+///
+/// \param analytics List of pre-integrated analytics services of the player.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+/// \param vr The VR configuration for this source.
+///
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
 @end
 
 
+@interface THEOplayerSourceDescription (SWIFT_EXTENSION(THEOplayerSDK))
+/// The ads property can be used to add an array of AdDescriptions to the player. All valid and supported advertisement files will be cued for playback in the player. Each ad in the array should be described as an AdDescription.
+@property (nonatomic, copy) NSArray<id <THEOplayerAdDescription>> * _Nullable ads;
+/// The analytics property can be used to add an array of analytics integrations to the player.
+@property (nonatomic, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable analytics;
+/// Constructs a SourceDescription.
+/// \param sources List of <code>TypedSource</code> which represent the media to be played.
+///
+/// \param ads List of ads represented as an <code>AdDescription</code>.
+///
+/// \param textTracks List of side-loaded text tracks represented as a <code>TextTrackDescription</code>.
+///
+/// \param poster The url of the the poster image that will be visible the moment the source is set if autoplay is disabled.
+///
+/// \param analytics List of pre-integrated analytics services of the player.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+/// Constructs a SourceDescription.
+/// \param source A <code>TypedSource</code> which represents the media to be played.
+///
+/// \param ads List of ads represented as an <code>AdDescription</code>.
+///
+/// \param textTracks List of side-loaded text tracks represented as a <code>TextTrackDescription</code>.
+///
+/// \param poster The url of the the poster image that will be visible the moment the source is set if autoplay is disabled.
+///
+/// \param analytics List of pre-integrated analytics services of the player.
+///
+/// \param metadata The metadata which can be used to describe the content.
+///
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerSourceIntegration, "SourceIntegration", open) {
+  THEOplayerSourceIntegrationNONE SWIFT_COMPILE_NAME("none") = 0,
+};
+
+
+/// Thrown to indicate that the state of the connection has changed.
+SWIFT_CLASS_NAMED("StateChangeEvent")
+@interface THEOplayerStateChangeEvent : THEOplayerChromeCastEvent
+/// The new cast state.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+@end
+
+/// The different stereo modes for the VR configuration.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerStereoMode, "StereoMode", open) {
+/// No stereo mode.
+  THEOplayerStereoModeNONE SWIFT_COMPILE_NAME("none") = 0,
+/// The two viewpoints are in a side-by-side layout. The view for the left eye is in the left half of the video frame, the view for the right eye is in the right half of the video frame.
+  THEOplayerStereoModeHORIZONTAL SWIFT_COMPILE_NAME("horizontal") = 1,
+/// The two viewpoints are in a top-bottom layout. The view for the left eye is in the upper half of the video frame, the view for the right eye is in the lower half of the video frame.
+  THEOplayerStereoModeVERTICAL SWIFT_COMPILE_NAME("vertical") = 2,
+};
+
+/// The enum for Stream type, can either be live or vod.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerStreamType, "StreamType", open) {
+/// A video on demand.
+  THEOplayerStreamTypeVOD SWIFT_COMPILE_NAME("vod") = 1,
+/// A Live stream.
+  THEOplayerStreamTypeLIVE SWIFT_COMPILE_NAME("live") = 2,
+};
+
 
 /// A <code>THEOplayerAdDescription</code> object contains a description of an advertisement that will be added to the player.
-SWIFT_CLASS("_TtC13THEOplayerSDK17THEOAdDescription")
-@interface THEOAdDescription : NSObject
+SWIFT_CLASS_NAMED("THEOAdDescription")
+@interface THEOplayerTHEOAdDescription : NSObject <THEOplayerAdDescription>
+/// The ad Integration.
+@property (nonatomic) enum THEOplayerAdIntegration integration;
 /// The ‘src’ property represents the source of the ad (VAST/VMAP). The player will download the content available at the URL and will schedule the specified advertisement(s).
 /// remark:
 /// Currently, the THEO ad integration supports VAST and VMAP files.*
@@ -805,52 +4313,792 @@ SWIFT_CLASS("_TtC13THEOplayerSDK17THEOAdDescription")
 /// \param skipOffset Specifies at which point the remainder of the ad can be skipped. Defaults to nil.
 ///
 - (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset skipOffset:(NSString * _Nullable)skipOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a THEOAdDescription.
+/// \param src The source of the ad.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK17THEOScriptMessage_")
-@protocol THEOScriptMessage
+
+/// A code that indicates the type of error that has occurred.
+typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerTHEOErrorCode, "THEOErrorCode", open) {
+/// The configuration provided is invalid.
+  THEOErrorCodeCONFIGURATION_ERROR SWIFT_COMPILE_NAME("CONFIGURATION_ERROR") = 1000,
+/// The license provided is invalid.
+  THEOErrorCodeLICENSE_ERROR SWIFT_COMPILE_NAME("LICENSE_ERROR") = 2000,
+/// The provided license does not contain the current domain.
+  THEOErrorCodeLICENSE_INVALID_DOMAIN SWIFT_COMPILE_NAME("LICENSE_INVALID_DOMAIN") = 2001,
+/// The current source is not allowed in the license provided.
+  THEOErrorCodeLICENSE_INVALID_SOURCE SWIFT_COMPILE_NAME("LICENSE_INVALID_SOURCE") = 2002,
+/// The license has expired.
+  THEOErrorCodeLICENSE_EXPIRED SWIFT_COMPILE_NAME("LICENSE_EXPIRED") = 2003,
+/// The source provided is not valid.
+  THEOErrorCodeSOURCE_INVALID SWIFT_COMPILE_NAME("SOURCE_INVALID") = 3000,
+/// The provided source is not supported.
+  THEOErrorCodeSOURCE_NOT_SUPPORTED SWIFT_COMPILE_NAME("SOURCE_NOT_SUPPORTED") = 3001,
+/// The manifest could not be loaded.
+  THEOErrorCodeMANIFEST_LOAD_ERROR SWIFT_COMPILE_NAME("MANIFEST_LOAD_ERROR") = 4000,
+/// An Error related to Cross-origin resource sharing (CORS).
+/// remark:
+///
+/// <ul>
+///   <li>
+///     See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS.
+///   </li>
+/// </ul>
+  THEOErrorCodeMANIFEST_CORS_ERROR SWIFT_COMPILE_NAME("MANIFEST_CORS_ERROR") = 4001,
+/// The manifest could not be parsed.
+  THEOErrorCodeMANIFEST_PARSE_ERROR SWIFT_COMPILE_NAME("MANIFEST_PARSE_ERROR") = 4002,
+/// The media is not supported.
+  THEOErrorCodeMEDIA_NOT_SUPPORTED SWIFT_COMPILE_NAME("MEDIA_NOT_SUPPORTED") = 5000,
+/// The media could not be loaded.
+  THEOErrorCodeMEDIA_LOAD_ERROR SWIFT_COMPILE_NAME("MEDIA_LOAD_ERROR") = 5001,
+/// The media could not be decoded.
+  THEOErrorCodeMEDIA_DECODE_ERROR SWIFT_COMPILE_NAME("MEDIA_DECODE_ERROR") = 5002,
+/// An error related to playback through AVPlayer in the iOS or tvOS SDK.
+  THEOErrorCodeMEDIA_AVPLAYER_ERROR SWIFT_COMPILE_NAME("MEDIA_AVPLAYER_ERROR") = 5003,
+/// The fetching process for the media resource was aborted by the user agent at the user’s request.
+  THEOErrorCodeMEDIA_ABORTED SWIFT_COMPILE_NAME("MEDIA_ABORTED") = 5004,
+/// An error related to network has been detected.
+  THEOErrorCodeNETWORK_ERROR SWIFT_COMPILE_NAME("NETWORK_ERROR") = 6000,
+/// The network has timed out.
+  THEOErrorCodeNETWORK_TIMEOUT SWIFT_COMPILE_NAME("NETWORK_TIMEOUT") = 6001,
+/// An error related to the content protection.
+  THEOErrorCodeCONTENT_PROTECTION_ERROR SWIFT_COMPILE_NAME("CONTENT_PROTECTION_ERROR") = 7000,
+/// The DRM provided is not supported on this platform.
+  THEOErrorCodeCONTENT_PROTECTION_NOT_SUPPORTED SWIFT_COMPILE_NAME("CONTENT_PROTECTION_NOT_SUPPORTED") = 7001,
+/// The media is DRM protected, but no content protection configuration was provided.
+  THEOErrorCodeCONTENT_PROTECTION_CONFIGURATION_MISSING SWIFT_COMPILE_NAME("CONTENT_PROTECTION_CONFIGURATION_MISSING") = 7002,
+/// The content protection configuration is invalid.
+  THEOErrorCodeCONTENT_PROTECTION_CONFIGURATION_INVALID SWIFT_COMPILE_NAME("CONTENT_PROTECTION_CONFIGURATION_INVALID") = 7003,
+/// The DRM initialization data could not be parsed.
+  THEOErrorCodeCONTENT_PROTECTION_INITIALIZATION_INVALID SWIFT_COMPILE_NAME("CONTENT_PROTECTION_INITIALIZATION_INVALID") = 7004,
+/// The content protection’s certificate could not be loaded.
+  THEOErrorCodeCONTENT_PROTECTION_CERTIFICATE_ERROR SWIFT_COMPILE_NAME("CONTENT_PROTECTION_CERTIFICATE_ERROR") = 7005,
+/// The content protection’s certificate is invalid.
+  THEOErrorCodeCONTENT_PROTECTION_CERTIFICATE_INVALID SWIFT_COMPILE_NAME("CONTENT_PROTECTION_CERTIFICATE_INVALID") = 7006,
+/// The content protection’s license could not be loaded.
+  THEOErrorCodeCONTENT_PROTECTION_LICENSE_ERROR SWIFT_COMPILE_NAME("CONTENT_PROTECTION_LICENSE_ERROR") = 7007,
+/// The content protection’s license is invalid.
+  THEOErrorCodeCONTENT_PROTECTION_LICENSE_INVALID SWIFT_COMPILE_NAME("CONTENT_PROTECTION_LICENSE_INVALID") = 7008,
+/// The content protection’s key has expired.
+  THEOErrorCodeCONTENT_PROTECTION_KEY_EXPIRED SWIFT_COMPILE_NAME("CONTENT_PROTECTION_KEY_EXPIRED") = 7009,
+/// The content protection’s key is missing.
+  THEOErrorCodeCONTENT_PROTECTION_KEY_MISSING SWIFT_COMPILE_NAME("CONTENT_PROTECTION_KEY_MISSING") = 7010,
+/// All qualities require HDCP, but the current output does not fulfill HDCP requirements.
+  THEOErrorCodeCONTENT_PROTECTION_OUTPUT_RESTRICTED SWIFT_COMPILE_NAME("CONTENT_PROTECTION_OUTPUT_RESTRICTED") = 7011,
+/// Something went wrong in the internal logic of the content protection system.
+  THEOErrorCodeCONTENT_PROTECTION_INTERNAL_ERROR SWIFT_COMPILE_NAME("CONTENT_PROTECTION_INTERNAL_ERROR") = 7012,
+/// Loading subtitles has failed.
+  THEOErrorCodeSUBTITLE_LOAD_ERROR SWIFT_COMPILE_NAME("SUBTITLE_LOAD_ERROR") = 8000,
+/// Loading subtitles has failed due to CORS.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS.
+///   </li>
+/// </ul>
+  THEOErrorCodeSUBTITLE_CORS_ERROR SWIFT_COMPILE_NAME("SUBTITLE_CORS_ERROR") = 8001,
+/// Parsing subtitles has failed.
+  THEOErrorCodeSUBTITLE_PARSE_ERROR SWIFT_COMPILE_NAME("SUBTITLE_PARSE_ERROR") = 8002,
+/// This error occurs when VR is not supported on the current platform.
+  THEOErrorCodeVR_PLATFORM_UNSUPPORTED SWIFT_COMPILE_NAME("VR_PLATFORM_UNSUPPORTED") = 9000,
+/// Changing the presentation to VR was not possible.
+  THEOErrorCodeVR_PRESENTATION_ERROR SWIFT_COMPILE_NAME("VR_PRESENTATION_ERROR") = 9001,
+/// Something went wrong with an ad.
+  THEOErrorCodeAD_ERROR SWIFT_COMPILE_NAME("AD_ERROR") = 10000,
+/// An ad blocker has been detected.
+  THEOErrorCodeAD_BLOCKER_DETECTED SWIFT_COMPILE_NAME("AD_BLOCKER_DETECTED") = 10001,
+/// Changing the presentation to fullscreen was not possible.
+  THEOErrorCodeFULLSCREEN_ERROR SWIFT_COMPILE_NAME("FULLSCREEN_ERROR") = 11000,
+};
+
+
+/// The THEOMargins class is used to define quadruple margins.
+SWIFT_CLASS_NAMED("THEOMargins")
+@interface THEOplayerTHEOMargins : NSObject
+/// The top margin.
+@property (nonatomic, readonly) NSInteger top;
+/// The right margin.
+@property (nonatomic, readonly) NSInteger right;
+/// The bottom margin.
+@property (nonatomic, readonly) NSInteger bottom;
+/// The left margin.
+@property (nonatomic, readonly) NSInteger left;
+/// Constructs a new THEOMargins instance.
+/// \param top The top margin value.
+///
+/// \param right The right margin value.
+///
+/// \param bottom The bottom margin value.
+///
+/// \param left The left margin value.
+///
+- (nonnull instancetype)initWithTop:(NSInteger)top right:(NSInteger)right bottom:(NSInteger)bottom left:(NSInteger)left OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a new THEOMargins instance.
+/// \param horizontal The left and right margins value.
+///
+/// \param vertical The top and bottom margins value.
+///
+- (nonnull instancetype)initWithHorizontal:(NSInteger)horizontal vertical:(NSInteger)vertical;
+/// Constructs a new THEOMargins instance.
+/// \param all Will apply this margin for all sides. (left, right, top and bottom)
+///
+- (nonnull instancetype)initWithAll:(NSInteger)all;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_PROTOCOL_NAMED("THEOScriptMessage")
+@protocol THEOplayerTHEOScriptMessage
 @property (nonatomic, readonly) id _Nonnull body;
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 @property (nonatomic, readonly, copy) NSString * _Nullable parsedBodyString;
 @property (nonatomic, readonly, copy) NSData * _Nullable parsedBodyData;
-@property (nonatomic, readonly, strong) Promise * _Nullable promise;
+@property (nonatomic, readonly, strong) THEOplayerPromise * _Nullable promise;
 @end
 
 
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK24THEOScriptMessageHandler_")
-@protocol THEOScriptMessageHandler
-- (void)didReceiveWithMessage:(id <THEOScriptMessage> _Nonnull)message;
+SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler")
+@protocol THEOplayerTHEOScriptMessageHandler
+- (void)didReceiveWithMessage:(id <THEOplayerTHEOScriptMessage> _Nonnull)message;
 @end
 
+@class THEOplayerConfiguration;
+@protocol THEOplayerTextTrackList;
+@protocol THEOplayerVideoTrackList;
+
+/// The THEOplayer object.
+SWIFT_CLASS("_TtC13THEOplayerSDK10THEOplayer")
+@interface THEOplayer : NSObject
+@property (nonatomic, readonly) BOOL isDestroyed;
+/// Create a new instance of THEOplayer with a frame.
+/// \param frame The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system.
+///
+/// \param configuration A configuration for the new THEOplayer.
+///
+- (nonnull instancetype)initWith:(CGRect)frame configuration:(THEOplayerConfiguration * _Nullable)configuration;
+/// Create a new instance of THEOplayer with a frame.
+/// \param frame The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system.
+///
+- (nonnull instancetype)initWith:(CGRect)frame;
+/// THEOplayer’s Version.
+/// remark:
+///
+/// Example: <code>"2.77.0"</code>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull playerVersion;)
++ (NSString * _Nonnull)playerVersion SWIFT_WARN_UNUSED_RESULT;
+/// THEOplayer’s Suite Version.
+/// remark:
+///
+/// Example: <code>"2020.4.0"</code>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull playerSuiteVersion;)
++ (NSString * _Nonnull)playerSuiteVersion SWIFT_WARN_UNUSED_RESULT;
+/// The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system.
+@property (nonatomic) CGRect frame;
+/// The bounds rectangle, which describes the THEOplayer view’s location and size in its own coordinate system.
+@property (nonatomic) CGRect bounds;
+/// The center of the THEOplayer view’s frame.
+@property (nonatomic) CGPoint center;
+/// An integer bit mask that determines how the THEOplayer view resizes itself when its superview’s bounds change.
+@property (nonatomic) UIViewAutoresizing autoresizingMask;
+/// Allows you to modify the player’s ABR behavior. See documentation for <code>ABRConfiguration</code> to see how this is done.
+@property (nonatomic, strong) id <THEOplayerABRConfiguration> _Nonnull abr;
+/// The network status of the player which can be used to monitor the network related errors.
+@property (nonatomic, readonly, strong) id <THEOplayerNetwork> _Nonnull network;
+/// The list of Text Tracks.
+@property (nonatomic, readonly, strong) id <THEOplayerTextTrackList> _Nonnull textTracks;
+/// The list of Audio Tracks.
+@property (nonatomic, readonly, strong) id <THEOplayerAudioTrackList> _Nonnull audioTracks;
+/// The list of Video Tracks.
+@property (nonatomic, readonly, strong) id <THEOplayerVideoTrackList> _Nonnull videoTracks;
+/// The length of the currently loaded video, in seconds.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Supports double-precision floating-point format.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+/// Sets or returns if the video should automatically start playing.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     If you set autoplay to true, this will set preload to ‘auto’.
+///   </li>
+///   <li>
+///     Preload will be back to the previous state if you set autoplay back to false.
+///   </li>
+///   <li>
+///     If you want to use autoplay, you should not modify the preload or the autoplay won’t work.
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL autoplay;
+/// Sets or returns the current source of the video.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     After invoking the setter, the player sets the provided playback source and applies the provided parameters in the source description.
+///   </li>
+///   <li>
+///     The source description is an object that should be constructed by the user and which should implement the SourceDescription protocol.
+///   </li>
+/// </ul>
+@property (nonatomic, strong) THEOplayerSourceDescription * _Nullable source;
+/// Returns the current source URL of the video.
+@property (nonatomic, readonly, copy) NSString * _Nullable src;
+/// Sets or returns the volume of the video.
+@property (nonatomic) float volume;
+/// Sets or returns whether the audio output of the video is muted.
+@property (nonatomic) BOOL muted;
+/// Return whether the video is seeking.
+@property (nonatomic, readonly) BOOL seeking;
+/// Returns whether the video is paused.
+@property (nonatomic, readonly) BOOL paused;
+/// Returns whether the video has ended.
+@property (nonatomic, readonly) BOOL ended;
+/// Returns whether the player should preload a certain type of data.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Default is set to <em>“none”</em>.
+///   </li>
+///   <li>
+///     For all possibilities, see <code>Preload</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) enum THEOplayerPreload preload;
+/// Returns current playback rate of the player.
+/// remark:
+/// <em>1</em> referring to normal speed.
+@property (nonatomic, readonly) double playbackRate;
+/// Sets or returns the presentationMode of the player.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Default is set to ‘inline’.
+///   </li>
+///   <li>
+///     For all possibilities, see <code>PresentationMode</code>.
+///   </li>
+/// </ul>
+@property (nonatomic) enum THEOplayerPresentationMode presentationMode;
+/// Returns the readystate of the player.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Default is set to <em>HAVE_NOTHING</em>.
+///   </li>
+///   <li>
+///     For all possibilities, see <code>ReadyState</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) enum THEOplayerReadyState readyState;
+/// Returns the last encountered player error.
+@property (nonatomic, readonly, copy) NSString * _Nullable error;
+/// Sets whether THEOplayer automatically manages the <code>AVAudioSession</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     THEOPlayer uses <code>playback</code> as default value for the <code>AVAudioSession.Category</code>.
+///   </li>
+///   <li>
+///     THEOPlayer uses <code>moviePlayback</code> as default value for the <code>AVAudioSession.Mode</code>.
+///   </li>
+/// </ul>
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioSession;)
++ (BOOL)automaticallyManageAudioSession SWIFT_WARN_UNUSED_RESULT;
++ (void)setAutomaticallyManageAudioSession:(BOOL)value;
+/// After invoking this method, the player starts playback.
+- (void)play;
+/// After invoking this method, the player pauses playback.
+- (void)pause;
+/// After invoking this method, the player stops playback completely and unloads all loaded resources.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     If the operation completes, the success flag is true and the error is nil.
+///   </li>
+///   <li>
+///     If the operation fails, the success flag is false and the error indicates the problem.
+///   </li>
+/// </ul>
+/// \param completionHandler An optional closure to invoke when operation completes or fails, defaults to nil. The closure takes two arguments: A success flag and an error.
+///
+- (void)stop:(void (^ _Nullable)(BOOL, NSError * _Nullable))completionHandler;
+/// After invoking this method, the player stops playback completely and unloads all loaded resources.
+- (void)stop;
+/// Adds the given event listener of the given PlayerEventType.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>PlayerEventType</code> of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerPlayerEvent * _Nonnull))listener;
+/// Removes the given event listener of the given PlayerEventType.
+/// \param type <code>PlayerEventType</code> of the removed event listener.
+///
+/// \param listener EventListener object that has been returned on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+/// Requests the current playback position in the video, in seconds.
+/// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the current time which supports double-precision floating-point format.
+///
+- (void)requestCurrentTime:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
+/// Sets the current playback position in the video.
+/// \param newValue The new playback position, in seconds.
+///
+/// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
+///
+- (void)setCurrentTime:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+/// Requests the height of the video in pixels for the current quality.
+/// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the video height which supports integer format.
+///
+- (void)requestVideoHeight:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
+/// Requests the height of the video in pixels for the current quality.
+/// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the video width which supports integer format.
+///
+- (void)requestVideoWidth:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
+/// Sets whether the player should preload a certain type of data.
+/// \param newValue The new preload value.
+///
+/// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
+///
+- (void)setPreload:(enum THEOplayerPreload)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+/// Requests the current ProgramDateTime of the player.
+/// \param completionHandler A closure to invoke when operation completes or fails.
+///
+- (void)requestCurrentProgramDateTimeWithCompletionHandler:(void (^ _Nonnull)(NSDate * _Nullable, NSError * _Nullable))completionHandler;
+/// Sets the current ProgramDateTime of the player.
+/// \param newValue The new ProgramDateTime.
+///
+/// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
+///
+- (void)setCurrentProgramDateTime:(NSDate * _Nonnull)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+/// Sets the playback rate of the player.
+/// \param newValue The new playback rate.
+///
+/// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
+///
+- (void)setPlaybackRate:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+/// Request the buffered TimeRanges of the player.
+/// \param completionHandler A closure to invoke when operation completes or fails.
+///
+- (void)requestBufferedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
+/// Request the played TimeRanges of the player.
+/// \param completionHandler A closure to invoke when operation completes or fails.
+///
+- (void)requestPlayedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
+/// Adds the THEOplayer view to the end of the parameter view’s list of subviews.
+/// \param view The view on which the THEOplayer view will be added as a subview.
+///
+- (void)addAsSubviewOf:(UIView * _Nonnull)view;
+/// Inserts the THEOplayer view at the specified index of the parameter view’s list of subviews.
+/// \param view The view on which the THEOplayer view will be added as a subview.
+///
+/// \param at The index in the array of the subviews property at which to insert the THEOplayer view. Subview indices start at 0 and cannot be greater than the number of subviews.
+///
+- (void)insertAsSubviewOf:(UIView * _Nonnull)view at:(NSInteger)at;
+/// Inserts the THEOplayer view below another view in the parameter view’s hierarchy.
+/// \param view The view on which the THEOplayer view will be added as a subview.
+///
+/// \param siblingSubview The sibling view that will be above the THEOplayer view.
+///
+- (void)insertAsSubviewOf:(UIView * _Nonnull)view belowSubview:(UIView * _Nonnull)siblingSubview;
+/// Inserts the THEOplayer view above another view in the parameter view’s hierarchy.
+/// \param view The view on which the THEOplayer view will be added as a subview.
+///
+/// \param siblingSubview The sibling view that will be behind the inserted THEOplayer view.
+///
+- (void)insertAsSubviewOf:(UIView * _Nonnull)view aboveSubview:(UIView * _Nonnull)siblingSubview;
+/// Returns a Boolean value indicating whether THEOplayer is contained in the given array of UIview.
+/// remark:
+///
+/// Example:
+/// <code>self.theoplayer.isContained(in: self.view.subviews)</code>
+/// \param views The array of views in which to search for THEOplayer.
+///
+- (BOOL)isContainedIn:(NSArray<UIView *> * _Nonnull)views SWIFT_WARN_UNUSED_RESULT;
+/// Requests Metrics data.
+/// \param completionHandler A closure to invoke when operation completes to retreive Metrics or when an error is thrown.
+///
+- (void)requestMetricsWithCompletionHandler:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completionHandler;
+/// Request the seekable TimeRanges of the player.
+/// \param completionHandler A closure to invoke when operation completes or fails.
+///
+- (void)requestSeekableWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
+/// Register a content protection integration
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This function allows for registering a <code>ContentProtectionIntegrationFactory</code> for a specific integrationId and keySystem.
+///   </li>
+///   <li>
+///     If a source is
+///     set with the <code>DRMConfiguration.integration</code> property set to this id, on a platform where the player will use the keySystem that corresponds
+///     with the given <code>KeySystemId</code>, this <code>ContentProtectionIntegrationFactory</code> will be used to construct a
+///     <code>ContentProtectionIntegration</code> based on the <code>DRMConfiguration</code>.
+///   </li>
+///   <li>
+///     This <code>ContentProtectionIntegration</code> allows for altering licenseand certificate requests and responses.
+///   </li>
+/// </ul>
+/// \param integrationId An id of the integration.
+///
+/// \param keySystem The<code>KeySystemId</code> for which the<code>ContentProtectionIntegrationFactory</code> should be used.
+///
+/// \param integrationFactory Factory that will construct a <code>ContentProtectionIntegration</code>.
+///
++ (void)registerContentProtectionIntegrationWithIntegrationId:(NSString * _Nonnull)integrationId keySystem:(enum THEOplayerKeySystemId)keySystem integrationFactory:(id <THEOplayerContentProtectionIntegrationFactory> _Nonnull)integrationFactory;
+/// Unloads the THEOplayer.
+/// remark:
+///
+/// All future calls to this object will throw an error.
+- (void)destroy;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
+@end
+
+@class UIGestureRecognizer;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// Attaches a gesture recognizer to THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// Detaches a gesture recognizer from THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// List of the gesture recognizers attached to THEOplayer.
+/// remark:
+/// Only available on iOS.
+@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
+@protocol THEOplayerVR;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// An <code>Ads</code> object that contains information about the current and the scheduled advertisements.
+@property (nonatomic, readonly, strong) id <THEOplayerAds> _Nonnull ads;
+/// A <code>PictureInPicture</code> object to configure Picture-In-Picture.
+@property (nonatomic, readonly, strong) id <THEOplayerPictureInPicture> _Nullable pip;
+/// A <code>RelatedContent</code> object to configure Related Content.
+@property (nonatomic, readonly, strong) id <THEOplayerRelatedContent> _Nonnull related;
+/// Whether the fullscreen mode is coupled to device orientation, defaults to false.
+/// When enabled, landscape mode will trigger fullscreen mode and portrait mode will trigger non-fullscreen mode.
+/// remark:
+/// Changes in the device orientation or fullscreen state will also trigger their coupled mode if enabled.
+@property (nonatomic) BOOL fullscreenOrientationCoupling;
+/// Add a JavaScript message listener.
+/// When using a custom JavaScript file, you can communicate to native code through the <code>window.webkit.messageHandlers.'messageName'.postMessage()</code> method.
+/// \param name The name of the message.
+///
+/// \param listener The callback invoked in native code.
+///
+- (void)addJavascriptMessageListenerWithName:(NSString * _Nonnull)name listener:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))listener;
+/// Remove a JavaScript message listener previously added with <code>addJavascriptMessageListener(...)</code>
+/// \param name The name of the message to be removed.
+///
+- (void)removeJavascriptMessageListenerWithName:(NSString * _Nonnull)name;
+/// Evaluates a JavaScript string.
+/// The method sends the result of the script evaluation (or an error) to the completion handler. The completion handler always runs on the main thread.
+/// \param javaScriptString The JavaScript string to evaluate.
+///
+/// \param completionHandler A block to invoke when script evaluation completes or fails.
+///
+- (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+/// A VR object to access and control 360/VR playback.
+@property (nonatomic, strong) id <THEOplayerVR> _Nullable vr;
+/// The Cache object to access the caching API.
+/// remark:
+/// Only available on iOS 10 and above.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <THEOplayerCache> _Nonnull cache;)
++ (id <THEOplayerCache> _Nonnull)cache SWIFT_WARN_UNUSED_RESULT;
++ (void)setCache:(id <THEOplayerCache> _Nonnull)value;
+- (void)unload SWIFT_DEPRECATED_MSG("Use destroy() instead") SWIFT_DEPRECATED_OBJC("Swift method 'THEOplayer.unload()' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@end
+
+@class THEOplayerUIConfiguration;
+@class THEOplayerVerizonMediaConfiguration;
 
 /// The configuration for a THEOplayer instance.
 SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 @interface THEOplayerConfiguration : NSObject
+/// Constructs a THEOplayerConfiguration.
+/// \param chromeless Whether the chromeless player, without UI, is used.
+///
+/// \param defaultCSS Whether the default THEOplayer css is used.
+///
+/// \param cssPaths An array of string paths of custom CSS files. (e.g. from yourBundle.path(forResource:ofType:))
+///
+/// \param jsPaths An array of string paths of custom JS files. (e.g. from yourBundle.path(forResource:ofType:))
+///
+/// \param jsPathsPre The paths to javascript files which are loaded before the player is constructed.
+///
+/// \param analytics The configurations for pre-integrated analytics services.
+///
+/// \param pip The configuration for picture-in-picture.
+///
+/// \param ads The additional advertisement configuration.
+///
+/// \param ui The additional UI configuration.
+///
+/// \param cast The additional cast configuration.
+///
+/// \param hlsDateRange Whether the logic to expose date ranges parsed from HLS manifests is enabled.
+///
+/// \param verizonMedia The configuration for the Verizon Media services.
+///
+/// \param license the license for the player.
+///
+/// \param licenseUrl the url to fetch the license for the player.
+///
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia;
+/// Constructs a THEOplayerConfiguration.
+/// \param pip The configuration for picture-in-picture.
+///
+- (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
+
+/// The types of <code>TextTrackCue</code> events. These events apply to a certain <code>TextTrackCue</code>.
+SWIFT_CLASS_NAMED("TextTrackCueEventTypes_Objc")
+@interface THEOplayerTextTrackCueEventTypes : NSObject
+/// Fired when <code>CueEnterEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull enter;)
++ (NSString * _Nonnull)enter SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>CueExitEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull exit;)
++ (NSString * _Nonnull)exit SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>CueUpdateEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull update;)
++ (NSString * _Nonnull)update SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+enum THEOplayerTextTrackKind : NSInteger;
+enum THEOplayerTextTrackFormat : NSInteger;
+
 /// A TextTrackDescription object contains a description of a side-loaded text track that will be added to the player.
-SWIFT_CLASS("_TtC13THEOplayerSDK20TextTrackDescription")
-@interface TextTrackDescription : NSObject
+SWIFT_CLASS_NAMED("TextTrackDescription")
+@interface THEOplayerTextTrackDescription : NSObject
+/// Whether the track should be enabled by default.
+/// remark:
+///
+/// This may only be used on one track element per media element.
+@property (nonatomic) BOOL isDefault;
+/// A TextTrackKind object specifying what kind of text track this is.
+@property (nonatomic) enum THEOplayerTextTrackKind kind;
 /// Specifies a source URL where the text track can be downloaded from.
-@property (nonatomic, copy) NSURL * _Nonnull src SWIFT_DEPRECATED_OBJC("Swift property 'TextTrackDescription.src' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSURL * _Nonnull src;
 /// Specifies the main language of the track.
-@property (nonatomic, copy) NSString * _Nonnull srclang SWIFT_DEPRECATED_OBJC("Swift property 'TextTrackDescription.srclang' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nonnull srclang;
 /// Specifies a label for the track which can be used to identify it.
-@property (nonatomic, copy) NSString * _Nullable label SWIFT_DEPRECATED_OBJC("Swift property 'TextTrackDescription.label' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, copy) NSString * _Nullable label;
+/// A TextTrackFormat object specifying what format of text track this is.
+@property (nonatomic) enum THEOplayerTextTrackFormat format;
+/// Constructs a TextTrackDescription.
+/// \param src The source of the text track.
+///
+/// \param srclang The language of the text track.
+///
+/// \param isDefault Whether the text track should be the default one.
+///
+/// \param kind The kind of the text track.
+///
+/// \param label The label of the text track.
+///
+/// \param format The format of the text track.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src srclang:(NSString * _Nonnull)srclang isDefault:(BOOL)isDefault kind:(enum THEOplayerTextTrackKind)kind label:(NSString * _Nullable)label format:(enum THEOplayerTextTrackFormat)format;
+/// Constructs a TextTrackDescription.
+/// \param src The source of the text track.
+///
+/// \param srclang The language of the text track.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src srclang:(NSString * _Nonnull)srclang;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The types of <code>TextTrack</code> events.  These events apply to the list of <code>TextTrackCue</code>s.
+SWIFT_CLASS_NAMED("TextTrackEventTypes_Objc")
+@interface THEOplayerTextTrackEventTypes : NSObject
+/// Fired when <code>CueChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull cuechange;)
++ (NSString * _Nonnull)cuechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AddCueEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addcue;)
++ (NSString * _Nonnull)addcue SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RemoveCueEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull removecue;)
++ (NSString * _Nonnull)removecue SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>EnterCueEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull entercue;)
++ (NSString * _Nonnull)entercue SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>ExitCueEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull exitcue;)
++ (NSString * _Nonnull)exitcue SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+/// Describes the format of the text track.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackFormat, "TextTrackFormat", open) {
+  THEOplayerTextTrackFormatNONE SWIFT_COMPILE_NAME("none") = 0,
+/// The text track is in the Web Video Text Tracks format.
+  THEOplayerTextTrackFormatWEBVTT SWIFT_COMPILE_NAME("WebVTT") = 1,
+};
+
+/// Describes the kind of the text track.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackKind, "TextTrackKind", open) {
+  THEOplayerTextTrackKindNONE SWIFT_COMPILE_NAME("none") = 0,
+/// The text track contains subtitles.
+  THEOplayerTextTrackKindSUBTITLES SWIFT_COMPILE_NAME("subtitles") = 1,
+/// The text track contains closed captions, a translation of dialogue and sound effects.
+  THEOplayerTextTrackKindCAPTIONS SWIFT_COMPILE_NAME("captions") = 2,
+/// The text track contains descriptions, a textual description of the video.
+  THEOplayerTextTrackKindDESCRIPTION SWIFT_COMPILE_NAME("description") = 3,
+/// The text track contains chapter titles suitable for navigating the media resource.
+  THEOplayerTextTrackKindCHAPTERS SWIFT_COMPILE_NAME("chapters") = 4,
+/// The text track contains metadata.
+/// remark:
+///
+/// This track will not serve display purposes.
+  TextTrackKindMETADATA SWIFT_COMPILE_NAME("metadata") = 5,
+};
+
+
+/// The types of <code>TextTrackList</code> events.
+SWIFT_CLASS_NAMED("TextTrackListEventTypes_Objc")
+@interface THEOplayerTextTrackListEventTypes : NSObject
+/// Fired when <code>AddTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addtrack;)
++ (NSString * _Nonnull)addtrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RemoveTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull removetrack;)
++ (NSString * _Nonnull)removetrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>TrackChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull change;)
++ (NSString * _Nonnull)change SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A TextTrackList lists all available TextTrack objects that the player can display.
+SWIFT_PROTOCOL_NAMED("TextTrackList_Objc")
+@protocol THEOplayerTextTrackList
+/// The number of text tracks in the list of text tracks.
+@property (nonatomic, readonly) NSInteger count;
+/// The TextTrack object representing the text track at the <em>index</em> position in the player’s list of text tracks.
+/// \param index Position of the returned TextTrack.
+///
+///
+/// returns:
+///
+/// The TextTrack at the <em>index</em> position.
+- (id <THEOplayerTextTrack> _Nonnull)get:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
+/// Adds the given event listener of the given TextTrackListEventType.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type TextTrackListEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerTrackEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given TextTrackListEventType.
+/// \param type TextTrackListEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+/// The different <code>TextTrack</code> modes.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackMode, "TextTrackMode", open) {
+  THEOplayerTextTrackModeSHOWING SWIFT_COMPILE_NAME("showing") = 1,
+  THEOplayerTextTrackModeHIDDEN SWIFT_COMPILE_NAME("hidden") = 2,
+  THEOplayerTextTrackModeDISABLED SWIFT_COMPILE_NAME("disabled") = 3,
+};
+
+
+/// A TextTrack object is an element that represents a single text track that can be displayed in the player.
+SWIFT_PROTOCOL_NAMED("TextTrack_Objc")
+@protocol THEOplayerTextTrack <THEOplayerTrack>
+/// The text track in-band metadata track dispatch type of the text track that the TextTrack object represents.
+@property (nonatomic, readonly, copy) NSString * _Nonnull inBandMetadataTrackDispatchType;
+/// The text track mode.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     For all possibilities, see: <code>TextTrackMode</code>.
+///   </li>
+/// </ul>
+@property (nonatomic) enum THEOplayerTextTrackMode mode;
+/// The text track’s list of TextTrackCue objects as a TextTrackCueList. This list includes all of the text track’s known cues.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerTextTrackCue>> * _Nonnull cues;
+/// The text track’s list of active TextTrackCue objects as a TextTrackCueList.
+/// remark:
+///
+/// This list dynamically updates as time progresses so that it includes all cues that are currently active. Currently active cues are ones that start before the current playback position and end after it.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerTextTrackCue>> * _Nonnull activeCues;
+/// The content type of the given track.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     <code>webvtt</code>: The track contains WebVTT (Web Video Text Tracks) content.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
 @end
 
 
 /// Helps get information regarding a certain period in the playback.
-SWIFT_CLASS("_TtC13THEOplayerSDK9TimeRange")
-@interface TimeRange : NSObject
+SWIFT_CLASS_NAMED("TimeRange")
+@interface THEOplayerTimeRange : NSObject
 /// The start time of the range.
 @property (nonatomic, readonly) double start;
 /// The end time of the range.
@@ -858,6 +5106,40 @@ SWIFT_CLASS("_TtC13THEOplayerSDK9TimeRange")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+
+
+/// Fired when <code>PlayerEventTypes.TIME_UPDATE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Periodically thrown during playback to indicate that the currentTime property is changing to indicate the new playback position.
+///   </li>
+///   <li>
+///     Will be kept up-to-date in case of discontinuous playback, e.g. because of a seek.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("TimeUpdateEvent")
+@interface THEOplayerTimeUpdateEvent : THEOplayerCurrentTimeEvent
+/// The current program date time of the player.
+@property (nonatomic, readonly, copy) NSDate * _Nullable currentProgramDateTime;
+@end
+
+
+/// Fired when <code>TextTrackListEventTypes.CHANGE</code> occurs for a <code>TextTrackList</code>.
+SWIFT_CLASS_NAMED("TrackChangeEvent")
+@interface THEOplayerTrackChangeEvent : NSObject <THEOplayerTrackEventProtocol>
+/// The textual representation of the type of event, “change”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The <code>Track</code> which has its state just changed.
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 
 
@@ -872,8 +5154,8 @@ SWIFT_CLASS("_TtC13THEOplayerSDK9TimeRange")
 ///     This optional information can be DRM parameters for that specific source.
 ///   </li>
 /// </ul>
-SWIFT_CLASS("_TtC13THEOplayerSDK11TypedSource")
-@interface TypedSource : NSObject
+SWIFT_CLASS_NAMED("TypedSource")
+@interface THEOplayerTypedSource : NSObject
 /// The ‘src’ property represents the source URL of the manifest or video file to be played.
 @property (nonatomic, copy) NSURL * _Nonnull src;
 /// Specifies the content type (MIME type) of source being played.
@@ -888,6 +5170,78 @@ SWIFT_CLASS("_TtC13THEOplayerSDK11TypedSource")
 ///   </li>
 /// </ul>
 @property (nonatomic, copy) NSString * _Nonnull type;
+/// This optional property can be used to specify required DRM parameters for a playback source.
+/// remark:
+///
+/// Information like the license acquisition URL, request headers and other vendor-specific parameters are wrapped in an object implementing the DRMConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerDRMConfiguration> _Nonnull drm;
+/// This property can be used to specify CORS parameters.
+@property (nonatomic) enum THEOplayerCrossOrigin crossOrigin;
+/// Parse / Expose date ranges from HLS manifest.
+@property (nonatomic) BOOL hlsDateRange;
+/// This optional property can be used to specify required Server-Side Ad Insertion parameters for a playback source.
+/// remark:
+///
+/// Parameters used to configure the player to optimally play streams with server-inserted ads from specific SSAI vendors
+/// are wrapped in an object implementing the ServerSideAdInsertionConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerServerSideAdInsertionConfiguration> _Nullable ssai;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+/// \param crossOrigin The CORS policy to be used, defaults to nil.
+///
+/// \param hlsDateRange Wheter to parse/expose the date ranges from the HLS manifest, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin hlsDateRange:(BOOL)hlsDateRange;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface THEOplayerTypedSource (SWIFT_EXTENSION(THEOplayerSDK))
+/// Initializes a <code>TypedSource</code>.
+/// \param src The source URL of the manifest or video file to be played.
+///
+/// \param type The content type (MIME type) of the source.
+///
+/// \param drm The DRM configuration.
+///
+/// \param crossOrigin The CORS policy to be used.
+///
+/// \param ssai The Server-side ad insertion configuration.
+///
+/// \param hlsDateRange Whether to parse/expose the date ranges from the HLS manifest.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin ssai:(id <THEOplayerServerSideAdInsertionConfiguration> _Nullable)ssai hlsDateRange:(BOOL)hlsDateRange;
+@end
+
+
+
+
+
+/// An object to configure UI.
+/// remark:
+/// Only configuring the localization for Google IMA is supported.
+SWIFT_CLASS_NAMED("UIConfiguration")
+@interface THEOplayerUIConfiguration : NSObject
+/// Construct a UIConfiguration object.
+/// remark:
+/// The values passed should be in a ISO-3166 Alpha-2 or ccTLD format.
+/// \param language Use a valid language code string (e.g. ‘es’ for Spanish) to be used for localizing Google IMA.
+///
+- (nonnull instancetype)initWithLanguage:(NSString * _Nonnull)language OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -896,43 +5250,575 @@ SWIFT_CLASS("_TtC13THEOplayerSDK11TypedSource")
 
 
 
+/// Fired when the <code>RelatedContent</code> UI is dismissed.
+SWIFT_CLASS_NAMED("UiRelatedContentHideEvent")
+@interface THEOplayerUiRelatedContentHideEvent : THEOplayerRelatedContentEvent
+@end
 
 
+/// Fired when the <code>RelatedContent</code> UI is displayed.
+SWIFT_CLASS_NAMED("UiRelatedContentShowEvent")
+@interface THEOplayerUiRelatedContentShowEvent : THEOplayerRelatedContentEvent
+@end
+
+
+/// Represents the list of universal ad ID information of the selected creative for the ad.
+SWIFT_PROTOCOL_NAMED("UniversalAdId")
+@protocol THEOplayerUniversalAdId
+/// The Universal Ad identifier of the selected creative for the ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull adIdValue;
+/// The registry associated with cataloging the UniversalAdId of the selected creative for the ad.
+@property (nonatomic, readonly, copy) NSString * _Nonnull adIdRegistry;
+@end
+
+
+/// The Uplynk DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Uplynk integration.
+SWIFT_CLASS_NAMED("UplynkDRMConfiguration")
+@interface THEOplayerUplynkDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// Constructs a Uplynk DRMConfiguration.
+/// remark:
+///
+/// If the <code>licenseAcquisitionURL</code> is not provided THEOplayer will use the one from the manifest.
+/// \param licenseAcquisitionURL The license acquisition URL, defaults to nil.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The Uplynk headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nullable)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Uplynk DRMConfiguration.
+/// remark:
+///
+/// If the <code>licenseAcquisitionURL</code> is not provided THEOplayer will use the one from the manifest.
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithCertificateURL:(NSString * _Nonnull)certificateURL;
+@end
 
 
 /// A VRConfiguration object contains the settings for 360 VR video playback.
-SWIFT_CLASS("_TtC13THEOplayerSDK15VRConfiguration")
-@interface VRConfiguration : NSObject
+SWIFT_CLASS_NAMED("VRConfiguration")
+@interface THEOplayerVRConfiguration : NSObject
+/// This attribute indicates the stereo mode of the VR video. If set to nil, no stereo mode will be enabled.
+@property (nonatomic) enum THEOplayerStereoMode stereoMode;
 /// This attribute indicates whether 360 VR is enabled.
-@property (nonatomic) BOOL vr360 SWIFT_DEPRECATED_OBJC("Swift property 'VRConfiguration.vr360' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic) BOOL vr360;
+/// Constructs a VRConfiguration.
+/// \param vr360 Whether 360 VR should be enabled, defaults to true.
+///
+/// \param stereoMode The stereo mode of the VR video. If nil, no stereo mode will be enabled, defaults to nil.
+///
+- (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode;
+/// Constructs a VRConfiguration.
+- (nonnull instancetype)init;
+@end
+
+
+/// The direction the user is facing.
+SWIFT_CLASS_NAMED("VRDirection")
+@interface THEOplayerVRDirection : NSObject
+/// The rotational pitch value in the range of -180 to 180.
+/// remark:
+/// The pitch axis is the axis going through both cheeks. Looking up and down affects the pitch value.
+@property (nonatomic) double pitch;
+/// The rotational roll value in the range of -180 to 180.
+/// remark:
+/// The roll axis is the axis going through nose and back of the head. Tilting head left and right affects the roll value.
+@property (nonatomic) double roll;
+/// The rotational yaw value in the range of -180 to 180.
+/// remark:
+/// The yaw axis is the axis going through chin and scalp. Looking left and right affects the yaw value.
+@property (nonatomic) double yaw;
+/// Construct a VRDirection object to set to the <code>player.vr.direction</code> property.
+/// \param pitch The rotational pitch value in the range of -180 to 180. Supports double-precision floating-point format.
+///
+/// \param roll The rotational roll value in the range of -180 to 180. Supports double-precision floating-point format.
+///
+/// \param yaw The rotational yaw value in the range of -180 to 180. Supports double-precision floating-point format.
+///
+- (nonnull instancetype)initWithPitch:(NSNumber * _Nullable)pitch roll:(NSNumber * _Nullable)roll yaw:(NSNumber * _Nullable)yaw;
+/// Construct a VRDirection object to set to the <code>player.vr.direction</code> property.
+- (nonnull instancetype)init;
+@end
+
+
+/// The <code>VR</code> event object.
+SWIFT_CLASS_NAMED("VREvent")
+@interface THEOplayerVREvent : NSObject <THEOplayerEventProtocol>
+/// The type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Fired when the <code>VR.direction</code> changes.
+SWIFT_CLASS_NAMED("VRDirectionChangeEvent")
+@interface THEOplayerVRDirectionChangeEvent : THEOplayerVREvent
+@end
+
+
+
+/// The <code>VREvent</code> types.
+SWIFT_CLASS_NAMED("VREventTypes_Objc")
+@interface THEOplayerVREventTypes : NSObject
+/// Fired when the <code>VR.direction</code> changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vrdirectionchange;)
++ (NSString * _Nonnull)vrdirectionchange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when the <code>VR.stereo</code> changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vrstereochange;)
++ (NSString * _Nonnull)vrstereochange SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when the <code>VR.stereo</code> changes.
+SWIFT_CLASS_NAMED("VRStereoChangeEvent")
+@interface THEOplayerVRStereoChangeEvent : THEOplayerVREvent
+@end
+
+
+SWIFT_PROTOCOL_NAMED("VR_Objc")
+@protocol THEOplayerVR
+/// A VR direction object with properties yaw, pitch and roll must be set to change the direction; the values of these properties should be in degrees.
+@property (nonatomic, strong) THEOplayerVRDirection * _Nonnull direction;
+/// Whether stereo VR mode is enabled.
+/// remark:
+/// Setting it to true renders the video in VR; setting it to false removes the VR rendering.
+@property (nonatomic) BOOL stereo;
+/// Sets or returns the vertical field of view in VR. This value can be a degree in the range of  [0, 180]. Increasing this value creates a more zoomed out effect.
+@property (nonatomic) NSInteger verticalFOV;
+/// Adds the event listener of the given EventType.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>VREventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerVREvent * _Nonnull))listener;
+/// Removes the event listener of the given <code>EventType</code>.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>VREventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// The VERIMATRIX DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with VERIMATRIX integration.
+SWIFT_CLASS_NAMED("VerimatrixDRMConfiguration")
+@interface THEOplayerVerimatrixDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// Constructs a VERIMATRIX DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The Verimatrix Headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class THEOplayerVerizonMediaUiConfiguration;
+
+/// An object to configure Verizon Media parameters.
+SWIFT_CLASS_NAMED("VerizonMediaConfiguration")
+@interface THEOplayerVerizonMediaConfiguration : NSObject
+/// Constructs a VerizonMediaConfiguration object.
+/// \param onSeekOverAd Defines the ad skip strategy when seeking over ads.
+///
+/// \param defaultSkipOffset Defines the offset in seconds after which the ad break may be skipped. Supports integer format.
+///
+/// \param ui The <code>VerizonMediaUiConfiguration</code>.
+///
+- (nonnull instancetype)initOnSeekOverAd:(enum THEOplayerSkippedAdStrategy)onSeekOverAd defaultSkipOffset:(NSNumber * _Nullable)defaultSkipOffset ui:(THEOplayerVerizonMediaUiConfiguration * _Nullable)ui;
+/// Constructs a VerizonMediaConfiguration object.
+- (nonnull instancetype)init;
+@end
+
+
+/// The Verizon Media UI Configuration API.
+SWIFT_CLASS_NAMED("VerizonMediaUiConfiguration")
+@interface THEOplayerVerizonMediaUiConfiguration : NSObject
+/// When enabled, it provides an up next content countdown ten seconds in advance. Defaults to true.
+@property (nonatomic, readonly) BOOL contentNotification;
+/// When enabled, it provides an ad break skip button with countdown.
+/// In case the ad break is unskippable, it provides a banner which
+/// counts down until the content resumes. Defaults to true.
+@property (nonatomic, readonly) BOOL adNotification;
+/// When enabled, it supplements the seek bar with asset dividers. Defaults to true.
+@property (nonatomic, readonly) BOOL assetMarkers;
+/// When enabled, it supplements the seek bar with marked areas in which ad breaks are present. Defaults to true.
+@property (nonatomic, readonly) BOOL adBreakMarkers;
+/// Creates the VerizonMedia UI configuration.
+/// \param contentNotification When enabled, it provides an up next content countdown ten seconds in advance. Defauls to true.
+///
+/// \param adNotification When enabled, it provides an ad break skip button with countdown. In case the ad break is unskippable, it provides a banner which counts down until the content resumes. Defauls to true.
+///
+/// \param assetMarkers When enabled, it supplements the seek bar with marked areas in which assets are present. Defauls to true.
+///
+/// \param adBreakMarkers When enabled, it supplements the seek bar with marked areas in which ad breaks are present. Defauls to true.
+///
+- (nonnull instancetype)initWithContentNotification:(BOOL)contentNotification adNotification:(BOOL)adNotification assetMarkers:(BOOL)assetMarkers adBreakMarkers:(BOOL)adBreakMarkers OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The types of <code>VideoTrackList</code> events.
+SWIFT_CLASS_NAMED("VideoTrackListEventTypes_Objc")
+@interface THEOplayerVideoTrackListEventTypes : NSObject
+/// Fired when <code>AddTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addtrack;)
++ (NSString * _Nonnull)addtrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RemoveTrackEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull removetrack;)
++ (NSString * _Nonnull)removetrack SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>TrackChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull change;)
++ (NSString * _Nonnull)change SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// A VideoTrackList lists all available VideoTrack objects that the player can play.
+SWIFT_PROTOCOL_NAMED("VideoTrackList_Objc")
+@protocol THEOplayerVideoTrackList <THEOplayerMediaTrackList>
+/// Adds the given event listener of the given VideoTrackListEventType.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type VideoTrackListEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+///
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(id <THEOplayerTrackEventProtocol> _Nonnull))listener;
+/// Removes the given event listener of the given VideoTrackListEventType.
+/// \param type VideoTrackListEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
+/// A VideoTrack object is an element that represents a single video track that can be played by the player.
+SWIFT_PROTOCOL_NAMED("VideoTrack_Objc")
+@protocol THEOplayerVideoTrack <THEOplayerMediaTrack>
+@end
+
+
+/// Describes the configuration of the Vimond DRM integration.
+SWIFT_CLASS_NAMED("VimondDRMConfiguration")
+@interface THEOplayerVimondDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// Constructs a Vimond DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param headers The Vimond headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when <code>PlayerEventTypes.VOLUME_CHANGE</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The device’s  volume percentage as a rational number between 0 and 1.
+///   </li>
+///   <li>
+///     Changes the value of <code>THEOplayer.volume</code>.
+///   </li>
+///   <li>
+///     This is not triggered by muting the player.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("VolumeChangeEvent")
+@interface THEOplayerVolumeChangeEvent : THEOplayerCurrentTimeEvent
+/// The new value, between 0 and 1, of the device’s volume.
+@property (nonatomic, readonly) float volume;
+@end
+
+
+/// The VUDRM DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with VUDRM integration.
+SWIFT_CLASS_NAMED("VudrmDRMConfiguration")
+@interface THEOplayerVudrmDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The VUDRM token.
+@property (nonatomic, copy) NSString * _Nonnull token;
+/// Constructs a VUDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+/// \param headers The VUDRM headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a VUDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
+@end
+
+
+
+/// Fired when <code>PlayerEventTypes.WAITING</code> occurs for the <code>THEOplayer</code>.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Playback has stopped because the next frame is not available, but the user agent expects that frame to become available in due course.
+///   </li>
+///   <li>
+///     <code>ReadyState</code> is equal to or less than HAVE_CURRENT_DATA, and <code>THEOplayer.paused</code> is false.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("WaitingEvent")
+@interface THEOplayerWaitingEvent : THEOplayerCurrentTimeEvent
+@end
+
+
+/// Web Video Text Tracks cue.
+/// remark:
+///
+/// The content type is <code>String</code>.
+SWIFT_PROTOCOL_NAMED("WebVttCue_Objc")
+@protocol THEOplayerWebVttCue <THEOplayerTextTrackCue>
+/// The WebVTT cue text alignment, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull align;
+/// The WebVTT cue line, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull line;
+/// A string representing the WebVTT cue line alignment, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull lineAlign;
+/// The WebVTT cue position, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull position;
+/// A string representing the WebVTT cue position alignment, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull positionAlign;
+/// The VTTRegion object to which this cue belongs, the WebVTTRegion objects follows the WebVTT specification for WebVTTRegions.
+@property (nonatomic, readonly, copy) NSString * _Nullable region;
+/// The WebVTT cue size, following to the WebVTT specification.
+@property (nonatomic, readonly) NSInteger size;
+/// True if the WebVTT cue snap-to-lines flag is true, false otherwise, following the WebVTT specification.
+@property (nonatomic, readonly) BOOL snapToLines;
+/// The text track cue text in raw unparsed form, following to the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nullable text;
+/// A string representing the WebVTT cue writing direction, following the WebVTT specification.
+@property (nonatomic, readonly, copy) NSString * _Nonnull vertical;
+@end
+
+
+/// The Widevine DRM configuration.
+SWIFT_PROTOCOL_NAMED("WidevineDRMConfigurationProtocol_Objc")
+@protocol THEOplayerWidevineDRMConfigurationProtocol <THEOplayerDRMConfiguration>
+@property (nonatomic, readonly, strong) THEOplayerKeySystemConfiguration * _Nonnull widevine;
+@end
+
+
+/// The WidevineDRMConfiguration object provides a set of DRM parameters for Widevine DRM streaming.
+/// remark:
+///
+/// At the moment only available for Chromecast.
+SWIFT_CLASS_NAMED("WidevineDRMConfiguration")
+@interface THEOplayerWidevineDRMConfiguration : NSObject <THEOplayerWidevineDRMConfigurationProtocol>
+/// The Widevine <code>KeySystemConfiguration</code>.
+@property (nonatomic, strong) THEOplayerKeySystemConfiguration * _Nonnull widevine;
+@property (nonatomic) enum THEOplayerDRMIntegration integration;
+@property (nonatomic, copy) NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable headers;
+@property (nonatomic, copy) NSDictionary<NSString *, id> * _Nullable integrationParameters;
+@property (nonatomic, copy) NSString * _Nullable customIntegrationId;
+/// Constructs a Widevine DRM configuration object.
+/// remark:
+///
+/// This only intended for casting to remote media, NOT for local playback.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param headers The headers, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Widevine DRM configuration object.
+/// remark:
+///
+/// This only intended for casting to remote media, NOT for local playback.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL;
+/// Constructs a Widevine DRM configuration object.
+/// remark:
+///
+/// This only intended for casting to remote media, NOT for local playback.
+/// \param customIntegrationId The id of the custom integration.
+///
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param headers The headers, defaults to nil.
+///
+/// \param integrationParameters The parameters for integration, defaults to nil.
+///
+- (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId licenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers integrationParameters:(NSDictionary<NSString *, id> * _Nullable)integrationParameters OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Widevine DRM configuration object.
+/// remark:
+///
+/// This only intended for casting to remote media, NOT for local playback.
+/// \param customIntegrationId The id of the custom integration.
+///
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+- (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId licenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 
+/// The Xstream DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Xstream integration.
+SWIFT_CLASS_NAMED("XstreamDRMConfiguration")
+@interface THEOplayerXstreamDRMConfiguration : THEOplayerFairPlayDRMConfiguration
+/// The required ticket acquisition URL.
+@property (nonatomic, copy) NSString * _Nonnull ticketAcquisitionURL;
+/// The required session id for the ticket server.
+@property (nonatomic, copy) NSString * _Nullable sessionId;
+/// The required stream id for the ticket server.
+@property (nonatomic, copy) NSString * _Nonnull streamId;
+/// Constructs a Xstream DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param ticketAcquisitionURL The URL for Xstream ticket acquisition.
+///
+/// \param sessionId The session id for the ticket server, defaults to nil.
+///
+/// \param streamId The required stream id for the ticket server.
+///
+/// \param headers The Xstream headers, defaults to nil.
+///
+/// \param licenseType The type of license, defaults to <code>temporary</code>.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL ticketAcquisitionURL:(NSString * _Nonnull)ticketAcquisitionURL streamId:(NSString * _Nonnull)streamId sessionId:(NSString * _Nullable)sessionId headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers licenseType:(enum THEOplayerLicenseType)licenseType OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Xstream DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param ticketAcquisitionURL The URL for Xstream ticket acquisition.
+///
+/// \param streamId The required stream id for the ticket server.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL ticketAcquisitionURL:(NSString * _Nonnull)ticketAcquisitionURL streamId:(NSString * _Nonnull)streamId;
+@end
+
+
+/// The configuration of the Yospace log level.
+SWIFT_CLASS_NAMED("YospaceLogLevelConfiguration")
+@interface THEOplayerYospaceLogLevelConfiguration : NSObject
+/// Whether polling logs are enabled.
+@property (nonatomic, readonly) BOOL polling;
+/// Whether ID3 tag logs are enabled.
+@property (nonatomic, readonly) BOOL id3Tags;
+/// Whether parsing logs are enabled.
+@property (nonatomic, readonly) BOOL parsing;
+/// Whether report logs are enabled.
+@property (nonatomic, readonly) BOOL reports;
+/// Whether HTTP logs are enabled.
+@property (nonatomic, readonly) BOOL http;
+/// Whether raw XML logs are enabled.
+@property (nonatomic, readonly) BOOL rawXml;
+/// The builder for the YoSpace log level configuration.
+/// \param polling Whether polling logs are enabled, defaults to false.
+///
+/// \param id3Tags Whether ID3 tags logs are enabled, defaults to false.
+///
+/// \param parsing Whether parsing logs are enabled, defaults to false.
+///
+/// \param reports Whether reports logs are enabled, defaults to false.
+///
+/// \param http Whether HTTP logs are enabled, defaults to false.
+///
+/// \param rawXml Whether raw XML logs are enabled, defaults to false.
+///
+- (nonnull instancetype)initWithPolling:(BOOL)polling id3Tags:(BOOL)id3Tags parsing:(BOOL)parsing reports:(BOOL)reports http:(BOOL)http rawXml:(BOOL)rawXml OBJC_DESIGNATED_INITIALIZER;
+/// The builder for the YoSpace log level configuration.
+/// \param polling Whether polling logs are enabled, defaults to false.
+///
+/// \param id3Tags Whether ID3 tags logs are enabled, defaults to false.
+///
+/// \param parsing Whether parsing logs are enabled, defaults to false.
+///
+/// \param reports Whether reports logs are enabled, defaults to false.
+///
+/// \param http Whether HTTP logs are enabled, defaults to false.
+///
+/// \param rawXml Whether raw XML logs are enabled, defaults to false.
+///
+- (nonnull instancetype)init;
+@end
+
+
+/// The ServerSideAdInsertionConfiguration for the Yospace integration.
+SWIFT_CLASS_NAMED("YospaceServerSideAdInsertionConfiguration")
+@interface THEOplayerYospaceServerSideAdInsertionConfiguration : NSObject <THEOplayerServerSideAdInsertionConfiguration>
+/// The Yospace SSAI integration identifier, defaults to <code>YospaceSSAIIntegrationID</code>.
+@property (nonatomic) enum THEOplayerSSAIIntegrationId integration;
+/// The stream playback mode.
+@property (nonatomic, readonly) enum THEOplayerStreamType streamType;
+/// The Yospace log level.
+/// remark:
+///
+/// By default all logs are disabled.
+@property (nonatomic, readonly, strong) THEOplayerYospaceLogLevelConfiguration * _Nonnull logLevel;
+/// Construct a YospaceServerSideAdInsertionConfiguration.
+/// \param streamType The type of stream, defaults to StreamType.live.
+///
+/// \param logLevel The Yospace log level, by default all logs are disabled..
+///
+- (nonnull instancetype)initWithStreamType:(enum THEOplayerStreamType)streamType logLevel:(THEOplayerYospaceLogLevelConfiguration * _Nonnull)logLevel OBJC_DESIGNATED_INITIALIZER;
+/// Construct a YospaceServerSideAdInsertionConfiguration.
+/// \param streamType The type of stream, defaults to StreamType.live.
+///
+- (nonnull instancetype)init;
+@end
+
+
 /// Configure Youbora analytics pre-integration.
-SWIFT_CLASS("_TtC13THEOplayerSDK14YouboraOptions")
-@interface YouboraOptions : NSObject
+SWIFT_CLASS_NAMED("YouboraOptions")
+@interface THEOplayerYouboraOptions : NSObject <THEOplayerAnalyticsDescription>
+/// The type of <code>AnalyticsIntegration</code>.
+@property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
 /// Constructs a YouboraOptions object
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 /// Constructs a YouboraOptions object.
 /// \param accountCode The Youbora accountCode.
 ///
-- (nonnull instancetype)initWithAccountCode:(NSString * _Nonnull)accountCode SWIFT_DEPRECATED_OBJC("Swift initializer 'YouboraOptions.init(accountCode:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (nonnull instancetype)initWithAccountCode:(NSString * _Nonnull)accountCode;
 /// Puts a key value pair to the Youbora options where the value is a string.
 /// \param key The key for the specified parameter.
 ///
 /// \param value The value for the specified parameter.
 ///
-- (void)putWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value SWIFT_DEPRECATED_OBJC("Swift method 'YouboraOptions.put(key:value:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)putWithKey:(NSString * _Nonnull)key value:(NSString * _Nonnull)value;
 /// Puts a key value pair to the Youbora options where the value is a dictionary.
 /// \param key The key for the specified parameter.
 ///
 /// \param value The value for the specified parameter.
 ///
-- (void)putMapWithKey:(NSString * _Nonnull)key value:(NSDictionary<NSString *, NSString *> * _Nonnull)value SWIFT_DEPRECATED_OBJC("Swift method 'YouboraOptions.putMap(key:value:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+- (void)putMapWithKey:(NSString * _Nonnull)key value:(NSDictionary<NSString *, NSString *> * _Nonnull)value;
 @end
 
 #if __has_attribute(external_source_symbol)

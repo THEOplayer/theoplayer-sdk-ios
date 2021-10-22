@@ -1006,6 +1006,12 @@ public struct PlayerEventTypes {
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+@objc(THEOplayerChromecastConnectionDelegate) public protocol ChromecastConnectionDelegate : AnyObject {
+  @objc optional func onStart(sourceDescription: THEOplayerSDK.SourceDescription?) -> THEOplayerSDK.SourceDescription?
+  @objc optional func onStop(sourceDescription: THEOplayerSDK.SourceDescription?) -> THEOplayerSDK.SourceDescription?
+  @objc optional func onJoin(sourceDescription: THEOplayerSDK.SourceDescription?) -> THEOplayerSDK.SourceDescription?
+  @objc optional func onLeave(sourceDescription: THEOplayerSDK.SourceDescription?) -> THEOplayerSDK.SourceDescription?
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAILiveConfiguration) public class GoogleDAILiveConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
   @objc public var assetKey: Swift.String
   @objc public init(assetKey: Swift.String, apiKey: Swift.String, authToken: Swift.String?, streamActivityMonitorID: Swift.String?, adTagParameters: [Swift.String : Swift.String]?)
@@ -1047,32 +1053,6 @@ extension PictureInPicture {
   @objc func configure(movable: Swift.Bool, defaultCorner: THEOplayerSDK.PictureInPictureCorner, scale: Swift.Float, margin: THEOplayerSDK.THEOMargins)
   @objc @available(iOS 14.0, tvOS 14.0, *)
   var nativePictureInPictureDelegate: AVKit.AVPictureInPictureControllerDelegate? { get set }
-}
-public protocol VR : THEOplayerSDK.EventDispatcherProtocol {
-  var direction: THEOplayerSDK.VRDirection { get set }
-  var stereo: Swift.Bool { get set }
-  var verticalFOV: Swift.Int { get set }
-  func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
-  func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
-}
-@objc(THEOplayerVR) public protocol VR_Objc {
-  @objc var direction: THEOplayerSDK.VRDirection { get set }
-  @objc var stereo: Swift.Bool { get set }
-  @objc var verticalFOV: Swift.Int { get set }
-  @objc @discardableResult
-  func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.VREvent) -> ()) -> THEOplayerSDK.EventListener
-  @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
-}
-@_inheritsConvenienceInitializers @objc(THEOplayerVRDirection) public class VRDirection : ObjectiveC.NSObject {
-  @objc public var pitch: Swift.Double
-  @objc public var roll: Swift.Double
-  @objc public var yaw: Swift.Double
-  public init(pitch: Swift.Double? = 0, roll: Swift.Double? = 0, yaw: Swift.Double? = 0)
-  @available(swift, obsoleted: 1.0)
-  @objc convenience public init(pitch: Foundation.NSNumber?, roll: Foundation.NSNumber?, yaw: Foundation.NSNumber?)
-  @available(swift, obsoleted: 1.0)
-  @objc convenience override dynamic public init()
-  @objc deinit
 }
 @_inheritsConvenienceInitializers public class EventedArray<Element> : THEOplayerSDK.THEOArray<Element>, THEOplayerSDK.EventDispatcherProtocol {
   public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
@@ -1221,15 +1201,6 @@ extension THEOplayer {
   @objc dynamic public func addJavascriptMessageListener(name: Swift.String, listener: @escaping ([Swift.String : Any]) -> ())
   @objc dynamic public func removeJavascriptMessageListener(name: Swift.String)
   @objc dynamic public func evaluateJavaScript(_ javaScriptString: Swift.String, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  public var vr: THEOplayerSDK.VR? {
-    get
-    set
-  }
-  @available(swift, obsoleted: 1.0)
-  @objc(vr) dynamic public var vr_Objc: THEOplayerSDK.VR_Objc? {
-    @objc get
-    @objc set
-  }
   public static var cache: THEOplayerSDK.Cache
   @available(swift, obsoleted: 1.0)
   @objc(cache) public static var cache_Objc: THEOplayerSDK.Cache_Objc
@@ -1463,6 +1434,7 @@ public struct TextTrackCueEventTypes {
   @objc(THEOErrorCodeSUBTITLE_PARSE_ERROR) case SUBTITLE_PARSE_ERROR = 8002
   @objc(THEOErrorCodeVR_PLATFORM_UNSUPPORTED) case VR_PLATFORM_UNSUPPORTED = 9000
   @objc(THEOErrorCodeVR_PRESENTATION_ERROR) case VR_PRESENTATION_ERROR = 9001
+  @objc(THEOErrorCodeVR_PERMISSION_ERROR) case VR_PERMISSION_ERROR = 9002
   @objc(THEOErrorCodeAD_ERROR) case AD_ERROR = 10000
   @objc(THEOErrorCodeAD_BLOCKER_DETECTED) case AD_BLOCKER_DETECTED = 10001
   @objc(THEOErrorCodeFULLSCREEN_ERROR) case FULLSCREEN_ERROR = 11000
@@ -1893,8 +1865,11 @@ extension StereoMode : Swift.Codable {
     @objc set
   }
   @objc public var vr360: Swift.Bool
-  public init(vr360: Swift.Bool = true, stereoMode: THEOplayerSDK.StereoMode? = nil)
+  @objc public var nativeVR: Swift.Bool
+  public init(vr360: Swift.Bool = true, stereoMode: THEOplayerSDK.StereoMode? = nil, nativeVR: Swift.Bool? = nil)
   @available(swift, obsoleted: 1.0)
+  @objc convenience public init(vr360: Swift.Bool, stereoMode: THEOplayerSDK.StereoMode, nativeVR: Swift.Bool)
+  @available(*, deprecated, message: "Use init(vr360: Bool, stereoMode: StereoMode, nativeVR: Bool) instead")
   @objc convenience public init(vr360: Swift.Bool, stereoMode: THEOplayerSDK.StereoMode)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
@@ -2169,8 +2144,10 @@ public protocol Chromecast : THEOplayerSDK.EventDispatcherProtocol {
   var casting: Swift.Bool { get }
   var error: THEOplayerSDK.CastError? { get }
   var receiverName: Swift.String? { get }
+  @available(*, deprecated, message: "Use setConnectionDelegate(ChromecastConnectionDelegate) instead")
   var source: THEOplayerSDK.SourceDescription? { get set }
   var state: THEOplayerSDK.PlayerCastState? { get }
+  func setConnectionDelegate(_ delegate: THEOplayerSDK.ChromecastConnectionDelegate?)
   func start()
   func stop()
   func join()
@@ -2184,6 +2161,7 @@ public protocol Chromecast : THEOplayerSDK.EventDispatcherProtocol {
   @objc var receiverName: Swift.String? { get }
   @objc var source: THEOplayerSDK.SourceDescription? { get set }
   @objc(state) var state_Objc: THEOplayerSDK.PlayerCastState { get }
+  @objc func setConnectionDelegate(_ delegate: THEOplayerSDK.ChromecastConnectionDelegate?)
   @objc func start()
   @objc func stop()
   @objc func join()
@@ -2399,22 +2377,6 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-}
-@_hasMissingDesignatedInitializers @objc(THEOplayerVREvent) public class VREvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
-  @objc public var type: Swift.String {
-    get
-  }
-  @objc public var date: Foundation.Date {
-    get
-  }
-  @objc deinit
-  @objc override dynamic public init()
-}
-@_hasMissingDesignatedInitializers @objc(THEOplayerVRDirectionChangeEvent) public class VRDirectionChangeEvent : THEOplayerSDK.VREvent {
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers @objc(THEOplayerVRStereoChangeEvent) public class VRStereoChangeEvent : THEOplayerSDK.VREvent {
-  @objc deinit
 }
 @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
   @available(*, deprecated, message: "Boolean variable 'pictureInPicture' has been deprecated and replaced by an instance of 'PiPConfiguration'. To avoid this warning, use THEOplayerConfiguration(pip: nil) instead.")
@@ -2902,17 +2864,6 @@ extension THEOplayer {
   @objc(cast) dynamic public var cast_Objc: THEOplayerSDK.Cast_Objc? {
     @objc get
   }
-}
-public struct VREventTypes {
-  public static var VR_DIRECTION_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.VRDirectionChangeEvent>
-  public static var VR_STEREO_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.VRStereoChangeEvent>
-}
-@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
-@objc(THEOplayerVREventTypes) public class VREventTypes_Objc : ObjectiveC.NSObject {
-  @objc public static let vrdirectionchange: Swift.String
-  @objc public static let vrstereochange: Swift.String
-  @objc deinit
-  @objc override dynamic public init()
 }
 public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   var url: Swift.String? { get }

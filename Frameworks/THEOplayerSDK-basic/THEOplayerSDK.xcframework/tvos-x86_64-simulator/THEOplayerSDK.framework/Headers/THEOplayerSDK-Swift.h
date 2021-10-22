@@ -2976,6 +2976,8 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerTHEOErrorCode, "THEOErrorCode", open
   THEOErrorCodeVR_PLATFORM_UNSUPPORTED SWIFT_COMPILE_NAME("VR_PLATFORM_UNSUPPORTED") = 9000,
 /// Changing the presentation to VR was not possible.
   THEOErrorCodeVR_PRESENTATION_ERROR SWIFT_COMPILE_NAME("VR_PRESENTATION_ERROR") = 9001,
+/// The right permissions to enable native VR were not given to the player.
+  THEOErrorCodeVR_PERMISSION_ERROR SWIFT_COMPILE_NAME("VR_PERMISSION_ERROR") = 9002,
 /// Something went wrong with an ad.
   THEOErrorCodeAD_ERROR SWIFT_COMPILE_NAME("AD_ERROR") = 10000,
 /// An ad blocker has been detected.

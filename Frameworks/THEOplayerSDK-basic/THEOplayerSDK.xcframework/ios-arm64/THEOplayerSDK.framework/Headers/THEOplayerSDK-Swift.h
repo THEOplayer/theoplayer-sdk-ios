@@ -1883,6 +1883,84 @@ SWIFT_CLASS_NAMED("CertificateResponse")
 
 
 
+SWIFT_PROTOCOL_NAMED("ChromecastConnectionDelegate")
+@protocol THEOplayerChromecastConnectionDelegate
+@optional
+/// Called after the player has started the connection to the receiver.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     At this point we are trying to load the media from the sender to the receiver.
+///   </li>
+///   <li>
+///     Provides the current SourceDescription on the sender device.
+///   </li>
+///   <li>
+///     Expects the SourceDescription to be loaded on the receiver device.
+///   </li>
+///   <li>
+///     Returning nil will behave same as returning the provided SourceDescription.
+///   </li>
+/// </ul>
+- (THEOplayerSourceDescription * _Nullable)onStartWithSourceDescription:(THEOplayerSourceDescription * _Nullable)sourceDescription SWIFT_WARN_UNUSED_RESULT;
+/// Called after the player has stopped the connection to the receiver.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     At this point we are trying to load the media from the receiver to the sender.
+///   </li>
+///   <li>
+///     Provides the current SourceDescription on the receiver device.
+///   </li>
+///   <li>
+///     Expects the SourceDescription to be loaded on the sender device.
+///   </li>
+///   <li>
+///     Returning nil will behave same as returning the provided SourceDescription.
+///   </li>
+/// </ul>
+- (THEOplayerSourceDescription * _Nullable)onStopWithSourceDescription:(THEOplayerSourceDescription * _Nullable)sourceDescription SWIFT_WARN_UNUSED_RESULT;
+/// Called after the player has joined an already existing connection to the receiver.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     At this point it’s possible to load a new media from the sender to the receiver.
+///   </li>
+///   <li>
+///     Provides the current SourceDescription on the sender device.
+///   </li>
+///   <li>
+///     Expects the SourceDescription to be loaded on the receiver device.
+///   </li>
+///   <li>
+///     Returning nil will not change the source on the receiver.
+///   </li>
+/// </ul>
+- (THEOplayerSourceDescription * _Nullable)onJoinWithSourceDescription:(THEOplayerSourceDescription * _Nullable)sourceDescription SWIFT_WARN_UNUSED_RESULT;
+/// Called after the player has left the connection to the receiver.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     At this point we are trying to load the media from the receiver to the sender.
+///   </li>
+///   <li>
+///     Provides the current SourceDescription on the receiver device.
+///   </li>
+///   <li>
+///     Expects the SourceDescription to be loaded on the sender device.
+///   </li>
+///   <li>
+///     Returning nil will behave same as returning the provided SourceDescription.
+///   </li>
+/// </ul>
+- (THEOplayerSourceDescription * _Nullable)onLeaveWithSourceDescription:(THEOplayerSourceDescription * _Nullable)sourceDescription SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS_NAMED("ChromecastEventTypes_Objc")
 @interface THEOplayerChromecastEventTypes : NSObject
 /// Fired when <code>StateChangeEvent</code> occurs.
@@ -2025,6 +2103,8 @@ SWIFT_PROTOCOL_NAMED("Chromecast_Objc")
 @property (nonatomic, strong) THEOplayerSourceDescription * _Nullable source;
 /// Indicates the state of the casting process.
 @property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+/// The ChromecastConnectionDelegate to be used when the Chromecast connection changes.
+- (void)setConnectionDelegate:(id <THEOplayerChromecastConnectionDelegate> _Nullable)delegate;
 /// Start casting to the chromecast. A dialog will prompt to choose the device.
 - (void)start;
 /// Stop casting to the chromecast.
@@ -4409,6 +4489,8 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerTHEOErrorCode, "THEOErrorCode", open
   THEOErrorCodeVR_PLATFORM_UNSUPPORTED SWIFT_COMPILE_NAME("VR_PLATFORM_UNSUPPORTED") = 9000,
 /// Changing the presentation to VR was not possible.
   THEOErrorCodeVR_PRESENTATION_ERROR SWIFT_COMPILE_NAME("VR_PRESENTATION_ERROR") = 9001,
+/// The right permissions to enable native VR were not given to the player.
+  THEOErrorCodeVR_PERMISSION_ERROR SWIFT_COMPILE_NAME("VR_PERMISSION_ERROR") = 9002,
 /// Something went wrong with an ad.
   THEOErrorCodeAD_ERROR SWIFT_COMPILE_NAME("AD_ERROR") = 10000,
 /// An ad blocker has been detected.
@@ -4786,12 +4868,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The Cast object helps you configure and control casting to external devices with THEOplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
-@end
-
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -4809,7 +4885,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
 @end
 
-@protocol THEOplayerVR;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
+@end
+
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// An <code>Ads</code> object that contains information about the current and the scheduled advertisements.
@@ -4841,8 +4922,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// \param completionHandler A block to invoke when script evaluation completes or fails.
 ///
 - (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
-/// A VR object to access and control 360/VR playback.
-@property (nonatomic, strong) id <THEOplayerVR> _Nullable vr;
 /// The Cache object to access the caching API.
 /// remark:
 /// Only available on iOS 10 and above.
@@ -5303,110 +5382,31 @@ SWIFT_CLASS_NAMED("VRConfiguration")
 @property (nonatomic) enum THEOplayerStereoMode stereoMode;
 /// This attribute indicates whether 360 VR is enabled.
 @property (nonatomic) BOOL vr360;
+/// This attribute indicates whether native VR is enabled.
+@property (nonatomic) BOOL nativeVR;
 /// Constructs a VRConfiguration.
 /// \param vr360 Whether 360 VR should be enabled, defaults to true.
 ///
 /// \param stereoMode The stereo mode of the VR video. If nil, no stereo mode will be enabled, defaults to nil.
 ///
-- (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode;
+/// \param nativeVR Whether native VR should be used,defaults to false if not specified.
+///
+- (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode nativeVR:(BOOL)nativeVR;
+/// Constructs a VRConfiguration.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This constructor initializes a VRConfiguration with default nativeVR value.
+///   </li>
+/// </ul>
+/// \param vr360 Whether 360 VR should be enabled, defaults to true.
+///
+/// \param stereoMode The stereo mode of the VR video. If nil, no stereo mode will be enabled, defaults to nil.
+///
+- (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode SWIFT_DEPRECATED_MSG("Use init(vr360: Bool, stereoMode: StereoMode, nativeVR: Bool) instead");
 /// Constructs a VRConfiguration.
 - (nonnull instancetype)init;
-@end
-
-
-/// The direction the user is facing.
-SWIFT_CLASS_NAMED("VRDirection")
-@interface THEOplayerVRDirection : NSObject
-/// The rotational pitch value in the range of -180 to 180.
-/// remark:
-/// The pitch axis is the axis going through both cheeks. Looking up and down affects the pitch value.
-@property (nonatomic) double pitch;
-/// The rotational roll value in the range of -180 to 180.
-/// remark:
-/// The roll axis is the axis going through nose and back of the head. Tilting head left and right affects the roll value.
-@property (nonatomic) double roll;
-/// The rotational yaw value in the range of -180 to 180.
-/// remark:
-/// The yaw axis is the axis going through chin and scalp. Looking left and right affects the yaw value.
-@property (nonatomic) double yaw;
-/// Construct a VRDirection object to set to the <code>player.vr.direction</code> property.
-/// \param pitch The rotational pitch value in the range of -180 to 180. Supports double-precision floating-point format.
-///
-/// \param roll The rotational roll value in the range of -180 to 180. Supports double-precision floating-point format.
-///
-/// \param yaw The rotational yaw value in the range of -180 to 180. Supports double-precision floating-point format.
-///
-- (nonnull instancetype)initWithPitch:(NSNumber * _Nullable)pitch roll:(NSNumber * _Nullable)roll yaw:(NSNumber * _Nullable)yaw;
-/// Construct a VRDirection object to set to the <code>player.vr.direction</code> property.
-- (nonnull instancetype)init;
-@end
-
-
-/// The <code>VR</code> event object.
-SWIFT_CLASS_NAMED("VREvent")
-@interface THEOplayerVREvent : NSObject <THEOplayerEventProtocol>
-/// The type of the event.
-@property (nonatomic, readonly, copy) NSString * _Nonnull type;
-/// The date at which the event occured.
-@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-/// Fired when the <code>VR.direction</code> changes.
-SWIFT_CLASS_NAMED("VRDirectionChangeEvent")
-@interface THEOplayerVRDirectionChangeEvent : THEOplayerVREvent
-@end
-
-
-
-/// The <code>VREvent</code> types.
-SWIFT_CLASS_NAMED("VREventTypes_Objc")
-@interface THEOplayerVREventTypes : NSObject
-/// Fired when the <code>VR.direction</code> changes.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vrdirectionchange;)
-+ (NSString * _Nonnull)vrdirectionchange SWIFT_WARN_UNUSED_RESULT;
-/// Fired when the <code>VR.stereo</code> changes.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull vrstereochange;)
-+ (NSString * _Nonnull)vrstereochange SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-/// Fired when the <code>VR.stereo</code> changes.
-SWIFT_CLASS_NAMED("VRStereoChangeEvent")
-@interface THEOplayerVRStereoChangeEvent : THEOplayerVREvent
-@end
-
-
-SWIFT_PROTOCOL_NAMED("VR_Objc")
-@protocol THEOplayerVR
-/// A VR direction object with properties yaw, pitch and roll must be set to change the direction; the values of these properties should be in degrees.
-@property (nonatomic, strong) THEOplayerVRDirection * _Nonnull direction;
-/// Whether stereo VR mode is enabled.
-/// remark:
-/// Setting it to true renders the video in VR; setting it to false removes the VR rendering.
-@property (nonatomic) BOOL stereo;
-/// Sets or returns the vertical field of view in VR. This value can be a degree in the range of  [0, 180]. Increasing this value creates a more zoomed out effect.
-@property (nonatomic) NSInteger verticalFOV;
-/// Adds the event listener of the given EventType.
-/// remark:
-/// When attaching a listener on the wrong object the application will crash.
-/// \param type <code>EventType</code> of the added event listener. See <code>VREventTypes</code> for possible values.
-///
-/// \param listener Closure called when event is dispatched.
-///
-///
-/// returns:
-/// The newly added <code>EventListener</code>.
-- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerVREvent * _Nonnull))listener;
-/// Removes the event listener of the given <code>EventType</code>.
-/// \param type <code>EventType</code> of the event listener to be removed. See <code>VREventTypes</code> for possible values.
-///
-/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
-///
-- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
 

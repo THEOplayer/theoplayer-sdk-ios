@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		e+6IsEl3IXWiadOsKLozo1mWrD8=
+		BBpQh/ANf3cGSgCKb/+3e0R0cVI=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		qtQVfVMUuKY1xPioqH6vCOI3gwc=
+		Hk2jus5pL1HfUPsDb+cpQCuch7A=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -38,15 +38,15 @@
 		</data>
 		<key>Assets/theoplayer.d.js</key>
 		<data>
-		NbcOK2yFZ9D1KvQSGVJ14kf2Pr0=
+		hIEJQJRLgBSTkNjMWeeHv3NtuC0=
 		</data>
 		<key>Assets/theoplayer.e.js</key>
 		<data>
-		/aYhzpjhanNpwsOVLx1/paB9zxI=
+		kxY8fx2THBIxO1jYrvz2d3TGfk4=
 		</data>
 		<key>Assets/theoplayer.p.js</key>
 		<data>
-		0oaqeNop0FNAisbPcWY8KATf6l4=
+		RIT34ecyewf5AjSFx+OwiIZOM1o=
 		</data>
 		<key>Assets/tvos-application.js</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LRJIjfsHIeBIlvQh/7WAD5Soo9Y=
+		ekP/1z0t+ZPkOD0YrV1+L85gwBo=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -123,14 +123,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t75QFt6xe7T2lC3b7ADr6yzQiFtPh2R2sjbUsJ+uMiM=
+			I65Xa2R2sJguSPci/mIQ8vG5J3WJo3p1z7KP8kc+tdY=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5RBUppLCAUU6KwVtcFr4AyitMkFAP6WmfkaSxtoZLcA=
+			g/LFcesc4g/S1O3Eww0R6TvcvesSltASLGf9ujpr/Fw=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -179,21 +179,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pgdLtEnvK5S7uB2pJFuzHj0kMYCAOu8lhCKrsi+aypA=
+			NBBoA747tKEBva4K4IB1JhvQ6kDo0iqFIjTxmCVjfmQ=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.e.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HpOuV4XGYH3nO7oENL3JCWDfoW1P0Np9opVO83bj2m8=
+			v4r90oHxGi+6BsLP1Frd9emm+BzDOU6Qmr1iWDaznW4=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.p.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wnZif3yVS11KDSISYkeTVLYlgGKRsMrGY0h9vnlIEmY=
+			r9Z8QJldn2KW0EXidXBnDeFTpCIZnYyAGv2bxZasz3k=
 			</data>
 		</dict>
 		<key>Assets/tvos-application.js</key>

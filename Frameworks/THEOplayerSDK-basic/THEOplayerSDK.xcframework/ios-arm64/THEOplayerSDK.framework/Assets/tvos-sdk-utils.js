@@ -11,12 +11,12 @@ var __assign = (this && this.__assign) || function () {
 };
 function instantiateTHEOplayer(playerID, configuration) {
     var element = getActiveDocument().createElement('div');
-    THEOplayer.ChromelessPlayer(element, __assign({ uid: playerID }, configuration));
+    THEOplayer.ChromelessPlayer(element, __assign({ uid: playerID }, JSON.parse(configuration)));
 }
 function loadTHEOplayerScript(path, playerID, configuration) {
     evaluateScripts([path], function (success) {
         if (success) {
-            instantiateTHEOplayer(playerID, JSON.parse(configuration));
+            instantiateTHEOplayer(playerID, configuration);
             theoplayerScriptLoaded(playerID);
         }
     });

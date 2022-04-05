@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		fTQwNJ3O+jKWM/eOE0HaJt7A1MM=
+		kgHpbQwFSxAxaE30cqhV0KAuQt4=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		SDOM6pjqZQ1JMAmiGTGDlhxK0II=
+		HnsJ6ulvNAqD6UFVizBZMt8urJw=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -38,15 +38,15 @@
 		</data>
 		<key>Assets/theoplayer.d.js</key>
 		<data>
-		Sj4/SpO9z3Rxk8qiqS/6JK1rFl4=
+		a9TQ+wT8MD+LVYyDO+DZr14dhl8=
 		</data>
 		<key>Assets/theoplayer.e.js</key>
 		<data>
-		Jigr5eweOxMW/G22DOsvSD0oGtM=
+		UiKgytdFs0BXppB8V6meuYLHyNw=
 		</data>
 		<key>Assets/theoplayer.p.js</key>
 		<data>
-		6+V6lgUxadB+drUiZhfeXmx6ltM=
+		yNkajd3+YhFn/GSmROfkz/k6G40=
 		</data>
 		<key>Assets/tvos-application.js</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+pDPJULnfD58Jq8ZzogNeUGEmiU=
+		31QdKME0Lb/uIhwZpV61oow04zk=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Q3jAyxZ9VHYRnaoS4Y6C6doO7zQ=
+		uIY7m3vppmGzQa79LZaFh7OinvA=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		Q3jAyxZ9VHYRnaoS4Y6C6doO7zQ=
+		uIY7m3vppmGzQa79LZaFh7OinvA=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -126,7 +126,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		FlYOkPSIthItr1pQNFmwHPSTNYE=
+		MDNGYywBcl+QPbuvCj7JlwozG08=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -138,7 +138,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		FlYOkPSIthItr1pQNFmwHPSTNYE=
+		MDNGYywBcl+QPbuvCj7JlwozG08=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -155,14 +155,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pcr3PspkCt/UyPRWwMqoYaXcIuEPME/NBuJRGA6sSdM=
+			PZyZmauAfeXCahRm17hQsAtETc+mE98Wwb0y4IzeLHU=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LdJiApRkJ4GhXcWjcwko2fxDVOTgKS6kFzaI347J8uE=
+			2nht1s99aIhqdqC1w9uKrw1vQgKcsjif8OlouKgyA7M=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -211,21 +211,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+qusVUwYc7t2lqs8rhOaOAcqH3cij0W9kr1ivLkAb2I=
+			R+WYMPNb1uuFrAZrH0B8I3gH6bbSL/QzjR7CRs1Cm0M=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.e.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2CbhCgDdDPiQcQIf+tWBmpchrccVKStlBaljyZKq2WE=
+			ZIWkhyBhO4WzhIc8045I7QYK38HuWi9W0ZnxuzqnnZ8=
 			</data>
 		</dict>
 		<key>Assets/theoplayer.p.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iBh2cUXCrjR4qCDz8Hz03j8D+95o/mRGvu4suYu2MSg=
+			O9RkvuPBMoscsyHw43C/lFpuKaH1HMBGlmSEJN3Pdlw=
 			</data>
 		</dict>
 		<key>Assets/tvos-application.js</key>
@@ -316,7 +316,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hg9i+uJoaFVnjlwVWGMHx4JyCycaPWuU8XAxSQ+xdT0=
+			8doDZmC14B4CGScowMH4PgkWrViur/1G6/q91PloM80=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftdoc</key>
@@ -337,7 +337,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hg9i+uJoaFVnjlwVWGMHx4JyCycaPWuU8XAxSQ+xdT0=
+			8doDZmC14B4CGScowMH4PgkWrViur/1G6/q91PloM80=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -358,7 +358,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YgWjOicD9A015kt+Br/wCWG8aUPndPXKRzmNayhRk1I=
+			GW2JQ4pH4TWLpR+Pnu5aYsW5UogevBWxtrveUCr3nN4=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -379,7 +379,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YgWjOicD9A015kt+Br/wCWG8aUPndPXKRzmNayhRk1I=
+			GW2JQ4pH4TWLpR+Pnu5aYsW5UogevBWxtrveUCr3nN4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

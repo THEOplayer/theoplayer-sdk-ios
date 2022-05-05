@@ -2121,6 +2121,8 @@ SWIFT_CLASS_NAMED("KeySystemConfiguration")
 @property (nonatomic, copy) NSURL * _Nullable licenseAcquisitionURL;
 /// Specifies the URL of the FairPlay certificate server.
 @property (nonatomic, copy) NSURL * _Nullable certificateURL;
+/// Optionally specifies request headers that should be sent with any license requests to the DRM server. This is a plain object where the keys of the object are header names and corresponding values are header values.
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable headers SWIFT_DEPRECATED_OBJC("Swift property 'KeySystemConfiguration.headers' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic) enum THEOplayerLicenseType licenseType;
 /// Constructs a KeySystemConfiguration.
 /// \param licenseAcquisitionURL The URL of the licensing server,.

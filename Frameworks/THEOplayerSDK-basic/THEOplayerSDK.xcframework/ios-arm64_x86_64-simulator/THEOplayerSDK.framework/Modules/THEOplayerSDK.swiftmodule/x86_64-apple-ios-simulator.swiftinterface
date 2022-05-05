@@ -336,12 +336,13 @@ extension SourceDescription {
   @objc public var licenseAcquisitionURL: Foundation.URL?
   @objc public var certificateURL: Foundation.URL?
   public var licenseType: THEOplayerSDK.LicenseType?
+  @objc public var headers: [Swift.String : Swift.String]?
   @available(swift, obsoleted: 1.0)
   @objc(licenseType) public var licenseType_Objc: THEOplayerSDK.LicenseType {
     @objc get
     @objc set
   }
-  public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType? = nil)
+  public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType? = nil, headers: [Swift.String : Swift.String]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String?, certificateURL: Swift.String?, licenseType: THEOplayerSDK.LicenseType)
   @available(swift, obsoleted: 1.0)

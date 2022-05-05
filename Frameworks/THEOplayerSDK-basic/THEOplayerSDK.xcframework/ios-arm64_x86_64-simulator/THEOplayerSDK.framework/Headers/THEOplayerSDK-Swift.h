@@ -3256,6 +3256,8 @@ SWIFT_CLASS_NAMED("KeySystemConfiguration")
 @property (nonatomic, copy) NSURL * _Nullable licenseAcquisitionURL;
 /// Specifies the URL of the FairPlay certificate server.
 @property (nonatomic, copy) NSURL * _Nullable certificateURL;
+/// Optionally specifies request headers that should be sent with any license requests to the DRM server. This is a plain object where the keys of the object are header names and corresponding values are header values.
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable headers SWIFT_DEPRECATED_OBJC("Swift property 'KeySystemConfiguration.headers' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic) enum THEOplayerLicenseType licenseType;
 /// Constructs a KeySystemConfiguration.
 /// \param licenseAcquisitionURL The URL of the licensing server,.
@@ -4362,7 +4364,7 @@ SWIFT_CLASS_NAMED("THEOAdDescription")
 ///     ‘end’ for a postroll.
 ///   </li>
 ///   <li>
-///     ‘HH:MM:SS.mm’ for a timestamp in the playback window.
+///     ‘HH:MM:SS.mmm’ for a timestamp in the playback window.
 ///   </li>
 ///   <li>
 ///     A percentage string (XX%) for a proportion of the content duration.
@@ -4380,7 +4382,7 @@ SWIFT_CLASS_NAMED("THEOAdDescription")
 ///     A number for the offset in seconds.
 ///   </li>
 ///   <li>
-///     ‘HH:MM:SS.mm’ for a timestamp in the playback window of the advertisement.
+///     ‘HH:MM:SS.mmm’ for a timestamp in the playback window of the advertisement.
 ///   </li>
 ///   <li>
 ///     A percentage string (XX%) for a proportion of the ad duration.
@@ -9086,6 +9088,8 @@ SWIFT_CLASS_NAMED("KeySystemConfiguration")
 @property (nonatomic, copy) NSURL * _Nullable licenseAcquisitionURL;
 /// Specifies the URL of the FairPlay certificate server.
 @property (nonatomic, copy) NSURL * _Nullable certificateURL;
+/// Optionally specifies request headers that should be sent with any license requests to the DRM server. This is a plain object where the keys of the object are header names and corresponding values are header values.
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nullable headers SWIFT_DEPRECATED_OBJC("Swift property 'KeySystemConfiguration.headers' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @property (nonatomic) enum THEOplayerLicenseType licenseType;
 /// Constructs a KeySystemConfiguration.
 /// \param licenseAcquisitionURL The URL of the licensing server,.
@@ -10192,7 +10196,7 @@ SWIFT_CLASS_NAMED("THEOAdDescription")
 ///     ‘end’ for a postroll.
 ///   </li>
 ///   <li>
-///     ‘HH:MM:SS.mm’ for a timestamp in the playback window.
+///     ‘HH:MM:SS.mmm’ for a timestamp in the playback window.
 ///   </li>
 ///   <li>
 ///     A percentage string (XX%) for a proportion of the content duration.
@@ -10210,7 +10214,7 @@ SWIFT_CLASS_NAMED("THEOAdDescription")
 ///     A number for the offset in seconds.
 ///   </li>
 ///   <li>
-///     ‘HH:MM:SS.mm’ for a timestamp in the playback window of the advertisement.
+///     ‘HH:MM:SS.mmm’ for a timestamp in the playback window of the advertisement.
 ///   </li>
 ///   <li>
 ///     A percentage string (XX%) for a proportion of the ad duration.

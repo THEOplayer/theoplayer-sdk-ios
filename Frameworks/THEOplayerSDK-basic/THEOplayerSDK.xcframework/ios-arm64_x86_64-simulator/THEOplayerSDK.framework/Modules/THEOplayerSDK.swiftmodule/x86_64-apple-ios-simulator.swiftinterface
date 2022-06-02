@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerSDK
 import AVFoundation
 import AVKit
@@ -573,6 +573,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
   var inBandMetadataTrackDispatchType: Swift.String { get }
   var mode: THEOplayerSDK.TextTrackMode { get set }
   var cues: [THEOplayerSDK.TextTrackCue] { get }
+  var src: Swift.String { get }
   var activeCues: [THEOplayerSDK.TextTrackCue] { get }
   var type: Swift.String { get }
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
@@ -1000,7 +1001,9 @@ public struct PlayerEventTypes {
 @_inheritsConvenienceInitializers @objc(THEOplayerPiPConfiguration) public class PiPConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc public var retainPresentationModeOnSourceChange: Swift.Bool
   @objc public var nativePictureInPicture: Swift.Bool
-  @objc public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false)
+  @objc public var canStartPictureInPictureAutomaticallyFromInline: Swift.Bool
+  @objc convenience public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false)
+  @objc public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false, canStartPictureInPictureAutomaticallyFromInline: Swift.Bool = false)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
   @objc deinit

@@ -705,8 +705,8 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAddTrackEvent) public class AddTrackEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -721,8 +721,8 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerRemoveTrackEvent) public class RemoveTrackEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -737,8 +737,8 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension Encodable {
   public func toJSONEncodableDictionary() -> [Swift.String : Any]

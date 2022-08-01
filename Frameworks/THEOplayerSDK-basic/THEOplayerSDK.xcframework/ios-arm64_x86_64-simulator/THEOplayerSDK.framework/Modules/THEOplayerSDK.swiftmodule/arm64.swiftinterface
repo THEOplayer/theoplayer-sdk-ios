@@ -95,25 +95,58 @@ extension ChromecastMetadataType : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerEzdrmDRMConfiguration) public class EzdrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+@_hasMissingDesignatedInitializers @objc(THEOplayerEzdrmDRMConfiguration) public class EzdrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+  @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerComcastDRMConfiguration) public class ComcastDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerMultiplatformDRMConfiguration) public class MultiplatformDRMConfiguration : ObjectiveC.NSObject, THEOplayerSDK.DRMConfiguration {
+  @objc final public let integrationKind: THEOplayerSDK.DRMIntegration
+  @objc final public let integrationParameters: Swift.Dictionary<Swift.String, Any>?
+  @objc final public let customIntegrationId: Swift.String?
+  @objc final public let keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection
+  @objc convenience public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @objc public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = [:], keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @available(*, deprecated, renamed: "integrationKind")
+  public var integration: THEOplayerSDK.DRMIntegration? {
+    get
+  }
+  @available(*, deprecated, message: "This property will be removed in future versions. Please use one of the headers on keySystemConfigurations instead")
+  @objc public var headers: [[Swift.String : Swift.String]]? {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension MultiplatformDRMConfiguration : THEOplayerSDK.DRMConfiguration_Objc {
+  @objc dynamic public var integration_Objc: THEOplayerSDK.DRMIntegration {
+    @objc get
+  }
+}
+extension MultiplatformDRMConfiguration {
+  @available(*, deprecated, renamed: "keySystemConfigurations.fairplay", message: "This property will be removed in the next major release. Please use the keySystemConfigurations property instead.")
+  @objc dynamic public var fairplay: THEOplayerSDK.KeySystemConfiguration {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerComcastDRMConfiguration) public class ComcastDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var releasePid: Swift.String
   @objc public var token: Swift.String
   @objc public var accountId: Swift.String
-  @objc public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @objc public init(releasePid: Swift.String, token: Swift.String, accountId: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(releasePid:token:accountId:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   var cue: THEOplayerSDK.TextTrackCue { get }
@@ -351,7 +384,7 @@ extension SourceDescription {
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
-public protocol DRMConfiguration {
+public protocol DRMConfiguration : Swift.Decodable, Swift.Encodable {
   var headers: [[Swift.String : Swift.String]]? { get }
   var integrationParameters: Swift.Dictionary<Swift.String, Any>? { get }
   var integration: THEOplayerSDK.DRMIntegration? { get }
@@ -586,14 +619,15 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc(activeCues) var activeCues_Objc: [THEOplayerSDK.TextTrackCue_Objc] { get }
   @objc var type: Swift.String { get }
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerUplynkDRMConfiguration) public class UplynkDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
-  @objc public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+@_hasMissingDesignatedInitializers @objc(THEOplayerUplynkDRMConfiguration) public class UplynkDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+  @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(certificateURL: Swift.String)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 public protocol AdDescription {
   var integration: THEOplayerSDK.AdIntegration? { get }
@@ -828,15 +862,16 @@ extension SkippedAdStrategy : Swift.Encodable, Swift.CaseIterable {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerIrdetoDRMConfiguration) public class IrdetoDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil)
+@_hasMissingDesignatedInitializers @objc(THEOplayerIrdetoDRMConfiguration) public class IrdetoDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+  @objc public init(crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(crmId:accountId:contentId:keyId:applicationId:sessionId:ticket:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAspectRatioChangeEvent) public class AspectRatioChangeEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
   @objc public var type: Swift.String {
@@ -852,6 +887,17 @@ extension SkippedAdStrategy : Swift.Encodable, Swift.CaseIterable {
   @objc override dynamic public init()
 }
 @objc(THEOplayerAVPlayerError) public protocol AVPlayerError : THEOplayerSDK.THEOError {
+}
+@objc(THEOplayerKeySystemConfigurationCollection) final public class KeySystemConfigurationCollection : ObjectiveC.NSObject {
+  @objc final public let fairplay: THEOplayerSDK.KeySystemConfiguration?
+  @objc final public let widevine: THEOplayerSDK.KeySystemConfiguration?
+  @objc public init(fairplay: THEOplayerSDK.KeySystemConfiguration? = nil, widevine: THEOplayerSDK.KeySystemConfiguration? = nil, commonHeaders: [Swift.String : Swift.String] = [:])
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension KeySystemConfigurationCollection : Swift.Codable {
+  convenience public init(from decoder: Swift.Decoder) throws
+  final public func encode(to encoder: Swift.Encoder) throws
 }
 public struct TextTrackEventTypes {
   public static var CUE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.CueChangeEvent>
@@ -1064,16 +1110,17 @@ extension PictureInPicture {
   @objc deinit
   override public init()
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerKeyOSDRMConfiguration) public class KeyOSDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerKeyOSDRMConfiguration) public class KeyOSDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var customdata: Swift.String?
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?, headers: [[Swift.String : Swift.String]]? = nil)
+  @objc public init(customdata: Swift.String?, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(customdata:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @objc(THEOplayerEventDispatcherProtocol) public protocol EventDispatcherProtocol_Objc {
   @objc func addEventListener_Objc(type: Swift.String, listener: @escaping (THEOplayerSDK.EventProtocol) -> ()) -> THEOplayerSDK.EventListener
@@ -1345,18 +1392,19 @@ public struct TextTrackCueEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerAzureDRMConfiguration) public class AzureDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAzureDRMConfiguration) public class AzureDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerFairPlayDRMConfiguration) public class FairPlayDRMConfiguration : ObjectiveC.NSObject, THEOplayerSDK.FairPlayDRMConfigurationProtocol, THEOplayerSDK.FairPlayDRMConfigurationProtocol_Objc, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc(THEOplayerFairPlayDRMConfiguration) public class FairPlayDRMConfiguration : ObjectiveC.NSObject, THEOplayerSDK.FairPlayDRMConfigurationProtocol, THEOplayerSDK.FairPlayDRMConfigurationProtocol_Objc {
   @objc public var fairplay: THEOplayerSDK.KeySystemConfiguration
   public var integration: THEOplayerSDK.DRMIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.DRMIntegration {
@@ -1378,8 +1426,8 @@ public struct TextTrackCueEventTypes {
   @objc convenience public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String)
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAIVodConfiguration) public class GoogleDAIVodConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
   @objc public var contentSourceID: Swift.String
@@ -1388,12 +1436,13 @@ public struct TextTrackCueEventTypes {
   override public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerVerimatrixDRMConfiguration) public class VerimatrixDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+@_hasMissingDesignatedInitializers @objc(THEOplayerVerimatrixDRMConfiguration) public class VerimatrixDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+  @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @objc @_hasMissingDesignatedInitializers public class EventDispatcher : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
   @objc public func getMinimizeFunction() -> Swift.String
@@ -1499,17 +1548,18 @@ public struct CachingTaskEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerDRMTodayDRMConfiguration) public class DRMTodayDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerDRMTodayDRMConfiguration) public class DRMTodayDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String?
   @objc public var userId: Swift.String?
   @objc public var sessionId: Swift.String?
   @objc public var merchant: Swift.String?
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil, token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
+  @objc public init(token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:userId:sessionId:merchant:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil, token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 public protocol AdBreak {
   var ads: [THEOplayerSDK.Ad] { get }
@@ -1639,7 +1689,6 @@ extension CrossOrigin : Swift.Codable {
 extension SourceIntegration : Swift.Codable {
   public var _rawValue: Swift.String {
     get
-    set
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -1832,16 +1881,17 @@ extension StreamType : Swift.Codable {
 @_hasMissingDesignatedInitializers @objc(THEOplayerDestroyEvent) public class DestroyEvent : THEOplayerSDK.PlayerEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerVudrmDRMConfiguration) public class VudrmDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerVudrmDRMConfiguration) public class VudrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @objc(THEOplayerStereoMode) public enum StereoMode : Swift.Int {
   @objc(THEOplayerStereoModeNONE) case none = 0
@@ -2081,6 +2131,7 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   var wrapperCreativeIds: [Swift.String] { get }
   var vastMediaBitrate: Swift.Int { get }
   var universalAdIds: [THEOplayerSDK.UniversalAdId] { get }
+  var traffickingParameters: Swift.String { get }
 }
 @objc(THEOplayerGoogleImaAd) public protocol GoogleImaAd_Objc : THEOplayerSDK.Ad_Objc {
   @objc var adSystem: Swift.String? { get }
@@ -2090,6 +2141,7 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   @objc var wrapperCreativeIds: [Swift.String] { get }
   @objc var vastMediaBitrate: Swift.Int { get }
   @objc var universalAdIds: [THEOplayerSDK.UniversalAdId] { get }
+  @objc var traffickingParameters: Swift.String { get }
 }
 @objc(THEOplayerUniversalAdId) public protocol UniversalAdId {
   @objc var adIdValue: Swift.String { get }
@@ -2455,23 +2507,25 @@ extension NSNotification.Name {
 }
 public let PictureInPictureOldCornerUserInfoKey: Swift.String
 public let PictureInPictureNewCornerUserInfoKey: Swift.String
-@_hasMissingDesignatedInitializers @objc(THEOplayerVimondDRMConfiguration) public class VimondDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+@_hasMissingDesignatedInitializers @objc(THEOplayerVimondDRMConfiguration) public class VimondDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+  @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerAxinomDRMConfiguration) public class AxinomDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAxinomDRMConfiguration) public class AxinomDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerYospaceServerSideAdInsertionConfiguration) public class YospaceServerSideAdInsertionConfiguration : ObjectiveC.NSObject, THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
   @objc public var integration: THEOplayerSDK.SSAIIntegrationId
@@ -2883,7 +2937,7 @@ public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   @objc var response: Swift.String? { get }
   @objc(systemCode) var systemCode_Objc: Foundation.NSNumber? { get }
 }
-@objc(THEOplayerWidevineDRMConfiguration) public class WidevineDRMConfiguration : ObjectiveC.NSObject, Swift.Codable {
+@objc(THEOplayerWidevineDRMConfiguration) public class WidevineDRMConfiguration : ObjectiveC.NSObject {
   @objc public var widevine: THEOplayerSDK.KeySystemConfiguration
   public var integration: THEOplayerSDK.DRMIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.DRMIntegration {
@@ -3137,18 +3191,19 @@ public protocol AirPlay : THEOplayerSDK.EventDispatcherProtocol {
 @_hasMissingDesignatedInitializers @objc(THEOplayerCacheStateChangeEvent) public class CacheStateChangeEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerXstreamDRMConfiguration) public class XstreamDRMConfiguration : THEOplayerSDK.FairPlayDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerXstreamDRMConfiguration) public class XstreamDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var ticketAcquisitionURL: Swift.String
   @objc public var sessionId: Swift.String?
   @objc public var streamId: Swift.String
-  @objc public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
+  @objc public init(ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(ticketAcquisitionURL:streamId:sessionId:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
-  override public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
-  override public init(customIntegrationId: Swift.String, licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = super, licenseType: THEOplayerSDK.LicenseType? = super, integrationParameters: Swift.Dictionary<Swift.String, Any>? = super)
+  @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 public struct AirPlayEventTypes {
   public static var STATE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.AirPlayStateChangeEvent>

@@ -2534,6 +2534,7 @@ SWIFT_CLASS_NAMED("Metrics")
 
 
 
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -3826,6 +3827,7 @@ SWIFT_CLASS_NAMED("UIConfiguration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -6751,6 +6753,7 @@ SWIFT_CLASS_NAMED("Metrics")
 
 
 
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -8043,6 +8046,7 @@ SWIFT_CLASS_NAMED("UIConfiguration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

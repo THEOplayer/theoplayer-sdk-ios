@@ -326,8 +326,8 @@ extension THEOArray where Element : Swift.Equatable {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   var cue: THEOplayerSDK.TextTrackCue { get }
@@ -348,8 +348,8 @@ public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerRemoveCueEvent) public class RemoveCueEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -364,8 +364,8 @@ public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerEnterCueEvent) public class EnterCueEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -380,8 +380,8 @@ public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerExitCueEvent) public class ExitCueEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -396,8 +396,8 @@ public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   var cue: THEOplayerSDK.TextTrackCue { get }
@@ -418,8 +418,8 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerCueExitEvent) public class CueExitEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -434,8 +434,8 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(cue) public var cue_Objc: THEOplayerSDK.TextTrackCue_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerCueUpdateEvent) public class CueUpdateEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -712,8 +712,8 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAddTrackEvent) public class AddTrackEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -744,8 +744,8 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   @objc(track) public var track_Objc: THEOplayerSDK.Track_Objc {
     @objc get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 extension Encodable {
   public func toJSONEncodableDictionary() -> [Swift.String : Any]
@@ -1755,6 +1755,8 @@ public protocol DateRangeCue : THEOplayerSDK.TextTrackCue {
   @objc var scte35In: Foundation.Data? { get }
   @objc var customAttributes: THEOplayerSDK.CustomAttributes { get }
 }
+extension UIApplication {
+}
 public protocol TextTrack : THEOplayerSDK.Track {
   var inBandMetadataTrackDispatchType: Swift.String { get }
   var mode: THEOplayerSDK.TextTrackMode { get set }
@@ -1968,9 +1970,9 @@ public protocol AudioTrack : THEOplayerSDK.MediaTrack {
   @objc override var enabled: Swift.Bool { get set }
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerMetrics) public class Metrics : ObjectiveC.NSObject, Swift.Codable {
-  @objc deinit
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
 @objc(THEOplayerCrossOrigin) public enum CrossOrigin : Swift.Int {

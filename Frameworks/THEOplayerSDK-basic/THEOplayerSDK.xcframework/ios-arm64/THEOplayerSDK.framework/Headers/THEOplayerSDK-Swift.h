@@ -2048,8 +2048,6 @@ SWIFT_PROTOCOL_NAMED("Chromecast_Objc")
 ///
 /// This value is nil if THEOplayer is not controlling the current chromecast session.
 @property (nonatomic, readonly, copy) NSString * _Nullable receiverName;
-/// The source to be used for casting.
-@property (nonatomic, strong) THEOplayerSourceDescription * _Nullable source;
 /// Indicates the state of the casting process.
 @property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
 /// The ChromecastConnectionDelegate to be used when the Chromecast connection changes.
@@ -3622,6 +3620,7 @@ SWIFT_CLASS_NAMED("MoatOptions")
 
 
 
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -5009,6 +5008,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5024,18 +5035,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The Cast object helps you configure and control casting to external devices with THEOplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
 @end
 
 
@@ -5075,7 +5074,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <THEOplayerCache> _Nonnull cache;)
 + (id <THEOplayerCache> _Nonnull)cache SWIFT_WARN_UNUSED_RESULT;
 + (void)setCache:(id <THEOplayerCache> _Nonnull)value;
-- (void)unload SWIFT_DEPRECATED_MSG("Use destroy() instead") SWIFT_DEPRECATED_OBJC("Swift method 'THEOplayer.unload()' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 @class THEOplayerUIConfiguration;
@@ -5456,7 +5454,6 @@ SWIFT_CLASS_NAMED("TypedSource")
 
 
 
-
 /// An object to configure UI.
 /// remark:
 /// Only configuring the localization for Google IMA is supported.
@@ -5471,6 +5468,7 @@ SWIFT_CLASS_NAMED("UIConfiguration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -5544,19 +5542,6 @@ SWIFT_CLASS_NAMED("VRConfiguration")
 /// \param nativeVR Whether native VR should be used,defaults to false if not specified.
 ///
 - (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode nativeVR:(BOOL)nativeVR;
-/// Constructs a VRConfiguration.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     This constructor initializes a VRConfiguration with default nativeVR value.
-///   </li>
-/// </ul>
-/// \param vr360 Whether 360 VR should be enabled, defaults to true.
-///
-/// \param stereoMode The stereo mode of the VR video. If nil, no stereo mode will be enabled, defaults to nil.
-///
-- (nonnull instancetype)initWithVr360:(BOOL)vr360 stereoMode:(enum THEOplayerStereoMode)stereoMode SWIFT_DEPRECATED_MSG("Use init(vr360: Bool, stereoMode: StereoMode, nativeVR: Bool) instead");
 /// Constructs a VRConfiguration.
 - (nonnull instancetype)init;
 @end

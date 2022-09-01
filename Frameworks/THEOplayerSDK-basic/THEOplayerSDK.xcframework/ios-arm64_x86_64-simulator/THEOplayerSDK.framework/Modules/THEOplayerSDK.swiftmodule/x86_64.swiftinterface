@@ -862,6 +862,8 @@ extension SkippedAdStrategy : Swift.Encodable, Swift.CaseIterable {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
+extension UIApplication {
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerIrdetoDRMConfiguration) public class IrdetoDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
   @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(crmId:accountId:contentId:keyId:applicationId:sessionId:ticket:keySystemConfigurations:) instead.")
@@ -1255,8 +1257,6 @@ extension THEOplayer {
   public static var cache: THEOplayerSDK.Cache
   @available(swift, obsoleted: 1.0)
   @objc(cache) public static var cache_Objc: THEOplayerSDK.Cache_Objc
-  @available(*, deprecated, message: "Use destroy() instead")
-  @objc dynamic public func unload()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerCueChangeEvent) public class CueChangeEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
@@ -1923,8 +1923,6 @@ extension StereoMode : Swift.Codable {
   public init(vr360: Swift.Bool = true, stereoMode: THEOplayerSDK.StereoMode? = nil, nativeVR: Swift.Bool? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(vr360: Swift.Bool, stereoMode: THEOplayerSDK.StereoMode, nativeVR: Swift.Bool)
-  @available(*, deprecated, message: "Use init(vr360: Bool, stereoMode: StereoMode, nativeVR: Bool) instead")
-  @objc convenience public init(vr360: Swift.Bool, stereoMode: THEOplayerSDK.StereoMode)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
   @objc deinit
@@ -1978,9 +1976,9 @@ extension THEOArray where Element : Swift.Equatable {
   public func contains(_ element: Element) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerMetrics) public class Metrics : ObjectiveC.NSObject, Swift.Codable {
-  @objc deinit
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
 public struct AdsEventTypes {
@@ -2200,8 +2198,6 @@ public protocol Chromecast : THEOplayerSDK.EventDispatcherProtocol {
   var casting: Swift.Bool { get }
   var error: THEOplayerSDK.CastError? { get }
   var receiverName: Swift.String? { get }
-  @available(*, deprecated, message: "Use setConnectionDelegate(ChromecastConnectionDelegate) instead")
-  var source: THEOplayerSDK.SourceDescription? { get set }
   var state: THEOplayerSDK.PlayerCastState? { get }
   func setConnectionDelegate(_ delegate: THEOplayerSDK.ChromecastConnectionDelegate?)
   func start()
@@ -2215,7 +2211,6 @@ public protocol Chromecast : THEOplayerSDK.EventDispatcherProtocol {
   @objc var casting: Swift.Bool { get }
   @objc(error) var error_Objc: THEOplayerSDK.CastError_Objc? { get }
   @objc var receiverName: Swift.String? { get }
-  @objc var source: THEOplayerSDK.SourceDescription? { get set }
   @objc(state) var state_Objc: THEOplayerSDK.PlayerCastState { get }
   @objc func setConnectionDelegate(_ delegate: THEOplayerSDK.ChromecastConnectionDelegate?)
   @objc func start()
@@ -2435,11 +2430,7 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   public func encode(to encoder: Swift.Encoder) throws
 }
 @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
-  @available(*, deprecated, message: "Boolean variable 'pictureInPicture' has been deprecated and replaced by an instance of 'PiPConfiguration'. To avoid this warning, use THEOplayerConfiguration(pip: nil) instead.")
-  convenience public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], googleIMA: Swift.Bool = false, analytics: [THEOplayerSDK.AnalyticsDescription] = [], pictureInPicture: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
-  @available(*, deprecated, message: "Boolean variable 'googleIMA' has been deprecated and replaced by a property googleImaConfiguration in AdsConfiguration")
-  convenience public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], googleIMA: Swift.Bool = false, analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
-  public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
+  public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration? = nil, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, defaultCSS: Swift.Bool, cssPaths: [Swift.String], jsPaths: [Swift.String], jsPathsPre: [Swift.String], analytics: [THEOplayerSDK.AnalyticsDescription], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration?, ui: THEOplayerSDK.UIConfiguration?, cast: THEOplayerSDK.CastConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?)
   @available(swift, obsoleted: 1.0)

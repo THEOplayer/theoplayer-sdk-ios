@@ -165,6 +165,10 @@ extension SourceDescription {
   @objc override dynamic public init()
   @objc deinit
 }
+public protocol GoogleDAI {
+  func contentTime(from streamTime: Swift.Double) -> Swift.Double
+  func streamTime(from contentTime: Swift.Double) -> Swift.Double
+}
 @objc(THEOplayerEventProtocol) public protocol EventProtocol {
   @objc var type: Swift.String { get }
   @objc var date: Foundation.Date { get }
@@ -1467,8 +1471,8 @@ extension KeySystemId : Swift.Codable {
   @objc public var body: Foundation.Data
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerCertificateResponse) public class CertificateResponse : THEOplayerSDK.Response {
   @objc public init(certificateRequest: THEOplayerSDK.CertificateRequest, url: Swift.String, status: Swift.Int, statusText: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data)
@@ -1663,19 +1667,19 @@ public protocol AudioTrackList : THEOplayerSDK.MediaTrackList {
   @objc public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerCertificateRequest) public class CertificateRequest : THEOplayerSDK.Request {
-  @objc deinit
   @objc override public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
   required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerLicenseRequest) public class LicenseRequest : THEOplayerSDK.Request {
   @objc public var fairplaySkdUrl: Swift.String?
   @objc public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?, fairplaySkdUrl: Swift.String?, useCredentials: Swift.Bool)
-  @objc deinit
   @objc override public init(url: Swift.String, method: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data?)
+  @objc deinit
 }
 @objc(THEOplayerEventListener) public protocol EventListener {
 }

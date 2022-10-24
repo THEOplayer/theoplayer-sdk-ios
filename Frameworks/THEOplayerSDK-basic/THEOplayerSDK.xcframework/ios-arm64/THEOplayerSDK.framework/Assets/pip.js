@@ -7,7 +7,7 @@ function setupPictureInPicture(player, isNativePip) {
             var _this = this;
             baseButton.apply(this, arguments);
             this.controlText('Picture In Picture');
-            if (isNativePip) {
+            if (isNativePip && player.ads) {
                 player.ads.addEventListener('adbreakbegin', function () {
                     _this.disablePipButton();
                 });
@@ -34,8 +34,10 @@ function setupPictureInPicture(player, isNativePip) {
             return 'vjs-icon-picture-in-picture-enter theo-controlbar-button vjs-control vjs-button';
         },
         dispose: function () {
-            player.ads.removeEventListener('adbreakbegin', this.disablePipButton);
-            player.ads.removeEventListener('adbreakend', this.enablePipButton);
+            if (isNativePip && player.ads) {
+                player.ads.removeEventListener('adbreakbegin', this.disablePipButton);
+                player.ads.removeEventListener('adbreakend', this.enablePipButton);
+            }
             baseButton.prototype.dispose.call(this);
         }
     });

@@ -759,6 +759,10 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
 - (void)requestCurrentAdBreak:(void (^ _Nonnull)(id <THEOplayerAdBreak> _Nullable, NSError * _Nullable))completionHandler;
+/// Requests an array of adbreaks that still need to be played.
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestScheduledAdBreaks:(void (^ _Nonnull)(NSArray<id <THEOplayerAdBreak>> * _Nullable, NSError * _Nullable))completionHandler;
 /// Requests an array of ads that still need to be played.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
@@ -1696,6 +1700,8 @@ SWIFT_CLASS_NAMED("CastError_Objc")
 @property (nonatomic, readonly) enum THEOplayerErrorCode errorCode;
 /// The description of the cast error.
 @property (nonatomic, copy) NSString * _Nullable errorDescription;
+/// :nodoc:
+- (nonnull instancetype)initWithErrorCode:(enum THEOplayerErrorCode)errorCode description:(NSString * _Nullable)description OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'CastError_Objc.init(errorCode:description:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2788,6 +2794,13 @@ SWIFT_CLASS_NAMED("DestroyEvent")
 @end
 
 
+/// Exposes the dispatchEvent method
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
+@protocol DispatchDispatch
+- (void)dispatchEventWithEvent:(id <THEOplayerEventProtocol> _Nonnull)event;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.DURATION_CHANGE</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -2820,6 +2833,8 @@ SWIFT_CLASS_NAMED("DurationChangeEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("EndedEvent")
 @interface THEOplayerEndedEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'EndedEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -2894,6 +2909,7 @@ SWIFT_CLASS_NAMED("ErrorEvent")
 @property (nonatomic, readonly, copy) NSString * _Nonnull error;
 /// A more descriptive <code>THEOError</code>containing information about the error.
 @property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable errorObject;
+- (nonnull instancetype)initWithError:(NSString * _Nonnull)error errorObject:(id <THEOplayerTHEOError> _Nullable)errorObject date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'ErrorEvent.init(error:errorObject:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -3213,13 +3229,15 @@ SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
 /// Describes the configuration of the Google Interactive Media Ads.
 SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
+/// Indicates whether the native IMA SDK is being used.
+@property (nonatomic) BOOL useNativeIma;
+/// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
+@property (nonatomic) BOOL disableUI;
 /// Creates a GoogleIMAConfiguration object.
 /// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
 ///
-- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER;
 /// Creates a GoogleIMAConfiguration object.
-/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
-///
 - (nonnull instancetype)init;
 @end
 
@@ -3250,6 +3268,63 @@ SWIFT_PROTOCOL_NAMED("GoogleImaAd_Objc")
 /// ID3 Text Track cue. Content type is [String:String].
 SWIFT_PROTOCOL_NAMED("Id3Cue_Objc")
 @protocol THEOplayerId3Cue <THEOplayerTextTrackCue>
+@end
+
+enum THEOplayerIntegrationType : NSInteger;
+
+SWIFT_PROTOCOL_NAMED("Integration")
+@protocol THEOplayerIntegration
+@property (nonatomic, readonly) enum THEOplayerIntegrationType type;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerIntegrationType, "IntegrationType", open) {
+  THEOplayerIntegrationTypeADS = 1,
+  THEOplayerIntegrationTypeANALYTICS = 2,
+  THEOplayerIntegrationTypeCAST = 3,
+};
+
+
+SWIFT_PROTOCOL_NAMED("InternalCastIntegration_Objc")
+@protocol THEOplayerInternalCastIntegration
+/// Whether THEOplayer is casting to a chromecast and has control over the current chromecast session.
+@property (nonatomic, readonly) BOOL casting;
+/// The last error thrown by chromecast.
+@property (nonatomic, readonly, strong) THEOplayerCastError * _Nullable error;
+/// The name of the chromecast device that THEOplayer is casting to.
+/// remark:
+///
+/// This value is nil if THEOplayer is not controlling the current chromecast session.
+@property (nonatomic, readonly, copy) NSString * _Nullable receiverName;
+/// Indicates the state of the casting process.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+/// The ChromecastConnectionDelegate to be used when the Chromecast connection changes.
+- (void)setConnectionDelegate:(id <THEOplayerChromecastConnectionDelegate> _Nullable)delegate;
+/// Start casting to the chromecast. A dialog will prompt to choose the device.
+- (void)start;
+/// Stop casting to the chromecast.
+- (void)stop;
+/// Join an active chromecast session.
+- (void)join;
+/// Leave an active chromecast session without affecting other devices.
+- (void)leave;
+/// Adds the given event listener of the given <code>ChromecastEventType</code>.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type ChromecastEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerChromeCastEvent * _Nonnull))listener;
+/// Removes the given event listener of the given <code>ChromecastEventType</code>.
+/// \param type ChromecastEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
 
@@ -3749,6 +3824,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerOmidFriendlyObstructionPurpose, "O
 /// Fired when <code>PlayerEventTypes.PAUSE</code> occurs for the <code>THEOplayer</code>.
 SWIFT_CLASS_NAMED("PauseEvent")
 @interface THEOplayerPauseEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PauseEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -3872,6 +3949,8 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 /// </ul>
 SWIFT_CLASS_NAMED("PlayEvent")
 @interface THEOplayerPlayEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PlayEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// Indicates the state of the casting processs.
@@ -3978,6 +4057,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// </ul>
 SWIFT_CLASS_NAMED("PlayingEvent")
 @interface THEOplayerPlayingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PlayingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// The preload strategy of the player. The strategy specifies what data to load on source change.
@@ -4031,6 +4112,8 @@ SWIFT_CLASS_NAMED("PresentationModeChangeEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("ProgressEvent")
 @interface THEOplayerProgressEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'ProgressEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -4278,6 +4361,8 @@ SWIFT_PROTOCOL_NAMED("ScheduledAd_Objc")
 /// </ul>
 SWIFT_CLASS_NAMED("SeekedEvent")
 @interface THEOplayerSeekedEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SeekedEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -4291,6 +4376,8 @@ SWIFT_CLASS_NAMED("SeekedEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("SeekingEvent")
 @interface THEOplayerSeekingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SeekingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -4310,6 +4397,8 @@ SWIFT_CLASS_NAMED("SourceChangeEvent")
 @interface THEOplayerSourceChangeEvent : THEOplayerPlayerEvent
 /// The new <code>SourceDescription</code> that was set.
 @property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
+/// :nodoc:
+- (nonnull instancetype)initWithDate:(NSDate * _Nonnull)date source:(THEOplayerSourceDescription * _Nullable)source OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SourceChangeEvent.init(date:source:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 @class THEOplayerTypedSource;
@@ -4464,6 +4553,7 @@ SWIFT_CLASS_NAMED("StateChangeEvent")
 @interface THEOplayerStateChangeEvent : THEOplayerChromeCastEvent
 /// The new cast state.
 @property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+- (nonnull instancetype)initWithState:(enum THEOplayerPlayerCastState)state date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'StateChangeEvent.init(state:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// The different stereo modes for the VR configuration.
@@ -4563,6 +4653,8 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerTHEOErrorCode, "THEOErrorCode", open
   THEOErrorCodeLICENSE_INVALID_SOURCE SWIFT_COMPILE_NAME("LICENSE_INVALID_SOURCE") = 2002,
 /// The license has expired.
   THEOErrorCodeLICENSE_EXPIRED SWIFT_COMPILE_NAME("LICENSE_EXPIRED") = 2003,
+/// The provided license does not contain the necessary feature.
+  THEOErrorCodeLICENSE_INVALID_FEATURE SWIFT_COMPILE_NAME("LICENSE_INVALID_FEATURE") = 2004,
 /// The source provided is not valid.
   THEOErrorCodeSOURCE_INVALID SWIFT_COMPILE_NAME("SOURCE_INVALID") = 3000,
 /// The provided source is not supported.
@@ -5011,16 +5103,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The Cast object helps you configure and control casting to external devices with THEOplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
 
 @class UIGestureRecognizer;
 
@@ -5037,6 +5119,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
 @end
 
 
@@ -5329,6 +5423,12 @@ SWIFT_CLASS_NAMED("TimeRange")
 @property (nonatomic, readonly) double start;
 /// The end time of the range.
 @property (nonatomic, readonly) double end;
+/// Constructs a TimeRange object.
+/// \param start start time, in seconds.
+///
+/// \param end end time, in seconds.
+///
+- (nonnull instancetype)initWithStart:(double)start end:(double)end OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -5350,6 +5450,8 @@ SWIFT_CLASS_NAMED("TimeUpdateEvent")
 @interface THEOplayerTimeUpdateEvent : THEOplayerCurrentTimeEvent
 /// The current program date time of the player.
 @property (nonatomic, readonly, copy) NSDate * _Nullable currentProgramDateTime;
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime currentProgramDateTime:(NSDate * _Nullable)currentProgramDateTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'TimeUpdateEvent.init(currentTime:currentProgramDateTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -5697,6 +5799,8 @@ SWIFT_CLASS_NAMED("VolumeChangeEvent")
 @interface THEOplayerVolumeChangeEvent : THEOplayerCurrentTimeEvent
 /// The new value, between 0 and 1, of the device’s volume.
 @property (nonatomic, readonly) float volume;
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date volume:(float)volume OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'VolumeChangeEvent.init(currentTime:date:volume:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -5747,6 +5851,8 @@ SWIFT_CLASS_NAMED("VudrmDRMConfiguration")
 /// </ul>
 SWIFT_CLASS_NAMED("WaitingEvent")
 @interface THEOplayerWaitingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'WaitingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -6754,6 +6860,10 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
 - (void)requestCurrentAdBreak:(void (^ _Nonnull)(id <THEOplayerAdBreak> _Nullable, NSError * _Nullable))completionHandler;
+/// Requests an array of adbreaks that still need to be played.
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestScheduledAdBreaks:(void (^ _Nonnull)(NSArray<id <THEOplayerAdBreak>> * _Nullable, NSError * _Nullable))completionHandler;
 /// Requests an array of ads that still need to be played.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
@@ -7691,6 +7801,8 @@ SWIFT_CLASS_NAMED("CastError_Objc")
 @property (nonatomic, readonly) enum THEOplayerErrorCode errorCode;
 /// The description of the cast error.
 @property (nonatomic, copy) NSString * _Nullable errorDescription;
+/// :nodoc:
+- (nonnull instancetype)initWithErrorCode:(enum THEOplayerErrorCode)errorCode description:(NSString * _Nullable)description OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'CastError_Objc.init(errorCode:description:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -8783,6 +8895,13 @@ SWIFT_CLASS_NAMED("DestroyEvent")
 @end
 
 
+/// Exposes the dispatchEvent method
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
+@protocol DispatchDispatch
+- (void)dispatchEventWithEvent:(id <THEOplayerEventProtocol> _Nonnull)event;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.DURATION_CHANGE</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -8815,6 +8934,8 @@ SWIFT_CLASS_NAMED("DurationChangeEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("EndedEvent")
 @interface THEOplayerEndedEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'EndedEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -8889,6 +9010,7 @@ SWIFT_CLASS_NAMED("ErrorEvent")
 @property (nonatomic, readonly, copy) NSString * _Nonnull error;
 /// A more descriptive <code>THEOError</code>containing information about the error.
 @property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable errorObject;
+- (nonnull instancetype)initWithError:(NSString * _Nonnull)error errorObject:(id <THEOplayerTHEOError> _Nullable)errorObject date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'ErrorEvent.init(error:errorObject:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -9208,13 +9330,15 @@ SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
 /// Describes the configuration of the Google Interactive Media Ads.
 SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
+/// Indicates whether the native IMA SDK is being used.
+@property (nonatomic) BOOL useNativeIma;
+/// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
+@property (nonatomic) BOOL disableUI;
 /// Creates a GoogleIMAConfiguration object.
 /// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
 ///
-- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER;
 /// Creates a GoogleIMAConfiguration object.
-/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
-///
 - (nonnull instancetype)init;
 @end
 
@@ -9245,6 +9369,63 @@ SWIFT_PROTOCOL_NAMED("GoogleImaAd_Objc")
 /// ID3 Text Track cue. Content type is [String:String].
 SWIFT_PROTOCOL_NAMED("Id3Cue_Objc")
 @protocol THEOplayerId3Cue <THEOplayerTextTrackCue>
+@end
+
+enum THEOplayerIntegrationType : NSInteger;
+
+SWIFT_PROTOCOL_NAMED("Integration")
+@protocol THEOplayerIntegration
+@property (nonatomic, readonly) enum THEOplayerIntegrationType type;
+@end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerIntegrationType, "IntegrationType", open) {
+  THEOplayerIntegrationTypeADS = 1,
+  THEOplayerIntegrationTypeANALYTICS = 2,
+  THEOplayerIntegrationTypeCAST = 3,
+};
+
+
+SWIFT_PROTOCOL_NAMED("InternalCastIntegration_Objc")
+@protocol THEOplayerInternalCastIntegration
+/// Whether THEOplayer is casting to a chromecast and has control over the current chromecast session.
+@property (nonatomic, readonly) BOOL casting;
+/// The last error thrown by chromecast.
+@property (nonatomic, readonly, strong) THEOplayerCastError * _Nullable error;
+/// The name of the chromecast device that THEOplayer is casting to.
+/// remark:
+///
+/// This value is nil if THEOplayer is not controlling the current chromecast session.
+@property (nonatomic, readonly, copy) NSString * _Nullable receiverName;
+/// Indicates the state of the casting process.
+@property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+/// The ChromecastConnectionDelegate to be used when the Chromecast connection changes.
+- (void)setConnectionDelegate:(id <THEOplayerChromecastConnectionDelegate> _Nullable)delegate;
+/// Start casting to the chromecast. A dialog will prompt to choose the device.
+- (void)start;
+/// Stop casting to the chromecast.
+- (void)stop;
+/// Join an active chromecast session.
+- (void)join;
+/// Leave an active chromecast session without affecting other devices.
+- (void)leave;
+/// Adds the given event listener of the given <code>ChromecastEventType</code>.
+/// remark:
+///
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type ChromecastEventType of the added event listener.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// EventListener that can be removed.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerChromeCastEvent * _Nonnull))listener;
+/// Removes the given event listener of the given <code>ChromecastEventType</code>.
+/// \param type ChromecastEventType of the removed event listener.
+///
+/// \param listener EventListener object that has been return on addEventListener.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
 
@@ -9744,6 +9925,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerOmidFriendlyObstructionPurpose, "O
 /// Fired when <code>PlayerEventTypes.PAUSE</code> occurs for the <code>THEOplayer</code>.
 SWIFT_CLASS_NAMED("PauseEvent")
 @interface THEOplayerPauseEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PauseEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -9867,6 +10050,8 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 /// </ul>
 SWIFT_CLASS_NAMED("PlayEvent")
 @interface THEOplayerPlayEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PlayEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// Indicates the state of the casting processs.
@@ -9973,6 +10158,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// </ul>
 SWIFT_CLASS_NAMED("PlayingEvent")
 @interface THEOplayerPlayingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'PlayingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// The preload strategy of the player. The strategy specifies what data to load on source change.
@@ -10026,6 +10213,8 @@ SWIFT_CLASS_NAMED("PresentationModeChangeEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("ProgressEvent")
 @interface THEOplayerProgressEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'ProgressEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -10273,6 +10462,8 @@ SWIFT_PROTOCOL_NAMED("ScheduledAd_Objc")
 /// </ul>
 SWIFT_CLASS_NAMED("SeekedEvent")
 @interface THEOplayerSeekedEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SeekedEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -10286,6 +10477,8 @@ SWIFT_CLASS_NAMED("SeekedEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("SeekingEvent")
 @interface THEOplayerSeekingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SeekingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -10305,6 +10498,8 @@ SWIFT_CLASS_NAMED("SourceChangeEvent")
 @interface THEOplayerSourceChangeEvent : THEOplayerPlayerEvent
 /// The new <code>SourceDescription</code> that was set.
 @property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
+/// :nodoc:
+- (nonnull instancetype)initWithDate:(NSDate * _Nonnull)date source:(THEOplayerSourceDescription * _Nullable)source OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'SourceChangeEvent.init(date:source:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 @class THEOplayerTypedSource;
@@ -10459,6 +10654,7 @@ SWIFT_CLASS_NAMED("StateChangeEvent")
 @interface THEOplayerStateChangeEvent : THEOplayerChromeCastEvent
 /// The new cast state.
 @property (nonatomic, readonly) enum THEOplayerPlayerCastState state;
+- (nonnull instancetype)initWithState:(enum THEOplayerPlayerCastState)state date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'StateChangeEvent.init(state:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 /// The different stereo modes for the VR configuration.
@@ -10558,6 +10754,8 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerTHEOErrorCode, "THEOErrorCode", open
   THEOErrorCodeLICENSE_INVALID_SOURCE SWIFT_COMPILE_NAME("LICENSE_INVALID_SOURCE") = 2002,
 /// The license has expired.
   THEOErrorCodeLICENSE_EXPIRED SWIFT_COMPILE_NAME("LICENSE_EXPIRED") = 2003,
+/// The provided license does not contain the necessary feature.
+  THEOErrorCodeLICENSE_INVALID_FEATURE SWIFT_COMPILE_NAME("LICENSE_INVALID_FEATURE") = 2004,
 /// The source provided is not valid.
   THEOErrorCodeSOURCE_INVALID SWIFT_COMPILE_NAME("SOURCE_INVALID") = 3000,
 /// The provided source is not supported.
@@ -11006,16 +11204,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The Cast object helps you configure and control casting to external devices with THEOplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
 
 @class UIGestureRecognizer;
 
@@ -11032,6 +11220,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The Cast object helps you configure and control casting to external devices with THEOplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerCast> _Nullable cast;
 @end
 
 
@@ -11324,6 +11524,12 @@ SWIFT_CLASS_NAMED("TimeRange")
 @property (nonatomic, readonly) double start;
 /// The end time of the range.
 @property (nonatomic, readonly) double end;
+/// Constructs a TimeRange object.
+/// \param start start time, in seconds.
+///
+/// \param end end time, in seconds.
+///
+- (nonnull instancetype)initWithStart:(double)start end:(double)end OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -11345,6 +11551,8 @@ SWIFT_CLASS_NAMED("TimeUpdateEvent")
 @interface THEOplayerTimeUpdateEvent : THEOplayerCurrentTimeEvent
 /// The current program date time of the player.
 @property (nonatomic, readonly, copy) NSDate * _Nullable currentProgramDateTime;
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime currentProgramDateTime:(NSDate * _Nullable)currentProgramDateTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'TimeUpdateEvent.init(currentTime:currentProgramDateTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -11692,6 +11900,8 @@ SWIFT_CLASS_NAMED("VolumeChangeEvent")
 @interface THEOplayerVolumeChangeEvent : THEOplayerCurrentTimeEvent
 /// The new value, between 0 and 1, of the device’s volume.
 @property (nonatomic, readonly) float volume;
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date volume:(float)volume OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'VolumeChangeEvent.init(currentTime:date:volume:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 
@@ -11742,6 +11952,8 @@ SWIFT_CLASS_NAMED("VudrmDRMConfiguration")
 /// </ul>
 SWIFT_CLASS_NAMED("WaitingEvent")
 @interface THEOplayerWaitingEvent : THEOplayerCurrentTimeEvent
+/// :nodoc:
+- (nonnull instancetype)initWithCurrentTime:(double)currentTime date:(NSDate * _Nonnull)date OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_OBJC("Swift initializer 'WaitingEvent.init(currentTime:date:)' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 @end
 
 

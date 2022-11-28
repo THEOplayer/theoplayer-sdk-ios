@@ -494,6 +494,9 @@ public struct TextTrackCueEventTypes {
   @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
 }
 @objc(THEOplayerUIConfiguration) public class UIConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var language: Swift.String {
+    get
+  }
   @objc public init(language: Swift.String)
   @objc deinit
   @objc override dynamic public init()
@@ -646,27 +649,42 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBeginEvent) public class AdBeginEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdEndEvent) public class AdEndEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdFirstQuartileEvent) public class AdFirstQuartileEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdMidPointEvent) public class AdMidpointEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdThirdQuartileEvent) public class AdThirdQuartileEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdLoadedEvent) public class AdLoadedEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdImpressionEvent) public class AdImpressionEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerAdErrorEvent) public class AdErrorEvent : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAdSkipEvent) public class AdSkipEvent : THEOplayerSDK.AdEvent {
+  public var playedPercentage: Swift.Double?
+  @available(swift, obsoleted: 1.0)
+  @objc(playedPercentage) public var playedPercentage_Objc: Foundation.NSNumber? {
+    @objc get
+  }
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, playedPercentage: Swift.Double?)
+  @objc deinit
+}
+@objc(THEOplayerAdErrorEvent) public class AdErrorEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
     get
   }
@@ -682,6 +700,7 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc public var error: Swift.String? {
     get
   }
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, error: Swift.String?)
   @objc deinit
   @objc override dynamic public init()
 }
@@ -702,9 +721,11 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakBeginEvent) public class AdBreakBeginEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.AdBreak?)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakEndEvent) public class AdBreakEndEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.AdBreak?)
   @objc deinit
 }
 public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
@@ -1280,6 +1301,7 @@ public struct AdsEventTypes {
   public static var AD_THIRD_QUARTILE: THEOplayerSDK.EventType<THEOplayerSDK.AdThirdQuartileEvent>
   public static var AD_LOADED: THEOplayerSDK.EventType<THEOplayerSDK.AdLoadedEvent>
   public static var AD_IMPRESSION: THEOplayerSDK.EventType<THEOplayerSDK.AdImpressionEvent>
+  public static var AD_SKIP: THEOplayerSDK.EventType<THEOplayerSDK.AdSkipEvent>
   public static var AD_BREAK_BEGIN: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakBeginEvent>
   public static var AD_BREAK_END: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakEndEvent>
 }
@@ -1293,6 +1315,7 @@ public struct AdsEventTypes {
   @objc public static let adthirdquartile: Swift.String
   @objc public static let adloaded: Swift.String
   @objc public static let adimpression: Swift.String
+  @objc public static let adskip: Swift.String
   @objc public static let adbreakbegin: Swift.String
   @objc public static let adbreakend: Swift.String
   @objc deinit
@@ -1624,6 +1647,30 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
 }
 @_inheritsConvenienceInitializers @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var chromeless: Swift.Bool {
+    get
+  }
+  public var hlsDateRange: Swift.Bool? {
+    get
+  }
+  @objc public var ads: THEOplayerSDK.AdsConfiguration? {
+    get
+  }
+  @objc public var verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? {
+    get
+  }
+  @objc public var license: Swift.String? {
+    get
+  }
+  @objc public var licenseUrl: Swift.String? {
+    get
+  }
+  @objc public var pip: THEOplayerSDK.PiPConfiguration? {
+    get
+  }
+  @objc public var ui: THEOplayerSDK.UIConfiguration? {
+    get
+  }
   public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?)

@@ -544,6 +544,14 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdPreloadType, "AdPreloadType", op
 };
 
 
+/// Thrown to indicate that the ad was skipped.
+SWIFT_CLASS_NAMED("AdSkipEvent")
+@interface THEOplayerAdSkipEvent : THEOplayerAdEventProtocol
+/// The percentage of the ad that was played when skipped.
+@property (nonatomic, readonly, strong) NSNumber * _Nullable playedPercentage;
+@end
+
+
 /// Thrown to indicate that the third quartile of an ad was watched.
 /// <ul>
 ///   <li>
@@ -679,6 +687,26 @@ SWIFT_CLASS_NAMED("AddTrackEvent")
 /// The advertisement configuration of the player.
 SWIFT_CLASS_NAMED("AdsConfiguration")
 @interface THEOplayerAdsConfiguration : NSObject
+/// Whether an advertisement duration countdown will be shown in the UI.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Defaults to true.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) BOOL showCountdown SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.showCountdown' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The preload type of the ad, whether media files of mid- and postrolls are preloaded.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Defaults to MIDROLL_AND_POSTROLL.
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) enum THEOplayerAdPreloadType preload SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.preload' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The configuration of the Google Interactive Media Ads.
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -719,6 +747,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Fired when <code>AdImpressionEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adimpression;)
 + (NSString * _Nonnull)adimpression SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdSkipEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adskip;)
++ (NSString * _Nonnull)adskip SWIFT_WARN_UNUSED_RESULT;
 /// Fired when <code>AdBreakBeginEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakbegin;)
 + (NSString * _Nonnull)adbreakbegin SWIFT_WARN_UNUSED_RESULT;
@@ -3224,6 +3255,36 @@ SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
 @end
 
 
+/// Represents information regarding content with dynamically inserted advertisements.
+SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
+@protocol THEOplayerGoogleDAI
+/// Converts stream time (including ads) to content time (excluding ads).
+/// For livestreams no conversion is done and the stream time parameter is returned.
+/// \param streamTime The point in time of your stream including ads.
+///
+///
+/// returns:
+/// The point in time of your content without ads.
+- (double)contentTimeFromStreamTime:(double)streamTime SWIFT_WARN_UNUSED_RESULT;
+/// Converts content time (excluding ads) to stream time (including ads)
+/// For livestreams no conversion is done and the content time parameter is returned.
+/// \param contentTime The point in time of your content without ads.
+///
+///
+/// returns:
+/// The point in time of your stream including ads.
+- (double)streamTimeFromContentTime:(double)contentTime SWIFT_WARN_UNUSED_RESULT;
+/// Requests whether snapback is enabled.
+/// \param completionHandler A closure to invoke when the operation completes or fails.
+///
+- (void)requestSnapBack:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
+/// Enable/disable snapback.
+/// \param completionHandler An optional closure to invoke when the operation completes or fails.
+///
+- (void)setSnapBack:(BOOL)newValue completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completionHandler;
+@end
+
+
 /// Describes the configuration of the Google Interactive Media Ads.
 SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
@@ -3792,6 +3853,12 @@ enum THEOplayerOmidFriendlyObstructionPurpose : NSInteger;
 /// Represents a friendly obstruction instance for OMID.
 SWIFT_CLASS_NAMED("OmidFriendlyObstruction")
 @interface THEOplayerOmidFriendlyObstruction : NSObject
+/// The view element of the friendly obstruction.
+@property (nonatomic, readonly, strong) UIView * _Nonnull view SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.view' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The purpose of the friendly obstruction.
+@property (nonatomic, readonly) enum THEOplayerOmidFriendlyObstructionPurpose purpose SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.purpose' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// A text to explain the reason behind adding the view as a friendly obstruction.
+@property (nonatomic, readonly, copy) NSString * _Nullable detailedReason SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.detailedReason' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Constructs an <code>OmidFriendlyObstruction</code>.
 /// \param view The view element of the friendly obstruction.
 ///
@@ -5102,6 +5169,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5117,12 +5190,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 
@@ -5170,12 +5237,45 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <THEOplayerCache> _
 + (void)setCache:(id <THEOplayerCache> _Nonnull)value;
 @end
 
-@class THEOplayerUIConfiguration;
 @class THEOplayerVerizonMediaConfiguration;
+@class THEOplayerUIConfiguration;
 
 /// The configuration for a THEOplayer instance.
 SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 @interface THEOplayerConfiguration : NSObject
+/// Whether the chromeless player is used.
+/// remark:
+///
+/// By default the player uses the <code>chromefull</code> version with control buttons etc.
+@property (nonatomic, readonly) BOOL chromeless SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.chromeless' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The Advertisement configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerAdsConfiguration * _Nullable ads SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.ads' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The pre-integrated Verizon Media services that can be used with the player.
+@property (nonatomic, readonly, strong) THEOplayerVerizonMediaConfiguration * _Nullable verizonMedia SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.verizonMedia' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The license for the player.
+@property (nonatomic, readonly, copy) NSString * _Nullable license SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.license' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The url to fetch the license for the player.
+@property (nonatomic, readonly, copy) NSString * _Nullable licenseUrl SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.licenseUrl' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The picture in picture configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerPiPConfiguration * _Nullable pip SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.pip' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The UI configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerUIConfiguration * _Nullable ui SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.ui' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The list of paths of optional css files to be loaded.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull cssPaths SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.cssPaths' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The list of paths of optional javascript files to be loaded.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull jsPaths SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.jsPaths' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The list of paths to javascript files which are loaded before the player is constructed.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull jsPathsPre SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.jsPathsPre' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// Whether the default THEOplayer styling file is enabled.
+@property (nonatomic, readonly) BOOL defaultCSS SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.defaultCSS' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// Whether picture in pitcture is enabled  for this player.
+@property (nonatomic, readonly) BOOL pictureInPicture SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.pictureInPicture' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The list of pre-integrated analytics services of the player.
+/// remark:
+/// For all possibilities, see <code>AnalyticsIntegration</code>.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull analytics SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.analytics' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The cast configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerCastConfiguration * _Nullable cast SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.cast' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Constructs a THEOplayerConfiguration.
 /// \param chromeless Whether the chromeless player, without UI, is used.
 ///
@@ -5561,6 +5661,8 @@ SWIFT_CLASS_NAMED("TypedSource")
 /// Only configuring the localization for Google IMA is supported.
 SWIFT_CLASS_NAMED("UIConfiguration")
 @interface THEOplayerUIConfiguration : NSObject
+/// The language code string to be used for localizing Google IMA.
+@property (nonatomic, readonly, copy) NSString * _Nonnull language SWIFT_DEPRECATED_OBJC("Swift property 'UIConfiguration.language' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Construct a UIConfiguration object.
 /// remark:
 /// The values passed should be in a ISO-3166 Alpha-2 or ccTLD format.

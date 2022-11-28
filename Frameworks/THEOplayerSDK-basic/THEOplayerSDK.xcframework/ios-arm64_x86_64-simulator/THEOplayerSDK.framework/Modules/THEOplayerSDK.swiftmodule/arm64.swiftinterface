@@ -282,6 +282,9 @@ extension ErrorCode {
   }
 }
 @objc(THEOplayerUIConfiguration) public class UIConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var language: Swift.String {
+    get
+  }
   @objc public init(language: Swift.String)
   @objc deinit
   @objc override dynamic public init()
@@ -480,6 +483,15 @@ public typealias _TextTrackList = THEOplayerSDK.TextTrackList & THEOplayerSDK.Te
   @objc func removeFriendlyObstructions()
 }
 @objc(THEOplayerOmidFriendlyObstruction) public class OmidFriendlyObstruction : ObjectiveC.NSObject {
+  @objc public var view: UIKit.UIView {
+    get
+  }
+  @objc public var purpose: THEOplayerSDK.OmidFriendlyObstructionPurpose {
+    get
+  }
+  @objc public var detailedReason: Swift.String? {
+    get
+  }
   @objc public init(view: UIKit.UIView, purpose: THEOplayerSDK.OmidFriendlyObstructionPurpose, detailedReason: Swift.String?)
   @objc deinit
   @objc override dynamic public init()
@@ -800,27 +812,42 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBeginEvent) public class AdBeginEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdEndEvent) public class AdEndEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdFirstQuartileEvent) public class AdFirstQuartileEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdMidPointEvent) public class AdMidpointEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdThirdQuartileEvent) public class AdThirdQuartileEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, currentTime: Swift.Double? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdLoadedEvent) public class AdLoadedEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdImpressionEvent) public class AdImpressionEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc(THEOplayerAdErrorEvent) public class AdErrorEvent : ObjectiveC.NSObject {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAdSkipEvent) public class AdSkipEvent : THEOplayerSDK.AdEvent {
+  public var playedPercentage: Swift.Double?
+  @available(swift, obsoleted: 1.0)
+  @objc(playedPercentage) public var playedPercentage_Objc: Foundation.NSNumber? {
+    @objc get
+  }
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, playedPercentage: Swift.Double?)
+  @objc deinit
+}
+@objc(THEOplayerAdErrorEvent) public class AdErrorEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
     get
   }
@@ -836,6 +863,7 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc public var error: Swift.String? {
     get
   }
+  public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, error: Swift.String?)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -856,9 +884,11 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakBeginEvent) public class AdBreakBeginEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.AdBreak?)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakEndEvent) public class AdBreakEndEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: THEOplayerSDK.AdBreak?)
   @objc deinit
 }
 @objc(THEOplayerSkippedAdStrategy) public enum SkippedAdStrategy : Swift.Int {
@@ -1822,6 +1852,18 @@ extension StreamType : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+public protocol GoogleDAI {
+  func contentTime(from streamTime: Swift.Double) -> Swift.Double
+  func streamTime(from contentTime: Swift.Double) -> Swift.Double
+  func requestSnapBack(completionHandler: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
+  func setSnapBack(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool?, Swift.Error?) -> Swift.Void)?)
+}
+@objc(THEOplayerGoogleDAI) public protocol GoogleDAI_Objc {
+  @objc(contentTimeFromStreamTime:) func contentTime(from streamTime: Swift.Double) -> Swift.Double
+  @objc(streamTimeFromContentTime:) func streamTime(from contentTime: Swift.Double) -> Swift.Double
+  @objc(requestSnapBack:) func requestSnapBack_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc(setSnapBack:completion:) func setSnapBack_Objc(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool, Swift.Error?) -> Swift.Void)?)
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerPlayerEvent) public class PlayerEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
   @objc public var type: Swift.String {
     get
@@ -2062,6 +2104,7 @@ public struct AdsEventTypes {
   public static var AD_THIRD_QUARTILE: THEOplayerSDK.EventType<THEOplayerSDK.AdThirdQuartileEvent>
   public static var AD_LOADED: THEOplayerSDK.EventType<THEOplayerSDK.AdLoadedEvent>
   public static var AD_IMPRESSION: THEOplayerSDK.EventType<THEOplayerSDK.AdImpressionEvent>
+  public static var AD_SKIP: THEOplayerSDK.EventType<THEOplayerSDK.AdSkipEvent>
   public static var AD_BREAK_BEGIN: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakBeginEvent>
   public static var AD_BREAK_END: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakEndEvent>
 }
@@ -2075,6 +2118,7 @@ public struct AdsEventTypes {
   @objc public static let adthirdquartile: Swift.String
   @objc public static let adloaded: Swift.String
   @objc public static let adimpression: Swift.String
+  @objc public static let adskip: Swift.String
   @objc public static let adbreakbegin: Swift.String
   @objc public static let adbreakend: Swift.String
   @objc deinit
@@ -2139,6 +2183,15 @@ public struct AdsEventTypes {
   public func encode(to encoder: Swift.Encoder) throws
 }
 @objc(THEOplayerAdsConfiguration) public class AdsConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var showCountdown: Swift.Bool {
+    get
+  }
+  @objc public var preload: THEOplayerSDK.AdPreloadType {
+    get
+  }
+  @objc public var googleImaConfiguration: THEOplayerSDK.GoogleIMAConfiguration {
+    get
+  }
   @objc public init(showCountdown: Swift.Bool, preload: THEOplayerSDK.AdPreloadType, googleImaConfiguration: THEOplayerSDK.GoogleIMAConfiguration? = nil)
   @objc deinit
   @objc override dynamic public init()
@@ -2504,6 +2557,54 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   public func encode(to encoder: Swift.Encoder) throws
 }
 @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var chromeless: Swift.Bool {
+    get
+  }
+  public var hlsDateRange: Swift.Bool? {
+    get
+  }
+  @objc public var ads: THEOplayerSDK.AdsConfiguration? {
+    get
+  }
+  @objc public var verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? {
+    get
+  }
+  @objc public var license: Swift.String? {
+    get
+  }
+  @objc public var licenseUrl: Swift.String? {
+    get
+  }
+  @objc public var pip: THEOplayerSDK.PiPConfiguration? {
+    get
+  }
+  @objc public var ui: THEOplayerSDK.UIConfiguration? {
+    get
+  }
+  @objc public var cssPaths: [Swift.String] {
+    get
+  }
+  @objc public var jsPaths: [Swift.String] {
+    get
+  }
+  @objc public var jsPathsPre: [Swift.String] {
+    get
+  }
+  @objc public var defaultCSS: Swift.Bool {
+    get
+  }
+  @objc public var pictureInPicture: Swift.Bool {
+    get
+  }
+  @objc public var analytics: [THEOplayerSDK.AnalyticsDescription] {
+    get
+  }
+  @objc public var cast: THEOplayerSDK.CastConfiguration? {
+    get
+  }
+  public var uid: Swift.Int? {
+    get
+  }
   public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration? = nil, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, defaultCSS: Swift.Bool, cssPaths: [Swift.String], jsPaths: [Swift.String], jsPathsPre: [Swift.String], analytics: [THEOplayerSDK.AnalyticsDescription], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration?, ui: THEOplayerSDK.UIConfiguration?, cast: THEOplayerSDK.CastConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?)

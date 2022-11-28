@@ -529,6 +529,14 @@ SWIFT_CLASS_NAMED("AdMidpointEvent")
 @end
 
 
+/// Thrown to indicate that the ad was skipped.
+SWIFT_CLASS_NAMED("AdSkipEvent")
+@interface THEOplayerAdSkipEvent : THEOplayerAdEventProtocol
+/// The percentage of the ad that was played when skipped.
+@property (nonatomic, readonly, strong) NSNumber * _Nullable playedPercentage;
+@end
+
+
 /// Thrown to indicate that the third quartile of an ad was watched.
 /// <ul>
 ///   <li>
@@ -688,6 +696,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Fired when <code>AdImpressionEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adimpression;)
 + (NSString * _Nonnull)adimpression SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdSkipEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adskip;)
++ (NSString * _Nonnull)adskip SWIFT_WARN_UNUSED_RESULT;
 /// Fired when <code>AdBreakBeginEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakbegin;)
 + (NSString * _Nonnull)adbreakbegin SWIFT_WARN_UNUSED_RESULT;
@@ -3544,7 +3555,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
-
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// The Ads API that contains information about the current and scheduled advertisements.
 @property (nonatomic, readonly, strong) id <THEOplayerAds> _Nonnull ads;
@@ -3556,6 +3566,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// The configuration for a THEOplayer instance.
 SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 @interface THEOplayerConfiguration : NSObject
+/// Whether the chromeless player is used.
+/// remark:
+///
+/// By default the player uses the <code>chromefull</code> version with control buttons etc.
+@property (nonatomic, readonly) BOOL chromeless SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.chromeless' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The Advertisement configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerAdsConfiguration * _Nullable ads SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.ads' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The pre-integrated Verizon Media services that can be used with the player.
+@property (nonatomic, readonly, strong) THEOplayerVerizonMediaConfiguration * _Nullable verizonMedia SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.verizonMedia' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The license for the player.
+@property (nonatomic, readonly, copy) NSString * _Nullable license SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.license' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The url to fetch the license for the player.
+@property (nonatomic, readonly, copy) NSString * _Nullable licenseUrl SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.licenseUrl' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The picture in picture configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerPiPConfiguration * _Nullable pip SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.pip' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The UI configuration of the player.
+@property (nonatomic, readonly, strong) THEOplayerUIConfiguration * _Nullable ui SWIFT_DEPRECATED_OBJC("Swift property 'THEOplayerConfiguration.ui' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Constructs a THEOplayerConfiguration.
 /// \param chromeless Whether the chromeless player, without UI, is used.
 ///
@@ -3901,6 +3928,8 @@ SWIFT_CLASS_NAMED("TypedSource")
 /// Only configuring the localization for Google IMA is supported.
 SWIFT_CLASS_NAMED("UIConfiguration")
 @interface THEOplayerUIConfiguration : NSObject
+/// The language code string to be used for localizing Google IMA.
+@property (nonatomic, readonly, copy) NSString * _Nonnull language SWIFT_DEPRECATED_OBJC("Swift property 'UIConfiguration.language' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// Construct a UIConfiguration object.
 /// remark:
 /// The values passed should be in a ISO-3166 Alpha-2 or ccTLD format.

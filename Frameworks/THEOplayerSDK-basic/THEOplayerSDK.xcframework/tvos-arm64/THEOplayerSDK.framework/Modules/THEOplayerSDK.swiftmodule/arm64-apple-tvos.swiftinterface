@@ -258,6 +258,7 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
 }
 @objc(THEOplayerAdIntegrationKind) public enum AdIntegrationKind : Swift.Int {
   @objc(THEOplayerAdIntegrationKindDEFAULT_KIND) case defaultKind = 1
+  @objc(THEOplayerAdIntegrationKindGOOGLE_IMA) case google_ima = 4
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -1368,6 +1369,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   func skip()
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
+  var omid: THEOplayerSDK.Omid { get }
 }
 @objc(THEOplayerAds) public protocol Ads_Objc {
   @objc(requestPlaying:) func requestPlaying_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
@@ -1380,6 +1382,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   @objc @discardableResult
   func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.EventProtocol) -> ()) -> THEOplayerSDK.EventListener
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
+  @objc var omid: THEOplayerSDK.Omid { get }
 }
 public protocol AdDescription {
   var integration: THEOplayerSDK.AdIntegration? { get }
@@ -1628,6 +1631,22 @@ extension PresentationMode {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
   @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+}
+@objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, Swift.Codable {
+  public var integration: THEOplayerSDK.AdIntegration?
+  @objc(integration) public var integration_Objc: THEOplayerSDK.AdIntegration {
+    @objc get
+    @objc set
+  }
+  @objc public var src: Foundation.URL
+  @objc public var timeOffset: Swift.String?
+  @objc public init(src: Swift.String, timeOffset: Swift.String? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(src: Swift.String)
+  required convenience public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+  @objc override dynamic public init()
 }
 public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   var kind: Swift.String { get }
@@ -2063,6 +2082,24 @@ public protocol TextTrack : THEOplayerSDK.Track {
 }
 @objc(THEOplayerAVPlayerError) public protocol AVPlayerError : THEOplayerSDK.THEOError {
 }
+@objc(THEOplayerOmid) public protocol Omid {
+  @objc func addFriendlyObstruction(friendlyObstruction: THEOplayerSDK.OmidFriendlyObstruction)
+  @objc func removeFriendlyObstructions()
+}
+@objc(THEOplayerOmidFriendlyObstruction) public class OmidFriendlyObstruction : ObjectiveC.NSObject {
+  @objc public var view: UIKit.UIView {
+    get
+  }
+  @objc public var purpose: THEOplayerSDK.OmidFriendlyObstructionPurpose {
+    get
+  }
+  @objc public var detailedReason: Swift.String? {
+    get
+  }
+  @objc public init(view: UIKit.UIView, purpose: THEOplayerSDK.OmidFriendlyObstructionPurpose, detailedReason: Swift.String?)
+  @objc deinit
+  @objc override dynamic public init()
+}
 public protocol MediaTrack : THEOplayerSDK.Track {
   var enabled: Swift.Bool { get set }
 }
@@ -2148,6 +2185,17 @@ extension SourceIntegration : Swift.Codable {
   convenience required public init(from decoder: Swift.Decoder) throws
   @objc override dynamic public init()
   @objc deinit
+}
+@objc(THEOplayerOmidFriendlyObstructionPurpose) public enum OmidFriendlyObstructionPurpose : Swift.Int {
+  @objc(THEOplayerOmidFriendlyObstructionPurposeCLOSE_AD) case closeAd = 1
+  @objc(THEOplayerOmidFriendlyObstructionPurposeMEDIA_CONTROLS) case mediaControls = 2
+  @objc(THEOplayerOmidFriendlyObstructionPurposeNOT_VISIBLE) case notVisible = 3
+  @objc(THEOplayerOmidFriendlyObstructionPurposeOTHER) case other = 4
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerVimondDRMConfiguration) public class VimondDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
@@ -2404,12 +2452,17 @@ extension THEOplayerSDK.PresentationMode : Swift.RawRepresentable {}
 extension THEOplayerSDK.ReadyState : Swift.Equatable {}
 extension THEOplayerSDK.ReadyState : Swift.Hashable {}
 extension THEOplayerSDK.ReadyState : Swift.RawRepresentable {}
+extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription {}
+extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription_Objc {}
 extension THEOplayerSDK.CrossOrigin : Swift.Equatable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Hashable {}
 extension THEOplayerSDK.CrossOrigin : Swift.RawRepresentable {}
 extension THEOplayerSDK.SourceIntegration : Swift.Equatable {}
 extension THEOplayerSDK.SourceIntegration : Swift.Hashable {}
 extension THEOplayerSDK.SourceIntegration : Swift.RawRepresentable {}
+extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Equatable {}
+extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Hashable {}
+extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.RawRepresentable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackMode : Swift.RawRepresentable {}

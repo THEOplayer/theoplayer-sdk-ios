@@ -511,6 +511,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationK
   THEOplayerAdIntegrationKindTHEO SWIFT_COMPILE_NAME("theo") = 2,
 /// The ad is of integration type FreeWheel.
   THEOplayerAdIntegrationKindFREEWHEEL SWIFT_COMPILE_NAME("freewheel") = 3,
+/// The ad is of integration type Google IMA.
+  THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
 };
 
 
@@ -708,7 +710,17 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.preload' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint") SWIFT_DEPRECATED_MSG("", "googleIma");
+/// The configuration of the Google Interactive Media Ads.
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleIma SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleIma' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// Constructs an AdsConfiguration object.
+/// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
+///
+/// \param preload The preload type of the ad, whether media files of mid- and postrolls are preloaded, defaults to MIDROLL_AND_POSTROLL.
+///
+/// \param googleIma The configuration of the Google Interactive Media Ads, defaults to nil.
+///
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleIma:(THEOplayerGoogleIMAConfiguration * _Nullable)googleIma OBJC_DESIGNATED_INITIALIZER;
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -716,7 +728,7 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 ///
 /// \param googleImaConfiguration The configuration of the Google Interactive Media Ads, defaults to nil.
 ///
-- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleImaConfiguration:(THEOplayerGoogleIMAConfiguration * _Nullable)googleImaConfiguration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleImaConfiguration:(THEOplayerGoogleIMAConfiguration * _Nullable)googleImaConfiguration OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This init method will be removed in future versions because of a deprecated property `googleImaConfiguration`. Please use the init method with `googleIma` parameter instead.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -3300,6 +3312,49 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 - (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER;
 /// Creates a GoogleIMAConfiguration object.
 - (nonnull instancetype)init;
+@end
+
+
+/// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
+SWIFT_CLASS_NAMED("GoogleImaAdDescription")
+@interface THEOplayerGoogleImaAdDescription : NSObject <THEOplayerAdDescription>
+/// The ad Integration.
+@property (nonatomic) enum THEOplayerAdIntegration integration;
+/// Represents the source of the ad. The player will download the content available at the URL and will schedule the specified advertisement(s).
+/// remark:
+/// The Google IMA ad integration supports VAST, VMAP and VPAID files.
+@property (nonatomic, copy) NSURL * _Nonnull src;
+/// Specifies the time when an ad should be played in the content video.
+/// The following offset formats are supported:
+/// important:
+/// Only use this property for VAST-files. THEOplayer will ignore this value for VMAP-files, because they already have their own offset.
+/// <ul>
+///   <li>
+///     Timecode in <code>HH:MM:SS.mmm</code>: e.g. <code>"01:32:54.78"</code>
+///   </li>
+///   <li>
+///     Total number of seconds: e.g. <code>"5574.78"</code>
+///   </li>
+///   <li>
+///     Markers: <code>"start"</code>, <code>"end"</code>
+///   </li>
+///   <li>
+///     Percentages: e.g. <code>"10%"</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable timeOffset;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+/// \param timeOffset the optional time offset, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @protocol THEOplayerUniversalAdId;
@@ -6714,6 +6769,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationK
   THEOplayerAdIntegrationKindTHEO SWIFT_COMPILE_NAME("theo") = 2,
 /// The ad is of integration type FreeWheel.
   THEOplayerAdIntegrationKindFREEWHEEL SWIFT_COMPILE_NAME("freewheel") = 3,
+/// The ad is of integration type Google IMA.
+  THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
 };
 
 
@@ -6911,7 +6968,17 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.preload' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint") SWIFT_DEPRECATED_MSG("", "googleIma");
+/// The configuration of the Google Interactive Media Ads.
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleIma SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleIma' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// Constructs an AdsConfiguration object.
+/// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
+///
+/// \param preload The preload type of the ad, whether media files of mid- and postrolls are preloaded, defaults to MIDROLL_AND_POSTROLL.
+///
+/// \param googleIma The configuration of the Google Interactive Media Ads, defaults to nil.
+///
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleIma:(THEOplayerGoogleIMAConfiguration * _Nullable)googleIma OBJC_DESIGNATED_INITIALIZER;
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -6919,7 +6986,7 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 ///
 /// \param googleImaConfiguration The configuration of the Google Interactive Media Ads, defaults to nil.
 ///
-- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleImaConfiguration:(THEOplayerGoogleIMAConfiguration * _Nullable)googleImaConfiguration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleImaConfiguration:(THEOplayerGoogleIMAConfiguration * _Nullable)googleImaConfiguration OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This init method will be removed in future versions because of a deprecated property `googleImaConfiguration`. Please use the init method with `googleIma` parameter instead.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -9503,6 +9570,49 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 - (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER;
 /// Creates a GoogleIMAConfiguration object.
 - (nonnull instancetype)init;
+@end
+
+
+/// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
+SWIFT_CLASS_NAMED("GoogleImaAdDescription")
+@interface THEOplayerGoogleImaAdDescription : NSObject <THEOplayerAdDescription>
+/// The ad Integration.
+@property (nonatomic) enum THEOplayerAdIntegration integration;
+/// Represents the source of the ad. The player will download the content available at the URL and will schedule the specified advertisement(s).
+/// remark:
+/// The Google IMA ad integration supports VAST, VMAP and VPAID files.
+@property (nonatomic, copy) NSURL * _Nonnull src;
+/// Specifies the time when an ad should be played in the content video.
+/// The following offset formats are supported:
+/// important:
+/// Only use this property for VAST-files. THEOplayer will ignore this value for VMAP-files, because they already have their own offset.
+/// <ul>
+///   <li>
+///     Timecode in <code>HH:MM:SS.mmm</code>: e.g. <code>"01:32:54.78"</code>
+///   </li>
+///   <li>
+///     Total number of seconds: e.g. <code>"5574.78"</code>
+///   </li>
+///   <li>
+///     Markers: <code>"start"</code>, <code>"end"</code>
+///   </li>
+///   <li>
+///     Percentages: e.g. <code>"10%"</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable timeOffset;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+/// \param timeOffset the optional time offset, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @protocol THEOplayerUniversalAdId;

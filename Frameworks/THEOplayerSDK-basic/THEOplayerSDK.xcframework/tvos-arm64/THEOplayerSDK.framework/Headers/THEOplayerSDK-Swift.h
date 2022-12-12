@@ -504,6 +504,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegration, "AdIntegration", op
 typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationKind", open) {
 /// The ad has no specified integration type.
   THEOplayerAdIntegrationKindDEFAULT_KIND SWIFT_COMPILE_NAME("defaultKind") = 1,
+/// The ad is of integration type Google IMA.
+  THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
 };
 
 
@@ -710,6 +712,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 @protocol THEOplayerScheduledAd;
 @protocol THEOplayerEventListener;
+@protocol THEOplayerOmid;
 
 /// The Ads object helps you configure and control ads within THEOplayer.
 SWIFT_PROTOCOL_NAMED("Ads_Objc")
@@ -787,6 +790,10 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// \param listener EventListener object that has been return on addEventListener.
 ///
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+/// The Open Measurement API.
+/// remark:
+/// Only available if the Google DAI Feature is enabled.
+@property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
 @end
 
 
@@ -2147,6 +2154,49 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
 - (nonnull instancetype)init;
 @end
 
+
+/// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
+SWIFT_CLASS_NAMED("GoogleImaAdDescription")
+@interface THEOplayerGoogleImaAdDescription : NSObject <THEOplayerAdDescription>
+/// The ad Integration.
+@property (nonatomic) enum THEOplayerAdIntegration integration;
+/// Represents the source of the ad. The player will download the content available at the URL and will schedule the specified advertisement(s).
+/// remark:
+/// The Google IMA ad integration supports VAST, VMAP and VPAID files.
+@property (nonatomic, copy) NSURL * _Nonnull src;
+/// Specifies the time when an ad should be played in the content video.
+/// The following offset formats are supported:
+/// important:
+/// Only use this property for VAST-files. THEOplayer will ignore this value for VMAP-files, because they already have their own offset.
+/// <ul>
+///   <li>
+///     Timecode in <code>HH:MM:SS.mmm</code>: e.g. <code>"01:32:54.78"</code>
+///   </li>
+///   <li>
+///     Total number of seconds: e.g. <code>"5574.78"</code>
+///   </li>
+///   <li>
+///     Markers: <code>"start"</code>, <code>"end"</code>
+///   </li>
+///   <li>
+///     Percentages: e.g. <code>"10%"</code>.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nullable timeOffset;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+/// \param timeOffset the optional time offset, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a GoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @protocol THEOplayerUniversalAdId;
 
 /// A GoogleImaAd is a concrete implementation of an <code>Ad</code> which represents a Google IMA ad.
@@ -2671,6 +2721,56 @@ SWIFT_PROTOCOL_NAMED("Network_Objc")
 ///
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
+
+@class THEOplayerOmidFriendlyObstruction;
+
+/// The Open Measurement Interface Definition API which can be used to configure the ad viewability measurements conforming to the OMID standards.
+SWIFT_PROTOCOL_NAMED("Omid")
+@protocol THEOplayerOmid
+/// Adds the passed <code>OmidFriendlyObstruction</code> as a friendly obstruction.
+/// \param friendlyObstruction The friendly obstruction to be added.
+///
+- (void)addFriendlyObstructionWithFriendlyObstruction:(THEOplayerOmidFriendlyObstruction * _Nonnull)friendlyObstruction;
+/// Removes all the previously added friendly obstructions.
+- (void)removeFriendlyObstructions;
+@end
+
+enum THEOplayerOmidFriendlyObstructionPurpose : NSInteger;
+
+/// Represents a friendly obstruction instance for OMID.
+SWIFT_CLASS_NAMED("OmidFriendlyObstruction")
+@interface THEOplayerOmidFriendlyObstruction : NSObject
+/// The view element of the friendly obstruction.
+@property (nonatomic, readonly, strong) UIView * _Nonnull view SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.view' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// The purpose of the friendly obstruction.
+@property (nonatomic, readonly) enum THEOplayerOmidFriendlyObstructionPurpose purpose SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.purpose' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// A text to explain the reason behind adding the view as a friendly obstruction.
+@property (nonatomic, readonly, copy) NSString * _Nullable detailedReason SWIFT_DEPRECATED_OBJC("Swift property 'OmidFriendlyObstruction.detailedReason' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+/// Constructs an <code>OmidFriendlyObstruction</code>.
+/// \param view The view element of the friendly obstruction.
+///
+/// \param purpose The purpose of the friendly obstruction.
+///
+/// \param detailedReason Text to explain the reason to add the view as a friendly obstruction.
+///
+- (nonnull instancetype)initWithView:(UIView * _Nonnull)view purpose:(enum THEOplayerOmidFriendlyObstructionPurpose)purpose detailedReason:(NSString * _Nullable)detailedReason OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// The list of purposes for which an obstruction would be registered as friendly.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerOmidFriendlyObstructionPurpose, "OmidFriendlyObstructionPurpose", open) {
+/// The obstruction was added to offer the functionality to close the ad.
+  THEOplayerOmidFriendlyObstructionPurposeCLOSE_AD SWIFT_COMPILE_NAME("closeAd") = 1,
+/// The obstruction was added as a part of the media controls, e.g. a pause button.
+  THEOplayerOmidFriendlyObstructionPurposeMEDIA_CONTROLS SWIFT_COMPILE_NAME("mediaControls") = 2,
+/// The obstruction that was added is transparent and does not impact viewability.
+/// remark:
+/// Can, for example, be used to capture user taps.
+  THEOplayerOmidFriendlyObstructionPurposeNOT_VISIBLE SWIFT_COMPILE_NAME("notVisible") = 3,
+/// The obstruction was added for another, possibly unknown, reason.
+  THEOplayerOmidFriendlyObstructionPurposeOTHER SWIFT_COMPILE_NAME("other") = 4,
+};
 
 
 /// Fired when <code>PlayerEventTypes.PAUSE</code> occurs for the <code>THEOplayer</code>.
@@ -3551,6 +3651,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

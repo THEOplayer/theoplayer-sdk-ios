@@ -2142,7 +2142,7 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
+SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
 /// Indicates whether the native IMA SDK is being used.
 @property (nonatomic) BOOL useNativeIma;
@@ -6580,7 +6580,7 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
+SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
 /// Indicates whether the native IMA SDK is being used.
 @property (nonatomic) BOOL useNativeIma;

@@ -685,6 +685,7 @@ SWIFT_CLASS_NAMED("AddTrackEvent")
 @end
 
 @class THEOplayerGoogleIMAConfiguration;
+@class THEOplayerGoogleDAIAdsConfiguration;
 
 /// The advertisement configuration of the player.
 SWIFT_CLASS_NAMED("AdsConfiguration")
@@ -697,7 +698,7 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 ///     Defaults to true.
 ///   </li>
 /// </ul>
-@property (nonatomic, readonly) BOOL showCountdown SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.showCountdown' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly) BOOL showCountdown;
 /// The preload type of the ad, whether media files of mid- and postrolls are preloaded.
 /// remark:
 ///
@@ -706,11 +707,13 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 ///     Defaults to MIDROLL_AND_POSTROLL.
 ///   </li>
 /// </ul>
-@property (nonatomic, readonly) enum THEOplayerAdPreloadType preload SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.preload' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly) enum THEOplayerAdPreloadType preload;
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleImaConfiguration' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint") SWIFT_DEPRECATED_MSG("", "googleIma");
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleImaConfiguration SWIFT_DEPRECATED_MSG("", "googleIma");
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleIma SWIFT_DEPRECATED_OBJC("Swift property 'AdsConfiguration.googleIma' uses '@objc' inference deprecated in Swift 4; add '@objc' to provide an Objective-C entrypoint");
+@property (nonatomic, readonly, strong) THEOplayerGoogleIMAConfiguration * _Nonnull googleIma;
+/// The configuration of Google Dynamic Ad Insertion.
+@property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai;
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -718,7 +721,9 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 ///
 /// \param googleIma The configuration of the Google Interactive Media Ads, defaults to nil.
 ///
-- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleIma:(THEOplayerGoogleIMAConfiguration * _Nullable)googleIma OBJC_DESIGNATED_INITIALIZER;
+/// \param googleDai The configuration of Google Dynamic Ad Insertion, defaults to nil.
+///
+- (nonnull instancetype)initWithShowCountdown:(BOOL)showCountdown preload:(enum THEOplayerAdPreloadType)preload googleIma:(THEOplayerGoogleIMAConfiguration * _Nullable)googleIma googleDai:(THEOplayerGoogleDAIAdsConfiguration * _Nullable)googleDai OBJC_DESIGNATED_INITIALIZER;
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -3146,6 +3151,29 @@ SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
+
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfiguration")
+@interface THEOplayerGoogleDAIAdsConfiguration : NSObject
+/// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads.
+@property (nonatomic, readonly) BOOL disableUI;
+/// Enable background audio playback for DAI sources.
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder")
+@interface THEOplayerGoogleDAIAdsConfigurationBuilder : NSObject
+/// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to false.
+@property (nonatomic) BOOL disableUI;
+/// Enable background audio playback for DAI sources. Defaults to false.
+@property (nonatomic) BOOL enableBackgroundPlayback;
+/// Builds and returns an object of type <code>GoogleDAIAdsConfiguration</code>.
+- (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 enum THEOplayerSSAIIntegrationId : NSInteger;
 
 /// The ServerSideAdInsertionConfiguration protocol which specifies information to play a stream with server-side-inserted ads.
@@ -3298,7 +3326,7 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAConfiguration")
+SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
 /// Indicates whether the native IMA SDK is being used.
 @property (nonatomic) BOOL useNativeIma;
@@ -5224,12 +5252,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5245,6 +5267,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 

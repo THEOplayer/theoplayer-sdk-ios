@@ -25,6 +25,23 @@ public struct CacheEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers open class FullscreenViewController : UIKit.UIViewController {
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewDidLayoutSubviews()
+  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @objc override dynamic open var prefersHomeIndicatorAutoHidden: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic open var prefersStatusBarHidden: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @objc(THEOplayerAdPreloadType) public enum AdPreloadType : Swift.Int {
   @objc(THEOplayerAdPreloadTypeNONE) case NONE = 0
   @objc(THEOplayerAdPreloadTypeMIDROLL_AND_POSTROLL) case MIDROLL_AND_POSTROLL = 1
@@ -593,6 +610,9 @@ extension THEOplayer {
 public protocol Fullscreen : THEOplayerSDK.EventDispatcherProtocol {
   var aspectRatio: THEOplayerSDK.AspectRatio { get }
   var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask { get }
+  var viewController: THEOplayerSDK.FullscreenViewController? { get }
+  var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
+  var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
   func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
   func setSupportedInterfaceOrientations(supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask)
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
@@ -601,6 +621,9 @@ public protocol Fullscreen : THEOplayerSDK.EventDispatcherProtocol {
 @objc(THEOplayerFullscreen) public protocol Fullscreen_Objc {
   @objc var aspectRatio: THEOplayerSDK.AspectRatio { get }
   @objc var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask { get }
+  @objc var viewController: THEOplayerSDK.FullscreenViewController? { get }
+  @objc var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
+  @objc var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
   @objc func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
   @objc func setSupportedInterfaceOrientations(supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask)
   @objc @discardableResult
@@ -616,6 +639,10 @@ public protocol Fullscreen : THEOplayerSDK.EventDispatcherProtocol {
   public var rawValue: Swift.Int {
     get
   }
+}
+@objc(THEOplayerFullscreenPresentationDelegate) public protocol FullscreenPresentationDelegate {
+  @objc func present(viewController: THEOplayerSDK.FullscreenViewController, completion: @escaping () -> Swift.Void)
+  @objc func dismiss(viewController: THEOplayerSDK.FullscreenViewController, completion: @escaping () -> Swift.Void)
 }
 public struct VideoTrackListEventTypes {
   public static var ADD_TRACK: THEOplayerSDK.EventType<THEOplayerSDK.AddTrackEvent>
@@ -2202,16 +2229,32 @@ public struct AdsEventTypes {
   @objc deinit
 }
 public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguration
-@_inheritsConvenienceInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @objc(THEOplayerGoogleIMAConfiguration) public class GoogleIMAConfiguration : ObjectiveC.NSObject, Swift.Codable {
-  @objc public var useNativeIma: Swift.Bool
-  @objc public var disableUI: Swift.Bool
+  @available(*, deprecated, message: "Use GoogleIMAConfigurationBuilder to create new instances")
   @objc public init(useNativeIma: Swift.Bool = true, disableUI: Swift.Bool = false)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
+  @objc public var useNativeIma: Swift.Bool {
+    @objc get
+    @objc @available(*, deprecated)
+    set
+  }
+  @objc public var disableUI: Swift.Bool {
+    @objc get
+    @objc @available(*, deprecated)
+    set
+  }
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
+  @objc public var useNativeIMA: Swift.Bool
+  @objc public var disableUI: Swift.Bool
+  @objc public func build() -> THEOplayerSDK.GoogleIMAAdsConfiguration
+  @objc override dynamic public init()
+  @objc deinit
 }
 @objc(THEOplayerAdsConfiguration) public class AdsConfiguration : ObjectiveC.NSObject, Swift.Encodable {
   @objc public var showCountdown: Swift.Bool {

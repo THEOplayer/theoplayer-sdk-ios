@@ -73,16 +73,32 @@ extension THEOplayer {
   }
 }
 public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguration
-@_inheritsConvenienceInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @objc(THEOplayerGoogleIMAConfiguration) public class GoogleIMAConfiguration : ObjectiveC.NSObject, Swift.Codable {
-  @objc public var useNativeIma: Swift.Bool
-  @objc public var disableUI: Swift.Bool
+  @available(*, deprecated, message: "Use GoogleIMAConfigurationBuilder to create new instances")
   @objc public init(useNativeIma: Swift.Bool = true, disableUI: Swift.Bool = false)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
+  @objc public var useNativeIma: Swift.Bool {
+    @objc get
+    @objc @available(*, deprecated)
+    set
+  }
+  @objc public var disableUI: Swift.Bool {
+    @objc get
+    @objc @available(*, deprecated)
+    set
+  }
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
+  @objc public var useNativeIMA: Swift.Bool
+  @objc public var disableUI: Swift.Bool
+  @objc public func build() -> THEOplayerSDK.GoogleIMAAdsConfiguration
+  @objc override dynamic public init()
+  @objc deinit
 }
 public protocol Network : THEOplayerSDK.EventDispatcherProtocol {
 }
@@ -184,6 +200,48 @@ public protocol GoogleDAI {
 @objc(THEOplayerEventProtocol) public protocol EventProtocol {
   @objc var type: Swift.String { get }
   @objc var date: Foundation.Date { get }
+}
+extension THEOplayer {
+  public var fullscreen: THEOplayerSDK.Fullscreen {
+    get
+  }
+  @available(swift, obsoleted: 1.0)
+  @objc(fullscreen) dynamic public var fullscreen_Objc: THEOplayerSDK.Fullscreen_Objc {
+    @objc get
+  }
+}
+public protocol Fullscreen : THEOplayerSDK.EventDispatcherProtocol {
+  var aspectRatio: THEOplayerSDK.AspectRatio { get }
+  var viewController: THEOplayerSDK.FullscreenViewController? { get }
+  var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
+  var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
+  func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
+  func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
+  func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
+}
+@objc(THEOplayerFullscreen) public protocol Fullscreen_Objc {
+  @objc var aspectRatio: THEOplayerSDK.AspectRatio { get }
+  @objc var viewController: THEOplayerSDK.FullscreenViewController? { get }
+  @objc var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
+  @objc var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
+  @objc func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
+  @objc @discardableResult
+  func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.AspectRatioChangeEvent) -> ()) -> THEOplayerSDK.EventListener
+  @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
+}
+@objc(THEOplayerAspectRatio) public enum AspectRatio : Swift.Int {
+  @objc(THEOplayerAspectRatioFIT) case fit = 1
+  @objc(THEOplayerAspectRatioFILL) case fill = 2
+  @objc(THEOplayerAspectRatioASPECT_FILL) case aspectFill = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(THEOplayerFullscreenPresentationDelegate) public protocol FullscreenPresentationDelegate {
+  @objc func present(viewController: THEOplayerSDK.FullscreenViewController, completion: @escaping () -> Swift.Void)
+  @objc func dismiss(viewController: THEOplayerSDK.FullscreenViewController, completion: @escaping () -> Swift.Void)
 }
 @_hasMissingDesignatedInitializers public class EventType<T> where T : THEOplayerSDK.EventProtocol {
   public var name: Swift.String {
@@ -1338,6 +1396,15 @@ public struct AdsEventTypes {
   @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
   @objc deinit
 }
+public struct FullscreenEventTypes {
+  public static var ASPECT_RATIO_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.AspectRatioChangeEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerFullscreenEventTypes) public class FullscreenEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let aspectratiochange: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 public protocol AdBreak {
   var ads: [THEOplayerSDK.Ad] { get }
   var maxDuration: Swift.Int { get }
@@ -1583,6 +1650,14 @@ extension Preload {
     set
   }
 }
+@objc @_inheritsConvenienceInitializers open class FullscreenViewController : UIKit.UIViewController {
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewDidLayoutSubviews()
+  @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @objc(THEOplayerPresentationMode) public enum PresentationMode : Swift.Int {
   @objc(THEOplayerPresentationModeINLINE) case inline = 1
   @objc(THEOplayerPresentationModeFULLSCREEN) case fullscreen = 2
@@ -1753,6 +1828,19 @@ public protocol TextTrackList : THEOplayerSDK.EventDispatcherProtocol {
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
 }
 public typealias _TextTrackList = THEOplayerSDK.TextTrackList & THEOplayerSDK.TextTrackList_Objc
+@_hasMissingDesignatedInitializers @objc(THEOplayerAspectRatioChangeEvent) public class AspectRatioChangeEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
+  @objc public var type: Swift.String {
+    get
+  }
+  @objc public var date: Foundation.Date {
+    get
+  }
+  @objc public var aspectRatio: THEOplayerSDK.AspectRatio {
+    get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc(THEOplayerEventDispatcherProtocol) public protocol EventDispatcherProtocol_Objc {
   @objc func addEventListener_Objc(type: Swift.String, listener: @escaping (THEOplayerSDK.EventProtocol) -> ()) -> THEOplayerSDK.EventListener
   @objc func removeEventListener_Objc(type: Swift.String, listener: THEOplayerSDK.EventListener)
@@ -2395,6 +2483,9 @@ extension THEOplayerSDK.TextTrackKind : Swift.RawRepresentable {}
 extension THEOplayerSDK.TextTrackFormat : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackFormat : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackFormat : Swift.RawRepresentable {}
+extension THEOplayerSDK.AspectRatio : Swift.Equatable {}
+extension THEOplayerSDK.AspectRatio : Swift.Hashable {}
+extension THEOplayerSDK.AspectRatio : Swift.RawRepresentable {}
 extension THEOplayerSDK.AdIntegrationKind : Swift.Equatable {}
 extension THEOplayerSDK.AdIntegrationKind : Swift.Hashable {}
 extension THEOplayerSDK.AdIntegrationKind : Swift.RawRepresentable {}

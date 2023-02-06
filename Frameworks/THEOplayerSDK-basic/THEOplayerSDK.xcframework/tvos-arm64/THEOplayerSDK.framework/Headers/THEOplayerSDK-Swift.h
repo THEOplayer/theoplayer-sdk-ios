@@ -798,6 +798,36 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 @property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
 @end
 
+/// Specifies an aspect ratio for the player when in fullscreen mode.
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAspectRatio, "AspectRatio", open) {
+/// Scales the theoplayer so that all content fits inside its bounding box, keeping the original aspect ratio of the content.
+/// remark:
+/// This might result in black bars on the side if aspect ratio of the content does not match the screen. The content will never be cropped.
+  THEOplayerAspectRatioFIT SWIFT_COMPILE_NAME("fit") = 1,
+/// Scales the theoplayer so that all content fits inside the bounding box which will be stretched to fill the entire bounding box.
+/// remark:
+/// This does not keep the original aspect ratio, content may look stretched out. Will not show black bars. The content will not be cropped.
+  THEOplayerAspectRatioFILL SWIFT_COMPILE_NAME("fill") = 2,
+/// Scales the theoplayer so that the content fills up the entire bounding box, keeping the original aspect ratio of the content.
+/// remark:
+/// This might result in cropped content. It will never show black bars.
+  THEOplayerAspectRatioASPECT_FILL SWIFT_COMPILE_NAME("aspectFill") = 3,
+};
+
+
+/// Thrown when the aspect ratio property of the player has changed.
+SWIFT_CLASS_NAMED("AspectRatioChangeEvent")
+@interface THEOplayerAspectRatioChangeEvent : NSObject <THEOplayerEventProtocol>
+/// Type of the event, defaults to “aspectratiochange”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occured.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The new <code>AspectRatio</code> of the view.
+@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 
 /// Represents the quality of an <code>AudioTrack</code>.
 SWIFT_CLASS_NAMED("AudioQuality")
@@ -2108,6 +2138,91 @@ SWIFT_CLASS_NAMED("FairPlayDRMConfiguration")
 
 
 
+/// The types of events related to fullscreen.
+SWIFT_CLASS_NAMED("FullscreenEventTypes_Objc")
+@interface THEOplayerFullscreenEventTypes : NSObject
+/// Fired when the view’s aspect ratio changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aspectratiochange;)
++ (NSString * _Nonnull)aspectratiochange SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class FullscreenViewController;
+
+/// The fullscreen delegate which allows control over the presentation of the fullscreen view controller.
+SWIFT_PROTOCOL_NAMED("FullscreenPresentationDelegate")
+@protocol THEOplayerFullscreenPresentationDelegate
+/// Method which gets called when the fullscreen view controller is ready to be presented.
+/// remark:
+/// The completion handler must be called in order to maintain player status. If the transition is animated, then call the completion after the animation is completed.
+/// \param viewController The fullscreen view controller of type <code>FullscreenViewController</code>.
+///
+/// \param completion The completion handler which should be called when presentation is completed.
+///
+- (void)presentWithViewController:(FullscreenViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(void))completion;
+/// Method which gets called when the fullscreen view controller is ready to be dismissed.
+/// remark:
+/// The completion handler must be called in order to maintain player status. If the transition is animated, then call the completion after the animation is completed.
+/// \param viewController The fullscreen view controller of type <code>FullscreenViewController</code>.
+///
+/// \param completion The completion handler which should be called after dismissal is completed.
+///
+- (void)dismissWithViewController:(FullscreenViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(void))completion;
+@end
+
+@class NSBundle;
+@class NSCoder;
+
+/// The Fullscreen view controller class that presents the player when the <code>PresentationMode</code> is set to fullscreen.
+/// This class can be subclassed for customization, and the resulting type can be passed back to the player via the <code>Fullscreen.viewControllerClass</code> API.
+/// Additionally, it is possible to control when and how the view controller is presented via the <code>Fullscreen.presentationDelegate</code> API.
+/// remark:
+/// When subclassing and overriding UIViewController lifecycle methods such as viewDidLoad, the super methods must be called to maintain functionality.
+SWIFT_CLASS("_TtC13THEOplayerSDK24FullscreenViewController")
+@interface FullscreenViewController : UIViewController
+- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillDisappear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// The Fullscreen object helps you configure the settings of the fullscreen mode.
+SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
+@protocol THEOplayerFullscreen
+/// Specifies how to handle the aspect ratio of the content.
+@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio;
+/// When in fullscreen presentation mode returns the <code>FullscreenViewController</code> that contains the player. Returns nil otherwise.
+@property (nonatomic, readonly, strong) FullscreenViewController * _Nullable viewController;
+/// The type of the <code>FullscreenViewController</code> that will be presented when the player goes to fullscreen presentation mode.
+@property (nonatomic) SWIFT_METATYPE(FullscreenViewController) _Nullable viewControllerClass;
+/// The fullscreen delegate which allows control over the presentation of the fullscreen view controller. Setting it will override the default behavior.
+@property (nonatomic, strong) id <THEOplayerFullscreenPresentationDelegate> _Nullable presentationDelegate;
+/// Sets the current fullscreen aspect ratio.
+/// \param aspectRatio The <code>AspectRatio</code> to be used by the player.
+///
+- (void)setAspectRatioWithAspectRatio:(enum THEOplayerAspectRatio)aspectRatio;
+/// Adds the event listener of the given <code>EventType</code>.
+/// remark:
+/// When attaching a listener on the wrong object the application will crash.
+/// \param type <code>EventType</code> of the added event listener. See <code>FullscreenEventTypes</code> for possible values.
+///
+/// \param listener Closure called when event is dispatched.
+///
+///
+/// returns:
+/// The newly added <code>EventListener</code>.
+- (id <THEOplayerEventListener> _Nonnull)addEventListenerWithType:(NSString * _Nonnull)type listener:(void (^ _Nonnull)(THEOplayerAspectRatioChangeEvent * _Nonnull))listener;
+/// Removes the event listener for the given <code>EventType</code>.
+/// \param type <code>EventType</code> of the event listener to be removed. See <code>FullscreenEventTypes</code> for possible values.
+///
+/// \param listener <code>EventListener</code> which was added by <code>addEventListener(...)</code>.
+///
+- (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
+@end
+
+
 /// Represents information regarding content with dynamically inserted advertisements.
 SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 @protocol THEOplayerGoogleDAI
@@ -2141,16 +2256,31 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 /// Describes the configuration of the Google Interactive Media Ads.
 SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
 @interface THEOplayerGoogleIMAConfiguration : NSObject
+/// Creates a GoogleIMAAdsConfiguration object.
+/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
+///
+/// \param disableUI Whether the ads UI need to be disabled (chromeless ads). Only applies to non TrueView ads.
+///
+- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Use GoogleIMAConfigurationBuilder to create new instances");
+/// Creates a GoogleIMAConfiguration object.
+- (nonnull instancetype)init;
 /// Indicates whether the native IMA SDK is being used.
 @property (nonatomic) BOOL useNativeIma;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
 @property (nonatomic) BOOL disableUI;
-/// Creates a GoogleIMAConfiguration object.
-/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
-///
-- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER;
-/// Creates a GoogleIMAConfiguration object.
-- (nonnull instancetype)init;
+@end
+
+
+/// An object to create or build GoogleIMAAdsConfigurations.
+SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
+@interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
+/// Indicates whether the native IMA SDK is being used. Defaults to <code>true</code>
+@property (nonatomic) BOOL useNativeIMA;
+/// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
+@property (nonatomic) BOOL disableUI;
+/// Creates a GoogleIMAAdsConfiguration
+- (THEOplayerGoogleIMAConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class NSURL;
@@ -3303,7 +3433,6 @@ SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler")
 
 @class TVApplicationController;
 @class THEOplayerConfiguration;
-@class UIViewController;
 @protocol THEOplayerTextTrackList;
 @protocol THEOplayerVideoTrackList;
 @class THEOplayerTimeRange;
@@ -3633,6 +3762,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// The Ads API that contains information about the current and scheduled advertisements.
 @property (nonatomic, readonly, strong) id <THEOplayerAds> _Nonnull ads;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 @class THEOplayerVerizonMediaConfiguration;

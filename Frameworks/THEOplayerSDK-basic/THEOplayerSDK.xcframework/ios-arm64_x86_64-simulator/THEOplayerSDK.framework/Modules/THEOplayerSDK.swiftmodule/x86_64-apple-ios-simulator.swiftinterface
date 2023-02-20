@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerSDK
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerSDK
 import AVFoundation
 import AVKit
 import CommonCrypto
@@ -1280,6 +1280,7 @@ extension CacheStatus {
   @objc(bandwidth) public var bandwidth_Objc: Foundation.NSNumber? {
     @objc get
   }
+  @objc public var allowsCellularAccess: Swift.Bool
   public init(expirationDate: Foundation.Date, bandwidth: Swift.Int? = nil)
   @available(swift, obsoleted: 1.0)
   @objc public init(expirationDate: Foundation.Date, bandwidth: Foundation.NSNumber?)
@@ -2047,7 +2048,7 @@ public protocol GoogleDAI {
   @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
   @objc deinit
 }
-@objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, Swift.Codable {
+@objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, THEOplayerSDK.AdDescription, THEOplayerSDK.AdDescription_Objc, Swift.Codable {
   public var integration: THEOplayerSDK.AdIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.AdIntegration {
     @objc get
@@ -2245,6 +2246,9 @@ public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguratio
     @objc @available(*, deprecated)
     set
   }
+  @objc public var enableBackgroundPlayback: Swift.Bool {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -2252,6 +2256,7 @@ public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguratio
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
   @objc public var useNativeIMA: Swift.Bool
   @objc public var disableUI: Swift.Bool
+  @objc public var enableBackgroundPlayback: Swift.Bool
   @objc public func build() -> THEOplayerSDK.GoogleIMAAdsConfiguration
   @objc override dynamic public init()
   @objc deinit
@@ -2919,6 +2924,39 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   func isMuted() -> Swift.Bool?
   func reset()
   func destroy()
+}
+@objc(THEOTextTrackStyle) public protocol TextTrackStyle {
+  @objc var backgroundColor: [THEOplayerSDK.TextTrackStyleRuleColor]? { get set }
+  @objc var fontColor: [THEOplayerSDK.TextTrackStyleRuleColor]? { get set }
+  @objc var fontSize: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+  @objc var fontFamily: [THEOplayerSDK.TextTrackStyleRuleString]? { get set }
+  @objc var edgeStyle: [THEOplayerSDK.TextTrackStyleRuleString]? { get set }
+  @objc var marginTop: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+  @objc var marginLeft: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+}
+@objc(THEOplayerTextTrackStyleRuleColor) public class TextTrackStyleRuleColor : ObjectiveC.NSObject {
+  @objc public init(_ color: UIKit.UIColor, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(THEOplayerTextTrackStyleRuleString) public class TextTrackStyleRuleString : ObjectiveC.NSObject {
+  @objc public init(_ string: Swift.String, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(THEOplayerTextTrackStyleRuleNumber) public class TextTrackStyleRuleNumber : ObjectiveC.NSObject {
+  @objc public init(_ number: Swift.Int, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerTextTrackStyleEdgeStyle) public class TextTrackStyleEdgeStyle : ObjectiveC.NSObject {
+  @objc public static let none: Swift.String
+  @objc public static let raised: Swift.String
+  @objc public static let depressed: Swift.String
+  @objc public static let uniform: Swift.String
+  @objc public static let dropShadow: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
 }
 @objc(THEOplayerOmidFriendlyObstructionPurpose) public enum OmidFriendlyObstructionPurpose : Swift.Int {
   @objc(THEOplayerOmidFriendlyObstructionPurposeCLOSE_AD) case closeAd = 1
@@ -3640,8 +3678,6 @@ extension THEOplayerSDK.SSAIIntegrationId : Swift.RawRepresentable {}
 extension THEOplayerSDK.StreamType : Swift.Equatable {}
 extension THEOplayerSDK.StreamType : Swift.Hashable {}
 extension THEOplayerSDK.StreamType : Swift.RawRepresentable {}
-extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription {}
-extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription_Objc {}
 extension THEOplayerSDK.StereoMode : Swift.Equatable {}
 extension THEOplayerSDK.StereoMode : Swift.Hashable {}
 extension THEOplayerSDK.StereoMode : Swift.RawRepresentable {}

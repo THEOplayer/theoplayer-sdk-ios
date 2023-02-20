@@ -89,6 +89,9 @@ public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguratio
     @objc @available(*, deprecated)
     set
   }
+  @objc public var enableBackgroundPlayback: Swift.Bool {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -96,6 +99,7 @@ public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguratio
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
   @objc public var useNativeIMA: Swift.Bool
   @objc public var disableUI: Swift.Bool
+  @objc public var enableBackgroundPlayback: Swift.Bool
   @objc public func build() -> THEOplayerSDK.GoogleIMAAdsConfiguration
   @objc override dynamic public init()
   @objc deinit
@@ -650,6 +654,39 @@ public struct TextTrackListEventTypes {
   @objc public static let addtrack: Swift.String
   @objc public static let removetrack: Swift.String
   @objc public static let change: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(THEOTextTrackStyle) public protocol TextTrackStyle {
+  @objc var backgroundColor: [THEOplayerSDK.TextTrackStyleRuleColor]? { get set }
+  @objc var fontColor: [THEOplayerSDK.TextTrackStyleRuleColor]? { get set }
+  @objc var fontSize: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+  @objc var fontFamily: [THEOplayerSDK.TextTrackStyleRuleString]? { get set }
+  @objc var edgeStyle: [THEOplayerSDK.TextTrackStyleRuleString]? { get set }
+  @objc var marginTop: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+  @objc var marginLeft: [THEOplayerSDK.TextTrackStyleRuleNumber]? { get set }
+}
+@objc(THEOplayerTextTrackStyleRuleColor) public class TextTrackStyleRuleColor : ObjectiveC.NSObject {
+  @objc public init(_ color: UIKit.UIColor, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(THEOplayerTextTrackStyleRuleString) public class TextTrackStyleRuleString : ObjectiveC.NSObject {
+  @objc public init(_ string: Swift.String, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(THEOplayerTextTrackStyleRuleNumber) public class TextTrackStyleRuleNumber : ObjectiveC.NSObject {
+  @objc public init(_ number: Swift.Int, textSelector: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerTextTrackStyleEdgeStyle) public class TextTrackStyleEdgeStyle : ObjectiveC.NSObject {
+  @objc public static let none: Swift.String
+  @objc public static let raised: Swift.String
+  @objc public static let depressed: Swift.String
+  @objc public static let uniform: Swift.String
+  @objc public static let dropShadow: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1709,7 +1746,7 @@ extension PresentationMode {
   @objc override public init(customIntegrationId: Swift.String, integrationParameters: Swift.Dictionary<Swift.String, Any> = super, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
   @objc deinit
 }
-@objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, Swift.Codable {
+@objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, THEOplayerSDK.AdDescription, THEOplayerSDK.AdDescription_Objc, Swift.Codable {
   public var integration: THEOplayerSDK.AdIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.AdIntegration {
     @objc get
@@ -2545,8 +2582,6 @@ extension THEOplayerSDK.PresentationMode : Swift.RawRepresentable {}
 extension THEOplayerSDK.ReadyState : Swift.Equatable {}
 extension THEOplayerSDK.ReadyState : Swift.Hashable {}
 extension THEOplayerSDK.ReadyState : Swift.RawRepresentable {}
-extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription {}
-extension THEOplayerSDK.GoogleImaAdDescription : THEOplayerSDK.AdDescription_Objc {}
 extension THEOplayerSDK.CrossOrigin : Swift.Equatable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Hashable {}
 extension THEOplayerSDK.CrossOrigin : Swift.RawRepresentable {}

@@ -1494,6 +1494,18 @@ SWIFT_CLASS_NAMED("CachingParameters")
 ///   </li>
 /// </ul>
 @property (nonatomic, readonly, strong) NSNumber * _Nullable bandwidth;
+/// An indication of caching data only on WIFI or on cellular data too. Defaults to true.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The value can not be changed on a scheduled asset.
+///   </li>
+///   <li>
+///     If the download is scheduled/started on WIFI-only mode and suddenly we would like allow Cellular Network download too, the <code>CachingTask</code> has to be removed and scheduled again with the new <code>CachingParamaters</code>
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL allowsCellularAccess;
 /// Constructs a <code>CachingParameters</code>.
 /// \param expirationDate The expiration date of the cached data.
 ///
@@ -3388,6 +3400,10 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to Goo
 @property (nonatomic) BOOL useNativeIma;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
 @property (nonatomic) BOOL disableUI;
+/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// remark:
+/// Only has effect when used with native IMA configuration.
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
 @end
 
 
@@ -3398,6 +3414,10 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @property (nonatomic) BOOL useNativeIMA;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
+/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// remark:
+/// Only has effect when used with native IMA configuration.
+@property (nonatomic) BOOL enableBackgroundPlayback;
 /// Creates a GoogleIMAAdsConfiguration
 - (THEOplayerGoogleIMAConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -5289,6 +5309,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5566,6 +5587,110 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackMode, "TextTrackMode", op
   THEOplayerTextTrackModeHIDDEN SWIFT_COMPILE_NAME("hidden") = 2,
   THEOplayerTextTrackModeDISABLED SWIFT_COMPILE_NAME("disabled") = 3,
 };
+
+@class THEOplayerTextTrackStyleRuleColor;
+@class THEOplayerTextTrackStyleRuleNumber;
+@class THEOplayerTextTrackStyleRuleString;
+
+SWIFT_PROTOCOL_NAMED("TextTrackStyle")
+@protocol THEOTextTrackStyle
+/// The background color for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleColor *> * _Nullable backgroundColor;
+/// The font color for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleColor *> * _Nullable fontColor;
+/// The font size for the text track. A non-negative number.
+/// remark:
+///
+/// This is a number holding a percentage of the size of the calculated default font size. A value of 120 indicates 20% larger than the default font size. A value of 80 indicates 80% of the default font size. The default value of 100 indicates no size difference.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable fontSize;
+/// The font family for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleString *> * _Nullable fontFamily;
+/// The edge style of the text, represented by a value from <code>TextTrackStyleEdgeStyle</code>
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleString *> * _Nullable edgeStyle;
+/// The top margin of the area where subtitles are being rendered. A non-negative number.
+/// remark:
+///
+/// The line position is orthogonal (or perpendicular) to the writing direction
+/// This attribute expresses the line position as a percentage of the dimensions of the video frame in the relevant direction. For example, 0 percent is the top of the video frame and 100 percent is the bottom of the video frame for horizontal writing layout.
+/// If you use this attribute, apply it to the entire text, wthout any selector.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable marginTop;
+/// The left margin of the area where subtitles are being rendered. A non-negative number.
+/// remark:
+///
+/// This attribute expresses the position of the center of the text in the writing direction as a percentage of the video dimensions in the writing direction. For example, 0 percent is the left of the video frame and 100 percent is the right of the video frame for horizontal writing layout.
+/// If you use this attribute, apply it to the entire text, wthout any selector.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable marginLeft;
+@end
+
+
+SWIFT_CLASS_NAMED("TextTrackStyleEdgeStyle")
+@interface THEOplayerTextTrackStyleEdgeStyle : NSObject
+/// No edge style
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull none;)
++ (NSString * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
+/// A raised edge style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull raised;)
++ (NSString * _Nonnull)raised SWIFT_WARN_UNUSED_RESULT;
+/// A depressed edge style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull depressed;)
++ (NSString * _Nonnull)depressed SWIFT_WARN_UNUSED_RESULT;
+/// A uniform border style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull uniform;)
++ (NSString * _Nonnull)uniform SWIFT_WARN_UNUSED_RESULT;
+/// A drop shadow style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dropShadow;)
++ (NSString * _Nonnull)dropShadow SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIColor;
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>UIColor</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param color <code>UIColor</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleColor")
+@interface THEOplayerTextTrackStyleRuleColor : NSObject
+- (nonnull instancetype)init:(UIColor * _Nonnull)color textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>Int</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param string <code>Int</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleNumber")
+@interface THEOplayerTextTrackStyleRuleNumber : NSObject
+- (nonnull instancetype)init:(NSInteger)number textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>String</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param string <code>String</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleString")
+@interface THEOplayerTextTrackStyleRuleString : NSObject
+- (nonnull instancetype)init:(NSString * _Nonnull)string textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 /// A TextTrack object is an element that represents a single text track that can be displayed in the player.
@@ -7774,6 +7899,18 @@ SWIFT_CLASS_NAMED("CachingParameters")
 ///   </li>
 /// </ul>
 @property (nonatomic, readonly, strong) NSNumber * _Nullable bandwidth;
+/// An indication of caching data only on WIFI or on cellular data too. Defaults to true.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The value can not be changed on a scheduled asset.
+///   </li>
+///   <li>
+///     If the download is scheduled/started on WIFI-only mode and suddenly we would like allow Cellular Network download too, the <code>CachingTask</code> has to be removed and scheduled again with the new <code>CachingParamaters</code>
+///   </li>
+/// </ul>
+@property (nonatomic) BOOL allowsCellularAccess;
 /// Constructs a <code>CachingParameters</code>.
 /// \param expirationDate The expiration date of the cached data.
 ///
@@ -9668,6 +9805,10 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to Goo
 @property (nonatomic) BOOL useNativeIma;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
 @property (nonatomic) BOOL disableUI;
+/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// remark:
+/// Only has effect when used with native IMA configuration.
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
 @end
 
 
@@ -9678,6 +9819,10 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @property (nonatomic) BOOL useNativeIMA;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
+/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// remark:
+/// Only has effect when used with native IMA configuration.
+@property (nonatomic) BOOL enableBackgroundPlayback;
 /// Creates a GoogleIMAAdsConfiguration
 - (THEOplayerGoogleIMAConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -11569,6 +11714,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -11846,6 +11992,110 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackMode, "TextTrackMode", op
   THEOplayerTextTrackModeHIDDEN SWIFT_COMPILE_NAME("hidden") = 2,
   THEOplayerTextTrackModeDISABLED SWIFT_COMPILE_NAME("disabled") = 3,
 };
+
+@class THEOplayerTextTrackStyleRuleColor;
+@class THEOplayerTextTrackStyleRuleNumber;
+@class THEOplayerTextTrackStyleRuleString;
+
+SWIFT_PROTOCOL_NAMED("TextTrackStyle")
+@protocol THEOTextTrackStyle
+/// The background color for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleColor *> * _Nullable backgroundColor;
+/// The font color for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleColor *> * _Nullable fontColor;
+/// The font size for the text track. A non-negative number.
+/// remark:
+///
+/// This is a number holding a percentage of the size of the calculated default font size. A value of 120 indicates 20% larger than the default font size. A value of 80 indicates 80% of the default font size. The default value of 100 indicates no size difference.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable fontSize;
+/// The font family for the text track.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleString *> * _Nullable fontFamily;
+/// The edge style of the text, represented by a value from <code>TextTrackStyleEdgeStyle</code>
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleString *> * _Nullable edgeStyle;
+/// The top margin of the area where subtitles are being rendered. A non-negative number.
+/// remark:
+///
+/// The line position is orthogonal (or perpendicular) to the writing direction
+/// This attribute expresses the line position as a percentage of the dimensions of the video frame in the relevant direction. For example, 0 percent is the top of the video frame and 100 percent is the bottom of the video frame for horizontal writing layout.
+/// If you use this attribute, apply it to the entire text, wthout any selector.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable marginTop;
+/// The left margin of the area where subtitles are being rendered. A non-negative number.
+/// remark:
+///
+/// This attribute expresses the position of the center of the text in the writing direction as a percentage of the video dimensions in the writing direction. For example, 0 percent is the left of the video frame and 100 percent is the right of the video frame for horizontal writing layout.
+/// If you use this attribute, apply it to the entire text, wthout any selector.
+@property (nonatomic, copy) NSArray<THEOplayerTextTrackStyleRuleNumber *> * _Nullable marginLeft;
+@end
+
+
+SWIFT_CLASS_NAMED("TextTrackStyleEdgeStyle")
+@interface THEOplayerTextTrackStyleEdgeStyle : NSObject
+/// No edge style
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull none;)
++ (NSString * _Nonnull)none SWIFT_WARN_UNUSED_RESULT;
+/// A raised edge style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull raised;)
++ (NSString * _Nonnull)raised SWIFT_WARN_UNUSED_RESULT;
+/// A depressed edge style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull depressed;)
++ (NSString * _Nonnull)depressed SWIFT_WARN_UNUSED_RESULT;
+/// A uniform border style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull uniform;)
++ (NSString * _Nonnull)uniform SWIFT_WARN_UNUSED_RESULT;
+/// A drop shadow style.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull dropShadow;)
++ (NSString * _Nonnull)dropShadow SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIColor;
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>UIColor</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param color <code>UIColor</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleColor")
+@interface THEOplayerTextTrackStyleRuleColor : NSObject
+- (nonnull instancetype)init:(UIColor * _Nonnull)color textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>Int</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param string <code>Int</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleNumber")
+@interface THEOplayerTextTrackStyleRuleNumber : NSObject
+- (nonnull instancetype)init:(NSInteger)number textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A <code>TextTrackStyleRule</code> that holds a color (<code>String</code>) value.
+/// remark:
+///
+/// Eligible identifiers are determined by the media format and its corresponding text content. For example, the string could contain the CSS selectors used by the corresponding text in Web Video Text Tracks (WebVTT) markup. Specify <code>nil</code> if you want the style attributes to apply to all text in the item.
+/// \param string <code>String</code> value
+///
+/// \param textSelector A string that contains an identifier for the ranges of text to which the style attributes should be applied.
+///
+SWIFT_CLASS_NAMED("TextTrackStyleRuleString")
+@interface THEOplayerTextTrackStyleRuleString : NSObject
+- (nonnull instancetype)init:(NSString * _Nonnull)string textSelector:(NSString * _Nullable)textSelector OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 /// A TextTrack object is an element that represents a single text track that can be displayed in the player.

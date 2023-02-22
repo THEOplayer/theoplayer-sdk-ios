@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		ocJCSRK/3P1kziGOx9Y0jCyQ++Y=
+		iexnylu6GAFPUW4lXwAgxoVTPWE=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		LoItl1LQWXEYYzyVrSkFZH0Esng=
+		NB3fZwKTEzRJwVnpaBGOwOrXiMk=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Assets/theoplayer.d.js</key>
 		<data>
-		mf1rflEjUQgM/vFu+t6vB3ucYx0=
+		/FerGFmX1ohMt5C+KTZdoHPNNmc=
 		</data>
 		<key>Assets/tvos-application.js</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gM/HfdjvIxCYLllUrzSctMDNZUg=
+		EXk8v1vAlXkVZ6zy/QV+0mQvW0Q=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -147,14 +147,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yorWPHK8Aepv92JlP4hUPCsMD4ptBT26rihFg9x/41Q=
+			i1ngGrIsZNNWqs/oOXz8sU0u00kHA7ab9R7J+y3ITUU=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4SPTPeovbGjKaoUOIxVBBBVFsC9kPkfnGAd6BCUYHmY=
+			KoxDGtMjabXwQc3jMmW1D/h5igiHn42yQvBAAdviX1E=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -203,7 +203,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zTRBi6odt7istImypUXEEjDyynYnXnG7HAwTYZzJDs8=
+			tz2jOfmfud2HeK9/mrbufqMvg+PkP1sQZZ0OBifSBD4=
 			</data>
 		</dict>
 		<key>Assets/tvos-application.js</key>

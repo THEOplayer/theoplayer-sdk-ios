@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets/THEOplayer.chromeless.js</key>
 		<data>
-		Qucmn0hMMeK3MHqb3zav5OXK7Mo=
+		gWVV2heJHBDG3Cox8/3gvV6HoWc=
 		</data>
 		<key>Assets/THEOplayer.js</key>
 		<data>
-		a25of8ABMOOeScAEpM0Q/8p9Pf4=
+		7nVOWU3kt3oB1fwFmcqvsrID92E=
 		</data>
 		<key>Assets/conviva-core-sdk.min.js</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		tvDmSP+1tLtjSOSDtotjD8nbABE=
+		xO3Qayp+zQ5Ea5TaYLQQqOzwWpA=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/Project/arm64-apple-tvos-simulator.swiftsourceinfo</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		YYciwxn/bODJ2Tkd4PErUY49XRc=
+		NuPTHWJKsALvI+3Ximmh3nPl3pk=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		YYciwxn/bODJ2Tkd4PErUY49XRc=
+		NuPTHWJKsALvI+3Ximmh3nPl3pk=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -139,14 +139,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JiWnXj3YYP03d7/YoxpbtsgBT72KtAJ4NazyuLQhzZ0=
+			LqRJ3JmORK4S4DIK4hKJS2FP/O1n+3mhBGCS2CyDXnY=
 			</data>
 		</dict>
 		<key>Assets/THEOplayer.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3dFXp5MdeRQVfvyl8rzAUucMZl7zV6H++TPneosiKlo=
+			p6NX77X1trd8PGf+reqIllr4kbwvbwjoh54gYr8YIxE=
 			</data>
 		</dict>
 		<key>Assets/conviva-core-sdk.min.js</key>
@@ -279,7 +279,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			80EopnsVvzIJ88A+AG+Y0IAqn51WlBOO5MoHFdK7O2E=
+			+5IZ8/b/pIDaoCa76ElfWSFXwgSzQgayfsnMxJ90nYY=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64.swiftdoc</key>
@@ -300,7 +300,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			80EopnsVvzIJ88A+AG+Y0IAqn51WlBOO5MoHFdK7O2E=
+			+5IZ8/b/pIDaoCa76ElfWSFXwgSzQgayfsnMxJ90nYY=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>

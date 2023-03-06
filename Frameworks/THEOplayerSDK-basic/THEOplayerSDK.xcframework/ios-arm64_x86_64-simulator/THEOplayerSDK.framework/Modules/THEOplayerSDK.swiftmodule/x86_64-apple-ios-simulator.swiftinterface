@@ -1702,6 +1702,11 @@ public protocol AdBreak {
   @objc var maxRemainingDuration: Swift.Double { get }
   @objc var timeOffset: Swift.Int { get }
 }
+@objc public protocol PictureInPictureControllerNativeExposable {
+  @objc @available(tvOS 14.0, *)
+  var avPiPControllerDelegate: AVKit.AVPictureInPictureControllerDelegate { get }
+  @objc var avPlayer: AVFoundation.AVPlayer { get }
+}
 @objc(THEOplayerRequest) public class Request : ObjectiveC.NSObject, Swift.Codable {
   @objc public var url: Swift.String
   @objc public var method: Swift.String
@@ -1974,6 +1979,7 @@ public protocol GoogleDAI {
   @objc(duration) public var duration_Objc: Foundation.NSNumber? {
     @objc get
   }
+  public init(date: Foundation.Date, duration: Swift.Double?)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerSourceChangeEvent) public class SourceChangeEvent : THEOplayerSDK.PlayerEvent {

@@ -2284,7 +2284,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @property (nonatomic) BOOL useNativeIMA;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
-/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
 /// remark:
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic) BOOL enableBackgroundPlayback;
@@ -2917,6 +2917,15 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 @end
 
 @protocol AVPictureInPictureControllerDelegate;
+@class AVPlayer;
+
+/// :nodoc:
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
+@protocol PictureInPictureControllerNativeExposable
+@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
+@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
+@end
+
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
@@ -6919,7 +6928,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @property (nonatomic) BOOL useNativeIMA;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
-/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
 /// remark:
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic) BOOL enableBackgroundPlayback;
@@ -7552,6 +7561,15 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 @end
 
 @protocol AVPictureInPictureControllerDelegate;
+@class AVPlayer;
+
+/// :nodoc:
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
+@protocol PictureInPictureControllerNativeExposable
+@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
+@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
+@end
+
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")

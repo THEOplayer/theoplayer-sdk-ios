@@ -3225,7 +3225,7 @@ SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder")
 @interface THEOplayerGoogleDAIAdsConfigurationBuilder : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to false.
 @property (nonatomic) BOOL disableUI;
-/// Enable background audio playback for DAI sources. Defaults to false.
+/// Enable background audio playback for DAI sources. Defaults to true.
 @property (nonatomic) BOOL enableBackgroundPlayback;
 /// Builds and returns an object of type <code>GoogleDAIAdsConfiguration</code>.
 - (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
@@ -3412,7 +3412,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @property (nonatomic) BOOL useNativeIMA;
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
-/// Indicates whether background audio playback for the IMA SDK is enabled.
+/// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
 /// remark:
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic) BOOL enableBackgroundPlayback;
@@ -4070,6 +4070,16 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 - (nonnull instancetype)init;
 @end
 
+@protocol AVPictureInPictureControllerDelegate;
+@class AVPlayer;
+
+/// :nodoc:
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
+@protocol PictureInPictureControllerNativeExposable
+@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
+@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
+@end
+
 /// The corner of the PiP view
 /// note:
 ///
@@ -4096,7 +4106,6 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPictureInPictureCorner, "PictureIn
 };
 
 @class THEOplayerTHEOMargins;
-@protocol AVPictureInPictureControllerDelegate;
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")

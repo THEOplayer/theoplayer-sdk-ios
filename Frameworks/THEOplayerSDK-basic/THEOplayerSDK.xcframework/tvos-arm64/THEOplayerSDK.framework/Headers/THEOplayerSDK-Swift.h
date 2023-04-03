@@ -308,6 +308,8 @@ SWIFT_PROTOCOL_NAMED("THEOError")
 /// An error that is thrown by AVPlayer.
 SWIFT_PROTOCOL_NAMED("AVPlayerError")
 @protocol THEOplayerAVPlayerError <THEOplayerTHEOError>
+/// The userInfo dictionary for the error, if more details are available.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
 @end
 
 
@@ -3778,14 +3780,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The Ads API that contains information about the current and scheduled advertisements.
-@property (nonatomic, readonly, strong) id <THEOplayerAds> _Nonnull ads;
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+/// The Ads API that contains information about the current and scheduled advertisements.
+@property (nonatomic, readonly, strong) id <THEOplayerAds> _Nonnull ads;
+/// A <code>PictureInPicture</code> object to configure Picture-In-Picture.
+@property (nonatomic, readonly, strong) id <THEOplayerPictureInPicture> _Nullable pip;
 @end
 
 @class THEOplayerVerizonMediaConfiguration;

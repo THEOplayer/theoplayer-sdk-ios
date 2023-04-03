@@ -76,6 +76,13 @@ extension THEOplayer {
   @objc(ads) dynamic public var ads_Objc: THEOplayerSDK.Ads_Objc {
     @objc get
   }
+  public var pip: THEOplayerSDK.PictureInPicture? {
+    get
+  }
+  @available(swift, obsoleted: 1.0)
+  @objc(pip) dynamic public var pip_Objc: THEOplayerSDK.PictureInPicture_Objc? {
+    @objc get
+  }
 }
 public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguration
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
@@ -210,6 +217,7 @@ public protocol GoogleDAI {
   @objc var type: Swift.String { get }
   @objc var date: Foundation.Date { get }
 }
+infix operator >>> : BitwiseShiftPrecedence
 extension THEOplayer {
   public var fullscreen: THEOplayerSDK.Fullscreen {
     get
@@ -1729,7 +1737,7 @@ extension PresentationMode {
     get
   }
 }
-@objc(THEOplayerTimeRange) public class TimeRange : ObjectiveC.NSObject {
+@objc(THEOplayerTimeRange) public class TimeRange : ObjectiveC.NSObject, Swift.Codable {
   @objc public var start: Swift.Double {
     get
   }
@@ -1739,6 +1747,8 @@ extension PresentationMode {
   @objc public init(start: Swift.Double, end: Swift.Double)
   @objc override dynamic public init()
   @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerKeyOSDRMConfiguration) public class KeyOSDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var customdata: Swift.String?
@@ -1813,7 +1823,6 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?)
-  @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -2214,6 +2223,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc deinit
 }
 @objc(THEOplayerAVPlayerError) public protocol AVPlayerError : THEOplayerSDK.THEOError {
+  @objc var userInfo: [Swift.String : Any]? { get }
 }
 @objc(THEOplayerOmid) public protocol Omid {
   @objc func addFriendlyObstruction(friendlyObstruction: THEOplayerSDK.OmidFriendlyObstruction)

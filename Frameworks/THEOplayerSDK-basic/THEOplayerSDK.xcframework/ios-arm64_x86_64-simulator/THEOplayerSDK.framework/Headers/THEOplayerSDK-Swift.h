@@ -310,6 +310,8 @@ SWIFT_PROTOCOL_NAMED("THEOError")
 /// An error that is thrown by AVPlayer.
 SWIFT_PROTOCOL_NAMED("AVPlayerError")
 @protocol THEOplayerAVPlayerError <THEOplayerTHEOError>
+/// The userInfo dictionary for the error, if more details are available.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
 @end
 
 
@@ -1474,6 +1476,7 @@ SWIFT_PROTOCOL_NAMED("Cache_Objc")
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
+@class THEOplayerCachingParametersTrackSelection;
 
 /// The configuration of a caching task.
 SWIFT_CLASS_NAMED("CachingParameters")
@@ -1505,7 +1508,26 @@ SWIFT_CLASS_NAMED("CachingParameters")
 ///     If the download is scheduled/started on WIFI-only mode and suddenly we would like allow Cellular Network download too, the <code>CachingTask</code> has to be removed and scheduled again with the new <code>CachingParamaters</code>
 ///   </li>
 /// </ul>
+/// since:
+/// v4.9.0
 @property (nonatomic) BOOL allowsCellularAccess;
+/// An indication of preferred tracks to be used for offline playback.
+/// since:
+/// v5.0.0
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The preferred tracks by the manifest (or the system) will be always cached.
+///   </li>
+///   <li>
+///     This parameter gives an opportunity to specify additional tracks (audio and text tracks) to be saved during caching.
+///   </li>
+///   <li>
+///     Use <code>CachingParametersTrackSelectionBuilder</code> to create an instance.
+///   </li>
+/// </ul>
+@property (nonatomic, strong) THEOplayerCachingParametersTrackSelection * _Nonnull preferredTrackSelection;
 /// Constructs a <code>CachingParameters</code>.
 /// \param expirationDate The expiration date of the cached data.
 ///
@@ -1516,8 +1538,74 @@ SWIFT_CLASS_NAMED("CachingParameters")
 /// \param expirationDate The expiration date of the cached data.
 ///
 - (nonnull instancetype)initWithExpirationDate:(NSDate * _Nonnull)expirationDate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+/// An object that represents a CachingParametersTrackSelection.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Use <code>CachingParametersTrackSelectionBuilder</code> to create an instance.
+///   </li>
+/// </ul>
+/// since:
+/// v5.0.0
+SWIFT_CLASS_NAMED("CachingParametersTrackSelection")
+@interface THEOplayerCachingParametersTrackSelection : NSObject
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull audioTrackSelection;
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull textTrackSelection;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A builder to create CachingParametersTrackSelections.
+/// since:
+/// v5.0.0
+SWIFT_CLASS_NAMED("CachingParametersTrackSelectionBuilder")
+@interface THEOplayerCachingParametersTrackSelectionBuilder : NSObject
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull audioTrackSelection;
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull textTrackSelection;
+/// Creates a CachingParametersTrackSelection
+- (THEOplayerCachingParametersTrackSelection * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes.
+SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
+@interface THEOplayerCachingTaskStateChangeEvent : THEOplayerCacheEvent
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes to <code>.error</code>.
+SWIFT_CLASS_NAMED("CachingTaskErrorStateChangeEvent")
+@interface THEOplayerCachingTaskErrorStateChangeEvent : THEOplayerCachingTaskStateChangeEvent
+/// The date at which the event occured.
+@property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable error;
 @end
 
 
@@ -1554,11 +1642,6 @@ SWIFT_CLASS_NAMED("CachingTaskProgressEvent")
 @interface THEOplayerCachingTaskProgressEvent : THEOplayerCacheEvent
 @end
 
-
-/// Fired when the <code>CachingTask.status</code> changes.
-SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
-@interface THEOplayerCachingTaskStateChangeEvent : THEOplayerCacheEvent
-@end
 
 /// The status of a caching task.
 /// <ul>
@@ -5382,9 +5465,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// The Cache object to access the caching API.
 /// remark:
 /// Only available on iOS 10 and above.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <THEOplayerCache> _Nonnull cache;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) id <THEOplayerCache> _Nonnull cache;)
 + (id <THEOplayerCache> _Nonnull)cache SWIFT_WARN_UNUSED_RESULT;
-+ (void)setCache:(id <THEOplayerCache> _Nonnull)value;
 @end
 
 @class THEOplayerUIConfiguration;
@@ -5427,8 +5509,8 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 /// \param pip The configuration for picture-in-picture.
 ///
 - (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Constructs a THEOplayerConfiguration.
+- (nonnull instancetype)init;
 @end
 
 
@@ -6724,6 +6806,8 @@ SWIFT_PROTOCOL_NAMED("THEOError")
 /// An error that is thrown by AVPlayer.
 SWIFT_PROTOCOL_NAMED("AVPlayerError")
 @protocol THEOplayerAVPlayerError <THEOplayerTHEOError>
+/// The userInfo dictionary for the error, if more details are available.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable userInfo;
 @end
 
 
@@ -7888,6 +7972,7 @@ SWIFT_PROTOCOL_NAMED("Cache_Objc")
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
+@class THEOplayerCachingParametersTrackSelection;
 
 /// The configuration of a caching task.
 SWIFT_CLASS_NAMED("CachingParameters")
@@ -7919,7 +8004,26 @@ SWIFT_CLASS_NAMED("CachingParameters")
 ///     If the download is scheduled/started on WIFI-only mode and suddenly we would like allow Cellular Network download too, the <code>CachingTask</code> has to be removed and scheduled again with the new <code>CachingParamaters</code>
 ///   </li>
 /// </ul>
+/// since:
+/// v4.9.0
 @property (nonatomic) BOOL allowsCellularAccess;
+/// An indication of preferred tracks to be used for offline playback.
+/// since:
+/// v5.0.0
+/// remark:
+///
+/// <ul>
+///   <li>
+///     The preferred tracks by the manifest (or the system) will be always cached.
+///   </li>
+///   <li>
+///     This parameter gives an opportunity to specify additional tracks (audio and text tracks) to be saved during caching.
+///   </li>
+///   <li>
+///     Use <code>CachingParametersTrackSelectionBuilder</code> to create an instance.
+///   </li>
+/// </ul>
+@property (nonatomic, strong) THEOplayerCachingParametersTrackSelection * _Nonnull preferredTrackSelection;
 /// Constructs a <code>CachingParameters</code>.
 /// \param expirationDate The expiration date of the cached data.
 ///
@@ -7930,8 +8034,74 @@ SWIFT_CLASS_NAMED("CachingParameters")
 /// \param expirationDate The expiration date of the cached data.
 ///
 - (nonnull instancetype)initWithExpirationDate:(NSDate * _Nonnull)expirationDate OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+/// An object that represents a CachingParametersTrackSelection.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Use <code>CachingParametersTrackSelectionBuilder</code> to create an instance.
+///   </li>
+/// </ul>
+/// since:
+/// v5.0.0
+SWIFT_CLASS_NAMED("CachingParametersTrackSelection")
+@interface THEOplayerCachingParametersTrackSelection : NSObject
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull audioTrackSelection;
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull textTrackSelection;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A builder to create CachingParametersTrackSelections.
+/// since:
+/// v5.0.0
+SWIFT_CLASS_NAMED("CachingParametersTrackSelectionBuilder")
+@interface THEOplayerCachingParametersTrackSelectionBuilder : NSObject
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull audioTrackSelection;
+/// The list of langugage tags that indicates the preferred audio tracks to be cached. Defaults to <code>[]</code>.
+/// \code
+/// - Remark: The IETF BCP 47 language tag associated with the option
+///
+/// \endcode
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull textTrackSelection;
+/// Creates a CachingParametersTrackSelection
+- (THEOplayerCachingParametersTrackSelection * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes.
+SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
+@interface THEOplayerCachingTaskStateChangeEvent : THEOplayerCacheEvent
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes to <code>.error</code>.
+SWIFT_CLASS_NAMED("CachingTaskErrorStateChangeEvent")
+@interface THEOplayerCachingTaskErrorStateChangeEvent : THEOplayerCachingTaskStateChangeEvent
+/// The date at which the event occured.
+@property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable error;
 @end
 
 
@@ -7968,11 +8138,6 @@ SWIFT_CLASS_NAMED("CachingTaskProgressEvent")
 @interface THEOplayerCachingTaskProgressEvent : THEOplayerCacheEvent
 @end
 
-
-/// Fired when the <code>CachingTask.status</code> changes.
-SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
-@interface THEOplayerCachingTaskStateChangeEvent : THEOplayerCacheEvent
-@end
 
 /// The status of a caching task.
 /// <ul>
@@ -11796,9 +11961,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// The Cache object to access the caching API.
 /// remark:
 /// Only available on iOS 10 and above.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) id <THEOplayerCache> _Nonnull cache;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) id <THEOplayerCache> _Nonnull cache;)
 + (id <THEOplayerCache> _Nonnull)cache SWIFT_WARN_UNUSED_RESULT;
-+ (void)setCache:(id <THEOplayerCache> _Nonnull)value;
 @end
 
 @class THEOplayerUIConfiguration;
@@ -11841,8 +12005,8 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 /// \param pip The configuration for picture-in-picture.
 ///
 - (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Constructs a THEOplayerConfiguration.
+- (nonnull instancetype)init;
 @end
 
 

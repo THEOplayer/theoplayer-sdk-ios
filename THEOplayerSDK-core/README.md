@@ -1,16 +1,10 @@
-# THEOplayerSDK
+# THEOplayerSDK Core
 
 THEOplayerSDK brings the universal video player solution created by [THEO Technologies](https://www.theoplayer.com/) to iOS and tvOS, enabling you to quickly deliver cross-platform content playback.
 
-> **Warning**
-> If you are looking for versions prior to **5.0**, please check the README from the source code of the specific version at https://github.com/THEOplayer/theoplayer-sdk-ios/tags
+This is the core framework which provides common basic playback features including: HLS stream playback, Fairplay DRM content protection support, offline playback, Apple AirPlay and many more.
 
-This repo contains the following packages:
-1. [THEOplayer Core SDK](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayerSDK-core)
-2. [THEOplayer GoogleIMA Integration](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA)
-3. [THEOplayer GoogleCast Integration](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleCast)
-
-For more details of each package, please visit the links listed above.
+For more details on how to get started, please visit our guide at: https://docs.theoplayer.com/getting-started/01-sdks/03-ios-unified/00-getting-started.md
 
 ## Documentation
 

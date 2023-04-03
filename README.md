@@ -6,9 +6,9 @@ THEOplayerSDK brings the universal video player solution created by [THEO Techno
 > If you are looking for versions prior to **5.0**, please check the README from the source code of the specific version at https://github.com/THEOplayer/theoplayer-sdk-ios/tags
 
 This repo contains the following packages:
-1. [THEOplayer Core SDK](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayerSDK-core)
-2. [THEOplayer GoogleIMA Integration](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA)
-3. [THEOplayer GoogleCast Integration](https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleCast)
+1. [THEOplayer Core SDK](THEOplayerSDK-core)
+2. [THEOplayer GoogleIMA Integration](THEOplayer-Integration-GoogleIMA)
+3. [THEOplayer GoogleCast Integration](THEOplayer-Integration-GoogleCast)
 
 For more details of each package, please visit the links listed above.
 

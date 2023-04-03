@@ -1,4 +1,4 @@
-# THEOplayerSDK Core
+# THEOplayer Core SDK
 
 THEOplayerSDK brings the universal video player solution created by [THEO Technologies](https://www.theoplayer.com/) to iOS and tvOS, enabling you to quickly deliver cross-platform content playback.
 

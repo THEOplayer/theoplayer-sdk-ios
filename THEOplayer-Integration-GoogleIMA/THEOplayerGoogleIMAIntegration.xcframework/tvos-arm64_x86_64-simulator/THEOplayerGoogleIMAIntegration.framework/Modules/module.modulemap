@@ -1,0 +1,4 @@
+framework module THEOplayerGoogleIMAIntegration {
+  header "THEOplayerGoogleIMAIntegration-Swift.h"
+  requires objc
+}

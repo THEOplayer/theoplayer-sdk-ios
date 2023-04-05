@@ -1,0 +1,4 @@
+framework module THEOplayerGoogleCastIntegration {
+  header "THEOplayerGoogleCastIntegration-Swift.h"
+  requires objc
+}

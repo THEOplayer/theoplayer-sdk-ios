@@ -4,7 +4,7 @@ THEOplayerSDK brings the universal video player solution created by [THEO Techno
 
 This is the GoogleIMA integration framework which comes as a standalone module to extend the THEOplayer core SDK and enable playing Google Interactive Media Advertisements.
 
-For more details on how to get started, please visit our guide at: https://docs.theoplayer.com/getting-started/01-sdks/03-ios-unified/00-getting-started.md
+For more details on how to get started, please visit our guide at: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/00-getting-started.md
 
 ## Documentation
 

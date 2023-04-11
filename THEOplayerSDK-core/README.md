@@ -4,7 +4,7 @@ THEOplayerSDK brings the universal video player solution created by [THEO Techno
 
 This is the core framework which provides common basic playback features including: HLS stream playback, Fairplay DRM content protection support, offline playback, Apple AirPlay and many more.
 
-For more details on how to get started, please visit our guide at: https://docs.theoplayer.com/getting-started/01-sdks/03-ios-unified/00-getting-started.md
+For more details on how to get started, please visit our guide at: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/00-getting-started.md
 
 ## Documentation
 

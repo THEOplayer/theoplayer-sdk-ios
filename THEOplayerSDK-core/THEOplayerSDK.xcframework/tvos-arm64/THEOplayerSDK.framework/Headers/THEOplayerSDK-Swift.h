@@ -2950,7 +2950,16 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 @interface THEOplayerPiPConfiguration : NSObject
 /// Whether the presentation mode should be retained on source changes. Defaults to false.
 @property (nonatomic) BOOL retainPresentationModeOnSourceChange;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange OBJC_DESIGNATED_INITIALIZER;
+/// Disables seekability while in native Picture in Picture mode. This can be useful when playing advertisements for instance. Defaults to false.
+/// remark:
+///
+/// This only works in Native Picture in Picture. (when <code>nativePictureInPicture = true</code>)
+/// This has a minimum requirement of iOS/tvOS 14.0 and does not work on simulators.
+/// since:
+/// v5.0.1
+@property (nonatomic) BOOL requiresLinearPlayback;
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange;
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange requiresLinearPlayback:(BOOL)requiresLinearPlayback OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init;
 @end
 
@@ -2972,6 +2981,10 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 /// remark:
 /// For more informations check https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate. Only supported when <code>PiPConfiguration.nativePictureInPicture</code> is set to <code>true</code>.
 @property (nonatomic, strong) id <AVPictureInPictureControllerDelegate> _Nullable nativePictureInPictureDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14.0);
+/// Sets the picture-in-picture configuration dynamically.
+/// \param configuration The <code>PipConfiguration</code> object which describes the configuration of the picture-in-picture feature.
+///
+- (void)configureWithConfiguration:(THEOplayerPiPConfiguration * _Nonnull)configuration;
 @end
 
 

@@ -1170,10 +1170,12 @@ public struct PlayerEventTypes {
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerPiPConfiguration) public class PiPConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc public var retainPresentationModeOnSourceChange: Swift.Bool
+  @objc public var requiresLinearPlayback: Swift.Bool
   @objc public var nativePictureInPicture: Swift.Bool
   @objc public var canStartPictureInPictureAutomaticallyFromInline: Swift.Bool
   @objc convenience public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false)
-  @objc public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false, canStartPictureInPictureAutomaticallyFromInline: Swift.Bool = false)
+  @objc convenience public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false, canStartPictureInPictureAutomaticallyFromInline: Swift.Bool = false)
+  @objc public init(retainPresentationModeOnSourceChange: Swift.Bool = false, nativePictureInPicture: Swift.Bool = false, canStartPictureInPictureAutomaticallyFromInline: Swift.Bool = false, requiresLinearPlayback: Swift.Bool = false)
   @available(swift, obsoleted: 1.0)
   @objc convenience override dynamic public init()
   @objc deinit
@@ -1218,6 +1220,7 @@ public protocol PictureInPicture {
   func configure(movable: Swift.Bool?, defaultCorner: THEOplayerSDK.PictureInPictureCorner?, scale: Swift.Float?, visibility: Swift.Double?, margin: THEOplayerSDK.THEOMargins?)
   @available(iOS 14.0, tvOS 14.0, *)
   var nativePictureInPictureDelegate: AVKit.AVPictureInPictureControllerDelegate? { get set }
+  func configure(configuration: THEOplayerSDK.PiPConfiguration)
 }
 extension PictureInPicture {
   public func configure(movable: Swift.Bool?, defaultCorner: THEOplayerSDK.PictureInPictureCorner?, scale: Swift.Float?)
@@ -1232,6 +1235,7 @@ extension PictureInPicture {
   @objc func configure(movable: Swift.Bool, defaultCorner: THEOplayerSDK.PictureInPictureCorner, scale: Swift.Float, margin: THEOplayerSDK.THEOMargins)
   @objc @available(iOS 14.0, tvOS 14.0, *)
   var nativePictureInPictureDelegate: AVKit.AVPictureInPictureControllerDelegate? { get set }
+  @objc func configure(configuration: THEOplayerSDK.PiPConfiguration)
 }
 @_inheritsConvenienceInitializers public class EventedArray<Element> : THEOplayerSDK.THEOArray<Element>, THEOplayerSDK.EventDispatcherProtocol {
   public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol

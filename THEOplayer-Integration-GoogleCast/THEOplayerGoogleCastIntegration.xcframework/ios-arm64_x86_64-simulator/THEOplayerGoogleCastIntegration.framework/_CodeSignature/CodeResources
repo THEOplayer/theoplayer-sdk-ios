@@ -10,11 +10,19 @@
 		</data>
 		<key>Headers/THEOplayerGoogleCastIntegration-Swift.h</key>
 		<data>
-		7GcAG3qo3H6Ekyix/ADe+y9+q+k=
+		B6Na04XUJBhO26qRtULxmvk1+oQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Gbh+3norsGCHroEiT+YKoV7dZUA=
+		qB6Ngqkm2VETSuGLNmnqscx0t5s=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<data>
+		QU4cxdG9LOS+YGwnVNN9l6uWfZg=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<data>
+		QU4cxdG9LOS+YGwnVNN9l6uWfZg=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -23,6 +31,30 @@
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
 		X9R9DCduX4lpZ/ZDKXJ4ijCQY0o=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		Wl+YNCQd3ga6by8ef+YAjYBVrYs=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		cxvAgyNz6sERJNYIna6F/XjZBYM=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		Uu8E+sz5vGv0obX3IwbWPu5T83A=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftdoc</key>
+		<data>
+		Wl+YNCQd3ga6by8ef+YAjYBVrYs=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftinterface</key>
+		<data>
+		cxvAgyNz6sERJNYIna6F/XjZBYM=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftmodule</key>
+		<data>
+		Uu8E+sz5vGv0obX3IwbWPu5T83A=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -66,7 +98,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0n7ewE/xQWCoowBlqyVGeMDQHoJOpXfpzwv9ihE8XYk=
+			IySih1P2hTNdZ5xhiF14TICwg72QEzC0Kj5HzWrCALk=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			c9qMtA52JZONEaRPnL56OMRmmJA4nSml4TnXOlSDb20=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			c9qMtA52JZONEaRPnL56OMRmmJA4nSml4TnXOlSDb20=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
@@ -81,6 +127,48 @@
 			<key>hash2</key>
 			<data>
 			NtmBFtICq89XJLlJkRW7FTOrUCy0myW1zcucou1t+LQ=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			e8uEHZSjjdfxZ6VOH+sT0DGObtapqN1E3WpLbZFyVHw=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			omchTDrfl8qtVxWuM4V6qELBF0PP8L3m83Vz8V9mCRQ=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PhrgWcEYjnWsjPAFcHBZQ4kzT6Xr/PFpqH9osi2IUcg=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftdoc</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			e8uEHZSjjdfxZ6VOH+sT0DGObtapqN1E3WpLbZFyVHw=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			omchTDrfl8qtVxWuM4V6qELBF0PP8L3m83Vz8V9mCRQ=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftmodule</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PhrgWcEYjnWsjPAFcHBZQ4kzT6Xr/PFpqH9osi2IUcg=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>

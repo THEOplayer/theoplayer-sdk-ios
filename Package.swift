@@ -14,7 +14,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "THEOplayerSDK",
-            path: "Frameworks/THEOplayerSDK-basic/THEOplayerSDK.xcframework"
+            path: "THEOplayerSDK-core/THEOplayerSDK.xcframework"
         )
     ]
 )

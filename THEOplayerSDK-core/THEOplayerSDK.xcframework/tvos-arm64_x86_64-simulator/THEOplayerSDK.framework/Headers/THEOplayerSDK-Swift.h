@@ -2281,24 +2281,18 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
-@interface THEOplayerGoogleIMAConfiguration : NSObject
-/// Creates a GoogleIMAAdsConfiguration object.
-/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
-///
-/// \param disableUI Whether the ads UI need to be disabled (chromeless ads). Only applies to non TrueView ads.
-///
-- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Use GoogleIMAConfigurationBuilder to create new instances");
-/// Creates a GoogleIMAConfiguration object.
-- (nonnull instancetype)init;
+SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
+@interface THEOplayerGoogleIMAAdsConfiguration : NSObject
 /// Indicates whether the native IMA SDK is being used.
-@property (nonatomic) BOOL useNativeIma;
+@property (nonatomic, readonly) BOOL useNativeIma SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled.
 /// remark:
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2306,7 +2300,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to Goo
 SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
 /// Indicates whether the native IMA SDK is being used. Defaults to <code>true</code>
-@property (nonatomic) BOOL useNativeIMA;
+@property (nonatomic) BOOL useNativeIMA SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
@@ -2314,7 +2308,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic) BOOL enableBackgroundPlayback;
 /// Creates a GoogleIMAAdsConfiguration
-- (THEOplayerGoogleIMAConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -3829,6 +3823,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -3852,7 +3847,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @end
 
 
-
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
@@ -3862,6 +3856,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
 /// Removes all <code>Integration</code>s from the THEOplayer instance.
 - (void)removeAllIntegrations;
+/// Returns all registered <code>Integration</code>s  on the THEOplayer instance
+- (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -7015,24 +7011,18 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
-@interface THEOplayerGoogleIMAConfiguration : NSObject
-/// Creates a GoogleIMAAdsConfiguration object.
-/// \param useNativeIma Whether the native IMA SDK should be used, defaults to true.
-///
-/// \param disableUI Whether the ads UI need to be disabled (chromeless ads). Only applies to non TrueView ads.
-///
-- (nonnull instancetype)initWithUseNativeIma:(BOOL)useNativeIma disableUI:(BOOL)disableUI OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Use GoogleIMAConfigurationBuilder to create new instances");
-/// Creates a GoogleIMAConfiguration object.
-- (nonnull instancetype)init;
+SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
+@interface THEOplayerGoogleIMAAdsConfiguration : NSObject
 /// Indicates whether the native IMA SDK is being used.
-@property (nonatomic) BOOL useNativeIma;
+@property (nonatomic, readonly) BOOL useNativeIma SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled.
 /// remark:
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -7040,7 +7030,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfiguration") SWIFT_DEPRECATED_MSG("Renamed to Goo
 SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
 /// Indicates whether the native IMA SDK is being used. Defaults to <code>true</code>
-@property (nonatomic) BOOL useNativeIMA;
+@property (nonatomic) BOOL useNativeIMA SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
@@ -7048,7 +7038,7 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 /// Only has effect when used with native IMA configuration.
 @property (nonatomic) BOOL enableBackgroundPlayback;
 /// Creates a GoogleIMAAdsConfiguration
-- (THEOplayerGoogleIMAConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -8563,6 +8553,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
+
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -8586,7 +8577,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @end
 
 
-
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
@@ -8596,6 +8586,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
 /// Removes all <code>Integration</code>s from the THEOplayer instance.
 - (void)removeAllIntegrations;
+/// Returns all registered <code>Integration</code>s  on the THEOplayer instance
+- (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

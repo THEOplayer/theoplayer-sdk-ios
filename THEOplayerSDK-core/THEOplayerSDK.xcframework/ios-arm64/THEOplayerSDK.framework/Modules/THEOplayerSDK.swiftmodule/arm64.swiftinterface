@@ -2316,31 +2316,24 @@ public struct AdsEventTypes {
 @_hasMissingDesignatedInitializers @objc(THEOplayerCachingTaskProgressEvent) public class CachingTaskProgressEvent : THEOplayerSDK.CacheEvent {
   @objc deinit
 }
-public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguration
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "Renamed to GoogleIMAAdsConfiguration. Swift code can migrate to use GoogleIMAAdsConfiguration; for Objective-C THEOplayerGoogleIMAAdsConfiguration will be available starting the next major version update.")
-@objc(THEOplayerGoogleIMAConfiguration) public class GoogleIMAConfiguration : ObjectiveC.NSObject, Swift.Codable {
-  @available(*, deprecated, message: "Use GoogleIMAConfigurationBuilder to create new instances")
-  @objc public init(useNativeIma: Swift.Bool = true, disableUI: Swift.Bool = false)
-  @available(swift, obsoleted: 1.0)
-  @objc convenience override dynamic public init()
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleIMAAdsConfiguration) public class GoogleIMAAdsConfiguration : ObjectiveC.NSObject, Swift.Codable {
+  @available(*, deprecated, message: "Legacy API. The return value has no indication on the functionality.")
   @objc public var useNativeIma: Swift.Bool {
     @objc get
-    @objc @available(*, deprecated)
-    set
   }
   @objc public var disableUI: Swift.Bool {
     @objc get
-    @objc @available(*, deprecated)
-    set
   }
   @objc public var enableBackgroundPlayback: Swift.Bool {
     @objc get
   }
+  @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
+  @available(*, deprecated, message: "Legacy API. The return value has no indication on the functionality.")
   @objc public var useNativeIMA: Swift.Bool
   @objc public var disableUI: Swift.Bool
   @objc public var enableBackgroundPlayback: Swift.Bool
@@ -2355,17 +2348,11 @@ public typealias GoogleIMAAdsConfiguration = THEOplayerSDK.GoogleIMAConfiguratio
   @objc public var preload: THEOplayerSDK.AdPreloadType {
     get
   }
-  @available(*, deprecated, renamed: "googleIma")
-  @objc public var googleImaConfiguration: THEOplayerSDK.GoogleIMAAdsConfiguration {
-    @objc get
-  }
   @objc public var googleIma: THEOplayerSDK.GoogleIMAAdsConfiguration {
     @objc get
   }
   @objc final public let googleDai: THEOplayerSDK.GoogleDAIAdsConfiguration?
   @objc public init(showCountdown: Swift.Bool, preload: THEOplayerSDK.AdPreloadType, googleIma: THEOplayerSDK.GoogleIMAAdsConfiguration? = nil, googleDai: THEOplayerSDK.GoogleDAIAdsConfiguration? = nil)
-  @available(*, deprecated, message: "This init method will be removed in future versions because of a deprecated property `googleImaConfiguration`. Please use the init method with `googleIma` parameter instead.")
-  @objc public init(showCountdown: Swift.Bool, preload: THEOplayerSDK.AdPreloadType, googleImaConfiguration: THEOplayerSDK.GoogleIMAAdsConfiguration?)
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -3591,6 +3578,7 @@ extension THEOplayer {
   @objc dynamic public func addIntegration(_ integration: THEOplayerSDK.Integration)
   @objc dynamic public func removeIntegration(_ integration: THEOplayerSDK.Integration)
   @objc dynamic public func removeAllIntegrations()
+  @objc dynamic public func getAllIntegrations() -> [THEOplayerSDK.Integration]
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerXstreamDRMConfiguration) public class XstreamDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var ticketAcquisitionURL: Swift.String

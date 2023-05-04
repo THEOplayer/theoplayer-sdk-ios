@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		cvCN10iPCmjs+yv2rXhVhXxyvzM=
+		FQXq1KpmMO/4UEy7Jlcr0A69AEA=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		aPJGU/olTmgsPa+VzKUFnPdLA+8=
+		5DZxYEpkXJmHyyPkg7jYjzPxtpI=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		aPJGU/olTmgsPa+VzKUFnPdLA+8=
+		5DZxYEpkXJmHyyPkg7jYjzPxtpI=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Ko1JiCeQLP86zGWZht2v8MSR3H4=
+		O88O/j5HBhzpoGgJQn5D9S9cXO0=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Ko1JiCeQLP86zGWZht2v8MSR3H4=
+		O88O/j5HBhzpoGgJQn5D9S9cXO0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -147,7 +147,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nqPf/3nL/R3QUszGZnOvIFe1bnwLxqH9HVXoWw+dDs0=
+			FNGop7UpJOuKbwyT9V141F41TvGiKXZ1F8F6ZlshuXo=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
@@ -168,7 +168,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nqPf/3nL/R3QUszGZnOvIFe1bnwLxqH9HVXoWw+dDs0=
+			FNGop7UpJOuKbwyT9V141F41TvGiKXZ1F8F6ZlshuXo=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -189,7 +189,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			21AB1IiD/4ux51ll54nM6a6R88rSVawj6MmiZ67rHZc=
+			OzlIJ2yYzQLyiK0a8vQdCOnd7HhNN7q0LSvmFOAlxck=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
@@ -210,7 +210,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			21AB1IiD/4ux51ll54nM6a6R88rSVawj6MmiZ67rHZc=
+			OzlIJ2yYzQLyiK0a8vQdCOnd7HhNN7q0LSvmFOAlxck=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

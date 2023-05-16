@@ -1,16 +1,17 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerGoogleCastIntegration
 import Foundation
 import GoogleCast
 import Swift
 import THEOplayerSDK
+import _Concurrency
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleCastIntegrationFactory) public class GoogleCastIntegrationFactory : ObjectiveC.NSObject {
   public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with config: THEOplayerSDK.CastConfiguration) -> THEOplayerGoogleCastIntegration.CastIntegration
   @available(swift, obsoleted: 1.0)
   @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with config: THEOplayerSDK.CastConfiguration) -> THEOplayerGoogleCastIntegration.CastIntegration_Objc
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public protocol CastIntegration : THEOplayerSDK.Integration {
   var casting: Swift.Bool { get }
@@ -48,6 +49,6 @@ public protocol CastIntegration : THEOplayerSDK.Integration {
   @objc public static var theoplayerV2ReceiverApplicationID: Swift.String
   @objc public static var defaultV3ReceiverApplicationID: Swift.String
   @objc public static func setGCKCastContextSharedInstanceWithDefaultCastOptions()
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }

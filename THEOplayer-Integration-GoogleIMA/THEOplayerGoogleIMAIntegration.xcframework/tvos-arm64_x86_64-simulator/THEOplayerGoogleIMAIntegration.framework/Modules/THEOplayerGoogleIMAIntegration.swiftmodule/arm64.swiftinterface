@@ -1,11 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target arm64-apple-tvos12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerGoogleIMAIntegration
 import Foundation
 import GoogleInteractiveMediaAds
 import Swift
 import THEOplayerSDK
 import UIKit
+import _Concurrency
 public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
   var imaAd: GoogleInteractiveMediaAds.IMAAd { get }
 }
@@ -16,8 +17,8 @@ public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
   public static func createIntegration(on player: THEOplayerSDK.THEOplayer) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration
   @available(swift, obsoleted: 1.0)
   @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public protocol GoogleImaIntegration : THEOplayerSDK.Ads, THEOplayerSDK.Integration {
   var renderingSettings: GoogleInteractiveMediaAds.IMAAdsRenderingSettings? { get set }

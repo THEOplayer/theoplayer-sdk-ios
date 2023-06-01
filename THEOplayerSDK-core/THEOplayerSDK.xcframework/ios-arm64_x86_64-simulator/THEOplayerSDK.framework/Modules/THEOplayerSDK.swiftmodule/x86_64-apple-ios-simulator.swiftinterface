@@ -3077,6 +3077,9 @@ public struct NetworkEventTypes {
   @objc public var error: Swift.String? {
     @objc get
   }
+  @objc public var uid: Swift.Int {
+    @objc get
+  }
   @objc public static var automaticallyManageAudioSession: Swift.Bool {
     @objc get
     @objc set

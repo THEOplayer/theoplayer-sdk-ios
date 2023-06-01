@@ -3650,6 +3650,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly) enum THEOplayerReadyState readyState;
 /// Returns the last encountered player error.
 @property (nonatomic, readonly, copy) NSString * _Nullable error;
+/// Returns the unique ID of the player
+@property (nonatomic, readonly) NSInteger uid;
 /// Sets whether THEOplayer automatically manages the <code>AVAudioSession</code>.
 /// remark:
 ///
@@ -8380,6 +8382,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly) enum THEOplayerReadyState readyState;
 /// Returns the last encountered player error.
 @property (nonatomic, readonly, copy) NSString * _Nullable error;
+/// Returns the unique ID of the player
+@property (nonatomic, readonly) NSInteger uid;
 /// Sets whether THEOplayer automatically manages the <code>AVAudioSession</code>.
 /// remark:
 ///

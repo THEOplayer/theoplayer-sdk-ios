@@ -10,6 +10,7 @@ import CoreMedia
 import Foundation
 import GameController
 import MediaPlayer
+import Network
 import Swift
 import SystemConfiguration
 @_exported import THEOplayerSDK

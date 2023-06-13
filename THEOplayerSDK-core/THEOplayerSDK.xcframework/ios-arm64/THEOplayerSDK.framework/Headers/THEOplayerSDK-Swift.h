@@ -1424,6 +1424,24 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCacheStatus, "CacheStatus", open) 
   THEOplayerCacheStatusINITIALISED SWIFT_COMPILE_NAME("initialised") = 2,
 };
 
+/// The reason behind IDLE status change.
+/// <ul>
+///   <li>
+///     <code>CacheStatusIdleReason.notStarted</code>: The task has been created, but has not started yet.
+///   </li>
+///   <li>
+///     <code>CacheStatusIdleReason.paused</code>: The task is manually paused.
+///   </li>
+///   <li>
+///     <code>CacheStatusIdleReason.lostNetwork</code>: The task is paused due to lost network connection.
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerCacheStatusIdleReason, "CacheStatusIdleReason", open) {
+  THEOplayerCacheStatusIdleReasonNOTSTARTED SWIFT_COMPILE_NAME("notStarted") = 1,
+  THEOplayerCacheStatusIdleReasonPAUSED SWIFT_COMPILE_NAME("paused") = 2,
+  THEOplayerCacheStatusIdleReasonLOSTNETWORK SWIFT_COMPILE_NAME("lostNetwork") = 3,
+};
+
 @protocol THEOplayerCachingTask;
 @class THEOplayerSourceDescription;
 @class THEOplayerCachingParameters;
@@ -1593,7 +1611,7 @@ SWIFT_CLASS_NAMED("CachingTaskStateChangeEvent")
 /// Fired when the <code>CachingTask.status</code> changes to <code>.error</code>.
 SWIFT_CLASS_NAMED("CachingTaskErrorStateChangeEvent")
 @interface THEOplayerCachingTaskErrorStateChangeEvent : THEOplayerCachingTaskStateChangeEvent
-/// The date at which the event occured.
+/// The underlying error that caused the state change.
 @property (nonatomic, readonly, strong) id <THEOplayerTHEOError> _Nullable error;
 @end
 
@@ -1608,6 +1626,14 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull progress;)
 + (NSString * _Nonnull)progress SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when the <code>CachingTask.status</code> changes to <code>.idle</code>.
+SWIFT_CLASS_NAMED("CachingTaskIdleStateChangeEvent")
+@interface THEOplayerCachingTaskIdleStateChangeEvent : THEOplayerCachingTaskStateChangeEvent
+/// The underlying reason that caused the state change.
+@property (nonatomic, readonly) enum THEOplayerCacheStatusIdleReason idleReason;
 @end
 
 @protocol THEOplayerDRMConfiguration;

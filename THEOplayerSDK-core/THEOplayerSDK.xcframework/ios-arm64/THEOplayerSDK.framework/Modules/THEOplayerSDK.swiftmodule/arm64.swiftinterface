@@ -9,6 +9,7 @@ import CoreGraphics
 import CoreMedia
 import Foundation
 import MediaPlayer
+import Network
 import Swift
 import SystemConfiguration
 @_exported import THEOplayerSDK
@@ -1355,6 +1356,16 @@ public protocol CachingTask : THEOplayerSDK.EventDispatcherProtocol {
     get
   }
 }
+@objc(THEOplayerCacheStatusIdleReason) public enum CacheStatusIdleReason : Swift.Int {
+  @objc(THEOplayerCacheStatusIdleReasonNOTSTARTED) case notStarted = 1
+  @objc(THEOplayerCacheStatusIdleReasonPAUSED) case paused = 2
+  @objc(THEOplayerCacheStatusIdleReasonLOSTNETWORK) case lostNetwork = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 extension THEOplayerSDK.CachingTaskStatus {
   public var _rawValue: Swift.String {
     get
@@ -2255,6 +2266,12 @@ public struct AdsEventTypes {
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerCachingTaskErrorStateChangeEvent) public class CachingTaskErrorStateChangeEvent : THEOplayerSDK.CachingTaskStateChangeEvent {
   @objc public var error: THEOplayerSDK.THEOError? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerCachingTaskIdleStateChangeEvent) public class CachingTaskIdleStateChangeEvent : THEOplayerSDK.CachingTaskStateChangeEvent {
+  @objc public var idleReason: THEOplayerSDK.CacheStatusIdleReason {
     get
   }
   @objc deinit
@@ -3631,6 +3648,9 @@ extension THEOplayerSDK.CacheStatus : Swift.RawRepresentable {}
 extension THEOplayerSDK.CachingTaskStatus : Swift.Equatable {}
 extension THEOplayerSDK.CachingTaskStatus : Swift.Hashable {}
 extension THEOplayerSDK.CachingTaskStatus : Swift.RawRepresentable {}
+extension THEOplayerSDK.CacheStatusIdleReason : Swift.Equatable {}
+extension THEOplayerSDK.CacheStatusIdleReason : Swift.Hashable {}
+extension THEOplayerSDK.CacheStatusIdleReason : Swift.RawRepresentable {}
 extension THEOplayerSDK.CueChangeEvent : THEOplayerSDK.TrackEventProtocol {}
 extension THEOplayerSDK.CueChangeEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.AddCueEvent : THEOplayerSDK.TextTrackCueEventProtocol {}

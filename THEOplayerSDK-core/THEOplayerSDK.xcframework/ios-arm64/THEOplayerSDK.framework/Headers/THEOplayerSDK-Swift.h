@@ -2393,6 +2393,7 @@ SWIFT_PROTOCOL_NAMED("ContentProtectionError_Objc")
 @protocol THEOplayerLicenseRequestCallback;
 @class THEOplayerLicenseResponse;
 @protocol THEOplayerLicenseResponseCallback;
+@protocol THEOplayerExtractContentIdCallback;
 
 /// This ContentProtectionIntegration defines some methods to alter license and certificate requests and responses.
 SWIFT_PROTOCOL_NAMED("ContentProtectionIntegration")
@@ -2499,7 +2500,29 @@ SWIFT_PROTOCOL_NAMED("ContentProtectionIntegration")
 /// </ul>
 /// \param skdUrl The key URI.
 ///
-- (NSString * _Nonnull)extractFairplayContentIdWithSkdUrl:(NSString * _Nonnull)skdUrl SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)extractFairplayContentIdWithSkdUrl:(NSString * _Nonnull)skdUrl SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in the next major release. Please use onExtractFairplayContentId(skdUrl:callback:) instead.");
+/// A function to extract the Fairplay content ID from the key URI, as given by the URI attribute of the <code>#EXT-X-KEY</code> tag in the HLS playlist (m3u8).
+/// since:
+/// v5.4.1
+/// remark:
+///
+/// <ul>
+///   <li>
+///     In order to start a Fairplay license request, the player must provide the initialization data, the content ID and the certificate to the CDM.
+///   </li>
+///   <li>
+///     The content ID is usually contained in the key URI in some vendor-specific way, for example in the host name (e.g. <code>skd://123456789</code>)
+///     or in the URL query (e.g. <code>skd://vendor?123456789</code>). This function should extract this content ID from the key URI.
+///   </li>
+///   <li>
+///     This method is required only for Fairplay integrations. It is ignored for other key systems.
+///   </li>
+/// </ul>
+/// \param skdUrl The orignal key URI.
+///
+/// \param callback The <code>ExtractContentIdCallback</code> completion handler that should be called with the modified  content ID.
+///
+- (void)onExtractFairplayContentIdWithSkdUrl:(NSString * _Nonnull)skdUrl callback:(id <THEOplayerExtractContentIdCallback> _Nonnull)callback;
 @end
 
 
@@ -3148,6 +3171,13 @@ SWIFT_CLASS_NAMED("ExitCueEvent")
 @property (nonatomic, readonly, strong) id <THEOplayerTextTrackCue> _Nonnull cue;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_PROTOCOL_NAMED("ExtractContentIdCallback")
+@protocol THEOplayerExtractContentIdCallback
+- (void)respondWithContentID:(NSData * _Nullable)contentID;
+- (void)errorWithError:(NSError * _Nonnull)error;
 @end
 
 
@@ -5503,6 +5533,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -5513,12 +5549,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 

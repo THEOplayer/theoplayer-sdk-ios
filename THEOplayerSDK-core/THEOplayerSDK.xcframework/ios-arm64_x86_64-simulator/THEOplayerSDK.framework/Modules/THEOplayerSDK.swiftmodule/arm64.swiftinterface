@@ -216,7 +216,9 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc optional func onCertificateResponse(response: THEOplayerSDK.CertificateResponse, callback: THEOplayerSDK.CertificateResponseCallback)
   @objc optional func onLicenseRequest(request: THEOplayerSDK.LicenseRequest, callback: THEOplayerSDK.LicenseRequestCallback)
   @objc optional func onLicenseResponse(response: THEOplayerSDK.LicenseResponse, callback: THEOplayerSDK.LicenseResponseCallback)
+  @available(*, deprecated, message: "This method will be removed in the next major release. Please use onExtractFairplayContentId(skdUrl:callback:) instead.")
   @objc optional func extractFairplayContentId(skdUrl: Swift.String) -> Swift.String
+  @objc optional func onExtractFairplayContentId(skdUrl: Swift.String, callback: THEOplayerSDK.ExtractContentIdCallback)
 }
 @objc(THEOplayerCertificateRequestCallback) public protocol CertificateRequestCallback : THEOplayerSDK.CertificateResponseCallback {
   @objc func request(request: THEOplayerSDK.CertificateRequest)
@@ -230,6 +232,10 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
 }
 @objc(THEOplayerLicenseResponseCallback) public protocol LicenseResponseCallback {
   @objc func respond(license: Foundation.Data)
+  @objc func error(error: Swift.Error)
+}
+@objc(THEOplayerExtractContentIdCallback) public protocol ExtractContentIdCallback {
+  @objc func respond(contentID: Foundation.Data?)
   @objc func error(error: Swift.Error)
 }
 @objc(THEOplayerErrorCategory) public enum ErrorCategory : Swift.Int32, Swift.Codable, Swift.CaseIterable {

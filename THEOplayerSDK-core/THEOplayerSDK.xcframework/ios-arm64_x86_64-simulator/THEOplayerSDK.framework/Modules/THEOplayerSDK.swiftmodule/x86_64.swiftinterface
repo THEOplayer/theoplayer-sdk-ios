@@ -1271,6 +1271,7 @@ public protocol Cache : THEOplayerSDK.EventDispatcherProtocol {
   func createTask(source: THEOplayerSDK.SourceDescription, parameters: THEOplayerSDK.CachingParameters?) -> THEOplayerSDK.CachingTask?
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
+  var developerSettings: THEOplayerSDK.DeveloperSettings? { get }
 }
 @objc(THEOplayerCache) public protocol Cache_Objc {
   @objc var status: THEOplayerSDK.CacheStatus { get }

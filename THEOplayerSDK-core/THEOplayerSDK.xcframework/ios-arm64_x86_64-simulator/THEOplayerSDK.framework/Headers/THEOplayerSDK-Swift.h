@@ -190,7 +190,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import AVFoundation;
 @import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
@@ -518,6 +517,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationK
   THEOplayerAdIntegrationKindFREEWHEEL SWIFT_COMPILE_NAME("freewheel") = 3,
 /// The ad is of integration type Google IMA.
   THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
+/// The ad is of integration type Google DAI.
+  THEOplayerAdIntegrationKindGOOGLE_DAI SWIFT_COMPILE_NAME("google_dai") = 6,
 };
 
 
@@ -716,7 +717,7 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload;
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
+@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
 /// The configuration of Google Dynamic Ad Insertion.
 @property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai;
 /// Constructs an AdsConfiguration object.
@@ -776,6 +777,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @protocol THEOplayerScheduledAd;
 @protocol THEOplayerEventListener;
 @protocol THEOplayerOmid;
+@protocol THEOplayerGoogleDAI;
 
 /// The Ads object helps you configure and control ads within THEOplayer.
 SWIFT_PROTOCOL_NAMED("Ads_Objc")
@@ -857,6 +859,8 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// remark:
 /// Only available if the Google DAI Feature is enabled.
 @property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
+/// The Google DAI API which can be used to query information about dynamically inserted advertisements.
+@property (nonatomic, readonly, strong) id <THEOplayerGoogleDAI> _Nullable dai_Objc;
 @end
 
 /// The logging levels of the Agama process.
@@ -2977,28 +2981,6 @@ SWIFT_CLASS_NAMED("DestroyEvent")
 @interface THEOplayerDestroyEvent : THEOplayerPlayerEvent
 @end
 
-@protocol THEOplayerManifestInterceptor;
-
-/// Developer Settings API
-/// This API provides access to developer settings, debugging tools and experimental features.
-/// remark:
-///
-/// The experimental APIs can make their way into <code>THEOplayer</code> production APIs some day, but not guaranteed.
-/// Experimental APIs can be broken between minor or even between patch releases too.
-/// Relying on them in production systems can be dangerous.
-/// since:
-/// v5.0.0
-SWIFT_PROTOCOL_NAMED("DeveloperSettings")
-@protocol THEOplayerDeveloperSettings
-/// Manifest interceptor delegate
-/// remark:
-///
-/// Experimental!
-/// since:
-/// v5.0.0
-@property (nonatomic, strong) id <THEOplayerManifestInterceptor> _Nullable manifestInterceptor;
-@end
-
 
 /// Exposes the dispatchEvent method
 SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
@@ -3471,6 +3453,98 @@ SWIFT_CLASS_NAMED("GoogleDAILiveConfiguration")
 - (nonnull instancetype)initWithAssetKey:(NSString * _Nonnull)assetKey apiKey:(NSString * _Nonnull)apiKey authToken:(NSString * _Nullable)authToken streamActivityMonitorID:(NSString * _Nullable)streamActivityMonitorID adTagParameters:(NSDictionary<NSString *, NSString *> * _Nullable)adTagParameters OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSURL;
+
+/// The <code>TypedSource</code> object provides the following properties:
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This represents a media resource characterized by a URL to the resource and optionally information about the resource.
+///   </li>
+///   <li>
+///     This optional information can be DRM parameters for that specific source.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("TypedSource")
+@interface THEOplayerTypedSource : NSObject
+/// The ‘src’ property represents the source URL of the manifest or video file to be played.
+@property (nonatomic, copy) NSURL * _Nonnull src;
+/// Specifies the content type (MIME type) of source being played.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     <code>'application/x-mpegURL'</code> or <code>'application/vnd.apple.mpegurl'</code> indicates HLS.
+///   </li>
+///   <li>
+///     <code>'video/mp4'</code> indicates MP4.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nonnull type;
+/// This optional property can be used to specify required DRM parameters for a playback source.
+/// remark:
+///
+/// Information like the license acquisition URL, request headers and other vendor-specific parameters are wrapped in an object implementing the DRMConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerDRMConfiguration> _Nonnull drm;
+/// This property can be used to specify CORS parameters.
+@property (nonatomic) enum THEOplayerCrossOrigin crossOrigin;
+/// Parse / Expose date ranges from HLS manifest.
+@property (nonatomic) BOOL hlsDateRange;
+/// This optional property can be used to specify required Server-Side Ad Insertion parameters for a playback source.
+/// remark:
+///
+/// Parameters used to configure the player to optimally play streams with server-inserted ads from specific SSAI vendors
+/// are wrapped in an object implementing the ServerSideAdInsertionConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerServerSideAdInsertionConfiguration> _Nullable ssai;
+/// Initializes a <code>TypedSource</code>.
+/// \param src The source URL of the manifest or video file to be played.
+///
+/// \param type The content type (MIME type) of the source.
+///
+/// \param drm The DRM configuration.
+///
+/// \param crossOrigin The CORS policy to be used.
+///
+/// \param ssai The Server-side ad insertion configuration.
+///
+/// \param hlsDateRange Whether to parse/expose the date ranges from the HLS manifest.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin ssai:(id <THEOplayerServerSideAdInsertionConfiguration> _Nullable)ssai hlsDateRange:(BOOL)hlsDateRange;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+/// \param crossOrigin The CORS policy to be used, defaults to nil.
+///
+/// \param hlsDateRange Wheter to parse/expose the date ranges from the HLS manifest, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin hlsDateRange:(BOOL)hlsDateRange;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A Google DAI typed source.
+SWIFT_CLASS_NAMED("GoogleDAITypedSource")
+@interface THEOplayerGoogleDAITypedSource : THEOplayerTypedSource
+/// Constructs a <code>GoogleDAITypedSource</code>.
+/// remark:
+/// The <code>TypedSource.type</code> will be “application/x-mpegurl”
+- (nonnull instancetype)initWithSsai:(THEOplayerGoogleDAIConfiguration * _Nonnull)ssai;
+@end
+
 
 /// Represents a configuration for server-side ad insertion with the Google DAI pre-integration for vod streams.
 SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
@@ -3569,7 +3643,6 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSURL;
 
 /// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
 SWIFT_CLASS_NAMED("GoogleImaAdDescription")
@@ -3980,21 +4053,6 @@ SWIFT_CLASS_NAMED("LoadedDataEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("LoadedMetaDataEvent")
 @interface THEOplayerLoadedMetaDataEvent : THEOplayerReadyStateEvent
-@end
-
-
-/// Manifest interceptor introduces the possibility to intercept/observe the manifest requests made by the player. (master and rendition (child) manifest)
-/// It is a <code>AVAssetResourceLoaderDelegate</code> subclass and hooked into the <code>AVURLAsset.resourceLoader</code> of the player item.
-/// remark:
-///
-/// Only works on online resources.
-/// since:
-/// v5.0.0
-SWIFT_PROTOCOL_NAMED("ManifestInterceptor")
-@protocol THEOplayerManifestInterceptor <AVAssetResourceLoaderDelegate>
-/// The custom URL scheme that THEOplayer will use when playing the sources.
-/// It will replace “http://” and “https://” with this on the source URL.
-@property (nonatomic, readonly, copy) NSString * _Nonnull customScheme;
 @end
 
 
@@ -4790,7 +4848,6 @@ SWIFT_CLASS_NAMED("SourceChangeEvent")
 @property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
 @end
 
-@class THEOplayerTypedSource;
 @class THEOplayerTextTrackDescription;
 
 /// The <code>SourceDescription</code> object is used to describe a configuration of a source for a THEOplayer instance.
@@ -5516,23 +5573,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
 
-@class UIGestureRecognizer;
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// Attaches a gesture recognizer to THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// Detaches a gesture recognizer from THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// List of the gesture recognizers attached to THEOplayer.
-/// remark:
-/// Only available on iOS.
-@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
-@end
-
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>Fullscreen</code> api of theoplayer.
@@ -5551,6 +5591,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UIGestureRecognizer;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// Attaches a gesture recognizer to THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// Detaches a gesture recognizer from THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// List of the gesture recognizers attached to THEOplayer.
+/// remark:
+/// Only available on iOS.
+@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
 @end
 
 
@@ -5999,90 +6056,6 @@ SWIFT_CLASS_NAMED("TrackChangeEvent")
 
 
 
-
-/// The <code>TypedSource</code> object provides the following properties:
-/// remark:
-///
-/// <ul>
-///   <li>
-///     This represents a media resource characterized by a URL to the resource and optionally information about the resource.
-///   </li>
-///   <li>
-///     This optional information can be DRM parameters for that specific source.
-///   </li>
-/// </ul>
-SWIFT_CLASS_NAMED("TypedSource")
-@interface THEOplayerTypedSource : NSObject
-/// The ‘src’ property represents the source URL of the manifest or video file to be played.
-@property (nonatomic, copy) NSURL * _Nonnull src;
-/// Specifies the content type (MIME type) of source being played.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     <code>'application/x-mpegURL'</code> or <code>'application/vnd.apple.mpegurl'</code> indicates HLS.
-///   </li>
-///   <li>
-///     <code>'video/mp4'</code> indicates MP4.
-///   </li>
-/// </ul>
-@property (nonatomic, copy) NSString * _Nonnull type;
-/// This optional property can be used to specify required DRM parameters for a playback source.
-/// remark:
-///
-/// Information like the license acquisition URL, request headers and other vendor-specific parameters are wrapped in an object implementing the DRMConfiguration protocol.
-@property (nonatomic, strong) id <THEOplayerDRMConfiguration> _Nonnull drm;
-/// This property can be used to specify CORS parameters.
-@property (nonatomic) enum THEOplayerCrossOrigin crossOrigin;
-/// Parse / Expose date ranges from HLS manifest.
-@property (nonatomic) BOOL hlsDateRange;
-/// This optional property can be used to specify required Server-Side Ad Insertion parameters for a playback source.
-/// remark:
-///
-/// Parameters used to configure the player to optimally play streams with server-inserted ads from specific SSAI vendors
-/// are wrapped in an object implementing the ServerSideAdInsertionConfiguration protocol.
-@property (nonatomic, strong) id <THEOplayerServerSideAdInsertionConfiguration> _Nullable ssai;
-/// Constructs a TypedSource.
-/// \param src The source URL.
-///
-/// \param type The content type (MIME type) of the source, defaults to nil.
-///
-/// \param drm The optional DRM configuration, defaults to nil.
-///
-/// \param crossOrigin The CORS policy to be used, defaults to nil.
-///
-/// \param hlsDateRange Wheter to parse/expose the date ranges from the HLS manifest, defaults to nil.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin hlsDateRange:(BOOL)hlsDateRange;
-/// Constructs a TypedSource.
-/// \param src The source URL.
-///
-/// \param type The content type (MIME type) of the source, defaults to nil.
-///
-/// \param drm The optional DRM configuration, defaults to nil.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@interface THEOplayerTypedSource (SWIFT_EXTENSION(THEOplayerSDK))
-/// Initializes a <code>TypedSource</code>.
-/// \param src The source URL of the manifest or video file to be played.
-///
-/// \param type The content type (MIME type) of the source.
-///
-/// \param drm The DRM configuration.
-///
-/// \param crossOrigin The CORS policy to be used.
-///
-/// \param ssai The Server-side ad insertion configuration.
-///
-/// \param hlsDateRange Whether to parse/expose the date ranges from the HLS manifest.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin ssai:(id <THEOplayerServerSideAdInsertionConfiguration> _Nullable)ssai hlsDateRange:(BOOL)hlsDateRange;
-@end
 
 
 
@@ -6816,7 +6789,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import AVFoundation;
 @import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
@@ -7144,6 +7116,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationK
   THEOplayerAdIntegrationKindFREEWHEEL SWIFT_COMPILE_NAME("freewheel") = 3,
 /// The ad is of integration type Google IMA.
   THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
+/// The ad is of integration type Google DAI.
+  THEOplayerAdIntegrationKindGOOGLE_DAI SWIFT_COMPILE_NAME("google_dai") = 6,
 };
 
 
@@ -7342,7 +7316,7 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload;
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, readonly, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
+@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
 /// The configuration of Google Dynamic Ad Insertion.
 @property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai;
 /// Constructs an AdsConfiguration object.
@@ -7402,6 +7376,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @protocol THEOplayerScheduledAd;
 @protocol THEOplayerEventListener;
 @protocol THEOplayerOmid;
+@protocol THEOplayerGoogleDAI;
 
 /// The Ads object helps you configure and control ads within THEOplayer.
 SWIFT_PROTOCOL_NAMED("Ads_Objc")
@@ -7483,6 +7458,8 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// remark:
 /// Only available if the Google DAI Feature is enabled.
 @property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
+/// The Google DAI API which can be used to query information about dynamically inserted advertisements.
+@property (nonatomic, readonly, strong) id <THEOplayerGoogleDAI> _Nullable dai_Objc;
 @end
 
 /// The logging levels of the Agama process.
@@ -9603,28 +9580,6 @@ SWIFT_CLASS_NAMED("DestroyEvent")
 @interface THEOplayerDestroyEvent : THEOplayerPlayerEvent
 @end
 
-@protocol THEOplayerManifestInterceptor;
-
-/// Developer Settings API
-/// This API provides access to developer settings, debugging tools and experimental features.
-/// remark:
-///
-/// The experimental APIs can make their way into <code>THEOplayer</code> production APIs some day, but not guaranteed.
-/// Experimental APIs can be broken between minor or even between patch releases too.
-/// Relying on them in production systems can be dangerous.
-/// since:
-/// v5.0.0
-SWIFT_PROTOCOL_NAMED("DeveloperSettings")
-@protocol THEOplayerDeveloperSettings
-/// Manifest interceptor delegate
-/// remark:
-///
-/// Experimental!
-/// since:
-/// v5.0.0
-@property (nonatomic, strong) id <THEOplayerManifestInterceptor> _Nullable manifestInterceptor;
-@end
-
 
 /// Exposes the dispatchEvent method
 SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
@@ -10097,6 +10052,98 @@ SWIFT_CLASS_NAMED("GoogleDAILiveConfiguration")
 - (nonnull instancetype)initWithAssetKey:(NSString * _Nonnull)assetKey apiKey:(NSString * _Nonnull)apiKey authToken:(NSString * _Nullable)authToken streamActivityMonitorID:(NSString * _Nullable)streamActivityMonitorID adTagParameters:(NSDictionary<NSString *, NSString *> * _Nullable)adTagParameters OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSURL;
+
+/// The <code>TypedSource</code> object provides the following properties:
+/// remark:
+///
+/// <ul>
+///   <li>
+///     This represents a media resource characterized by a URL to the resource and optionally information about the resource.
+///   </li>
+///   <li>
+///     This optional information can be DRM parameters for that specific source.
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("TypedSource")
+@interface THEOplayerTypedSource : NSObject
+/// The ‘src’ property represents the source URL of the manifest or video file to be played.
+@property (nonatomic, copy) NSURL * _Nonnull src;
+/// Specifies the content type (MIME type) of source being played.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     <code>'application/x-mpegURL'</code> or <code>'application/vnd.apple.mpegurl'</code> indicates HLS.
+///   </li>
+///   <li>
+///     <code>'video/mp4'</code> indicates MP4.
+///   </li>
+/// </ul>
+@property (nonatomic, copy) NSString * _Nonnull type;
+/// This optional property can be used to specify required DRM parameters for a playback source.
+/// remark:
+///
+/// Information like the license acquisition URL, request headers and other vendor-specific parameters are wrapped in an object implementing the DRMConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerDRMConfiguration> _Nonnull drm;
+/// This property can be used to specify CORS parameters.
+@property (nonatomic) enum THEOplayerCrossOrigin crossOrigin;
+/// Parse / Expose date ranges from HLS manifest.
+@property (nonatomic) BOOL hlsDateRange;
+/// This optional property can be used to specify required Server-Side Ad Insertion parameters for a playback source.
+/// remark:
+///
+/// Parameters used to configure the player to optimally play streams with server-inserted ads from specific SSAI vendors
+/// are wrapped in an object implementing the ServerSideAdInsertionConfiguration protocol.
+@property (nonatomic, strong) id <THEOplayerServerSideAdInsertionConfiguration> _Nullable ssai;
+/// Initializes a <code>TypedSource</code>.
+/// \param src The source URL of the manifest or video file to be played.
+///
+/// \param type The content type (MIME type) of the source.
+///
+/// \param drm The DRM configuration.
+///
+/// \param crossOrigin The CORS policy to be used.
+///
+/// \param ssai The Server-side ad insertion configuration.
+///
+/// \param hlsDateRange Whether to parse/expose the date ranges from the HLS manifest.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin ssai:(id <THEOplayerServerSideAdInsertionConfiguration> _Nullable)ssai hlsDateRange:(BOOL)hlsDateRange;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+/// \param crossOrigin The CORS policy to be used, defaults to nil.
+///
+/// \param hlsDateRange Wheter to parse/expose the date ranges from the HLS manifest, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin hlsDateRange:(BOOL)hlsDateRange;
+/// Constructs a TypedSource.
+/// \param src The source URL.
+///
+/// \param type The content type (MIME type) of the source, defaults to nil.
+///
+/// \param drm The optional DRM configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A Google DAI typed source.
+SWIFT_CLASS_NAMED("GoogleDAITypedSource")
+@interface THEOplayerGoogleDAITypedSource : THEOplayerTypedSource
+/// Constructs a <code>GoogleDAITypedSource</code>.
+/// remark:
+/// The <code>TypedSource.type</code> will be “application/x-mpegurl”
+- (nonnull instancetype)initWithSsai:(THEOplayerGoogleDAIConfiguration * _Nonnull)ssai;
+@end
+
 
 /// Represents a configuration for server-side ad insertion with the Google DAI pre-integration for vod streams.
 SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
@@ -10195,7 +10242,6 @@ SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSURL;
 
 /// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
 SWIFT_CLASS_NAMED("GoogleImaAdDescription")
@@ -10606,21 +10652,6 @@ SWIFT_CLASS_NAMED("LoadedDataEvent")
 /// </ul>
 SWIFT_CLASS_NAMED("LoadedMetaDataEvent")
 @interface THEOplayerLoadedMetaDataEvent : THEOplayerReadyStateEvent
-@end
-
-
-/// Manifest interceptor introduces the possibility to intercept/observe the manifest requests made by the player. (master and rendition (child) manifest)
-/// It is a <code>AVAssetResourceLoaderDelegate</code> subclass and hooked into the <code>AVURLAsset.resourceLoader</code> of the player item.
-/// remark:
-///
-/// Only works on online resources.
-/// since:
-/// v5.0.0
-SWIFT_PROTOCOL_NAMED("ManifestInterceptor")
-@protocol THEOplayerManifestInterceptor <AVAssetResourceLoaderDelegate>
-/// The custom URL scheme that THEOplayer will use when playing the sources.
-/// It will replace “http://” and “https://” with this on the source URL.
-@property (nonatomic, readonly, copy) NSString * _Nonnull customScheme;
 @end
 
 
@@ -11416,7 +11447,6 @@ SWIFT_CLASS_NAMED("SourceChangeEvent")
 @property (nonatomic, readonly, strong) THEOplayerSourceDescription * _Nullable source;
 @end
 
-@class THEOplayerTypedSource;
 @class THEOplayerTextTrackDescription;
 
 /// The <code>SourceDescription</code> object is used to describe a configuration of a source for a THEOplayer instance.
@@ -12142,23 +12172,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
 
-@class UIGestureRecognizer;
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// Attaches a gesture recognizer to THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// Detaches a gesture recognizer from THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// List of the gesture recognizers attached to THEOplayer.
-/// remark:
-/// Only available on iOS.
-@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
-@end
-
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>Fullscreen</code> api of theoplayer.
@@ -12177,6 +12190,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UIGestureRecognizer;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// Attaches a gesture recognizer to THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// Detaches a gesture recognizer from THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// List of the gesture recognizers attached to THEOplayer.
+/// remark:
+/// Only available on iOS.
+@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
 @end
 
 
@@ -12625,90 +12655,6 @@ SWIFT_CLASS_NAMED("TrackChangeEvent")
 
 
 
-
-/// The <code>TypedSource</code> object provides the following properties:
-/// remark:
-///
-/// <ul>
-///   <li>
-///     This represents a media resource characterized by a URL to the resource and optionally information about the resource.
-///   </li>
-///   <li>
-///     This optional information can be DRM parameters for that specific source.
-///   </li>
-/// </ul>
-SWIFT_CLASS_NAMED("TypedSource")
-@interface THEOplayerTypedSource : NSObject
-/// The ‘src’ property represents the source URL of the manifest or video file to be played.
-@property (nonatomic, copy) NSURL * _Nonnull src;
-/// Specifies the content type (MIME type) of source being played.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     <code>'application/x-mpegURL'</code> or <code>'application/vnd.apple.mpegurl'</code> indicates HLS.
-///   </li>
-///   <li>
-///     <code>'video/mp4'</code> indicates MP4.
-///   </li>
-/// </ul>
-@property (nonatomic, copy) NSString * _Nonnull type;
-/// This optional property can be used to specify required DRM parameters for a playback source.
-/// remark:
-///
-/// Information like the license acquisition URL, request headers and other vendor-specific parameters are wrapped in an object implementing the DRMConfiguration protocol.
-@property (nonatomic, strong) id <THEOplayerDRMConfiguration> _Nonnull drm;
-/// This property can be used to specify CORS parameters.
-@property (nonatomic) enum THEOplayerCrossOrigin crossOrigin;
-/// Parse / Expose date ranges from HLS manifest.
-@property (nonatomic) BOOL hlsDateRange;
-/// This optional property can be used to specify required Server-Side Ad Insertion parameters for a playback source.
-/// remark:
-///
-/// Parameters used to configure the player to optimally play streams with server-inserted ads from specific SSAI vendors
-/// are wrapped in an object implementing the ServerSideAdInsertionConfiguration protocol.
-@property (nonatomic, strong) id <THEOplayerServerSideAdInsertionConfiguration> _Nullable ssai;
-/// Constructs a TypedSource.
-/// \param src The source URL.
-///
-/// \param type The content type (MIME type) of the source, defaults to nil.
-///
-/// \param drm The optional DRM configuration, defaults to nil.
-///
-/// \param crossOrigin The CORS policy to be used, defaults to nil.
-///
-/// \param hlsDateRange Wheter to parse/expose the date ranges from the HLS manifest, defaults to nil.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin hlsDateRange:(BOOL)hlsDateRange;
-/// Constructs a TypedSource.
-/// \param src The source URL.
-///
-/// \param type The content type (MIME type) of the source, defaults to nil.
-///
-/// \param drm The optional DRM configuration, defaults to nil.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-@interface THEOplayerTypedSource (SWIFT_EXTENSION(THEOplayerSDK))
-/// Initializes a <code>TypedSource</code>.
-/// \param src The source URL of the manifest or video file to be played.
-///
-/// \param type The content type (MIME type) of the source.
-///
-/// \param drm The DRM configuration.
-///
-/// \param crossOrigin The CORS policy to be used.
-///
-/// \param ssai The Server-side ad insertion configuration.
-///
-/// \param hlsDateRange Whether to parse/expose the date ranges from the HLS manifest.
-///
-- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src type:(NSString * _Nonnull)type drm:(id <THEOplayerDRMConfiguration> _Nullable)drm crossOrigin:(enum THEOplayerCrossOrigin)crossOrigin ssai:(id <THEOplayerServerSideAdInsertionConfiguration> _Nullable)ssai hlsDateRange:(BOOL)hlsDateRange;
-@end
 
 
 

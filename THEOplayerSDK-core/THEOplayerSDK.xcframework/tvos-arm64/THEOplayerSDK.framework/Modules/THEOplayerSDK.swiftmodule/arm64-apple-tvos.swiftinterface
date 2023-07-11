@@ -61,6 +61,22 @@ extension THEOplayerSDK.THEOplayer {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
+@objc(THEOplayerAdPreloadType) public enum AdPreloadType : Swift.Int {
+  @objc(THEOplayerAdPreloadTypeNONE) case NONE = 0
+  @objc(THEOplayerAdPreloadTypeMIDROLL_AND_POSTROLL) case MIDROLL_AND_POSTROLL = 1
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension THEOplayerSDK.AdPreloadType : Swift.Encodable {
+  public var _rawValue: Swift.String {
+    get
+    set
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerAxinomDRMConfiguration) public class AxinomDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
   @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
@@ -207,6 +223,13 @@ public protocol GoogleDAI {
   @objc(requestSnapBack:) func requestSnapBack_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   @objc(setSnapBack:completion:) func setSnapBack_Objc(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool, Swift.Error?) -> Swift.Void)?)
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAIVodConfiguration) public class GoogleDAIVodConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
+  @objc public var contentSourceID: Swift.String
+  @objc public var videoID: Swift.String
+  @objc public init(videoID: Swift.String, contentSourceID: Swift.String, apiKey: Swift.String, authToken: Swift.String?, streamActivityMonitorID: Swift.String?, adTagParameters: [Swift.String : Swift.String]?)
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
 @objc(THEOplayerEventProtocol) public protocol EventProtocol {
   @objc var type: Swift.String { get }
   @objc var date: Foundation.Date { get }
@@ -330,6 +353,7 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
 @objc(THEOplayerAdIntegrationKind) public enum AdIntegrationKind : Swift.Int {
   @objc(THEOplayerAdIntegrationKindDEFAULT_KIND) case defaultKind = 1
   @objc(THEOplayerAdIntegrationKindGOOGLE_IMA) case google_ima = 4
+  @objc(THEOplayerAdIntegrationKindGOOGLE_DAI) case google_dai = 6
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1206,11 +1230,17 @@ extension THEOplayerSDK.KeySystemConfigurationCollection : Swift.Codable {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@objc(THEOplayerManifestInterceptor) public protocol ManifestInterceptor : AVFoundation.AVAssetResourceLoaderDelegate {
-  @objc var customScheme: Swift.String { get }
+public protocol ManifestInterceptor : AVFoundation.AVAssetResourceLoaderDelegate {
+  var customScheme: Swift.String { get }
 }
-@objc(THEOplayerDeveloperSettings) public protocol DeveloperSettings {
-  @objc var manifestInterceptor: THEOplayerSDK.ManifestInterceptor? { get set }
+public protocol DeveloperSettings {
+  var manifestInterceptor: THEOplayerSDK.ManifestInterceptor? { get set }
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAILiveConfiguration) public class GoogleDAILiveConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
+  @objc public var assetKey: Swift.String
+  @objc public init(assetKey: Swift.String, apiKey: Swift.String, authToken: Swift.String?, streamActivityMonitorID: Swift.String?, adTagParameters: [Swift.String : Swift.String]?)
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerKeySystemConfiguration) public class KeySystemConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc public var licenseAcquisitionURL: Foundation.URL?
@@ -1305,6 +1335,7 @@ extension THEOplayerSDK.DRMIntegration : Swift.Codable {
 extension THEOplayerSDK.THEOplayer {
   public var developerSettings: THEOplayerSDK.DeveloperSettings? {
     get
+    set
   }
 }
 @objc(THEOplayerTHEOErrorCode) public enum THEOErrorCode : Swift.Int32, Swift.Codable, Swift.CaseIterable {
@@ -1442,6 +1473,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
   var omid: THEOplayerSDK.Omid { get }
+  var dai: THEOplayerSDK.GoogleDAI? { get }
 }
 @objc(THEOplayerAds) public protocol Ads_Objc {
   @objc(requestPlaying:) func requestPlaying_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
@@ -1455,6 +1487,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.EventProtocol) -> ()) -> THEOplayerSDK.EventListener
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
   @objc var omid: THEOplayerSDK.Omid { get }
+  @objc var dai_Objc: THEOplayerSDK.GoogleDAI_Objc? { get }
 }
 @objc(THEOTextTrackStyle) public protocol TextTrackStyle {
   @objc var backgroundColor: [THEOplayerSDK.TextTrackStyleRuleColor]? { get set }
@@ -1603,6 +1636,7 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   func play() -> Swift.Bool
   func pause() -> Swift.Bool
   func isPaused() -> Swift.Bool?
+  func setPresentationMode(mode: THEOplayerSDK.PresentationMode) -> Swift.Bool
   func setCurrentTime(currentTime: Swift.Double) -> Swift.Bool
   func getCurrentTime() -> Swift.Double?
   func getDuration() -> Swift.Double?
@@ -1621,6 +1655,20 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAIAdsConfiguration) public class GoogleDAIAdsConfiguration : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let disableUI: Swift.Bool
+  @objc final public let enableBackgroundPlayback: Swift.Bool
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerGoogleDAIAdsConfigurationBuilder) public class GoogleDAIAdsConfigurationBuilder : ObjectiveC.NSObject {
+  @objc public var disableUI: Swift.Bool
+  @objc public var enableBackgroundPlayback: Swift.Bool
+  @objc public func build() -> THEOplayerSDK.GoogleDAIAdsConfiguration
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc(THEOplayerKeySystemId) public enum KeySystemId : Swift.Int {
   @objc(THEOplayerKeySystemIdWIDEVINE) case WIDEVINE = 1
   @objc(THEOplayerKeySystemIdFAIRPLAY) case FAIRPLAY = 2
@@ -1638,6 +1686,11 @@ extension THEOplayerSDK.KeySystemId : Swift.Codable {
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerGoogleDAITypedSource) public class GoogleDAITypedSource : THEOplayerSDK.TypedSource {
+  @objc convenience public init(ssai: THEOplayerSDK.GoogleDAIConfiguration)
+  override public init(src: Swift.String, type: Swift.String, drm: THEOplayerSDK.DRMConfiguration? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: THEOplayerSDK.ServerSideAdInsertionConfiguration? = nil, hlsDateRange: Swift.Bool? = nil)
+  @objc deinit
 }
 @objc(THEOplayerTHEOError) public protocol THEOError : THEOplayerSDK.THEOBaseError {
   @objc var timestamp: Foundation.Date { get }
@@ -1819,6 +1872,43 @@ public protocol EventDispatcherProtocol {
 }
 @objc public protocol DispatchDispatch {
   @objc func dispatchEvent(event: THEOplayerSDK.EventProtocol)
+}
+@objc(THEOplayerServerSideAdInsertionConfiguration) public protocol ServerSideAdInsertionConfiguration {
+  @objc var integration: THEOplayerSDK.SSAIIntegrationId { get }
+}
+@objc(THEOplayerSSAIIntegrationId) public enum SSAIIntegrationId : Swift.Int {
+  @objc(THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID) case GoogleDAISSAIIntegrationID = 1
+  @objc(THEOplayerSSAIIntegrationIdYOSPACE_SSAI_INTEGRATION_ID) case YospaceSSAIIntegrationID = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension THEOplayerSDK.SSAIIntegrationId : Swift.Codable {
+  public var _rawValue: Swift.String {
+    get
+    set
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@objc(THEOplayerStreamType) public enum StreamType : Swift.Int {
+  @objc(THEOplayerStreamTypeVOD) case vod = 1
+  @objc(THEOplayerStreamTypeLIVE) case live = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension THEOplayerSDK.StreamType : Swift.Codable {
+  public var _rawValue: Swift.String {
+    get
+    set
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerMultiplatformDRMConfiguration) public class MultiplatformDRMConfiguration : ObjectiveC.NSObject, THEOplayerSDK.DRMConfiguration {
   @objc final public let integrationKind: THEOplayerSDK.DRMIntegration
@@ -2007,6 +2097,17 @@ public protocol DateRangeCue : THEOplayerSDK.TextTrackCue {
   @objc var scte35Out: Foundation.Data? { get }
   @objc var scte35In: Foundation.Data? { get }
   @objc var customAttributes: THEOplayerSDK.CustomAttributes { get }
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAIConfiguration) public class GoogleDAIConfiguration : ObjectiveC.NSObject, THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
+  @objc public var integration: THEOplayerSDK.SSAIIntegrationId
+  @objc public var availabilityType: THEOplayerSDK.StreamType
+  @objc public var apiKey: Swift.String
+  @objc public var authToken: Swift.String?
+  @objc public var streamActivityMonitorID: Swift.String?
+  @objc public var adTagParameters: [Swift.String : Swift.String]?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public protocol TextTrack : THEOplayerSDK.Track {
   var inBandMetadataTrackDispatchType: Swift.String { get }
@@ -2302,7 +2403,10 @@ extension THEOplayerSDK.SourceIntegration : Swift.Codable {
     @objc get
     @objc set
   }
-  public init(src: Swift.String, type: Swift.String, drm: THEOplayerSDK.DRMConfiguration? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, hlsDateRange: Swift.Bool? = nil)
+  @objc public var ssai: THEOplayerSDK.ServerSideAdInsertionConfiguration?
+  public init(src: Swift.String, type: Swift.String, drm: THEOplayerSDK.DRMConfiguration? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: THEOplayerSDK.ServerSideAdInsertionConfiguration? = nil, hlsDateRange: Swift.Bool? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(src: Swift.String, type: Swift.String, drm: THEOplayerSDK.DRMConfiguration_Objc?, crossOrigin: THEOplayerSDK.CrossOrigin, ssai: THEOplayerSDK.ServerSideAdInsertionConfiguration?, hlsDateRange: Swift.Bool)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(src: Swift.String, type: Swift.String, drm: THEOplayerSDK.DRMConfiguration_Objc?, crossOrigin: THEOplayerSDK.CrossOrigin, hlsDateRange: Swift.Bool)
   @available(swift, obsoleted: 1.0)
@@ -2383,6 +2487,15 @@ public protocol CompanionAd {
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerAdsConfiguration) public class AdsConfiguration : ObjectiveC.NSObject, Swift.Encodable {
+  @objc public var showCountdown: Swift.Bool {
+    get
+  }
+  @objc public var preload: THEOplayerSDK.AdPreloadType {
+    get
+  }
+  @objc public var googleIma: THEOplayerSDK.GoogleIMAAdsConfiguration
+  @objc final public let googleDai: THEOplayerSDK.GoogleDAIAdsConfiguration?
+  @objc public init(showCountdown: Swift.Bool, preload: THEOplayerSDK.AdPreloadType, googleIma: THEOplayerSDK.GoogleIMAAdsConfiguration? = nil, googleDai: THEOplayerSDK.GoogleDAIAdsConfiguration? = nil)
   @objc override dynamic public init()
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -2508,6 +2621,9 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   @objc func initializeLayout(layoutConfigurator: THEOplayerSDK.MenuLayoutConfigurator) -> [UIKit.NSLayoutConstraint]
 }
 public func serializeObjectToJSON<T>(object: T, dateEncodingStrategy: Foundation.JSONEncoder.DateEncodingStrategy? = nil) -> Swift.String where T : Swift.Encodable
+extension THEOplayerSDK.AdPreloadType : Swift.Equatable {}
+extension THEOplayerSDK.AdPreloadType : Swift.Hashable {}
+extension THEOplayerSDK.AdPreloadType : Swift.RawRepresentable {}
 extension THEOplayerSDK.TextTrackKind : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackKind : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackKind : Swift.RawRepresentable {}
@@ -2576,6 +2692,12 @@ extension THEOplayerSDK.PresentationMode : Swift.RawRepresentable {}
 extension THEOplayerSDK.ReadyState : Swift.Equatable {}
 extension THEOplayerSDK.ReadyState : Swift.Hashable {}
 extension THEOplayerSDK.ReadyState : Swift.RawRepresentable {}
+extension THEOplayerSDK.SSAIIntegrationId : Swift.Equatable {}
+extension THEOplayerSDK.SSAIIntegrationId : Swift.Hashable {}
+extension THEOplayerSDK.SSAIIntegrationId : Swift.RawRepresentable {}
+extension THEOplayerSDK.StreamType : Swift.Equatable {}
+extension THEOplayerSDK.StreamType : Swift.Hashable {}
+extension THEOplayerSDK.StreamType : Swift.RawRepresentable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Equatable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Hashable {}
 extension THEOplayerSDK.CrossOrigin : Swift.RawRepresentable {}

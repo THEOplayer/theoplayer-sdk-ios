@@ -4134,6 +4134,8 @@ SWIFT_CLASS_NAMED("PauseEvent")
 SWIFT_CLASS_NAMED("PiPConfiguration")
 @interface THEOplayerPiPConfiguration : NSObject
 /// Whether the presentation mode should be retained on source changes. Defaults to false.
+/// remark:
+/// When using native Picture in Picture  (when <code>nativePictureInPicture = true</code>), then this property will only work if the new source is not nil, and the source will be preloaded.
 @property (nonatomic) BOOL retainPresentationModeOnSourceChange;
 /// Enable the Native Picture in Picture. Defaults to false.
 /// remark:
@@ -10630,6 +10632,8 @@ SWIFT_CLASS_NAMED("PauseEvent")
 SWIFT_CLASS_NAMED("PiPConfiguration")
 @interface THEOplayerPiPConfiguration : NSObject
 /// Whether the presentation mode should be retained on source changes. Defaults to false.
+/// remark:
+/// When using native Picture in Picture  (when <code>nativePictureInPicture = true</code>), then this property will only work if the new source is not nil, and the source will be preloaded.
 @property (nonatomic) BOOL retainPresentationModeOnSourceChange;
 /// Enable the Native Picture in Picture. Defaults to false.
 /// remark:

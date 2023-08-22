@@ -3219,6 +3219,8 @@ SWIFT_CLASS_NAMED("PauseEvent")
 SWIFT_CLASS_NAMED("PiPConfiguration")
 @interface THEOplayerPiPConfiguration : NSObject
 /// Whether the presentation mode should be retained on source changes. Defaults to false.
+/// remark:
+/// When using native Picture in Picture  (when <code>nativePictureInPicture = true</code>), then this property will only work if the new source is not nil, and the source will be preloaded.
 @property (nonatomic) BOOL retainPresentationModeOnSourceChange;
 /// Disables seekability while in native Picture in Picture mode. This can be useful when playing advertisements for instance. Defaults to false.
 /// remark:
@@ -4283,7 +4285,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackFormat, "TextTrackFormat", open) {
   THEOplayerTextTrackFormatNONE SWIFT_COMPILE_NAME("none") = 0,
 /// The text track is in the Web Video Text Tracks format.
+/// remark:
+///
+/// In the native pipeline, use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
   THEOplayerTextTrackFormatWEBVTT SWIFT_COMPILE_NAME("WebVTT") = 1,
+/// The text track is in the SubRip Text Tracks format.
+/// remark:
+///
+/// Supported only when using the sideloaded subtitles connector. For more info, please check: https://github.com/THEOplayer/iOS-Connector
+  THEOplayerTextTrackFormatSRT SWIFT_COMPILE_NAME("SRT") = 2,
 };
 
 /// Describes the kind of the text track.

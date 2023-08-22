@@ -159,6 +159,7 @@ extension THEOplayerSDK.TextTrackKind : Swift.Codable {
 @objc(THEOplayerTextTrackFormat) public enum TextTrackFormat : Swift.Int {
   @objc(THEOplayerTextTrackFormatNONE) case none = 0
   @objc(THEOplayerTextTrackFormatWEBVTT) case WebVTT = 1
+  @objc(THEOplayerTextTrackFormatSRT) case SRT = 2
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -587,7 +588,7 @@ public struct TextTrackCueEventTypes {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
-@objc(THEOplayerTextTrackDescription) public class TextTrackDescription : ObjectiveC.NSObject, Swift.Codable {
+@objc(THEOplayerTextTrackDescription) open class TextTrackDescription : ObjectiveC.NSObject, Swift.Codable {
   public var isDefault: Swift.Bool?
   @objc(isDefault) public var isDefault_Objc: Swift.Bool {
     @objc get

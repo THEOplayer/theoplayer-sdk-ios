@@ -10,7 +10,8 @@ let package = Package(
     ],
     products: [
         .library(name: "THEOplayerSDK", targets: ["THEOplayerSDK"]),
-        .library(name: "THEOplayerGoogleCastIntegration", targets: ["THEOplayerGoogleCastIntegration"])
+        .library(name: "THEOplayerGoogleCastIntegration", targets: ["THEOplayerGoogleCastIntegration"]),
+        .library(name: "THEOplayerGoogleIMAIntegration", targets: ["THEOplayerGoogleIMAIntegration"]),
     ],
     targets: [
         .binaryTarget(
@@ -20,6 +21,10 @@ let package = Package(
         .binaryTarget(
             name: "THEOplayerGoogleCastIntegration",
             path: "THEOplayer-Integration-GoogleCast/THEOplayerGoogleCastIntegration.xcframework"
+        ),
+        .binaryTarget(
+            name: "THEOplayerGoogleIMAIntegration",
+            path: "THEOplayer-Integration-GoogleIMA/THEOplayerGoogleIMAIntegration.xcframework"
         ),
     ]
 )

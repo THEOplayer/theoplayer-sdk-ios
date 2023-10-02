@@ -780,30 +780,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// The Ads object helps you configure and control ads within THEOplayer.
 SWIFT_PROTOCOL_NAMED("Ads_Objc")
 @protocol THEOplayerAds
-/// Returns whether a linear ad is currently playing.
-@property (nonatomic, readonly) BOOL playing;
-/// Returns an array of the currently active ads.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     Can be linear and/or non linear.
-///   </li>
-///   <li>
-///     If there are no ads playing, the method returns an empty array.
-///   </li>
-/// </ul>
-@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAd>> * _Nonnull currentAds;
-/// Returns the active <code>AdBreak</code> that contains the currently playing ad(s).
-@property (nonatomic, readonly, strong) id <THEOplayerAdBreak> _Nullable currentAdBreak;
-/// Returns an array of <code>AdBreak</code>s that still need to be played.
-@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAdBreak>> * _Nonnull scheduledAdBreaks;
-/// Returns an array of ads that still need to be played.
-@property (nonatomic, readonly, copy) NSArray<id <THEOplayerScheduledAd>> * _Nonnull scheduledAds;
 /// Requests whether a linear ad is currently playing.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestPlaying:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use playing instead.");
+- (void)requestPlaying:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
 /// Requests an array of the currently active ads.
 /// remark:
 ///
@@ -817,19 +797,19 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 /// </ul>
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestCurrentAds:(void (^ _Nonnull)(NSArray<id <THEOplayerAd>> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use currentAds instead.");
+- (void)requestCurrentAds:(void (^ _Nonnull)(NSArray<id <THEOplayerAd>> * _Nullable, NSError * _Nullable))completionHandler;
 /// Requests the active AdBreak that contains the currently playing ad(s).
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestCurrentAdBreak:(void (^ _Nonnull)(id <THEOplayerAdBreak> _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use currentAdBreak instead.");
+- (void)requestCurrentAdBreak:(void (^ _Nonnull)(id <THEOplayerAdBreak> _Nullable, NSError * _Nullable))completionHandler;
 /// Requests an array of adbreaks that still need to be played.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestScheduledAdBreaks:(void (^ _Nonnull)(NSArray<id <THEOplayerAdBreak>> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use scheduledAdBreaks instead.");
+- (void)requestScheduledAdBreaks:(void (^ _Nonnull)(NSArray<id <THEOplayerAdBreak>> * _Nullable, NSError * _Nullable))completionHandler;
 /// Requests an array of ads that still need to be played.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestScheduledAds:(void (^ _Nonnull)(NSArray<id <THEOplayerScheduledAd>> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use scheduledAds instead.");
+- (void)requestScheduledAds:(void (^ _Nonnull)(NSArray<id <THEOplayerScheduledAd>> * _Nullable, NSError * _Nullable))completionHandler;
 /// Schedules an ad.
 /// remark:
 ///
@@ -1339,7 +1319,7 @@ SWIFT_CLASS_NAMED("MultiplatformDRMConfiguration")
 
 
 /// The AxinomDRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Axinom integration.
-SWIFT_CLASS_NAMED("AxinomDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("AxinomDRMConfiguration")
 @interface THEOplayerAxinomDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The Axinom token.
 @property (nonatomic, copy) NSString * _Nonnull token;
@@ -1349,12 +1329,30 @@ SWIFT_CLASS_NAMED("AxinomDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Axinom DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param token The token.
+///
+/// \param headers The Axinom headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.");
+/// Constructs a Axinom DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
 
 /// The Azure DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Azure integration.
-SWIFT_CLASS_NAMED("AzureDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("AzureDRMConfiguration")
 @interface THEOplayerAzureDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The Azure token.
 @property (nonatomic, copy) NSString * _Nonnull token;
@@ -1364,6 +1362,24 @@ SWIFT_CLASS_NAMED("AzureDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-int
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Azure DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param token The token.
+///
+/// \param headers The Azure headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.");
+/// Constructs a Azure DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -2237,7 +2253,7 @@ SWIFT_PROTOCOL_NAMED("Chromecast_Objc")
 
 
 /// Represents Comcast MPX DRM Configuration.
-SWIFT_CLASS_NAMED("ComcastDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("ComcastDRMConfiguration")
 @interface THEOplayerComcastDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The PID of the media for which the license is being requested.
 @property (nonatomic, copy) NSString * _Nonnull releasePid;
@@ -2255,6 +2271,32 @@ SWIFT_CLASS_NAMED("ComcastDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-i
 /// \param keySystemConfigurations The key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithReleasePid:(NSString * _Nonnull)releasePid token:(NSString * _Nonnull)token accountId:(NSString * _Nonnull)accountId keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs an Comcast DRM Configuration.
+/// \param licenseAcquisitionURL The license acquisition URL for FairPlay.
+///
+/// \param releasePid The PID of the media for which the license is being requested.
+///
+/// \param token The Comcast Token.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param accountId The identifier of the Comcast account.
+///
+/// \param headers The Comcast Headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL releasePid:(NSString * _Nonnull)releasePid token:(NSString * _Nonnull)token accountId:(NSString * _Nonnull)accountId certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(releasePid:token:accountId:keySystemConfigurations:) instead.");
+/// Constructs an Comcast DRM Configuration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param releasePid The PID of the media for which the license is being requested.
+///
+/// \param token The Comcast Token.
+///
+/// \param accountId The identifier of the Comcast account.
+///
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL releasePid:(NSString * _Nonnull)releasePid token:(NSString * _Nonnull)token accountId:(NSString * _Nonnull)accountId certificateURL:(NSString * _Nonnull)certificateURL;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -2445,6 +2487,24 @@ SWIFT_PROTOCOL_NAMED("ContentProtectionIntegration")
 /// \param callback The <code>LicenseResponseCallback</code> that should be called with the modified <code>LicenseResponse</code>.
 ///
 - (void)onLicenseResponseWithResponse:(THEOplayerLicenseResponse * _Nonnull)response callback:(id <THEOplayerLicenseResponseCallback> _Nonnull)callback;
+/// A function to extract the Fairplay content ID from the key URI, as given by the URI attribute of the <code>#EXT-X-KEY</code> tag in the HLS playlist (m3u8).
+/// remark:
+///
+/// <ul>
+///   <li>
+///     In order to start a Fairplay license request, the player must provide the initialization data, the content ID and the certificate to the CDM.
+///   </li>
+///   <li>
+///     The content ID is usually contained in the key URI in some vendor-specific way, for example in the host name (e.g. <code>skd://123456789</code>)
+///     or in the URL query (e.g. <code>skd://vendor?123456789</code>). This function should extract this content ID from the key URI.
+///   </li>
+///   <li>
+///     This method is required only for Fairplay integrations. It is ignored for other key systems.
+///   </li>
+/// </ul>
+/// \param skdUrl The key URI.
+///
+- (NSString * _Nonnull)extractFairplayContentIdWithSkdUrl:(NSString * _Nonnull)skdUrl SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in the next major release. Please use onExtractFairplayContentId(skdUrl:callback:) instead.");
 /// A function to extract the Fairplay content ID from the key URI, as given by the URI attribute of the <code>#EXT-X-KEY</code> tag in the HLS playlist (m3u8).
 /// since:
 /// v5.4.1
@@ -2738,9 +2798,10 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerDRMIntegration, "DRMIntegration", 
   THEOplayerDRMIntegrationCUSTOM SWIFT_COMPILE_NAME("custom") = 13,
 };
 
+enum THEOplayerLicenseType : NSInteger;
 
 /// The DRMtoday DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with DRMtoday integration.
-SWIFT_CLASS_NAMED("DRMTodayDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("DRMTodayDRMConfiguration")
 @interface THEOplayerDRMTodayDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The authentication token.
 /// remark:
@@ -2776,6 +2837,24 @@ SWIFT_CLASS_NAMED("DRMTodayDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithToken:(NSString * _Nullable)token userId:(NSString * _Nullable)userId sessionId:(NSString * _Nullable)sessionId merchant:(NSString * _Nullable)merchant keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a DRMToday DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param headers The DRMToday headers for FairPlay, defaults to nil.
+///
+/// \param token The DRMToday token, defaults to nil.
+///
+/// \param userId The DRMToday user ID, defaults to nil.
+///
+/// \param sessionId The DRMToday session ID, defaults to nil.
+///
+/// \param merchant The DRMToday merchant, default to nil.
+///
+/// \param licenseType The type of license for FairPlay, defaults to <code>temporary</code>.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers token:(NSString * _Nullable)token userId:(NSString * _Nullable)userId sessionId:(NSString * _Nullable)sessionId merchant:(NSString * _Nullable)merchant licenseType:(enum THEOplayerLicenseType)licenseType SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(token:userId:sessionId:merchant:keySystemConfigurations:) instead.");
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -3085,12 +3164,20 @@ SWIFT_PROTOCOL_NAMED("ExtractContentIdCallback")
 
 
 /// The EZDRM DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with EZDRM integration.
-SWIFT_CLASS_NAMED("EzdrmDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("EzdrmDRMConfiguration")
 @interface THEOplayerEzdrmDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// Constructs a EZDRM DRMConfiguration.
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithKeySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a EZDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param headers The EZDRM headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.");
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -3102,7 +3189,6 @@ SWIFT_PROTOCOL_NAMED("FairPlayDRMConfigurationProtocol_Objc")
 @property (nonatomic, readonly, strong) THEOplayerKeySystemConfiguration * _Nonnull fairplay;
 @end
 
-enum THEOplayerLicenseType : NSInteger;
 
 /// The FairPlayDRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming.
 SWIFT_CLASS_NAMED("FairPlayDRMConfiguration")
@@ -3496,8 +3582,6 @@ SWIFT_CLASS_NAMED("GoogleDAIVodConfiguration")
 /// Represents information regarding content with dynamically inserted advertisements.
 SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 @protocol THEOplayerGoogleDAI
-/// Whether snapback is enabled.
-@property (nonatomic) BOOL snapback;
 /// Converts stream time (including ads) to content time (excluding ads).
 /// For livestreams no conversion is done and the stream time parameter is returned.
 /// \param streamTime The point in time of your stream including ads.
@@ -3517,17 +3601,19 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 /// Requests whether snapback is enabled.
 /// \param completionHandler A closure to invoke when the operation completes or fails.
 ///
-- (void)requestSnapBack:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use snapback instead.");
+- (void)requestSnapBack:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completionHandler;
 /// Enable/disable snapback.
 /// \param completionHandler An optional closure to invoke when the operation completes or fails.
 ///
-- (void)setSnapBack:(BOOL)newValue completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use snapback instead.");
+- (void)setSnapBack:(BOOL)newValue completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completionHandler;
 @end
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
 SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
 @interface THEOplayerGoogleIMAAdsConfiguration : NSObject
+/// Indicates whether the native IMA SDK is being used.
+@property (nonatomic, readonly) BOOL useNativeIma SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
 @property (nonatomic, readonly) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled.
@@ -3542,6 +3628,8 @@ SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
 /// An object to create or build GoogleIMAAdsConfigurations.
 SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
 @interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
+/// Indicates whether the native IMA SDK is being used. Defaults to <code>true</code>
+@property (nonatomic) BOOL useNativeIMA SWIFT_DEPRECATED_MSG("Legacy API. The return value has no indication on the functionality.");
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
 @property (nonatomic) BOOL disableUI;
 /// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
@@ -3684,7 +3772,7 @@ SWIFT_PROTOCOL_NAMED("InternalCastIntegration_Objc")
 
 
 /// The Irdeto DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Irdeto integration.
-SWIFT_CLASS_NAMED("IrdetoDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("IrdetoDRMConfiguration")
 @interface THEOplayerIrdetoDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// Constructs an Irdeto DRMConfiguration.
 /// \param crmId The crm identifier.
@@ -3704,12 +3792,50 @@ SWIFT_CLASS_NAMED("IrdetoDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithCrmId:(NSString * _Nonnull)crmId accountId:(NSString * _Nonnull)accountId contentId:(NSString * _Nonnull)contentId keyId:(NSString * _Nonnull)keyId applicationId:(NSString * _Nonnull)applicationId sessionId:(NSString * _Nullable)sessionId ticket:(NSString * _Nullable)ticket keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs an Irdeto DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param crmId The crm identifier.
+///
+/// \param accountId The account identifier.
+///
+/// \param contentId The content identifier.
+///
+/// \param keyId The keyId.
+///
+/// \param applicationId The application identifier.
+///
+/// \param sessionId The session identifier, defaults to nil.
+///
+/// \param ticket The ticket, defaults to nil.
+///
+/// \param headers The Irdeto headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL crmId:(NSString * _Nonnull)crmId accountId:(NSString * _Nonnull)accountId contentId:(NSString * _Nonnull)contentId keyId:(NSString * _Nonnull)keyId applicationId:(NSString * _Nonnull)applicationId sessionId:(NSString * _Nullable)sessionId ticket:(NSString * _Nullable)ticket headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(crmId:accountId:contentId:keyId:applicationId:sessionId:ticket:keySystemConfigurations:) instead.");
+/// Constructs an Irdeto DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param crmId The crm identifier.
+///
+/// \param accountId The account identifier.
+///
+/// \param contentId The content identifier.
+///
+/// \param keyId The keyId.
+///
+/// \param applicationId The application identifier.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL crmId:(NSString * _Nonnull)crmId accountId:(NSString * _Nonnull)accountId contentId:(NSString * _Nonnull)contentId keyId:(NSString * _Nonnull)keyId applicationId:(NSString * _Nonnull)applicationId;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
 
 /// The KeyOS DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with KeyOS integration.
-SWIFT_CLASS_NAMED("KeyOSDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("KeyOSDRMConfiguration")
 @interface THEOplayerKeyOSDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The KeyOS custom data.
 @property (nonatomic, copy) NSString * _Nullable customdata;
@@ -3719,6 +3845,24 @@ SWIFT_CLASS_NAMED("KeyOSDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-int
 /// \param keySystemConfigurations The key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithCustomdata:(NSString * _Nullable)customdata keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a KeyOS DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param customdata The KeyOs custom data.
+///
+/// \param headers The KeyOs headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL customdata:(NSString * _Nullable)customdata headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(customdata:keySystemConfigurations:) instead.");
+/// Constructs a KeyOS DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param customdata The KeyOs custom data.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL customdata:(NSString * _Nullable)customdata;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -5120,7 +5264,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// remark:
 ///
 /// Example: <code>"2020.4.0"</code>
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull playerSuiteVersion SWIFT_DEPRECATED_MSG("Use `THEOplayer.version` instead");)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull playerSuiteVersion;)
 + (NSString * _Nonnull)playerSuiteVersion SWIFT_WARN_UNUSED_RESULT;
 /// The frame rectangle, which describes the THEOplayer view’s location and size in its superview’s coordinate system.
 @property (nonatomic) CGRect frame;
@@ -5130,10 +5274,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic) CGPoint center;
 /// An integer bit mask that determines how the THEOplayer view resizes itself when its superview’s bounds change.
 @property (nonatomic) UIViewAutoresizing autoresizingMask;
-/// Returns the height of the video in pixels for the current quality.
-@property (nonatomic, readonly) NSInteger videoHeight;
-/// Returns the width of the video in pixels for the current quality.
-@property (nonatomic, readonly) NSInteger videoWidth;
 /// Allows you to modify the player’s ABR behavior. See documentation for <code>ABRConfiguration</code> to see how this is done.
 @property (nonatomic, strong) id <THEOplayerABRConfiguration> _Nonnull abr;
 /// The network status of the player which can be used to monitor the network related errors.
@@ -5208,14 +5348,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// remark:
 /// <em>1</em> referring to normal speed.
 @property (nonatomic, readonly) double playbackRate;
-/// Returns the buffered <code>TimeRange</code>s of the player.
-@property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull buffered;
-/// Returns the played <code>TimeRange</code>s of the player.
-@property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull played;
-/// Returns the seekable <code>TimeRange</code>s of the player.
-@property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull seekable;
-/// Returns the <code>Metrics</code> data.
-@property (nonatomic, readonly) id _Nullable metrics;
 /// Sets or returns the presentationMode of the player.
 /// remark:
 ///
@@ -5244,12 +5376,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly, copy) NSString * _Nullable error;
 /// Returns the unique ID of the player
 @property (nonatomic, readonly) NSInteger uid;
-/// The current playback position of the video, in seconds. Setting it allows to change the playback position.
-@property (nonatomic) double currentTime;
-/// Returns the current playback position of the media, as a timestamp.
-/// remark:
-/// Returns nil when the manifest doesn’t specify the currentProgramDateTime.
-@property (nonatomic, readonly, copy) NSDate * _Nullable currentProgramDateTime;
 /// Sets whether THEOplayer automatically manages the <code>AVAudioSession</code>.
 /// remark:
 ///
@@ -5305,7 +5431,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// Requests the current playback position in the video, in seconds.
 /// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the current time which supports double-precision floating-point format.
 ///
-- (void)requestCurrentTime:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use currentTime instead.");
+- (void)requestCurrentTime:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
 /// Sets the current playback position in the video.
 /// \param newValue The new playback position, in seconds.
 ///
@@ -5315,11 +5441,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// Requests the height of the video in pixels for the current quality.
 /// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the video height which supports integer format.
 ///
-- (void)requestVideoHeight:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use videoHeight instead.");
+- (void)requestVideoHeight:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
 /// Requests the height of the video in pixels for the current quality.
 /// \param completionHandler A closure to invoke when operation completes or fails. The first parameter returns the video width which supports integer format.
 ///
-- (void)requestVideoWidth:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use videoWidth instead.");
+- (void)requestVideoWidth:(void (^ _Nonnull)(NSNumber * _Nullable, NSError * _Nullable))completionHandler;
 /// Sets whether the player should preload a certain type of data.
 /// \param newValue The new preload value.
 ///
@@ -5329,7 +5455,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// Requests the current ProgramDateTime of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
-- (void)requestCurrentProgramDateTimeWithCompletionHandler:(void (^ _Nonnull)(NSDate * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use currentProgramDateTime instead.");
+- (void)requestCurrentProgramDateTimeWithCompletionHandler:(void (^ _Nonnull)(NSDate * _Nullable, NSError * _Nullable))completionHandler;
 /// Sets the current ProgramDateTime of the player.
 /// \param newValue The new ProgramDateTime.
 ///
@@ -5345,11 +5471,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// Request the buffered TimeRanges of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
-- (void)requestBufferedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use buffered instead.");
+- (void)requestBufferedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
 /// Request the played TimeRanges of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
-- (void)requestPlayedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use played instead.");
+- (void)requestPlayedWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
 /// Adds the THEOplayer view to the end of the parameter view’s list of subviews.
 /// \param view The view on which the THEOplayer view will be added as a subview.
 ///
@@ -5383,11 +5509,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// Requests Metrics data.
 /// \param completionHandler A closure to invoke when operation completes to retreive Metrics or when an error is thrown.
 ///
-- (void)requestMetricsWithCompletionHandler:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use metrics instead.");
+- (void)requestMetricsWithCompletionHandler:(void (^ _Nonnull)(id _Nullable, NSError * _Nullable))completionHandler;
 /// Request the seekable TimeRanges of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
-- (void)requestSeekableWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use seekable instead.");
+- (void)requestSeekableWithCompletionHandler:(void (^ _Nonnull)(NSArray<THEOplayerTimeRange *> * _Nullable, NSError * _Nullable))completionHandler;
 /// Register a content protection integration
 /// remark:
 ///
@@ -5985,12 +6111,30 @@ SWIFT_PROTOCOL_NAMED("UniversalAdId")
 
 
 /// The Uplynk DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Uplynk integration.
-SWIFT_CLASS_NAMED("UplynkDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("UplynkDRMConfiguration")
 @interface THEOplayerUplynkDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// Constructs a EZDRM DRMConfiguration.
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithKeySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Uplynk DRMConfiguration.
+/// remark:
+///
+/// If the <code>licenseAcquisitionURL</code> is not provided THEOplayer will use the one from the manifest.
+/// \param licenseAcquisitionURL The license acquisition URL for FairPlay, defaults to nil.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param headers The Uplynk headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nullable)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.");
+/// Constructs a Uplynk DRMConfiguration.
+/// remark:
+///
+/// If the <code>licenseAcquisitionURL</code> is not provided THEOplayer will use the one from the manifest.
+/// \param certificateURL The certificate URL.
+///
+- (nonnull instancetype)initWithCertificateURL:(NSString * _Nonnull)certificateURL;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -6018,12 +6162,20 @@ SWIFT_CLASS_NAMED("VRConfiguration")
 
 
 /// The VERIMATRIX DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with VERIMATRIX integration.
-SWIFT_CLASS_NAMED("VerimatrixDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("VerimatrixDRMConfiguration")
 @interface THEOplayerVerimatrixDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// Constructs a VERIMATRIX DRMConfiguration.
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide)
 ///
 - (nonnull instancetype)initWithKeySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a VERIMATRIX DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param headers The Verimatrix Headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.");
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -6121,12 +6273,20 @@ SWIFT_PROTOCOL_NAMED("VideoTrack_Objc")
 
 
 /// Describes the configuration of the Vimond DRM integration.
-SWIFT_CLASS_NAMED("VimondDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("VimondDRMConfiguration")
 @interface THEOplayerVimondDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// Constructs a Vimond DRMConfiguration.
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide)
 ///
 - (nonnull instancetype)initWithKeySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Vimond DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param headers The Vimond headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.");
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -6153,7 +6313,7 @@ SWIFT_CLASS_NAMED("VolumeChangeEvent")
 
 
 /// The VUDRM DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with VUDRM integration.
-SWIFT_CLASS_NAMED("VudrmDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("VudrmDRMConfiguration")
 @interface THEOplayerVudrmDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The VUDRM token.
 @property (nonatomic, copy) NSString * _Nonnull token;
@@ -6163,6 +6323,24 @@ SWIFT_CLASS_NAMED("VudrmDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-int
 /// \param keySystemConfigurations the key system configurations (FairPlay, Widevide)
 ///
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a VUDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license acquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param token The token.
+///
+/// \param headers The VUDRM headers for FairPlay, defaults to nil.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.");
+/// Constructs a VUDRM DRMConfiguration.
+/// \param licenseAcquisitionURL The license acquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param token The token.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL token:(NSString * _Nonnull)token;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 
@@ -6277,7 +6455,7 @@ SWIFT_CLASS_NAMED("WidevineDRMConfiguration")
 
 
 /// The Xstream DRMConfiguration object provides a set of DRM parameters for FairPlay DRM streaming with Xstream integration.
-SWIFT_CLASS_NAMED("XstreamDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
+SWIFT_CLASS_NAMED("XstreamDRMConfiguration")
 @interface THEOplayerXstreamDRMConfiguration : THEOplayerMultiplatformDRMConfiguration
 /// The required ticket acquisition URL.
 @property (nonatomic, copy) NSString * _Nonnull ticketAcquisitionURL;
@@ -6295,6 +6473,32 @@ SWIFT_CLASS_NAMED("XstreamDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-i
 /// \param keySystemConfigurations The key system configurations (FairPlay, Widevide).
 ///
 - (nonnull instancetype)initWithTicketAcquisitionURL:(NSString * _Nonnull)ticketAcquisitionURL streamId:(NSString * _Nonnull)streamId sessionId:(NSString * _Nullable)sessionId keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a Xstream DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL for FairPlay.
+///
+/// \param certificateURL The certificate URL for FairPlay.
+///
+/// \param ticketAcquisitionURL The URL for Xstream ticket acquisition.
+///
+/// \param sessionId The session id for the ticket server, defaults to nil.
+///
+/// \param streamId The required stream id for the ticket server.
+///
+/// \param headers The Xstream headers for FairPlay, defaults to nil.
+///
+/// \param licenseType The type of license for FairPlay, defaults to <code>temporary</code>.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL ticketAcquisitionURL:(NSString * _Nonnull)ticketAcquisitionURL streamId:(NSString * _Nonnull)streamId sessionId:(NSString * _Nullable)sessionId headers:(NSArray<NSDictionary<NSString *, NSString *> *> * _Nullable)headers licenseType:(enum THEOplayerLicenseType)licenseType SWIFT_DEPRECATED_MSG("This initializer will be removed in the next major release. Please use init(ticketAcquisitionURL:streamId:sessionId:keySystemConfigurations:) instead.");
+/// Constructs a Xstream DRMConfiguration.
+/// \param licenseAcquisitionURL The license aquisition URL.
+///
+/// \param certificateURL The certificate URL.
+///
+/// \param ticketAcquisitionURL The URL for Xstream ticket acquisition.
+///
+/// \param streamId The required stream id for the ticket server.
+///
+- (nonnull instancetype)initWithLicenseAcquisitionURL:(NSString * _Nonnull)licenseAcquisitionURL certificateURL:(NSString * _Nonnull)certificateURL ticketAcquisitionURL:(NSString * _Nonnull)ticketAcquisitionURL streamId:(NSString * _Nonnull)streamId;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
 

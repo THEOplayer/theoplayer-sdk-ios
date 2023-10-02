@@ -110,9 +110,10 @@ extension THEOplayerSDK.ChromecastMetadataType : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerEzdrmDRMConfiguration) public class EzdrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerEzdrmDRMConfiguration) public class EzdrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
@@ -146,12 +147,15 @@ extension THEOplayerSDK.MultiplatformDRMConfiguration {
     get
   }
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerComcastDRMConfiguration) public class ComcastDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerComcastDRMConfiguration) public class ComcastDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var releasePid: Swift.String
   @objc public var token: Swift.String
   @objc public var accountId: Swift.String
   @objc public init(releasePid: Swift.String, token: Swift.String, accountId: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(releasePid:token:accountId:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, releasePid: Swift.String, token: Swift.String, accountId: Swift.String, certificateURL: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -212,6 +216,8 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc optional func onCertificateResponse(response: THEOplayerSDK.CertificateResponse, callback: THEOplayerSDK.CertificateResponseCallback)
   @objc optional func onLicenseRequest(request: THEOplayerSDK.LicenseRequest, callback: THEOplayerSDK.LicenseRequestCallback)
   @objc optional func onLicenseResponse(response: THEOplayerSDK.LicenseResponse, callback: THEOplayerSDK.LicenseResponseCallback)
+  @available(*, deprecated, message: "This method will be removed in the next major release. Please use onExtractFairplayContentId(skdUrl:callback:) instead.")
+  @objc optional func extractFairplayContentId(skdUrl: Swift.String) -> Swift.String
   @objc optional func onExtractFairplayContentId(skdUrl: Swift.String, callback: THEOplayerSDK.ExtractContentIdCallback)
 }
 @objc(THEOplayerCertificateRequestCallback) public protocol CertificateRequestCallback : THEOplayerSDK.CertificateResponseCallback {
@@ -703,9 +709,12 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc(activeCues) var activeCues_Objc: [THEOplayerSDK.TextTrackCue_Objc] { get }
   @objc var type: Swift.String { get }
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerUplynkDRMConfiguration) public class UplynkDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerUplynkDRMConfiguration) public class UplynkDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String? = nil, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(certificateURL: Swift.String)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
@@ -784,20 +793,10 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
   @objc deinit
 }
 public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
-  var playing: Swift.Bool { get }
-  var currentAds: [THEOplayerSDK.Ad] { get }
-  var currentAdBreak: THEOplayerSDK.AdBreak? { get }
-  var scheduledAdBreaks: [THEOplayerSDK.AdBreak] { get }
-  var scheduledAds: [THEOplayerSDK.ScheduledAd] { get }
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use playing instead.")
   func requestPlaying(completionHandler: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAds instead.")
   func requestCurrentAds(completionHandler: @escaping ([THEOplayerSDK.Ad]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAdBreak instead.")
   func requestCurrentAdBreak(completionHandler: @escaping (THEOplayerSDK.AdBreak?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAdBreaks instead.")
   func requestScheduledAdBreaks(completionHandler: @escaping ([THEOplayerSDK.AdBreak]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAds instead.")
   func requestScheduledAds(completionHandler: @escaping ([THEOplayerSDK.ScheduledAd]?, Swift.Error?) -> Swift.Void)
   func schedule(adDescription: THEOplayerSDK.AdDescription)
   func skip()
@@ -807,20 +806,10 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   var dai: THEOplayerSDK.GoogleDAI? { get }
 }
 @objc(THEOplayerAds) public protocol Ads_Objc {
-  @objc var playing: Swift.Bool { get }
-  @objc(currentAds) var currentAds_Objc: [THEOplayerSDK.Ad_Objc] { get }
-  @objc(currentAdBreak) var currentAdBreak_Objc: THEOplayerSDK.AdBreak_Objc? { get }
-  @objc(scheduledAdBreaks) var scheduledAdBreaks_Objc: [THEOplayerSDK.AdBreak_Objc] { get }
-  @objc(scheduledAds) var scheduledAds_Objc: [THEOplayerSDK.ScheduledAd_Objc] { get }
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use playing instead.")
   @objc(requestPlaying:) func requestPlaying_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAds instead.")
   @objc(requestCurrentAds:) func requestCurrentAds_Objc(completionHandler: @escaping ([THEOplayerSDK.Ad_Objc]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAdBreak instead.")
   @objc(requestCurrentAdBreak:) func requestCurrentAdBreak_Objc(completionHandler: @escaping (THEOplayerSDK.AdBreak_Objc?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAdBreaks instead.")
   @objc(requestScheduledAdBreaks:) func requestScheduledAdBreaks_Objc(completionHandler: @escaping ([THEOplayerSDK.AdBreak_Objc]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAds instead.")
   @objc(requestScheduledAds:) func requestScheduledAds_Objc(completionHandler: @escaping ([THEOplayerSDK.ScheduledAd_Objc]?, Swift.Error?) -> Swift.Void)
   @objc func schedule(adDescription: THEOplayerSDK.AdDescription_Objc)
   @objc func skip()
@@ -980,9 +969,12 @@ extension THEOplayerSDK.SkippedAdStrategy : Swift.Encodable, Swift.CaseIterable 
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerIrdetoDRMConfiguration) public class IrdetoDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerIrdetoDRMConfiguration) public class IrdetoDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(crmId:accountId:contentId:keyId:applicationId:sessionId:ticket:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String, sessionId: Swift.String? = nil, ticket: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, crmId: Swift.String, accountId: Swift.String, contentId: Swift.String, keyId: Swift.String, applicationId: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -1233,10 +1225,13 @@ extension THEOplayerSDK.PictureInPicture {
   override public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerKeyOSDRMConfiguration) public class KeyOSDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerKeyOSDRMConfiguration) public class KeyOSDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var customdata: Swift.String?
   @objc public init(customdata: Swift.String?, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(customdata:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, customdata: Swift.String?)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -1585,10 +1580,13 @@ public protocol ManifestInterceptor : AVFoundation.AVAssetResourceLoaderDelegate
 public protocol DeveloperSettings {
   var manifestInterceptor: THEOplayerSDK.ManifestInterceptor? { get set }
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerAzureDRMConfiguration) public class AzureDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAzureDRMConfiguration) public class AzureDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
   @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -1625,9 +1623,10 @@ public protocol DeveloperSettings {
   @objc deinit
 }
 infix operator >>> : BitwiseShiftPrecedence
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerVerimatrixDRMConfiguration) public class VerimatrixDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerVerimatrixDRMConfiguration) public class VerimatrixDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
@@ -1728,13 +1727,14 @@ public struct CachingTaskEventTypes {
   }
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerDRMTodayDRMConfiguration) public class DRMTodayDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerDRMTodayDRMConfiguration) public class DRMTodayDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String?
   @objc public var userId: Swift.String?
   @objc public var sessionId: Swift.String?
   @objc public var merchant: Swift.String?
   @objc public init(token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:userId:sessionId:merchant:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil, token: Swift.String? = nil, userId: Swift.String? = nil, sessionId: Swift.String? = nil, merchant: Swift.String? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -1953,21 +1953,15 @@ extension THEOplayerSDK.StreamType : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
 }
 public protocol GoogleDAI {
-  var snapback: Swift.Bool { get set }
   func contentTime(from streamTime: Swift.Double) -> Swift.Double
   func streamTime(from contentTime: Swift.Double) -> Swift.Double
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
   func requestSnapBack(completionHandler: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
   func setSnapBack(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool?, Swift.Error?) -> Swift.Void)?)
 }
 @objc(THEOplayerGoogleDAI) public protocol GoogleDAI_Objc {
-  @objc var snapback: Swift.Bool { get set }
   @objc(contentTimeFromStreamTime:) func contentTime(from streamTime: Swift.Double) -> Swift.Double
   @objc(streamTimeFromContentTime:) func streamTime(from contentTime: Swift.Double) -> Swift.Double
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
   @objc(requestSnapBack:) func requestSnapBack_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
   @objc(setSnapBack:completion:) func setSnapBack_Objc(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool, Swift.Error?) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerPlayerEvent) public class PlayerEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
@@ -2101,10 +2095,13 @@ public protocol GoogleDAI {
 @_hasMissingDesignatedInitializers @objc(THEOplayerDestroyEvent) public class DestroyEvent : THEOplayerSDK.PlayerEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerVudrmDRMConfiguration) public class VudrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerVudrmDRMConfiguration) public class VudrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
   @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -2298,6 +2295,10 @@ public struct AdsEventTypes {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerGoogleIMAAdsConfiguration) public class GoogleIMAAdsConfiguration : ObjectiveC.NSObject, Swift.Codable {
+  @available(*, deprecated, message: "Legacy API. The return value has no indication on the functionality.")
+  @objc public var useNativeIma: Swift.Bool {
+    @objc get
+  }
   @objc public var disableUI: Swift.Bool {
     @objc get
   }
@@ -2309,6 +2310,8 @@ public struct AdsEventTypes {
   required public init(from decoder: Swift.Decoder) throws
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAConfigurationBuilder) public class GoogleIMAConfigurationBuilder : ObjectiveC.NSObject {
+  @available(*, deprecated, message: "Legacy API. The return value has no indication on the functionality.")
+  @objc public var useNativeIMA: Swift.Bool
   @objc public var disableUI: Swift.Bool
   @objc public var enableBackgroundPlayback: Swift.Bool
   @objc public func build() -> THEOplayerSDK.GoogleIMAAdsConfiguration
@@ -2442,19 +2445,6 @@ public protocol AudioTrack : THEOplayerSDK.MediaTrack {
 }
 @objc(THEOplayerAudioTrack) public protocol AudioTrack_Objc : THEOplayerSDK.MediaTrack_Objc {
   @objc override var enabled: Swift.Bool { get set }
-}
-@_hasMissingDesignatedInitializers public class DependencyChecker {
-  public struct Version : Swift.Equatable {
-    public init(major: Swift.Int, minor: Swift.Int, patch: Swift.Int)
-    public static func == (a: THEOplayerSDK.DependencyChecker.Version, b: THEOplayerSDK.DependencyChecker.Version) -> Swift.Bool
-  }
-  public struct Dependency {
-    public init(bundleIdentifier: Swift.String, supportedVersion: THEOplayerSDK.DependencyChecker.Version)
-  }
-  public static let shared: THEOplayerSDK.DependencyChecker
-  public func register(dependency: THEOplayerSDK.DependencyChecker.Dependency)
-  public func validate(dependency: THEOplayerSDK.DependencyChecker.Dependency)
-  @objc deinit
 }
 @objc(THEOplayerTHEOError) public protocol THEOError : THEOplayerSDK.THEOBaseError {
   @objc var timestamp: Foundation.Date { get }
@@ -2828,16 +2818,20 @@ extension Foundation.NSNotification.Name {
 }
 public let PictureInPictureOldCornerUserInfoKey: Swift.String
 public let PictureInPictureNewCornerUserInfoKey: Swift.String
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerVimondDRMConfiguration) public class VimondDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerVimondDRMConfiguration) public class VimondDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public init(keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerAxinomDRMConfiguration) public class AxinomDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerAxinomDRMConfiguration) public class AxinomDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
   @objc public init(token: Swift.String, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(token:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String, headers: [[Swift.String : Swift.String]]? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, token: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
@@ -3013,7 +3007,6 @@ public struct NetworkEventTypes {
   @objc(playerVersion) public static var version: Swift.String {
     @objc get
   }
-  @available(*, deprecated, message: "Use `THEOplayer.version` instead")
   @objc public static var playerSuiteVersion: Swift.String {
     @objc get
   }
@@ -3032,12 +3025,6 @@ public struct NetworkEventTypes {
   @objc public var autoresizingMask: UIKit.UIView.AutoresizingMask {
     @objc get
     @objc set
-  }
-  @objc public var videoHeight: Swift.Int {
-    @objc get
-  }
-  @objc public var videoWidth: Swift.Int {
-    @objc get
   }
   @objc public var abr: THEOplayerSDK.ABRConfiguration {
     @objc get
@@ -3112,18 +3099,6 @@ public struct NetworkEventTypes {
   @objc public var playbackRate: Swift.Double {
     @objc get
   }
-  @objc public var buffered: [THEOplayerSDK.TimeRange] {
-    @objc get
-  }
-  @objc public var played: [THEOplayerSDK.TimeRange] {
-    @objc get
-  }
-  @objc public var seekable: [THEOplayerSDK.TimeRange] {
-    @objc get
-  }
-  @objc public var metrics: Any? {
-    @objc get
-  }
   @objc public var presentationMode: THEOplayerSDK.PresentationMode {
     @objc get
     @objc set
@@ -3135,13 +3110,6 @@ public struct NetworkEventTypes {
     @objc get
   }
   @objc public var uid: Swift.Int {
-    @objc get
-  }
-  @objc public var currentTime: Swift.Double {
-    @objc get
-    @objc set
-  }
-  @objc public var currentProgramDateTime: Foundation.Date? {
     @objc get
   }
   @objc public static var automaticallyManageAudioSession: Swift.Bool {
@@ -3162,39 +3130,28 @@ public struct NetworkEventTypes {
   @objc public func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.PlayerEvent) -> ()) -> THEOplayerSDK.EventListener
   @available(swift, obsoleted: 1.0)
   @objc public func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentTime instead.")
   public func requestCurrentTime(completionHandler: @escaping (Swift.Double?, Swift.Error?) -> Swift.Void)
   @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentTime instead.")
   @objc(requestCurrentTime:) public func requestCurrentTime_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
   @objc public func setCurrentTime(_ newValue: Swift.Double, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoHeight instead.")
   public func requestVideoHeight(completionHandler: @escaping (Swift.Int?, Swift.Error?) -> Swift.Void)
   @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoHeight instead.")
   @objc(requestVideoHeight:) public func requestVideoHeight_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoWidth instead.")
   public func requestVideoWidth(completionHandler: @escaping (Swift.Int?, Swift.Error?) -> Swift.Void)
   @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoWidth instead.")
   @objc(requestVideoWidth:) public func requestVideoWidth_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
   @objc public func setPreload(_ newValue: THEOplayerSDK.Preload, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentProgramDateTime instead.")
   @objc public func requestCurrentProgramDateTime(completionHandler: @escaping (Foundation.Date?, Swift.Error?) -> Swift.Void)
   @objc public func setCurrentProgramDateTime(_ newValue: Foundation.Date, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
   @objc public func setPlaybackRate(_ newValue: Swift.Double, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use buffered instead.")
   @objc public func requestBuffered(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use played instead.")
   @objc public func requestPlayed(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
   @objc public func addAsSubview(of view: UIKit.UIView)
   @objc public func insertAsSubview(of view: UIKit.UIView, at: Swift.Int)
   @objc public func insertAsSubview(of view: UIKit.UIView, belowSubview siblingSubview: UIKit.UIView)
   @objc public func insertAsSubview(of view: UIKit.UIView, aboveSubview siblingSubview: UIKit.UIView)
   @objc public func isContained(in views: [UIKit.UIView]) -> Swift.Bool
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use metrics instead.")
   @objc public func requestMetrics(completionHandler: @escaping (Any?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use seekable instead.")
   @objc public func requestSeekable(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
   public static func registerContentProtectionIntegration(integrationId: Swift.String, keySystem: THEOplayerSDK.KeySystemId, integrationFactory: THEOplayerSDK.ContentProtectionIntegrationFactory)
   @available(swift, obsoleted: 1.0)
@@ -3580,12 +3537,15 @@ extension THEOplayerSDK.THEOplayer {
   @objc dynamic public func removeAllIntegrations()
   @objc dynamic public func getAllIntegrations() -> [THEOplayerSDK.Integration]
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
-@objc(THEOplayerXstreamDRMConfiguration) public class XstreamDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
+@_hasMissingDesignatedInitializers @objc(THEOplayerXstreamDRMConfiguration) public class XstreamDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var ticketAcquisitionURL: Swift.String
   @objc public var sessionId: Swift.String?
   @objc public var streamId: Swift.String
   @objc public init(ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, keySystemConfigurations: THEOplayerSDK.KeySystemConfigurationCollection)
+  @available(*, deprecated, message: "This initializer will be removed in the next major release. Please use init(ticketAcquisitionURL:streamId:sessionId:keySystemConfigurations:) instead.")
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String, sessionId: Swift.String? = nil, headers: [[Swift.String : Swift.String]]? = nil, licenseType: THEOplayerSDK.LicenseType = .temporary)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(licenseAcquisitionURL: Swift.String, certificateURL: Swift.String, ticketAcquisitionURL: Swift.String, streamId: Swift.String)
   override public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit

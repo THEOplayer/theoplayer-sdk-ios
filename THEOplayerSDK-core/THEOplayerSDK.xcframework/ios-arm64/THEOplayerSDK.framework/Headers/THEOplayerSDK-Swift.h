@@ -907,7 +907,7 @@ SWIFT_PROTOCOL_NAMED("AnalyticsDescription")
 /// The Agama player configuration.
 /// since:
 /// v.2.61.0
-SWIFT_CLASS_NAMED("AgamaPlayerConfiguration")
+SWIFT_CLASS_NAMED("AgamaPlayerConfiguration") SWIFT_DEPRECATED_MSG("This type is no longer available and will be removed in a future version.")
 @interface THEOplayerAgamaPlayerConfiguration : NSObject <THEOplayerAnalyticsDescription>
 /// The analytics integration that is being used, in this case <code>AnalyticsIntegration.agama</code>.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
@@ -960,7 +960,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAgamaServiceName, "AgamaServiceNam
 enum THEOplayerStreamType : NSInteger;
 
 /// Configure Agama analytics pre-integration.
-SWIFT_CLASS_NAMED("AgamaSourceConfiguration")
+SWIFT_CLASS_NAMED("AgamaSourceConfiguration") SWIFT_DEPRECATED_MSG("This type is no longer available and will be removed in a future version.")
 @interface THEOplayerAgamaSourceConfiguration : NSObject <THEOplayerAnalyticsDescription>
 @property (nonatomic, readonly, copy) NSString * _Nonnull asset;
 @property (nonatomic, readonly) enum THEOplayerStreamType streamType;
@@ -3959,7 +3959,7 @@ SWIFT_CLASS_NAMED("Metrics")
 
 
 /// Configure Moat analytics pre-integration.
-SWIFT_CLASS_NAMED("MoatOptions")
+SWIFT_CLASS_NAMED("MoatOptions") SWIFT_DEPRECATED_MSG("This type is no longer available and will be removed in a future version.")
 @interface THEOplayerMoatOptions : NSObject <THEOplayerAnalyticsDescription>
 /// The type of <code>AnalyticsIntegration</code>.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
@@ -5447,6 +5447,23 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
 
+@class UIGestureRecognizer;
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// Attaches a gesture recognizer to THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// Detaches a gesture recognizer from THEOplayer.
+/// remark:
+/// Only available on iOS.
+- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
+/// List of the gesture recognizers attached to THEOplayer.
+/// remark:
+/// Only available on iOS.
+@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>Fullscreen</code> api of theoplayer.
@@ -5465,23 +5482,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class UIGestureRecognizer;
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// Attaches a gesture recognizer to THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)addGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// Detaches a gesture recognizer from THEOplayer.
-/// remark:
-/// Only available on iOS.
-- (void)removeGestureRecognizer:(UIGestureRecognizer * _Nonnull)gestureRecognizer;
-/// List of the gesture recognizers attached to THEOplayer.
-/// remark:
-/// Only available on iOS.
-@property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
 @end
 
 
@@ -6300,7 +6300,7 @@ SWIFT_CLASS_NAMED("XstreamDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-i
 
 
 /// The configuration of the Yospace log level.
-SWIFT_CLASS_NAMED("YospaceLogLevelConfiguration")
+SWIFT_CLASS_NAMED("YospaceLogLevelConfiguration") SWIFT_DEPRECATED_MSG("This type is no longer available and will be removed in a future version.")
 @interface THEOplayerYospaceLogLevelConfiguration : NSObject
 /// Whether polling logs are enabled.
 @property (nonatomic, readonly) BOOL polling;
@@ -6346,7 +6346,7 @@ SWIFT_CLASS_NAMED("YospaceLogLevelConfiguration")
 
 
 /// The ServerSideAdInsertionConfiguration for the Yospace integration.
-SWIFT_CLASS_NAMED("YospaceServerSideAdInsertionConfiguration")
+SWIFT_CLASS_NAMED("YospaceServerSideAdInsertionConfiguration") SWIFT_DEPRECATED_MSG("This type is no longer available and will be removed in a future version.")
 @interface THEOplayerYospaceServerSideAdInsertionConfiguration : NSObject <THEOplayerServerSideAdInsertionConfiguration>
 /// The Yospace SSAI integration identifier, defaults to <code>YospaceSSAIIntegrationID</code>.
 @property (nonatomic) enum THEOplayerSSAIIntegrationId integration;

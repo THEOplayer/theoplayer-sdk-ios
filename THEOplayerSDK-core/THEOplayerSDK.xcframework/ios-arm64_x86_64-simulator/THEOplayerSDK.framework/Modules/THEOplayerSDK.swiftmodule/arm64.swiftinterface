@@ -1920,6 +1920,7 @@ extension THEOplayerSDK.SourceIntegration : Swift.Codable {
 }
 @objc(THEOplayerSSAIIntegrationId) public enum SSAIIntegrationId : Swift.Int {
   @objc(THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID) case GoogleDAISSAIIntegrationID = 1
+  @available(*, deprecated, message: "This option is no longer available and will be removed in a future version.")
   @objc(THEOplayerSSAIIntegrationIdYOSPACE_SSAI_INTEGRATION_ID) case YospaceSSAIIntegrationID = 2
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
@@ -2842,7 +2843,8 @@ public let PictureInPictureNewCornerUserInfoKey: Swift.String
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc(THEOplayerYospaceServerSideAdInsertionConfiguration) public class YospaceServerSideAdInsertionConfiguration : ObjectiveC.NSObject, THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
+@objc(THEOplayerYospaceServerSideAdInsertionConfiguration) public class YospaceServerSideAdInsertionConfiguration : ObjectiveC.NSObject, THEOplayerSDK.ServerSideAdInsertionConfiguration, Swift.Codable {
   @objc public var integration: THEOplayerSDK.SSAIIntegrationId
   @objc final public let streamType: THEOplayerSDK.StreamType
   @objc final public let logLevel: THEOplayerSDK.YospaceLogLevelConfiguration
@@ -2853,7 +2855,8 @@ public let PictureInPictureNewCornerUserInfoKey: Swift.String
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
 }
-@_inheritsConvenienceInitializers @objc(THEOplayerYospaceLogLevelConfiguration) public class YospaceLogLevelConfiguration : ObjectiveC.NSObject, Swift.Codable {
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
+@objc(THEOplayerYospaceLogLevelConfiguration) public class YospaceLogLevelConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let polling: Swift.Bool
   @objc final public let id3Tags: Swift.Bool
   @objc final public let parsing: Swift.Bool
@@ -3239,6 +3242,7 @@ public protocol CompanionAd {
   @objc(width) var width_Objc: Foundation.NSNumber? { get }
   @objc var type: Swift.String { get }
 }
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 @objc(THEOplayerAgamaServiceName) public enum AgamaServiceName : Swift.Int {
   @objc(THEOplayerAgamaServiceNameNONE) case none = 0
   @objc(THEOplayerAgamaServiceNameLIVE) case live = 1
@@ -3261,6 +3265,7 @@ extension THEOplayerSDK.AgamaServiceName : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 @objc(THEOplayerAgamaSourceConfiguration) public class AgamaSourceConfiguration : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription, Swift.Codable {
   @objc public var asset: Swift.String {
     get
@@ -3479,8 +3484,10 @@ public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
 }
 @objc(THEOplayerAnalyticsIntegration) public enum AnalyticsIntegration : Swift.Int {
   @objc(THEOplayerAnalyticsIntegrationYOUBORA) case youbora = 1
+  @available(*, deprecated, message: "This option is no longer available and will be removed in a future version.")
   @objc(THEOplayerAnalyticsIntegrationMOAT) case moat = 2
   @objc(THEOplayerAnalyticsIntegrationCONVIVA) case conviva = 3
+  @available(*, deprecated, message: "This option is no longer available and will be removed in a future version.")
   @objc(THEOplayerAnalyticsIntegrationAGAMA) case agama = 4
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
@@ -3509,6 +3516,7 @@ public struct TextTrackListEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 @objc(THEOplayerAgamaPlayerConfiguration) public class AgamaPlayerConfiguration : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription, Swift.Codable {
   @objc public var integration: THEOplayerSDK.AnalyticsIntegration
   @objc public var config: Swift.String {
@@ -3532,6 +3540,7 @@ public struct TextTrackListEventTypes {
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 @objc(THEOplayerAgamaLogging) public enum AgamaLogging : Swift.Int32, Swift.Codable {
   @objc(THEOplayerAgamaLoggingFATAL) case fatal = 0
   @objc(THEOplayerAgamaLoggingERROR) case error = 1
@@ -3630,7 +3639,8 @@ public struct RelatedContentEventTypes {
 @_hasMissingDesignatedInitializers @objc(THEOplayerUiRelatedContentHideEvent) public class UiRelatedContentHideEvent : THEOplayerSDK.RelatedContentEvent {
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(THEOplayerMoatOptions) public class MoatOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription, Swift.Codable {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
+@objc(THEOplayerMoatOptions) public class MoatOptions : ObjectiveC.NSObject, THEOplayerSDK.AnalyticsDescription, Swift.Codable {
   @objc public var integration: THEOplayerSDK.AnalyticsIntegration
   @objc convenience public init(partnerCode: Swift.String, locationServicesEnabled: Swift.Bool = true, IDFACollectionEnabled: Swift.Bool = true, debugLoggingEnabled: Swift.Bool = false)
   @available(swift, obsoleted: 1.0)
@@ -3761,8 +3771,11 @@ extension THEOplayerSDK.CastStrategy : Swift.RawRepresentable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Equatable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Hashable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.RawRepresentable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaServiceName : Swift.Equatable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaServiceName : Swift.Hashable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaServiceName : Swift.RawRepresentable {}
 extension THEOplayerSDK.WidevineDRMConfiguration : THEOplayerSDK.WidevineDRMConfigurationProtocol {}
 extension THEOplayerSDK.WidevineDRMConfiguration : THEOplayerSDK.WidevineDRMConfigurationProtocol_Objc {}
@@ -3775,6 +3788,9 @@ extension THEOplayerSDK.RemoveTrackEvent : THEOplayerSDK.TrackEventProtocol_Objc
 extension THEOplayerSDK.AnalyticsIntegration : Swift.Equatable {}
 extension THEOplayerSDK.AnalyticsIntegration : Swift.Hashable {}
 extension THEOplayerSDK.AnalyticsIntegration : Swift.RawRepresentable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaLogging : Swift.Equatable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaLogging : Swift.Hashable {}
+@available(*, deprecated, message: "This type is no longer available and will be removed in a future version.")
 extension THEOplayerSDK.AgamaLogging : Swift.RawRepresentable {}

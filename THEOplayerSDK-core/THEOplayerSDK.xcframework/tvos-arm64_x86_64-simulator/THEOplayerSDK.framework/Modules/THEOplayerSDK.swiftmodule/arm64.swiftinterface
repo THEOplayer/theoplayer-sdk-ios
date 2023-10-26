@@ -1887,6 +1887,7 @@ public protocol EventDispatcherProtocol {
 }
 @objc(THEOplayerSSAIIntegrationId) public enum SSAIIntegrationId : Swift.Int {
   @objc(THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID) case GoogleDAISSAIIntegrationID = 1
+  @available(*, deprecated, message: "This option is no longer available and will be removed in a future version.")
   @objc(THEOplayerSSAIIntegrationIdYOSPACE_SSAI_INTEGRATION_ID) case YospaceSSAIIntegrationID = 2
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int

@@ -283,6 +283,7 @@ SWIFT_PROTOCOL_NAMED("CastIntegration_Objc")
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
+
 @class THEOplayer;
 @class THEOplayerCastConfiguration;
 

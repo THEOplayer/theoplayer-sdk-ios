@@ -4598,23 +4598,12 @@ SWIFT_CLASS_NAMED("VimondDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 
 
 /// Fired when <code>PlayerEventTypes.VOLUME_CHANGE</code> occurs for the <code>THEOplayer</code>.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     The device’s  volume percentage as a rational number between 0 and 1.
-///   </li>
-///   <li>
-///     Changes the value of <code>THEOplayer.volume</code>.
-///   </li>
-///   <li>
-///     This is not triggered by muting the player.
-///   </li>
-/// </ul>
 SWIFT_CLASS_NAMED("VolumeChangeEvent")
 @interface THEOplayerVolumeChangeEvent : THEOplayerCurrentTimeEvent
-/// The new value, between 0 and 1, of the device’s volume.
+/// The new value, between 0 and 1, of the player’s volume.
 @property (nonatomic, readonly) float volume;
+/// The new value, between 0 and 1, of the device’s volume.
+@property (nonatomic, readonly) float deviceVolume;
 @end
 
 
@@ -9368,23 +9357,12 @@ SWIFT_CLASS_NAMED("VimondDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 
 
 /// Fired when <code>PlayerEventTypes.VOLUME_CHANGE</code> occurs for the <code>THEOplayer</code>.
-/// remark:
-///
-/// <ul>
-///   <li>
-///     The device’s  volume percentage as a rational number between 0 and 1.
-///   </li>
-///   <li>
-///     Changes the value of <code>THEOplayer.volume</code>.
-///   </li>
-///   <li>
-///     This is not triggered by muting the player.
-///   </li>
-/// </ul>
 SWIFT_CLASS_NAMED("VolumeChangeEvent")
 @interface THEOplayerVolumeChangeEvent : THEOplayerCurrentTimeEvent
-/// The new value, between 0 and 1, of the device’s volume.
+/// The new value, between 0 and 1, of the player’s volume.
 @property (nonatomic, readonly) float volume;
+/// The new value, between 0 and 1, of the device’s volume.
+@property (nonatomic, readonly) float deviceVolume;
 @end
 
 

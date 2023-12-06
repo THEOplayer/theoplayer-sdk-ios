@@ -1115,6 +1115,7 @@ public protocol PictureInPicture {
   @objc public var volume: Swift.Float {
     get
   }
+  @objc final public let deviceVolume: Swift.Float
   public init(currentTime: Swift.Double, date: Foundation.Date, volume: Swift.Float)
   @objc deinit
 }

@@ -10,23 +10,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		M79gKYwiX7BghRBz+ecGlKbZ6H0=
+		10bks/CBxQWK7IUdsvqUa19gxKc=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/arm64-apple-tvos-simulator.swiftsourceinfo</key>
 		<data>
-		f13jsvDMUMfxXo4nD4F04imGWQQ=
+		v7J5NKghxOFIszRmG8GLEDP+WQE=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		f13jsvDMUMfxXo4nD4F04imGWQQ=
+		v7J5NKghxOFIszRmG8GLEDP+WQE=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/x86_64-apple-tvos-simulator.swiftsourceinfo</key>
 		<data>
-		+zWAy7PcVHlvvKY9HRdlaLepHZo=
+		36jTvHT59zhQZFK36nXCv92MJB4=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
-		+zWAy7PcVHlvvKY9HRdlaLepHZo=
+		36jTvHT59zhQZFK36nXCv92MJB4=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		QHAnaeS8tvwRxe6vBJ6mQGbQrj4=
+		qKWM58Ol2tCNGGsk+j8+dvgTeDE=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		QHAnaeS8tvwRxe6vBJ6mQGbQrj4=
+		qKWM58Ol2tCNGGsk+j8+dvgTeDE=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		ZuG2EU00HgGvt5lll5iAQV6kT5o=
+		N8/jPiQSZwuhjw+pnzhc2VWCgNA=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		ZuG2EU00HgGvt5lll5iAQV6kT5o=
+		N8/jPiQSZwuhjw+pnzhc2VWCgNA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -94,28 +94,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9NVSTudNfKDCDtih5kkHiuITgdyVFB5Ai2OLXx7Uwt8=
+			tofWE4jlIeJLhZbso7jcvq0Q7R2Z1N6GsFcgecYoWEw=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9NVSTudNfKDCDtih5kkHiuITgdyVFB5Ai2OLXx7Uwt8=
+			tofWE4jlIeJLhZbso7jcvq0Q7R2Z1N6GsFcgecYoWEw=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/x86_64-apple-tvos-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DZt1bEW6bfv5p8vVMlt1uAbdehcfJMn6oxAmexN7TKo=
+			nQXW8aXhSKmLnU8ojGf/pvh2LsY65tawcjmSefGQ9lY=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DZt1bEW6bfv5p8vVMlt1uAbdehcfJMn6oxAmexN7TKo=
+			nQXW8aXhSKmLnU8ojGf/pvh2LsY65tawcjmSefGQ9lY=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
@@ -136,7 +136,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i3G4iBte0YR6RouknkmxJxwTqgsU33IDvDSQVmIrC7s=
+			CWX8KwS8FPEZUbMZFFO3w3sRg0lSMIVMoX6PHSlXHio=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
@@ -157,7 +157,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i3G4iBte0YR6RouknkmxJxwTqgsU33IDvDSQVmIrC7s=
+			CWX8KwS8FPEZUbMZFFO3w3sRg0lSMIVMoX6PHSlXHio=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
@@ -178,7 +178,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			502Q73IXrUpZ4F56d7xbOpHr/L94+LixVI3CeWB99SI=
+			1jJVCBhgRzQdxb0MIrPbee/lJCIJPpvGeLUmdT16upI=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
@@ -199,7 +199,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			502Q73IXrUpZ4F56d7xbOpHr/L94+LixVI3CeWB99SI=
+			1jJVCBhgRzQdxb0MIrPbee/lJCIJPpvGeLUmdT16upI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

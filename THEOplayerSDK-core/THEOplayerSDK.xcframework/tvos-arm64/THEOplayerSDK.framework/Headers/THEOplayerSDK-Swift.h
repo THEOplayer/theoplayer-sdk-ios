@@ -1396,6 +1396,13 @@ SWIFT_PROTOCOL_NAMED("CompanionAd_Objc")
 @end
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK19ContentPlayerNative")
+@interface ContentPlayerNative : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 /// An error related to content protection.
 SWIFT_PROTOCOL_NAMED("ContentProtectionError_Objc")
 @protocol THEOplayerContentProtectionError <THEOplayerTHEOError>
@@ -1871,6 +1878,12 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerDateRangeCustomAttributesError, "D
 static NSString * _Nonnull const THEOplayerDateRangeCustomAttributesErrorDomain = @"THEOplayerSDK.DateRangeCustomAttributesError";
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK22DefaultEventDispatcher")
+@interface DefaultEventDispatcher : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.DESTROY</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -1881,13 +1894,6 @@ static NSString * _Nonnull const THEOplayerDateRangeCustomAttributesErrorDomain 
 /// </ul>
 SWIFT_CLASS_NAMED("DestroyEvent")
 @interface THEOplayerDestroyEvent : THEOplayerPlayerEvent
-@end
-
-
-/// Exposes the dispatchEvent method
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
-@protocol DispatchDispatch
-- (void)dispatchEventWithEvent:(id <THEOplayerEventProtocol> _Nonnull)event;
 @end
 
 
@@ -3020,6 +3026,14 @@ SWIFT_PROTOCOL_NAMED("Network_Objc")
 - (void)removeEventListenerWithType:(NSString * _Nonnull)type listener:(id <THEOplayerEventListener> _Nonnull)listener;
 @end
 
+
+/// Represents a non-linear ad in the VAST specification. It extends the properties of the <code>Ad</code> object.
+SWIFT_PROTOCOL_NAMED("NonLinearAd_Objc")
+@protocol THEOplayerNonLinearAd <THEOplayerAd>
+/// The url that redirects to the website of the advertiser.
+@property (nonatomic, readonly, copy) NSString * _Nullable clickThrough;
+@end
+
 @class THEOplayerOmidFriendlyObstruction;
 
 /// The Open Measurement Interface Definition API which can be used to configure the ad viewability measurements conforming to the OMID standards.
@@ -3092,15 +3106,6 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 @end
 
 @protocol AVPictureInPictureControllerDelegate;
-@class AVPlayer;
-
-/// :nodoc:
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
-@protocol PictureInPictureControllerNativeExposable
-@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
-@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
-@end
-
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
@@ -3114,6 +3119,25 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 ///
 - (void)configureWithConfiguration:(THEOplayerPiPConfiguration * _Nonnull)configuration;
 @end
+
+
+SWIFT_CLASS("_TtC13THEOplayerSDK32PictureInPictureControllerNative")
+@interface PictureInPictureControllerNative : NSObject <THEOplayerPictureInPicture>
+@property (nonatomic, strong) id <AVPictureInPictureControllerDelegate> _Nullable nativePictureInPictureDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14);
+- (void)configureWithConfiguration:(THEOplayerPiPConfiguration * _Nonnull)configuration;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class AVPlayer;
+
+/// :nodoc:
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
+@protocol PictureInPictureControllerNativeExposable
+@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
+@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
+@end
+
 
 
 /// Fired when <code>PlayerEventTypes.PLAY</code> occurs for the <code>THEOplayer</code>.
@@ -3990,8 +4014,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @end
 
 
-
-
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -4013,6 +4035,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// \endcode
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
+
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))

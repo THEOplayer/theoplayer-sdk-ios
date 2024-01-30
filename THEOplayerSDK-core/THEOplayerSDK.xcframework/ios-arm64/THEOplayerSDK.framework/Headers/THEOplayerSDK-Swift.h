@@ -2295,6 +2295,13 @@ SWIFT_PROTOCOL_NAMED("CompanionAd_Objc")
 @end
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK19ContentPlayerNative")
+@interface ContentPlayerNative : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 /// An error related to content protection.
 SWIFT_PROTOCOL_NAMED("ContentProtectionError_Objc")
 @protocol THEOplayerContentProtectionError <THEOplayerTHEOError>
@@ -2888,6 +2895,12 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerDateRangeCustomAttributesError, "D
 static NSString * _Nonnull const THEOplayerDateRangeCustomAttributesErrorDomain = @"THEOplayerSDK.DateRangeCustomAttributesError";
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK22DefaultEventDispatcher")
+@interface DefaultEventDispatcher : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.DESTROY</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -2898,13 +2911,6 @@ static NSString * _Nonnull const THEOplayerDateRangeCustomAttributesErrorDomain 
 /// </ul>
 SWIFT_CLASS_NAMED("DestroyEvent")
 @interface THEOplayerDestroyEvent : THEOplayerPlayerEvent
-@end
-
-
-/// Exposes the dispatchEvent method
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK16DispatchDispatch_")
-@protocol DispatchDispatch
-- (void)dispatchEventWithEvent:(id <THEOplayerEventProtocol> _Nonnull)event;
 @end
 
 
@@ -4156,42 +4162,9 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 - (nonnull instancetype)init;
 @end
 
-@protocol AVPictureInPictureControllerDelegate;
-@class AVPlayer;
-
-/// :nodoc:
-SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
-@protocol PictureInPictureControllerNativeExposable
-@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
-@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
-@end
-
-/// The corner of the PiP view
-/// note:
-///
-/// The PiP corner can be observed with the Notification.Name.PictureInPictureMoved notification
-/// <ul>
-///   <li>
-///     topLeft: The PiP view will be positioned at the top left corner of the screen
-///   </li>
-///   <li>
-///     topRight: The PiP view will be positioned at the top right corner of the screen
-///   </li>
-///   <li>
-///     bottomLeft: The PiP view will be positioned at the bottom left corner of the screen
-///   </li>
-///   <li>
-///     bottomRight: The PiP view will be positioned at the bottom right corner of the screen
-///   </li>
-/// </ul>
-typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPictureInPictureCorner, "PictureInPictureCorner", open) {
-  THEOplayerPictureInPictureCornerTOP_LEFT SWIFT_COMPILE_NAME("topLeft") = 1,
-  THEOplayerPictureInPictureCornerTOP_RIGHT SWIFT_COMPILE_NAME("topRight") = 2,
-  THEOplayerPictureInPictureCornerBOTTOM_LEFT SWIFT_COMPILE_NAME("bottomLeft") = 3,
-  THEOplayerPictureInPictureCornerBOTTOM_RIGHT SWIFT_COMPILE_NAME("bottomRight") = 4,
-};
-
+enum THEOplayerPictureInPictureCorner : NSInteger;
 @class THEOplayerTHEOMargins;
+@protocol AVPictureInPictureControllerDelegate;
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
@@ -4249,6 +4222,55 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 ///
 - (void)configureWithConfiguration:(THEOplayerPiPConfiguration * _Nonnull)configuration;
 @end
+
+
+SWIFT_CLASS("_TtC13THEOplayerSDK32PictureInPictureControllerNative")
+@interface PictureInPictureControllerNative : NSObject <THEOplayerPictureInPicture>
+@property (nonatomic, readonly) enum THEOplayerPictureInPictureCorner currentCorner;
+@property (nonatomic, strong) id <AVPictureInPictureControllerDelegate> _Nullable nativePictureInPictureDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14);
+- (void)configureWithConfiguration:(THEOplayerPiPConfiguration * _Nonnull)configuration;
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale visibility:(NSNumber * _Nullable)visibility margin:(THEOplayerTHEOMargins * _Nullable)margin;
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale;
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale visibility:(NSNumber * _Nullable)visibility;
+- (void)configureWithMovable:(BOOL)movable defaultCorner:(enum THEOplayerPictureInPictureCorner)defaultCorner scale:(float)scale margin:(THEOplayerTHEOMargins * _Nonnull)margin;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class AVPlayer;
+
+/// :nodoc:
+SWIFT_PROTOCOL("_TtP13THEOplayerSDK41PictureInPictureControllerNativeExposable_")
+@protocol PictureInPictureControllerNativeExposable
+@property (nonatomic, readonly, strong) id <AVPictureInPictureControllerDelegate> _Nonnull avPiPControllerDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0);
+@property (nonatomic, readonly, strong) AVPlayer * _Nonnull avPlayer;
+@end
+
+/// The corner of the PiP view
+/// note:
+///
+/// The PiP corner can be observed with the Notification.Name.PictureInPictureMoved notification
+/// <ul>
+///   <li>
+///     topLeft: The PiP view will be positioned at the top left corner of the screen
+///   </li>
+///   <li>
+///     topRight: The PiP view will be positioned at the top right corner of the screen
+///   </li>
+///   <li>
+///     bottomLeft: The PiP view will be positioned at the bottom left corner of the screen
+///   </li>
+///   <li>
+///     bottomRight: The PiP view will be positioned at the bottom right corner of the screen
+///   </li>
+/// </ul>
+typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerPictureInPictureCorner, "PictureInPictureCorner", open) {
+  THEOplayerPictureInPictureCornerTOP_LEFT SWIFT_COMPILE_NAME("topLeft") = 1,
+  THEOplayerPictureInPictureCornerTOP_RIGHT SWIFT_COMPILE_NAME("topRight") = 2,
+  THEOplayerPictureInPictureCornerBOTTOM_LEFT SWIFT_COMPILE_NAME("bottomLeft") = 3,
+  THEOplayerPictureInPictureCornerBOTTOM_RIGHT SWIFT_COMPILE_NAME("bottomRight") = 4,
+};
+
 
 
 /// Fired when <code>PlayerEventTypes.PLAY</code> occurs for the <code>THEOplayer</code>.
@@ -5423,8 +5445,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 
-
-
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5447,6 +5467,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
 
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// Add an <code>Integration</code> to the THEOplayer instance .
+/// remark:
+/// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
+- (void)addIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
+/// Removes an <code>Integration</code> from the THEOplayer instance.
+- (void)removeIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
+/// Removes all <code>Integration</code>s from the THEOplayer instance.
+- (void)removeAllIntegrations;
+/// Returns all registered <code>Integration</code>s  on the THEOplayer instance
+- (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5462,26 +5503,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// Add an <code>Integration</code> to the THEOplayer instance .
-/// remark:
-/// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
-- (void)addIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
-/// Removes an <code>Integration</code> from the THEOplayer instance.
-- (void)removeIntegration:(id <THEOplayerIntegration> _Nonnull)integration;
-/// Removes all <code>Integration</code>s from the THEOplayer instance.
-- (void)removeAllIntegrations;
-/// Returns all registered <code>Integration</code>s  on the THEOplayer instance
-- (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
 @end
 
 

@@ -18,11 +18,6 @@ import TVMLKit
 import UIKit.UIGestureRecognizerSubclass
 import UIKit
 import _Concurrency
-@objc public protocol PictureInPictureControllerNativeExposable {
-  @objc @available(tvOS 14.0, *)
-  var avPiPControllerDelegate: AVKit.AVPictureInPictureControllerDelegate { get }
-  @objc var avPlayer: AVFoundation.AVPlayer { get }
-}
 @_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
 @objc(THEOplayerAzureDRMConfiguration) public class AzureDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
   @objc public var token: Swift.String
@@ -306,6 +301,12 @@ public protocol LinearAd : THEOplayerSDK.Ad {
   @objc var type: Swift.String { get }
   @objc var height: Swift.Int { get }
   @objc var width: Swift.Int { get }
+}
+public protocol NonLinearAd : THEOplayerSDK.Ad {
+  var clickThrough: Swift.String? { get }
+}
+@objc(THEOplayerNonLinearAd) public protocol NonLinearAd_Objc : THEOplayerSDK.Ad_Objc {
+  @objc var clickThrough: Swift.String? { get }
 }
 public protocol ScheduledAd {
   var adBreak: THEOplayerSDK.AdBreak { get }
@@ -1879,9 +1880,6 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
 public protocol EventDispatcherProtocol {
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
-}
-@objc public protocol DispatchDispatch {
-  @objc func dispatchEvent(event: THEOplayerSDK.EventProtocol)
 }
 @objc(THEOplayerServerSideAdInsertionConfiguration) public protocol ServerSideAdInsertionConfiguration {
   @objc var integration: THEOplayerSDK.SSAIIntegrationId { get }

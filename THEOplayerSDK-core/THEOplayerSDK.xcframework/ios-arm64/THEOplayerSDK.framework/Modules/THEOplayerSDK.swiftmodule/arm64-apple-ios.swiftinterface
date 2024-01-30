@@ -301,9 +301,6 @@ public protocol EventDispatcherProtocol {
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }
-@objc public protocol DispatchDispatch {
-  @objc func dispatchEvent(event: THEOplayerSDK.EventProtocol)
-}
 @objc(THEOplayerTHEOAdDescription) public class THEOAdDescription : ObjectiveC.NSObject, Swift.Codable {
   public var integration: THEOplayerSDK.AdIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.AdIntegration {
@@ -1750,11 +1747,6 @@ public protocol AdBreak {
   @objc var maxDuration: Swift.Int { get }
   @objc var maxRemainingDuration: Swift.Double { get }
   @objc var timeOffset: Swift.Int { get }
-}
-@objc public protocol PictureInPictureControllerNativeExposable {
-  @objc @available(tvOS 14.0, *)
-  var avPiPControllerDelegate: AVKit.AVPictureInPictureControllerDelegate { get }
-  @objc var avPlayer: AVFoundation.AVPlayer { get }
 }
 @objc(THEOplayerRequest) public class Request : ObjectiveC.NSObject, Swift.Codable {
   @objc public var url: Swift.String

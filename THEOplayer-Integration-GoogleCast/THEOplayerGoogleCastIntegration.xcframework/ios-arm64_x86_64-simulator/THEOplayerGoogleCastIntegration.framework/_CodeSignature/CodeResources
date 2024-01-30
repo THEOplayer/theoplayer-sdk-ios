@@ -10,27 +10,15 @@
 		</data>
 		<key>Headers/THEOplayerGoogleCastIntegration-Swift.h</key>
 		<data>
-		4ddaH0oG6vFCLKCbuI8XYLtIzsk=
+		RYVf9QWVNAPuOjJcuhKrvEbP9Uw=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		fN9Xj+Aemi5J/f5RxXnAtLXO7R0=
+		0N1vGxURfrtMsqvMj/4iw8nzKn4=
 		</data>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		0FMqnzs3rmFkGSK48AB0nZowp98=
-		</data>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
-		<data>
-		0FMqnzs3rmFkGSK48AB0nZowp98=
-		</data>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<data>
-		2X3v0YaHu3zm7o0iETIQ4ol4tUs=
-		</data>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64.swiftsourceinfo</key>
-		<data>
-		2X3v0YaHu3zm7o0iETIQ4ol4tUs=
+		09WqqaylqAdM/IcJXa680z0Omo8=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -42,7 +30,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		47V6fjqNzNpuSSCReuv9nAGER7w=
+		J04njGroP4uDOcRf4wL/jUJ7XAI=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.private.swiftinterface</key>
+		<data>
+		09WqqaylqAdM/IcJXa680z0Omo8=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -54,7 +46,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		47V6fjqNzNpuSSCReuv9nAGER7w=
+		J04njGroP4uDOcRf4wL/jUJ7XAI=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		D7mWuZ83gvDKGj4DTZMRHR8P/Eo=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -66,7 +62,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		lAs+Wkp4liqAHGwsbFEiqD2SRRg=
+		r4DnBrbKEgaNyRlOnn9vP9ZM5x4=
+		</data>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64.private.swiftinterface</key>
+		<data>
+		D7mWuZ83gvDKGj4DTZMRHR8P/Eo=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		lAs+Wkp4liqAHGwsbFEiqD2SRRg=
+		r4DnBrbKEgaNyRlOnn9vP9ZM5x4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -98,35 +98,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			f+j/4Q5484grCVo4DVU0DvA3+hcxY1FONGReAsw+lUI=
+			P44XY23nP+OdWwa7y2uyMa5UhsTlFGKID1X0qODI294=
 			</data>
 		</dict>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			r2fVLeEu7igInGM+/XSQJnqtS6D//gnrhx6cgxLZQqU=
-			</data>
-		</dict>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/arm64.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			r2fVLeEu7igInGM+/XSQJnqtS6D//gnrhx6cgxLZQqU=
-			</data>
-		</dict>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			l+u8XfHEU4RyifxMiBH2GJ9HIKQsLrgEMGo3jIUs0aI=
-			</data>
-		</dict>
-		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/Project/x86_64.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			l+u8XfHEU4RyifxMiBH2GJ9HIKQsLrgEMGo3jIUs0aI=
+			+B2W8tk3LR+B6F9oc11ub4S8KNx+FH9CR47uqSXX8wk=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -147,7 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tmt4/DnEVWPn9p4hGvomm1aOXUcEfBbLeaab/GM2XfY=
+			MR6iQGepfhdPPTmM6eSb4ZIMZtnqB8UG+4udGXHq9cw=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+B2W8tk3LR+B6F9oc11ub4S8KNx+FH9CR47uqSXX8wk=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64.swiftdoc</key>
@@ -168,7 +154,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tmt4/DnEVWPn9p4hGvomm1aOXUcEfBbLeaab/GM2XfY=
+			MR6iQGepfhdPPTmM6eSb4ZIMZtnqB8UG+4udGXHq9cw=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			j9zafFaN2qhtRsgSO/S7BjMP1H0jlJu2fZrsLo7sTN0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -189,7 +182,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jyf2NR7oTBDh8fz1DEqvQATo8n7RTmaCa0WIehDs0mY=
+			sBl4HGDKVlqRjGEc6zTSyn2M7O6BMB/mty5EMca8HkU=
+			</data>
+		</dict>
+		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			j9zafFaN2qhtRsgSO/S7BjMP1H0jlJu2fZrsLo7sTN0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64.swiftdoc</key>
@@ -210,7 +210,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jyf2NR7oTBDh8fz1DEqvQATo8n7RTmaCa0WIehDs0mY=
+			sBl4HGDKVlqRjGEc6zTSyn2M7O6BMB/mty5EMca8HkU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

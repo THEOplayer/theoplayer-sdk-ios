@@ -252,7 +252,6 @@ SWIFT_PROTOCOL_NAMED("NativeGoogleImaAd_Objc")
 @end
 
 
-
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif

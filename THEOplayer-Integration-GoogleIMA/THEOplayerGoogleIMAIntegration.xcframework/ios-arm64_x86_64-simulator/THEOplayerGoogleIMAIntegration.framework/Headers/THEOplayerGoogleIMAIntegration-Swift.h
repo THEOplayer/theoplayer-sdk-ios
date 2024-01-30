@@ -254,7 +254,6 @@ SWIFT_PROTOCOL_NAMED("NativeGoogleImaAd_Objc")
 @end
 
 
-
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif
@@ -514,7 +513,6 @@ SWIFT_PROTOCOL_NAMED("NativeGoogleImaAd_Objc")
 @protocol THEOplayerNativeGoogleImaAd <THEOplayerGoogleImaAd>
 @property (nonatomic, readonly, strong) IMAAd * _Nonnull imaAd;
 @end
-
 
 
 #if __has_attribute(external_source_symbol)

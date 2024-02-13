@@ -14,9 +14,9 @@ public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
   @objc var imaAd: GoogleInteractiveMediaAds.IMAAd { get }
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAIntegrationFactory) public class GoogleIMAIntegrationFactory : ObjectiveC.NSObject {
-  public static func createIntegration(on player: THEOplayerSDK.THEOplayer) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration
+  public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings? = nil) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration
   @available(swift, obsoleted: 1.0)
-  @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc
+  @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings?) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc
   @objc override dynamic public init()
   @objc deinit
 }

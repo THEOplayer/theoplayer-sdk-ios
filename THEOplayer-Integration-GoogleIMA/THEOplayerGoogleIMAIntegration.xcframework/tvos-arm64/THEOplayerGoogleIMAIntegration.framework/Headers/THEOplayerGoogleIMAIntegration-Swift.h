@@ -208,6 +208,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 @class THEOplayer;
+@class IMASettings;
 @protocol THEOplayerGoogleImaIntegration;
 
 /// The Google IMA Integration factory which is responsible for initiating a new instance.
@@ -218,7 +219,9 @@ SWIFT_CLASS_NAMED("GoogleIMAIntegrationFactory")
 /// The returning value should be used as an argument to <code>THEOplayer.addIntegration</code> to finish the setup.
 /// \param player A <code>THEOplayer</code> instance where the integration should be added.
 ///
-+ (id <THEOplayerGoogleImaIntegration> _Nonnull)createIntegrationOn:(THEOplayer * _Nonnull)player SWIFT_WARN_UNUSED_RESULT;
+/// \param imaSettings The Google IMA settings class that stores IMA SDK wide settings.
+///
++ (id <THEOplayerGoogleImaIntegration> _Nonnull)createIntegrationOn:(THEOplayer * _Nonnull)player with:(IMASettings * _Nullable)imaSettings SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

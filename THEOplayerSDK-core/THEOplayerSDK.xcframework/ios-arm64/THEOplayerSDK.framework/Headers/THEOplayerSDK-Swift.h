@@ -560,6 +560,17 @@ SWIFT_CLASS_NAMED("AdSkipEvent")
 @end
 
 
+/// Thrown to indicate that an ad was tapped.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdTappedEvent")
+@interface THEOplayerAdTappedEvent : THEOplayerAdEventProtocol
+@end
+
+
 /// Thrown to indicate that the third quartile of an ad was watched.
 /// <ul>
 ///   <li>
@@ -769,6 +780,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Fired when <code>AdBreakEndEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakend;)
 + (NSString * _Nonnull)adbreakend SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdTappedEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adtapped;)
++ (NSString * _Nonnull)adtapped SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -3174,7 +3188,7 @@ SWIFT_CLASS_NAMED("FairPlayDRMConfiguration")
 SWIFT_CLASS_NAMED("FullscreenEventTypes_Objc")
 @interface THEOplayerFullscreenEventTypes : NSObject
 /// Fired when the view’s aspect ratio changes.
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aspectratiochange;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aspectratiochange SWIFT_DEPRECATED_MSG("This type will be removed with the next major release. Please use `PlayerEventTypes.ASPECT_RATIO_CHANGE` instead, which should be attached to `THEOplayer.addEventListener`.");)
 + (NSString * _Nonnull)aspectratiochange SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -3227,7 +3241,7 @@ SWIFT_CLASS("_TtC13THEOplayerSDK24FullscreenViewController")
 SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
 @protocol THEOplayerFullscreen
 /// Specifies how to handle the aspect ratio of the content.
-@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio;
+@property (nonatomic, readonly) enum THEOplayerAspectRatio aspectRatio SWIFT_DEPRECATED_MSG("This property will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.");
 /// The supported interface orientations for fullscreen mode as a <code>UIInterfaceOrientationMask</code>.
 @property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 /// When in fullscreen presentation mode returns the <code>FullscreenViewController</code> that contains the player. Returns nil otherwise.
@@ -3239,7 +3253,7 @@ SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
 /// Sets the current fullscreen aspect ratio.
 /// \param aspectRatio The <code>AspectRatio</code> to be used by the player.
 ///
-- (void)setAspectRatioWithAspectRatio:(enum THEOplayerAspectRatio)aspectRatio;
+- (void)setAspectRatioWithAspectRatio:(enum THEOplayerAspectRatio)aspectRatio SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.");
 /// Sets the supported interface orientations for fullscreen mode.
 /// \param supportedInterfaceOrientations The supported interface orientations.
 ///
@@ -4366,6 +4380,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Fired when <code>PresentationModeChangeEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull presentationmodechange;)
 + (NSString * _Nonnull)presentationmodechange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when the view’s aspect ratio changes.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull aspectratiochange;)
++ (NSString * _Nonnull)aspectratiochange SWIFT_WARN_UNUSED_RESULT;
 /// Fired when <code>VolumeChangeEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull volumechange;)
 + (NSString * _Nonnull)volumechange SWIFT_WARN_UNUSED_RESULT;
@@ -5156,8 +5173,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @property (nonatomic, readonly) NSInteger videoHeight;
 /// Returns the width of the video in pixels for the current quality.
 @property (nonatomic, readonly) NSInteger videoWidth;
+/// Returns the current size and position of the video image as displayed within the receiver’s bounds.
+@property (nonatomic, readonly) CGRect videoRect;
 /// Allows you to modify the player’s ABR behavior. See documentation for <code>ABRConfiguration</code> to see how this is done.
 @property (nonatomic, strong) id <THEOplayerABRConfiguration> _Nonnull abr;
+/// Specifies how to handle the aspect ratio of the content.
+@property (nonatomic) enum THEOplayerAspectRatio aspectRatio;
 /// The network status of the player which can be used to monitor the network related errors.
 @property (nonatomic, readonly, strong) id <THEOplayerNetwork> _Nonnull network;
 /// The list of Text Tracks.
@@ -5482,12 +5503,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
 @class UIGestureRecognizer;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5503,6 +5518,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// remark:
 /// Only available on iOS.
 @property (nonatomic, readonly, copy) NSArray<UIGestureRecognizer *> * _Nullable gestureRecognizers;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 

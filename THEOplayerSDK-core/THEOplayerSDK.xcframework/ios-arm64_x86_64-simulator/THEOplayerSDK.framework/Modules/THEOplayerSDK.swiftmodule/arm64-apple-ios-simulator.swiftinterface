@@ -1004,6 +1004,18 @@ extension THEOplayerSDK.KeySystemConfigurationCollection : Swift.Codable {
   convenience public init(from decoder: Swift.Decoder) throws
   final public func encode(to encoder: Swift.Encoder) throws
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerNetworkConfiguration) public class NetworkConfiguration : ObjectiveC.NSObject, Swift.Codable {
+  final public let userAgent: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerNetworkConfigurationBuilder) public class NetworkConfigurationBuilder : ObjectiveC.NSObject {
+  @objc public var userAgent: Swift.String?
+  @objc public func build() -> THEOplayerSDK.NetworkConfiguration
+  @objc override dynamic public init()
+  @objc deinit
+}
 public struct TextTrackEventTypes {
   public static var CUE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.CueChangeEvent>
   public static var ADD_CUE: THEOplayerSDK.EventType<THEOplayerSDK.AddCueEvent>
@@ -1308,6 +1320,7 @@ extension THEOplayerSDK.CacheStatus {
   }
   @objc public var allowsCellularAccess: Swift.Bool
   @objc public var preferredTrackSelection: THEOplayerSDK.CachingParametersTrackSelection
+  @objc public var network: THEOplayerSDK.NetworkConfiguration?
   public init(expirationDate: Foundation.Date, bandwidth: Swift.Int? = nil)
   @available(swift, obsoleted: 1.0)
   @objc public init(expirationDate: Foundation.Date, bandwidth: Foundation.NSNumber?)
@@ -2728,6 +2741,9 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   public var ui: THEOplayerSDK.UIConfiguration? {
     get
   }
+  public var network: THEOplayerSDK.NetworkConfiguration? {
+    get
+  }
   public var cssPaths: [Swift.String] {
     get
   }
@@ -2752,7 +2768,9 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   public var uid: Swift.Int? {
     get
   }
-  public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration? = nil, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil)
+  public init(chromeless: Swift.Bool = false, defaultCSS: Swift.Bool = true, cssPaths: [Swift.String] = [], jsPaths: [Swift.String] = [], jsPathsPre: [Swift.String] = [], analytics: [THEOplayerSDK.AnalyticsDescription] = [], pip: THEOplayerSDK.PiPConfiguration? = nil, ads: THEOplayerSDK.AdsConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, cast: THEOplayerSDK.CastConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, network: THEOplayerSDK.NetworkConfiguration? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(chromeless: Swift.Bool, defaultCSS: Swift.Bool, cssPaths: [Swift.String], jsPaths: [Swift.String], jsPathsPre: [Swift.String], analytics: [THEOplayerSDK.AnalyticsDescription], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration?, ui: THEOplayerSDK.UIConfiguration?, cast: THEOplayerSDK.CastConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, network: THEOplayerSDK.NetworkConfiguration?)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, defaultCSS: Swift.Bool, cssPaths: [Swift.String], jsPaths: [Swift.String], jsPathsPre: [Swift.String], analytics: [THEOplayerSDK.AnalyticsDescription], pip: THEOplayerSDK.PiPConfiguration?, ads: THEOplayerSDK.AdsConfiguration?, ui: THEOplayerSDK.UIConfiguration?, cast: THEOplayerSDK.CastConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?)
   @available(swift, obsoleted: 1.0)

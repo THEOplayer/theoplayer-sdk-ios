@@ -2973,6 +2973,26 @@ SWIFT_CLASS_NAMED("Metrics")
 
 
 
+/// Represents a network configuration.
+/// remark:
+/// Use <code>NetworkConfigurationBuilder</code> to initialize an instance.
+SWIFT_CLASS_NAMED("NetworkConfiguration")
+@interface THEOplayerNetworkConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A builder class to help initialize a <code>NetworkConfiguration</code> instance.
+SWIFT_CLASS_NAMED("NetworkConfigurationBuilder")
+@interface THEOplayerNetworkConfigurationBuilder : NSObject
+/// The user agent header that the http requests should send.
+@property (nonatomic, copy) NSString * _Nullable userAgent;
+- (THEOplayerNetworkConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -4111,6 +4131,26 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param ui a UIconfiguration.
 ///
+/// \param network The additional network configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless ads:(THEOplayerAdsConfiguration * _Nullable)ads hlsDateRange:(BOOL)hlsDateRange verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl pip:(THEOplayerPiPConfiguration * _Nullable)pip ui:(THEOplayerUIConfiguration * _Nullable)ui network:(THEOplayerNetworkConfiguration * _Nullable)network;
+/// Constructs a THEOplayerConfiguration.
+/// \param chromeless Whether the chromeless player, without UI, is used.
+///
+/// \param hlsDateRange Whether the logic to expose date ranges parsed from HLS manifests is enabled.
+///
+/// \param ads The additional advertisement configuration.
+///
+/// \param verizonMedia VerizonMediaConfiguration object to configure Verizon Media parameters.
+///
+/// \param license The license for the player
+///
+/// \param licenseUrl The url to fetch the license for the player
+///
+/// \param pip a PiPConfiguration. (picture-in-picture configuration)
+///
+/// \param ui a UIconfiguration.
+///
 - (nonnull instancetype)initWithChromeless:(BOOL)chromeless ads:(THEOplayerAdsConfiguration * _Nullable)ads hlsDateRange:(BOOL)hlsDateRange verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl pip:(THEOplayerPiPConfiguration * _Nullable)pip ui:(THEOplayerUIConfiguration * _Nullable)ui;
 /// Constructs a THEOplayerConfiguration.
 - (nonnull instancetype)init;
@@ -4138,6 +4178,8 @@ enum THEOplayerTextTrackKind : NSInteger;
 enum THEOplayerTextTrackFormat : NSInteger;
 
 /// A TextTrackDescription object contains a description of a side-loaded text track that will be added to the player.
+/// remark:
+/// MP4 streams only support VTT formatted text tracks. AirPlay is not supported with MP4 streams.
 SWIFT_CLASS_NAMED("TextTrackDescription")
 @interface THEOplayerTextTrackDescription : NSObject
 /// Whether the track should be enabled by default.
@@ -4207,7 +4249,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackFormat, "TextTrackFormat"
 /// The text track is in the Web Video Text Tracks format.
 /// remark:
 ///
-/// In the native pipeline, use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
+/// In the native pipeline, for HLS streams use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
   THEOplayerTextTrackFormatWEBVTT SWIFT_COMPILE_NAME("WebVTT") = 1,
 /// The text track is in the SubRip Text Tracks format.
 /// remark:
@@ -7776,6 +7818,26 @@ SWIFT_CLASS_NAMED("Metrics")
 
 
 
+/// Represents a network configuration.
+/// remark:
+/// Use <code>NetworkConfigurationBuilder</code> to initialize an instance.
+SWIFT_CLASS_NAMED("NetworkConfiguration")
+@interface THEOplayerNetworkConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A builder class to help initialize a <code>NetworkConfiguration</code> instance.
+SWIFT_CLASS_NAMED("NetworkConfigurationBuilder")
+@interface THEOplayerNetworkConfigurationBuilder : NSObject
+/// The user agent header that the http requests should send.
+@property (nonatomic, copy) NSString * _Nullable userAgent;
+- (THEOplayerNetworkConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -8914,6 +8976,26 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param ui a UIconfiguration.
 ///
+/// \param network The additional network configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless ads:(THEOplayerAdsConfiguration * _Nullable)ads hlsDateRange:(BOOL)hlsDateRange verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl pip:(THEOplayerPiPConfiguration * _Nullable)pip ui:(THEOplayerUIConfiguration * _Nullable)ui network:(THEOplayerNetworkConfiguration * _Nullable)network;
+/// Constructs a THEOplayerConfiguration.
+/// \param chromeless Whether the chromeless player, without UI, is used.
+///
+/// \param hlsDateRange Whether the logic to expose date ranges parsed from HLS manifests is enabled.
+///
+/// \param ads The additional advertisement configuration.
+///
+/// \param verizonMedia VerizonMediaConfiguration object to configure Verizon Media parameters.
+///
+/// \param license The license for the player
+///
+/// \param licenseUrl The url to fetch the license for the player
+///
+/// \param pip a PiPConfiguration. (picture-in-picture configuration)
+///
+/// \param ui a UIconfiguration.
+///
 - (nonnull instancetype)initWithChromeless:(BOOL)chromeless ads:(THEOplayerAdsConfiguration * _Nullable)ads hlsDateRange:(BOOL)hlsDateRange verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl pip:(THEOplayerPiPConfiguration * _Nullable)pip ui:(THEOplayerUIConfiguration * _Nullable)ui;
 /// Constructs a THEOplayerConfiguration.
 - (nonnull instancetype)init;
@@ -8941,6 +9023,8 @@ enum THEOplayerTextTrackKind : NSInteger;
 enum THEOplayerTextTrackFormat : NSInteger;
 
 /// A TextTrackDescription object contains a description of a side-loaded text track that will be added to the player.
+/// remark:
+/// MP4 streams only support VTT formatted text tracks. AirPlay is not supported with MP4 streams.
 SWIFT_CLASS_NAMED("TextTrackDescription")
 @interface THEOplayerTextTrackDescription : NSObject
 /// Whether the track should be enabled by default.
@@ -9010,7 +9094,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackFormat, "TextTrackFormat"
 /// The text track is in the Web Video Text Tracks format.
 /// remark:
 ///
-/// In the native pipeline, use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
+/// In the native pipeline, for HLS streams use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
   THEOplayerTextTrackFormatWEBVTT SWIFT_COMPILE_NAME("WebVTT") = 1,
 /// The text track is in the SubRip Text Tracks format.
 /// remark:

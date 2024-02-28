@@ -1486,6 +1486,7 @@ SWIFT_PROTOCOL_NAMED("Cache_Objc")
 @end
 
 @class THEOplayerCachingParametersTrackSelection;
+@class THEOplayerNetworkConfiguration;
 
 /// The configuration of a caching task.
 SWIFT_CLASS_NAMED("CachingParameters")
@@ -1537,6 +1538,8 @@ SWIFT_CLASS_NAMED("CachingParameters")
 ///   </li>
 /// </ul>
 @property (nonatomic, strong) THEOplayerCachingParametersTrackSelection * _Nonnull preferredTrackSelection;
+/// The network configuration of the caching task.
+@property (nonatomic, strong) THEOplayerNetworkConfiguration * _Nullable network;
 /// Constructs a <code>CachingParameters</code>.
 /// \param expirationDate The expiration date of the cached data.
 ///
@@ -4011,6 +4014,26 @@ SWIFT_CLASS_NAMED("MoatOptions") SWIFT_DEPRECATED_MSG("This type is no longer av
 
 
 
+/// Represents a network configuration.
+/// remark:
+/// Use <code>NetworkConfigurationBuilder</code> to initialize an instance.
+SWIFT_CLASS_NAMED("NetworkConfiguration")
+@interface THEOplayerNetworkConfiguration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// A builder class to help initialize a <code>NetworkConfiguration</code> instance.
+SWIFT_CLASS_NAMED("NetworkConfigurationBuilder")
+@interface THEOplayerNetworkConfigurationBuilder : NSObject
+/// The user agent header that the http requests should send.
+@property (nonatomic, copy) NSString * _Nullable userAgent;
+- (THEOplayerNetworkConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 /// A network error.
 SWIFT_PROTOCOL_NAMED("NetworkError")
 @protocol THEOplayerNetworkError <THEOplayerTHEOError>
@@ -5605,6 +5628,38 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param licenseUrl the url to fetch the license for the player.
 ///
+/// \param network The additional network configuration, defaults to nil.
+///
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia network:(THEOplayerNetworkConfiguration * _Nullable)network;
+/// Constructs a THEOplayerConfiguration.
+/// \param chromeless Whether the chromeless player, without UI, is used.
+///
+/// \param defaultCSS Whether the default THEOplayer css is used.
+///
+/// \param cssPaths An array of string paths of custom CSS files. (e.g. from yourBundle.path(forResource:ofType:))
+///
+/// \param jsPaths An array of string paths of custom JS files. (e.g. from yourBundle.path(forResource:ofType:))
+///
+/// \param jsPathsPre The paths to javascript files which are loaded before the player is constructed.
+///
+/// \param analytics The configurations for pre-integrated analytics services.
+///
+/// \param pip The configuration for picture-in-picture.
+///
+/// \param ads The additional advertisement configuration.
+///
+/// \param ui The additional UI configuration.
+///
+/// \param cast The additional cast configuration.
+///
+/// \param hlsDateRange Whether the logic to expose date ranges parsed from HLS manifests is enabled.
+///
+/// \param verizonMedia The configuration for the Verizon Media services.
+///
+/// \param license the license for the player.
+///
+/// \param licenseUrl the url to fetch the license for the player.
+///
 - (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia;
 /// Constructs a THEOplayerConfiguration.
 /// \param pip The configuration for picture-in-picture.
@@ -5636,6 +5691,8 @@ enum THEOplayerTextTrackKind : NSInteger;
 enum THEOplayerTextTrackFormat : NSInteger;
 
 /// A TextTrackDescription object contains a description of a side-loaded text track that will be added to the player.
+/// remark:
+/// MP4 streams only support VTT formatted text tracks. AirPlay is not supported with MP4 streams.
 SWIFT_CLASS_NAMED("TextTrackDescription")
 @interface THEOplayerTextTrackDescription : NSObject
 /// Whether the track should be enabled by default.
@@ -5705,7 +5762,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerTextTrackFormat, "TextTrackFormat"
 /// The text track is in the Web Video Text Tracks format.
 /// remark:
 ///
-/// In the native pipeline, use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
+/// In the native pipeline, for HLS streams use the sideloaded subtitles connector to put this format into effect. For more info, please check: https://github.com/THEOplayer/iOS-Connector
   THEOplayerTextTrackFormatWEBVTT SWIFT_COMPILE_NAME("WebVTT") = 1,
 /// The text track is in the SubRip Text Tracks format.
 /// remark:

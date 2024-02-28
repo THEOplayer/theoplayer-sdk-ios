@@ -1838,6 +1838,18 @@ extension THEOplayerSDK.PresentationMode {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerNetworkConfiguration) public class NetworkConfiguration : ObjectiveC.NSObject, Swift.Codable {
+  final public let userAgent: Swift.String?
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(THEOplayerNetworkConfigurationBuilder) public class NetworkConfigurationBuilder : ObjectiveC.NSObject {
+  @objc public var userAgent: Swift.String?
+  @objc public func build() -> THEOplayerSDK.NetworkConfiguration
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc(THEOplayerGoogleImaAdDescription) open class GoogleImaAdDescription : ObjectiveC.NSObject, THEOplayerSDK.AdDescription, THEOplayerSDK.AdDescription_Objc, Swift.Codable {
   public var integration: THEOplayerSDK.AdIntegration?
   @objc(integration) public var integration_Objc: THEOplayerSDK.AdIntegration {
@@ -1895,7 +1907,12 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   public var ui: THEOplayerSDK.UIConfiguration? {
     get
   }
-  public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil)
+  public var network: THEOplayerSDK.NetworkConfiguration? {
+    get
+  }
+  public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, network: THEOplayerSDK.NetworkConfiguration? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?, network: THEOplayerSDK.NetworkConfiguration?)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?)
   @objc convenience override dynamic public init()

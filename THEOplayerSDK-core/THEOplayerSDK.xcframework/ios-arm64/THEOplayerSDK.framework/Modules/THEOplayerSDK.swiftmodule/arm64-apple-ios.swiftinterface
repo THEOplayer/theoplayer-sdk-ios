@@ -909,7 +909,7 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, playedPercentage: Swift.Double?)
   @objc deinit
 }
-@objc(THEOplayerAdErrorEvent) public class AdErrorEvent : ObjectiveC.NSObject {
+@objc(THEOplayerAdErrorEvent) open class AdErrorEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
     get
   }
@@ -1233,6 +1233,11 @@ extension THEOplayerSDK.PictureInPicture {
   var nativePictureInPictureDelegate: AVKit.AVPictureInPictureControllerDelegate? { get set }
   @objc func configure(configuration: THEOplayerSDK.PiPConfiguration)
 }
+@available(iOS 14.0, tvOS 14.0, *)
+@objc(THEOplayerAVPictureInPictureControllerDelegateExtended) public protocol AVPictureInPictureControllerDelegateExtended : AVKit.AVPictureInPictureControllerDelegate {
+  @objc optional func pictureInPictureDidBecomePossible()
+  @objc optional func pictureInPictureDidBecomeNotPossible()
+}
 @_inheritsConvenienceInitializers public class EventedArray<Element> : THEOplayerSDK.THEOArray<Element>, THEOplayerSDK.EventDispatcherProtocol {
   public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   public func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
@@ -1417,6 +1422,7 @@ extension THEOplayerSDK.THEOplayer {
   }
   public var pip: THEOplayerSDK.PictureInPicture? {
     get
+    set
   }
   @available(swift, obsoleted: 1.0)
   @objc(pip) dynamic public var pip_Objc: THEOplayerSDK.PictureInPicture_Objc? {
@@ -3066,8 +3072,8 @@ public struct NetworkEventTypes {
   @objc public var videoWidth: Swift.Int {
     @objc get
   }
-  @objc public var videoRect: CoreGraphics.CGRect {
-    @objc get
+  @objc dynamic public var videoRect: CoreGraphics.CGRect {
+    get
   }
   @objc public var abr: THEOplayerSDK.ABRConfiguration {
     @objc get

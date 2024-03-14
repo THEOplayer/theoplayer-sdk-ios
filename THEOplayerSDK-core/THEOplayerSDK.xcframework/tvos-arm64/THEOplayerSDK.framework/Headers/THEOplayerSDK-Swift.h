@@ -188,6 +188,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVKit;
 @import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
@@ -270,6 +271,17 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerABRStrategyType, "ABRStrategyType"
 /// This is the default strategy.
   THEOplayerABRStrategyTypeBANDWIDTH SWIFT_COMPILE_NAME("bandwidth") = 3,
 };
+
+
+/// Extends <code>AVPictureInPictureControllerDelegate</code> to provide additional methods that get called when changes occur in <code>AVPictureInPictureController</code>.
+SWIFT_PROTOCOL_NAMED("AVPictureInPictureControllerDelegateExtended") SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14.0)
+@protocol THEOplayerAVPictureInPictureControllerDelegateExtended <AVPictureInPictureControllerDelegate>
+@optional
+/// Called when the value of <code>AVPictureInPictureController.isPictureInPicturePossible</code> changes to <code>true</code>.
+- (void)pictureInPictureDidBecomePossible;
+/// Called when the value of <code>AVPictureInPictureController.isPictureInPicturePossible</code> changes to <code>false</code>.
+- (void)pictureInPictureDidBecomeNotPossible;
+@end
 
 @class NSString;
 
@@ -2373,6 +2385,9 @@ SWIFT_CLASS_NAMED("TypedSource")
 ///   <li>
 ///     <code>'video/mp4'</code> indicates MP4.
 ///   </li>
+///   <li>
+///     <code>'audio/mp3'</code> indicates MP3.
+///   </li>
 /// </ul>
 @property (nonatomic, copy) NSString * _Nonnull type;
 /// This optional property can be used to specify required DRM parameters for a playback source.
@@ -3139,7 +3154,6 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 - (nonnull instancetype)init;
 @end
 
-@protocol AVPictureInPictureControllerDelegate;
 
 /// Helps configure the settings when <code>PresentationMode.pictureInPicture</code> is active.
 SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
@@ -3147,6 +3161,8 @@ SWIFT_PROTOCOL_NAMED("PictureInPicture_Objc")
 /// The protocol that defines the methods to respond to Picture in Picture events.
 /// remark:
 /// For more informations check https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate. Only supported when <code>PiPConfiguration.nativePictureInPicture</code> is set to <code>true</code>.
+/// note:
+/// For additional methods, the delegate can conform to type <code>AVPictureInPictureControllerDelegateExtended</code>.
 @property (nonatomic, strong) id <AVPictureInPictureControllerDelegate> _Nullable nativePictureInPictureDelegate SWIFT_AVAILABILITY(tvos,introduced=14.0) SWIFT_AVAILABILITY(ios,introduced=14.0);
 /// Sets the picture-in-picture configuration dynamically.
 /// \param configuration The <code>PipConfiguration</code> object which describes the configuration of the picture-in-picture feature.
@@ -3764,6 +3780,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Returns the width of the video in pixels for the current quality.
 @property (nonatomic, readonly) NSInteger videoWidth;
 /// Returns the current size and position of the video image as displayed within the receiver’s bounds.
+/// remark:
+/// This property is key-value observable.
 @property (nonatomic, readonly) CGRect videoRect;
 /// Allows you to modify the player’s ABR behavior. See documentation for <code>ABRConfiguration</code> to see how this is done.
 @property (nonatomic, strong) id <THEOplayerABRConfiguration> _Nonnull abr;
@@ -4177,7 +4195,7 @@ enum THEOplayerTextTrackFormat : NSInteger;
 
 /// A TextTrackDescription object contains a description of a side-loaded text track that will be added to the player.
 /// remark:
-/// MP4 streams only support VTT formatted text tracks. AirPlay is not supported with MP4 streams.
+/// MP4/3 streams only support VTT formatted text tracks. AirPlay is not supported with MP4/3 streams.
 SWIFT_CLASS_NAMED("TextTrackDescription")
 @interface THEOplayerTextTrackDescription : NSObject
 /// Whether the track should be enabled by default.

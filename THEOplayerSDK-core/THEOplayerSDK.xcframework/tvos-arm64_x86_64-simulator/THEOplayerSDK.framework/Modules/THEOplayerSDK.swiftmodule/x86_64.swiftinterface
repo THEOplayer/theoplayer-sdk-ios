@@ -766,7 +766,7 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, playedPercentage: Swift.Double?)
   @objc deinit
 }
-@objc(THEOplayerAdErrorEvent) open class AdErrorEvent : ObjectiveC.NSObject {
+@objc(THEOplayerAdErrorEvent) open class AdErrorEvent : ObjectiveC.NSObject, THEOplayerSDK.AdErrorEventProtocol, THEOplayerSDK.AdErrorEventProtocol_Objc {
   @objc public var type: Swift.String {
     get
   }
@@ -2736,8 +2736,6 @@ extension THEOplayerSDK.CueExitEvent : THEOplayerSDK.CueEventProtocol {}
 extension THEOplayerSDK.CueExitEvent : THEOplayerSDK.CueEventProtocol_Objc {}
 extension THEOplayerSDK.CueUpdateEvent : THEOplayerSDK.CueEventProtocol {}
 extension THEOplayerSDK.CueUpdateEvent : THEOplayerSDK.CueEventProtocol_Objc {}
-extension THEOplayerSDK.AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {}
-extension THEOplayerSDK.AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol_Objc {}
 extension THEOplayerSDK.TrackChangeEvent : THEOplayerSDK.TrackEventProtocol {}
 extension THEOplayerSDK.TrackChangeEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.AddTrackEvent : THEOplayerSDK.TrackEventProtocol {}

@@ -909,7 +909,7 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   public init(date: Foundation.Date, ad: THEOplayerSDK.Ad?, playedPercentage: Swift.Double?)
   @objc deinit
 }
-@objc(THEOplayerAdErrorEvent) open class AdErrorEvent : ObjectiveC.NSObject {
+@objc(THEOplayerAdErrorEvent) open class AdErrorEvent : ObjectiveC.NSObject, THEOplayerSDK.AdErrorEventProtocol, THEOplayerSDK.AdErrorEventProtocol_Objc {
   @objc public var type: Swift.String {
     get
   }
@@ -3733,8 +3733,6 @@ extension THEOplayerSDK.AspectRatio : Swift.RawRepresentable {}
 extension THEOplayerSDK.AdIntegration : Swift.Equatable {}
 extension THEOplayerSDK.AdIntegration : Swift.Hashable {}
 extension THEOplayerSDK.AdIntegration : Swift.RawRepresentable {}
-extension THEOplayerSDK.AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {}
-extension THEOplayerSDK.AdErrorEvent : THEOplayerSDK.AdErrorEventProtocol_Objc {}
 extension THEOplayerSDK.SkippedAdStrategy : Swift.Equatable {}
 extension THEOplayerSDK.SkippedAdStrategy : Swift.Hashable {}
 extension THEOplayerSDK.SkippedAdStrategy : Swift.RawRepresentable {}

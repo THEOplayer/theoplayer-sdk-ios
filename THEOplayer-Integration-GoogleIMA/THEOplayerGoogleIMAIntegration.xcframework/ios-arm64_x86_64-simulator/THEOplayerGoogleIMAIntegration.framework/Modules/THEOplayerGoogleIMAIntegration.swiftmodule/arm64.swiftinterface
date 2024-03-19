@@ -41,9 +41,7 @@ public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
 @objc(THEOplayerNativeGoogleImaAd) public protocol NativeGoogleImaAd_Objc : THEOplayerSDK.GoogleImaAd_Objc {
   @objc var imaAd: GoogleInteractiveMediaAds.IMAAd { get }
 }
-@_hasMissingDesignatedInitializers public class GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEvent {
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleImaAdErrorEvent) @_objcRuntimeName(THEOplayerGoogleImaAdErrorEvent) public class GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEvent {
   final public let imaAdError: GoogleInteractiveMediaAds.IMAAdError
   @objc deinit
 }
-extension THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {}
-extension THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEventProtocol_Objc {}

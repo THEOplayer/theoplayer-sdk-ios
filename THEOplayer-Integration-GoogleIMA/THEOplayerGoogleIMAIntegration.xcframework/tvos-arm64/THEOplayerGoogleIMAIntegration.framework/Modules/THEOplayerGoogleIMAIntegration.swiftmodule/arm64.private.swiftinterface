@@ -41,9 +41,7 @@ public protocol GoogleImaIntegration : THEOplayerSDK.Ads, THEOplayerSDK.Integrat
   required convenience public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEvent {
+@_hasMissingDesignatedInitializers @objc(THEOplayerGoogleImaAdErrorEvent) @_objcRuntimeName(THEOplayerGoogleImaAdErrorEvent) public class GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEvent {
   final public let imaAdError: GoogleInteractiveMediaAds.IMAAdError
   @objc deinit
 }
-extension THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEventProtocol {}
-extension THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEventProtocol_Objc {}

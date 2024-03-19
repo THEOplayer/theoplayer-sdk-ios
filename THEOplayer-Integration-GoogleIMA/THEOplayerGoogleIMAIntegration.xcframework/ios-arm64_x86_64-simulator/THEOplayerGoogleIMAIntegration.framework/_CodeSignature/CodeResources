@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mA9DqQE5Kmld3w6nOTQ1WSQ/Lrc=
+		7kM5WIWQmLA2nuqVn6g8GyNjotU=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		GvIqAXZb8MNWSWmaCGv5qA8+znY=
+		qrO0bwqsMCmMAHUFExg/Nlr1yrw=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,15 +26,15 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		G3dZg3UszbHDgKYS1ZxlHpB+thI=
+		/WgN1DMd6lSd9l8Fb4pLiNAS+ds=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xCeMujytEHtumh2IYgI/DvMtq/s=
+		YIa4GbOmqlMmenUFRbmUbJfhT+c=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.private.swiftinterface</key>
 		<data>
-		GvIqAXZb8MNWSWmaCGv5qA8+znY=
+		qrO0bwqsMCmMAHUFExg/Nlr1yrw=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -42,15 +42,15 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		G3dZg3UszbHDgKYS1ZxlHpB+thI=
+		/WgN1DMd6lSd9l8Fb4pLiNAS+ds=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		xCeMujytEHtumh2IYgI/DvMtq/s=
+		YIa4GbOmqlMmenUFRbmUbJfhT+c=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		JJ4BUdvYHlIwPpKmPk8sJUQcj88=
+		PhQyTSfyHuO8Bu59pyMMkahJd5c=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -58,15 +58,15 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		lFhelTiVjgBZLjmdp8kBJ/OTBK4=
+		cEuNhpyyhPLBvl7MewlD3VvOgQo=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		aRFCU3mNL9iLhXX+0FSqriWv+UQ=
+		CY085nVnRMTOtgxUPwbUDlWNcTc=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.private.swiftinterface</key>
 		<data>
-		JJ4BUdvYHlIwPpKmPk8sJUQcj88=
+		PhQyTSfyHuO8Bu59pyMMkahJd5c=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -74,11 +74,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		lFhelTiVjgBZLjmdp8kBJ/OTBK4=
+		cEuNhpyyhPLBvl7MewlD3VvOgQo=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		aRFCU3mNL9iLhXX+0FSqriWv+UQ=
+		CY085nVnRMTOtgxUPwbUDlWNcTc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -105,7 +105,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JSJpmSI9JQTAGR+DuUuIeo7k9kRfZl+MdXUEBvEjZoo=
+			W7ymttcV8+WS16PvGO4AJcVmCVfZbikTeEnRJS4g/pM=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -119,21 +119,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vLo3lDeb6QXu8haYRpIVueu3dNqBaMrMsfG2TzfKovM=
+			0BtPRmOef69PXOMDFHVOjbMomHF1a9cNCnbVl+ZVRyc=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RG4dqMBID9jkgTZFpKTfzT6J2sF/nmbO4Xm0lLXEZBY=
+			w+/9dapMM45nTkQ6XdH3WBNbmzYA7FTrKB2f5G8e8ho=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JSJpmSI9JQTAGR+DuUuIeo7k9kRfZl+MdXUEBvEjZoo=
+			W7ymttcV8+WS16PvGO4AJcVmCVfZbikTeEnRJS4g/pM=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftdoc</key>
@@ -147,21 +147,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vLo3lDeb6QXu8haYRpIVueu3dNqBaMrMsfG2TzfKovM=
+			0BtPRmOef69PXOMDFHVOjbMomHF1a9cNCnbVl+ZVRyc=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RG4dqMBID9jkgTZFpKTfzT6J2sF/nmbO4Xm0lLXEZBY=
+			w+/9dapMM45nTkQ6XdH3WBNbmzYA7FTrKB2f5G8e8ho=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YxJM7SxPv049C20O1+X1ufprdHY6wLCT27+vrFletvA=
+			CCGH6sxeZ4XWJSRdhKkGm73K2tC2QJkcGZDqE2FUAdE=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -175,21 +175,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HqOQDCmRIVckh/9LqdsFFwplxCWmozlV8m5bmGYuozo=
+			UmzGYVrLjA3WbhGxLNDYSnv1nuZ6cpI4T++ZuL6/AF8=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uf7nNLca6c/V1c8iSCwn9BkhkVCS51QptXOapuK2YbU=
+			FKP3Bd3p1t18927Hl/1V3aCkSkcHO93mI4xO1rFWmsg=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YxJM7SxPv049C20O1+X1ufprdHY6wLCT27+vrFletvA=
+			CCGH6sxeZ4XWJSRdhKkGm73K2tC2QJkcGZDqE2FUAdE=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftdoc</key>
@@ -203,14 +203,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HqOQDCmRIVckh/9LqdsFFwplxCWmozlV8m5bmGYuozo=
+			UmzGYVrLjA3WbhGxLNDYSnv1nuZ6cpI4T++ZuL6/AF8=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uf7nNLca6c/V1c8iSCwn9BkhkVCS51QptXOapuK2YbU=
+			FKP3Bd3p1t18927Hl/1V3aCkSkcHO93mI4xO1rFWmsg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

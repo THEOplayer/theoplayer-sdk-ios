@@ -719,7 +719,7 @@ SWIFT_CLASS_NAMED("AddTrackEvent")
 @class THEOplayerGoogleDAIAdsConfiguration;
 
 /// The advertisement configuration of the player.
-SWIFT_CLASS_NAMED("AdsConfiguration")
+SWIFT_CLASS_NAMED("AdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases.")
 @interface THEOplayerAdsConfiguration : NSObject
 /// Whether an advertisement duration countdown will be shown in the UI.
 /// remark:
@@ -740,9 +740,9 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload;
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
+@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 /// The configuration of Google Dynamic Ad Insertion.
-@property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai;
+@property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -926,7 +926,7 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerAgamaLogging, "AgamaLogging", open) 
 enum THEOplayerAnalyticsIntegration : NSInteger;
 
 /// The description of the used analytics.
-SWIFT_PROTOCOL_NAMED("AnalyticsDescription")
+SWIFT_PROTOCOL_NAMED("AnalyticsDescription") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release. Analytics will be moved to separate modules in the form of connectors. For more info check: https://github.com/THEOplayer/iOS-Connector")
 @protocol THEOplayerAnalyticsDescription
 @property (nonatomic, readonly) enum THEOplayerAnalyticsIntegration integration;
 @end
@@ -1141,7 +1141,7 @@ SWIFT_CLASS_NAMED("AspectRatioChangeEvent")
 
 
 /// Represents the quality of an <code>AudioTrack</code>.
-SWIFT_CLASS_NAMED("AudioQuality")
+SWIFT_CLASS_NAMED("AudioQuality") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerAudioQuality : NSObject
 /// The sampling rate, in samples per second.
 /// remark:
@@ -2517,7 +2517,7 @@ SWIFT_PROTOCOL_NAMED("ContentProtectionIntegrationFactory_Objc")
 @class THEOplayerConvivaContentMetadata;
 
 /// The configuration of the Conviva Integration.
-SWIFT_CLASS_NAMED("ConvivaConfiguration")
+SWIFT_CLASS_NAMED("ConvivaConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerConvivaConfiguration : NSObject <THEOplayerAnalyticsDescription>
 /// The identifier of the Conviva integration.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
@@ -2562,7 +2562,7 @@ SWIFT_CLASS_NAMED("ConvivaConfiguration")
 
 
 /// The Conviva content metadata.
-SWIFT_CLASS_NAMED("ConvivaContentMetadata")
+SWIFT_CLASS_NAMED("ConvivaContentMetadata") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerConvivaContentMetadata : NSObject
 /// The name of the asset.
 @property (nonatomic, readonly, copy) NSString * _Nonnull assetName;
@@ -3055,10 +3055,9 @@ SWIFT_CLASS_NAMED("ErrorEvent")
 
 
 /// Represents an <code>EventDispatcher</code> which will be responsible for dispatching an event, once it occurs.
-SWIFT_CLASS("_TtC13THEOplayerSDK15EventDispatcher")
+SWIFT_CLASS("_TtC13THEOplayerSDK15EventDispatcher") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface EventDispatcher : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -3295,25 +3294,25 @@ SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
 @end
 
 
-SWIFT_CLASS_NAMED("GoogleDAIAdsConfiguration")
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleDAIAdsConfiguration : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads.
-@property (nonatomic, readonly) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Enable background audio playback for DAI sources.
-@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder")
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleDAIAdsConfigurationBuilder : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to false.
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `disableUi` property on `IMAAdsRenderingSettings` and pass the settings to `GoogleImaIntegration` returned by `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Enable background audio playback for DAI sources. Defaults to true.
-@property (nonatomic) BOOL enableBackgroundPlayback;
+@property (nonatomic) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `enableBackgroundPlayback` property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Builds and returns an object of type <code>GoogleDAIAdsConfiguration</code>.
-- (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -3566,30 +3565,30 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
+SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleIMAAdsConfiguration : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
-@property (nonatomic, readonly) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Indicates whether background audio playback for the IMA SDK is enabled.
 /// remark:
 /// Only has effect when used with native IMA configuration.
-@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 /// An object to create or build GoogleIMAAdsConfigurations.
-SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
+SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `disableUi` property on `IMAAdsRenderingSettings` and pass the settings to `GoogleImaIntegration` returned by `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
 /// remark:
 /// Only has effect when used with native IMA configuration.
-@property (nonatomic) BOOL enableBackgroundPlayback;
+@property (nonatomic) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `enableBackgroundPlayback` property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Creates a GoogleIMAAdsConfiguration
-- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -4030,7 +4029,6 @@ SWIFT_CLASS_NAMED("MoatOptions") SWIFT_DEPRECATED_MSG("This type is no longer av
 
 
 
-
 /// Represents a network configuration.
 /// remark:
 /// Use <code>NetworkConfigurationBuilder</code> to initialize an instance.
@@ -4210,10 +4208,45 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 /// since:
 /// v3.5.0
 @property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline requiresLinearPlayback:(BOOL)requiresLinearPlayback OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init;
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline requiresLinearPlayback:(BOOL)requiresLinearPlayback OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)init SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+@end
+
+
+SWIFT_CLASS_NAMED("PiPConfigurationBuilder")
+@interface THEOplayerPiPConfigurationBuilder : NSObject
+/// Whether the presentation mode should be retained on source changes. Defaults to false.
+/// remark:
+/// When using native Picture in Picture  (when <code>nativePictureInPicture = true</code>), then this property will only work if the new source is not nil, and the source will be preloaded.
+@property (nonatomic) BOOL retainPresentationModeOnSourceChange;
+/// Disables seekability while in native Picture in Picture mode. This can be useful when playing advertisements for instance. Defaults to false.
+/// remark:
+///
+/// This only works in Native Picture in Picture. (when <code>nativePictureInPicture = true</code>)
+/// This has a minimum requirement of iOS/tvOS 14.0 and does not work on simulators.
+/// since:
+/// v5.0.1
+@property (nonatomic) BOOL requiresLinearPlayback;
+/// Enable the Native Picture in Picture. Defaults to true.
+/// remark:
+///
+/// This has a minimum requirement of iOS 14.0 and does not work on simulators.
+/// since:
+/// v2.85.2
+@property (nonatomic) BOOL nativePictureInPicture;
+/// Native Picture in Picture starts automatically when the player is embedded inline and the app transitions to the background. Defaults to false.
+/// remark:
+///
+/// This only works in Native Picture in Picture. (when <code>nativePictureInPicture = true</code>)
+/// This has a minimum requirement of iOS 14.2 and does not work on simulators.
+/// since:
+/// v3.5.0
+@property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline;
+/// Builds and returns an object of type <code>PiPConfiguration</code>.
+- (THEOplayerPiPConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 enum THEOplayerPictureInPictureCorner : NSInteger;
@@ -4506,7 +4539,7 @@ SWIFT_CLASS_NAMED("ProgressEvent")
 @end
 
 
-SWIFT_CLASS_NAMED("Promise")
+SWIFT_CLASS_NAMED("Promise") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerPromise : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -4557,7 +4590,7 @@ SWIFT_CLASS_NAMED("ReadyStateChangeEvent")
 
 
 /// The <code>RelatedContent</code> event object.
-SWIFT_CLASS_NAMED("RelatedContentEvent")
+SWIFT_CLASS_NAMED("RelatedContentEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentEvent : NSObject <THEOplayerEventProtocol>
 /// The type of the event.
 @property (nonatomic, readonly, copy) NSString * _Nonnull type;
@@ -4569,14 +4602,14 @@ SWIFT_CLASS_NAMED("RelatedContentEvent")
 
 
 /// Fired when the <code>RelatedContent.sources</code> change.
-SWIFT_CLASS_NAMED("RelatedContentChangeEvent")
+SWIFT_CLASS_NAMED("RelatedContentChangeEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentChangeEvent : THEOplayerRelatedContentEvent
 @end
 
 
 
 /// The <code>RelatedContentEvent</code> types.
-SWIFT_CLASS_NAMED("RelatedContentEventTypes_Objc")
+SWIFT_CLASS_NAMED("RelatedContentEventTypes_Objc") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentEventTypes : NSObject
 /// Fired when the <code>RelatedContent.sources</code> change.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull relatedcontentchange;)
@@ -4592,7 +4625,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 /// The Related Content Source object. Can be used to show additional content, besides the content currently shown, that might also be of interest to the viewer.
-SWIFT_CLASS_NAMED("RelatedContentSource")
+SWIFT_CLASS_NAMED("RelatedContentSource") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentSource : NSObject
 /// The duration property can be used to display a duration on the tile of the related content video.
 @property (nonatomic, readonly, copy) NSString * _Nullable duration;
@@ -4642,7 +4675,7 @@ SWIFT_CLASS_NAMED("RelatedContentSource")
 
 
 /// The Related Content API can be used to show new content related to the current content.
-SWIFT_PROTOCOL_NAMED("RelatedContent_Objc")
+SWIFT_PROTOCOL_NAMED("RelatedContent_Objc") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerRelatedContent
 /// List of the current <code>RelatedContentSource</code>.
 @property (nonatomic, copy) NSArray<THEOplayerRelatedContentSource *> * _Nonnull sources;
@@ -4851,7 +4884,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 
 @interface THEOplayerSourceDescription (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>VRConfiguration</code>  used to configure VR video playback.
-@property (nonatomic, strong) THEOplayerVRConfiguration * _Nullable vr;
+@property (nonatomic, strong) THEOplayerVRConfiguration * _Nullable vr SWIFT_DEPRECATED_MSG("This property will be removed with the next major release.");
 /// Constructs a <code>SourceDescription</code>.
 /// remark:
 /// A known limitation is that only the first source will play.
@@ -4869,7 +4902,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param vr The VR configuration for this source.
 ///
-- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 /// Constructs a <code>SourceDescription</code>.
 /// \param source A <code>TypedSource</code> which represents the media to be played.
 ///
@@ -4885,7 +4918,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param vr The VR configuration for this source.
 ///
-- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 @end
 
 
@@ -4893,7 +4926,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 /// The ads property can be used to add an array of AdDescriptions to the player. All valid and supported advertisement files will be cued for playback in the player. Each ad in the array should be described as an AdDescription.
 @property (nonatomic, copy) NSArray<id <THEOplayerAdDescription>> * _Nullable ads;
 /// The analytics property can be used to add an array of analytics integrations to the player.
-@property (nonatomic, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable analytics;
+@property (nonatomic, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable analytics SWIFT_DEPRECATED_MSG("This property will be removed with the next major release. Analytics will be moved to separate modules in the form of connectors. For more info check: https://github.com/THEOplayer/iOS-Connector");
 /// Constructs a SourceDescription.
 /// \param sources List of <code>TypedSource</code> which represent the media to be played.
 ///
@@ -4907,7 +4940,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param metadata The metadata which can be used to describe the content.
 ///
-- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 /// Constructs a SourceDescription.
 /// \param source A <code>TypedSource</code> which represents the media to be played.
 ///
@@ -4921,7 +4954,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param metadata The metadata which can be used to describe the content.
 ///
-- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 @end
 
 /// The pre-integration identifier of a source
@@ -4957,7 +4990,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerStreamType, "StreamType", open) {
 
 
 /// A <code>THEOplayerAdDescription</code> object contains a description of an advertisement that will be added to the player.
-SWIFT_CLASS_NAMED("THEOAdDescription")
+SWIFT_CLASS_NAMED("THEOAdDescription") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerTHEOAdDescription : NSObject <THEOplayerAdDescription>
 /// The ad Integration.
 @property (nonatomic) enum THEOplayerAdIntegration integration;
@@ -5157,7 +5190,7 @@ SWIFT_CLASS_NAMED("THEOMargins")
 @end
 
 
-SWIFT_PROTOCOL_NAMED("THEOScriptMessage")
+SWIFT_PROTOCOL_NAMED("THEOScriptMessage") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerTHEOScriptMessage
 @property (nonatomic, readonly) id _Nonnull body;
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
@@ -5167,7 +5200,7 @@ SWIFT_PROTOCOL_NAMED("THEOScriptMessage")
 @end
 
 
-SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler")
+SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerTHEOScriptMessageHandler
 - (void)didReceiveWithMessage:(id <THEOplayerTHEOScriptMessage> _Nonnull)message;
 @end
@@ -5289,11 +5322,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 ///     For all possibilities, see <code>Preload</code>.
 ///   </li>
 /// </ul>
-@property (nonatomic, readonly) enum THEOplayerPreload preload;
+@property (nonatomic) enum THEOplayerPreload preload;
 /// Returns current playback rate of the player.
 /// remark:
 /// <em>1</em> referring to normal speed.
-@property (nonatomic, readonly) double playbackRate;
+@property (nonatomic) double playbackRate;
 /// Returns the buffered <code>TimeRange</code>s of the player.
 @property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull buffered;
 /// Returns the played <code>TimeRange</code>s of the player.
@@ -5411,7 +5444,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
 ///
-- (void)setPreload:(enum THEOplayerPreload)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)setPreload:(enum THEOplayerPreload)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use the `preload` setter instead.");
 /// Requests the current ProgramDateTime of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
@@ -5427,7 +5460,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
 ///
-- (void)setPlaybackRate:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)setPlaybackRate:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use the `playbackRate` setter instead.");
 /// Request the buffered TimeRanges of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
@@ -5508,7 +5541,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @end
 
 
-
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -5534,6 +5566,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -5544,12 +5582,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 @class UIGestureRecognizer;
@@ -5582,7 +5614,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// A <code>PictureInPicture</code> object to configure Picture-In-Picture.
 @property (nonatomic, readonly, strong) id <THEOplayerPictureInPicture> _Nullable pip;
 /// A <code>RelatedContent</code> object to configure Related Content.
-@property (nonatomic, readonly, strong) id <THEOplayerRelatedContent> _Nonnull related;
+@property (nonatomic, readonly, strong) id <THEOplayerRelatedContent> _Nonnull related SWIFT_DEPRECATED_MSG("This property will be removed with the next major release.");
 /// Whether the fullscreen mode is coupled to device orientation, defaults to false.
 /// When enabled, landscape mode will trigger fullscreen mode and portrait mode will trigger non-fullscreen mode.
 /// remark:
@@ -5594,18 +5626,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param listener The callback invoked in native code.
 ///
-- (void)addJavascriptMessageListenerWithName:(NSString * _Nonnull)name listener:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))listener;
+- (void)addJavascriptMessageListenerWithName:(NSString * _Nonnull)name listener:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))listener SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// Remove a JavaScript message listener previously added with <code>addJavascriptMessageListener(...)</code>
 /// \param name The name of the message to be removed.
 ///
-- (void)removeJavascriptMessageListenerWithName:(NSString * _Nonnull)name;
+- (void)removeJavascriptMessageListenerWithName:(NSString * _Nonnull)name SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// Evaluates a JavaScript string.
 /// The method sends the result of the script evaluation (or an error) to the completion handler. The completion handler always runs on the main thread.
 /// \param javaScriptString The JavaScript string to evaluate.
 ///
 /// \param completionHandler A block to invoke when script evaluation completes or fails.
 ///
-- (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// The Cache object to access the caching API.
 /// remark:
 /// Only available on iOS 10 and above.
@@ -5650,7 +5682,7 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param network The additional network configuration, defaults to nil.
 ///
-- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia network:(THEOplayerNetworkConfiguration * _Nullable)network;
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia network:(THEOplayerNetworkConfiguration * _Nullable)network SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
 /// \param chromeless Whether the chromeless player, without UI, is used.
 ///
@@ -5680,13 +5712,32 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param licenseUrl the url to fetch the license for the player.
 ///
-- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia;
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
 /// \param pip The configuration for picture-in-picture.
 ///
-- (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip;
+- (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
-- (nonnull instancetype)init;
+- (nonnull instancetype)init SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
+@end
+
+
+/// Builder class for the <code>THEOplayerConfiguration</code> object.
+SWIFT_CLASS("_TtC13THEOplayerSDK30THEOplayerConfigurationBuilder")
+@interface THEOplayerConfigurationBuilder : NSObject
+/// Setter for the <code>hlsDateRange</code> property.
+- (void)setHlsDateRange:(BOOL)hlsDateRange;
+/// The license for the player.
+@property (nonatomic, copy) NSString * _Nullable license;
+/// The url to fetch the license for the player.
+@property (nonatomic, copy) NSString * _Nullable licenseUrl;
+/// The picture in picture configuration of the player.
+@property (nonatomic, strong) THEOplayerPiPConfiguration * _Nullable pip;
+/// The network configuration of the player.
+@property (nonatomic, strong) THEOplayerNetworkConfiguration * _Nullable network;
+/// Builds and returns an object of type <code>THEOplayerConfiguration</code>.
+- (THEOplayerConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -6064,14 +6115,14 @@ SWIFT_CLASS_NAMED("TrackChangeEvent")
 /// An object to configure UI.
 /// remark:
 /// Only configuring the localization for Google IMA is supported.
-SWIFT_CLASS_NAMED("UIConfiguration")
+SWIFT_CLASS_NAMED("UIConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUIConfiguration : NSObject
 /// Construct a UIConfiguration object.
 /// remark:
 /// The values passed should be in a ISO-3166 Alpha-2 or ccTLD format.
 /// \param language Use a valid language code string (e.g. ‘es’ for Spanish) to be used for localizing Google IMA.
 ///
-- (nonnull instancetype)initWithLanguage:(NSString * _Nonnull)language OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLanguage:(NSString * _Nonnull)language OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release. To configure the language for Google IMA, set the language property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -6082,13 +6133,13 @@ SWIFT_CLASS_NAMED("UIConfiguration")
 
 
 /// Fired when the <code>RelatedContent</code> UI is dismissed.
-SWIFT_CLASS_NAMED("UiRelatedContentHideEvent")
+SWIFT_CLASS_NAMED("UiRelatedContentHideEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUiRelatedContentHideEvent : THEOplayerRelatedContentEvent
 @end
 
 
 /// Fired when the <code>RelatedContent</code> UI is displayed.
-SWIFT_CLASS_NAMED("UiRelatedContentShowEvent")
+SWIFT_CLASS_NAMED("UiRelatedContentShowEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUiRelatedContentShowEvent : THEOplayerRelatedContentEvent
 @end
 
@@ -6115,7 +6166,7 @@ SWIFT_CLASS_NAMED("UplynkDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 
 
 /// A VRConfiguration object contains the settings for 360 VR video playback.
-SWIFT_CLASS_NAMED("VRConfiguration")
+SWIFT_CLASS_NAMED("VRConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVRConfiguration : NSObject
 /// This attribute indicates the stereo mode of the VR video. If set to nil, no stereo mode will be enabled.
 @property (nonatomic) enum THEOplayerStereoMode stereoMode;
@@ -6149,7 +6200,7 @@ SWIFT_CLASS_NAMED("VerimatrixDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pr
 @class THEOplayerVerizonMediaUiConfiguration;
 
 /// An object to configure Verizon Media parameters.
-SWIFT_CLASS_NAMED("VerizonMediaConfiguration")
+SWIFT_CLASS_NAMED("VerizonMediaConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVerizonMediaConfiguration : NSObject
 /// Constructs a VerizonMediaConfiguration object.
 /// \param onSeekOverAd Defines the ad skip strategy when seeking over ads.
@@ -6165,7 +6216,7 @@ SWIFT_CLASS_NAMED("VerizonMediaConfiguration")
 
 
 /// The Verizon Media UI Configuration API.
-SWIFT_CLASS_NAMED("VerizonMediaUiConfiguration")
+SWIFT_CLASS_NAMED("VerizonMediaUiConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVerizonMediaUiConfiguration : NSObject
 /// When enabled, it provides an up next content countdown ten seconds in advance. Defaults to true.
 @property (nonatomic, readonly) BOOL contentNotification;
@@ -6273,7 +6324,6 @@ SWIFT_CLASS_NAMED("VudrmDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-int
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
-
 
 
 /// Fired when <code>PlayerEventTypes.WAITING</code> occurs for the <code>THEOplayer</code>.
@@ -6479,7 +6529,7 @@ SWIFT_CLASS_NAMED("YospaceServerSideAdInsertionConfiguration") SWIFT_DEPRECATED_
 
 
 /// Configure Youbora analytics pre-integration.
-SWIFT_CLASS_NAMED("YouboraOptions")
+SWIFT_CLASS_NAMED("YouboraOptions") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerYouboraOptions : NSObject <THEOplayerAnalyticsDescription>
 /// The type of <code>AnalyticsIntegration</code>.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
@@ -7230,7 +7280,7 @@ SWIFT_CLASS_NAMED("AddTrackEvent")
 @class THEOplayerGoogleDAIAdsConfiguration;
 
 /// The advertisement configuration of the player.
-SWIFT_CLASS_NAMED("AdsConfiguration")
+SWIFT_CLASS_NAMED("AdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases.")
 @interface THEOplayerAdsConfiguration : NSObject
 /// Whether an advertisement duration countdown will be shown in the UI.
 /// remark:
@@ -7251,9 +7301,9 @@ SWIFT_CLASS_NAMED("AdsConfiguration")
 /// </ul>
 @property (nonatomic, readonly) enum THEOplayerAdPreloadType preload;
 /// The configuration of the Google Interactive Media Ads.
-@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma;
+@property (nonatomic, strong) THEOplayerGoogleIMAAdsConfiguration * _Nonnull googleIma SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 /// The configuration of Google Dynamic Ad Insertion.
-@property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai;
+@property (nonatomic, readonly, strong) THEOplayerGoogleDAIAdsConfiguration * _Nullable googleDai SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Constructs an AdsConfiguration object.
 /// \param showCountdown Whether an advertisement duration countdown will be shown in the UI, defaults to true.
 ///
@@ -7437,7 +7487,7 @@ typedef SWIFT_ENUM_NAMED(int32_t, THEOplayerAgamaLogging, "AgamaLogging", open) 
 enum THEOplayerAnalyticsIntegration : NSInteger;
 
 /// The description of the used analytics.
-SWIFT_PROTOCOL_NAMED("AnalyticsDescription")
+SWIFT_PROTOCOL_NAMED("AnalyticsDescription") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release. Analytics will be moved to separate modules in the form of connectors. For more info check: https://github.com/THEOplayer/iOS-Connector")
 @protocol THEOplayerAnalyticsDescription
 @property (nonatomic, readonly) enum THEOplayerAnalyticsIntegration integration;
 @end
@@ -7652,7 +7702,7 @@ SWIFT_CLASS_NAMED("AspectRatioChangeEvent")
 
 
 /// Represents the quality of an <code>AudioTrack</code>.
-SWIFT_CLASS_NAMED("AudioQuality")
+SWIFT_CLASS_NAMED("AudioQuality") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerAudioQuality : NSObject
 /// The sampling rate, in samples per second.
 /// remark:
@@ -9028,7 +9078,7 @@ SWIFT_PROTOCOL_NAMED("ContentProtectionIntegrationFactory_Objc")
 @class THEOplayerConvivaContentMetadata;
 
 /// The configuration of the Conviva Integration.
-SWIFT_CLASS_NAMED("ConvivaConfiguration")
+SWIFT_CLASS_NAMED("ConvivaConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerConvivaConfiguration : NSObject <THEOplayerAnalyticsDescription>
 /// The identifier of the Conviva integration.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;
@@ -9073,7 +9123,7 @@ SWIFT_CLASS_NAMED("ConvivaConfiguration")
 
 
 /// The Conviva content metadata.
-SWIFT_CLASS_NAMED("ConvivaContentMetadata")
+SWIFT_CLASS_NAMED("ConvivaContentMetadata") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerConvivaContentMetadata : NSObject
 /// The name of the asset.
 @property (nonatomic, readonly, copy) NSString * _Nonnull assetName;
@@ -9566,10 +9616,9 @@ SWIFT_CLASS_NAMED("ErrorEvent")
 
 
 /// Represents an <code>EventDispatcher</code> which will be responsible for dispatching an event, once it occurs.
-SWIFT_CLASS("_TtC13THEOplayerSDK15EventDispatcher")
+SWIFT_CLASS("_TtC13THEOplayerSDK15EventDispatcher") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface EventDispatcher : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -9806,25 +9855,25 @@ SWIFT_PROTOCOL_NAMED("Fullscreen_Objc")
 @end
 
 
-SWIFT_CLASS_NAMED("GoogleDAIAdsConfiguration")
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleDAIAdsConfiguration : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads.
-@property (nonatomic, readonly) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Enable background audio playback for DAI sources.
-@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder")
+SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleDAIAdsConfigurationBuilder : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to false.
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `disableUi` property on `IMAAdsRenderingSettings` and pass the settings to `GoogleImaIntegration` returned by `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Enable background audio playback for DAI sources. Defaults to true.
-@property (nonatomic) BOOL enableBackgroundPlayback;
+@property (nonatomic) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `enableBackgroundPlayback` property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Builds and returns an object of type <code>GoogleDAIAdsConfiguration</code>.
-- (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -10077,30 +10126,30 @@ SWIFT_PROTOCOL_NAMED("GoogleDAI_Objc")
 
 
 /// Describes the configuration of the Google Interactive Media Ads.
-SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration")
+SWIFT_CLASS_NAMED("GoogleIMAAdsConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleIMAAdsConfiguration : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads
-@property (nonatomic, readonly) BOOL disableUI;
+@property (nonatomic, readonly) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 /// Indicates whether background audio playback for the IMA SDK is enabled.
 /// remark:
 /// Only has effect when used with native IMA configuration.
-@property (nonatomic, readonly) BOOL enableBackgroundPlayback;
+@property (nonatomic, readonly) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 /// An object to create or build GoogleIMAAdsConfigurations.
-SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder")
+SWIFT_CLASS_NAMED("GoogleIMAConfigurationBuilder") SWIFT_DEPRECATED_MSG("This class will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.")
 @interface THEOplayerGoogleIMAConfigurationBuilder : NSObject
 /// Indicates whether the ads UI needs to be disabled (chromeless ads). Only applies to non TrueView ads. Defaults to <code>false</code>
-@property (nonatomic) BOOL disableUI;
+@property (nonatomic) BOOL disableUI SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `disableUi` property on `IMAAdsRenderingSettings` and pass the settings to `GoogleImaIntegration` returned by `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Indicates whether background audio playback for the IMA SDK is enabled. Defaults to <code>true</code>.
 /// remark:
 /// Only has effect when used with native IMA configuration.
-@property (nonatomic) BOOL enableBackgroundPlayback;
+@property (nonatomic) BOOL enableBackgroundPlayback SWIFT_DEPRECATED_MSG("This property will be removed in future releases. To configure this property, set the `enableBackgroundPlayback` property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 /// Creates a GoogleIMAAdsConfiguration
-- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (THEOplayerGoogleIMAAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in future releases. Configuration for Google IMA is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -10541,7 +10590,6 @@ SWIFT_CLASS_NAMED("MoatOptions") SWIFT_DEPRECATED_MSG("This type is no longer av
 
 
 
-
 /// Represents a network configuration.
 /// remark:
 /// Use <code>NetworkConfigurationBuilder</code> to initialize an instance.
@@ -10721,10 +10769,45 @@ SWIFT_CLASS_NAMED("PiPConfiguration")
 /// since:
 /// v3.5.0
 @property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline;
-- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline requiresLinearPlayback:(BOOL)requiresLinearPlayback OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init;
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)initWithRetainPresentationModeOnSourceChange:(BOOL)retainPresentationModeOnSourceChange nativePictureInPicture:(BOOL)nativePictureInPicture canStartPictureInPictureAutomaticallyFromInline:(BOOL)canStartPictureInPictureAutomaticallyFromInline requiresLinearPlayback:(BOOL)requiresLinearPlayback OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+- (nonnull instancetype)init SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `PiPConfigurationBuilder` instead.");
+@end
+
+
+SWIFT_CLASS_NAMED("PiPConfigurationBuilder")
+@interface THEOplayerPiPConfigurationBuilder : NSObject
+/// Whether the presentation mode should be retained on source changes. Defaults to false.
+/// remark:
+/// When using native Picture in Picture  (when <code>nativePictureInPicture = true</code>), then this property will only work if the new source is not nil, and the source will be preloaded.
+@property (nonatomic) BOOL retainPresentationModeOnSourceChange;
+/// Disables seekability while in native Picture in Picture mode. This can be useful when playing advertisements for instance. Defaults to false.
+/// remark:
+///
+/// This only works in Native Picture in Picture. (when <code>nativePictureInPicture = true</code>)
+/// This has a minimum requirement of iOS/tvOS 14.0 and does not work on simulators.
+/// since:
+/// v5.0.1
+@property (nonatomic) BOOL requiresLinearPlayback;
+/// Enable the Native Picture in Picture. Defaults to true.
+/// remark:
+///
+/// This has a minimum requirement of iOS 14.0 and does not work on simulators.
+/// since:
+/// v2.85.2
+@property (nonatomic) BOOL nativePictureInPicture;
+/// Native Picture in Picture starts automatically when the player is embedded inline and the app transitions to the background. Defaults to false.
+/// remark:
+///
+/// This only works in Native Picture in Picture. (when <code>nativePictureInPicture = true</code>)
+/// This has a minimum requirement of iOS 14.2 and does not work on simulators.
+/// since:
+/// v3.5.0
+@property (nonatomic) BOOL canStartPictureInPictureAutomaticallyFromInline;
+/// Builds and returns an object of type <code>PiPConfiguration</code>.
+- (THEOplayerPiPConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 enum THEOplayerPictureInPictureCorner : NSInteger;
@@ -11017,7 +11100,7 @@ SWIFT_CLASS_NAMED("ProgressEvent")
 @end
 
 
-SWIFT_CLASS_NAMED("Promise")
+SWIFT_CLASS_NAMED("Promise") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerPromise : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -11068,7 +11151,7 @@ SWIFT_CLASS_NAMED("ReadyStateChangeEvent")
 
 
 /// The <code>RelatedContent</code> event object.
-SWIFT_CLASS_NAMED("RelatedContentEvent")
+SWIFT_CLASS_NAMED("RelatedContentEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentEvent : NSObject <THEOplayerEventProtocol>
 /// The type of the event.
 @property (nonatomic, readonly, copy) NSString * _Nonnull type;
@@ -11080,14 +11163,14 @@ SWIFT_CLASS_NAMED("RelatedContentEvent")
 
 
 /// Fired when the <code>RelatedContent.sources</code> change.
-SWIFT_CLASS_NAMED("RelatedContentChangeEvent")
+SWIFT_CLASS_NAMED("RelatedContentChangeEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentChangeEvent : THEOplayerRelatedContentEvent
 @end
 
 
 
 /// The <code>RelatedContentEvent</code> types.
-SWIFT_CLASS_NAMED("RelatedContentEventTypes_Objc")
+SWIFT_CLASS_NAMED("RelatedContentEventTypes_Objc") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentEventTypes : NSObject
 /// Fired when the <code>RelatedContent.sources</code> change.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull relatedcontentchange;)
@@ -11103,7 +11186,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 /// The Related Content Source object. Can be used to show additional content, besides the content currently shown, that might also be of interest to the viewer.
-SWIFT_CLASS_NAMED("RelatedContentSource")
+SWIFT_CLASS_NAMED("RelatedContentSource") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerRelatedContentSource : NSObject
 /// The duration property can be used to display a duration on the tile of the related content video.
 @property (nonatomic, readonly, copy) NSString * _Nullable duration;
@@ -11153,7 +11236,7 @@ SWIFT_CLASS_NAMED("RelatedContentSource")
 
 
 /// The Related Content API can be used to show new content related to the current content.
-SWIFT_PROTOCOL_NAMED("RelatedContent_Objc")
+SWIFT_PROTOCOL_NAMED("RelatedContent_Objc") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerRelatedContent
 /// List of the current <code>RelatedContentSource</code>.
 @property (nonatomic, copy) NSArray<THEOplayerRelatedContentSource *> * _Nonnull sources;
@@ -11362,7 +11445,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 
 @interface THEOplayerSourceDescription (SWIFT_EXTENSION(THEOplayerSDK))
 /// The <code>VRConfiguration</code>  used to configure VR video playback.
-@property (nonatomic, strong) THEOplayerVRConfiguration * _Nullable vr;
+@property (nonatomic, strong) THEOplayerVRConfiguration * _Nullable vr SWIFT_DEPRECATED_MSG("This property will be removed with the next major release.");
 /// Constructs a <code>SourceDescription</code>.
 /// remark:
 /// A known limitation is that only the first source will play.
@@ -11380,7 +11463,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param vr The VR configuration for this source.
 ///
-- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 /// Constructs a <code>SourceDescription</code>.
 /// \param source A <code>TypedSource</code> which represents the media to be played.
 ///
@@ -11396,7 +11479,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param vr The VR configuration for this source.
 ///
-- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr;
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata vr:(THEOplayerVRConfiguration * _Nullable)vr SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 @end
 
 
@@ -11404,7 +11487,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 /// The ads property can be used to add an array of AdDescriptions to the player. All valid and supported advertisement files will be cued for playback in the player. Each ad in the array should be described as an AdDescription.
 @property (nonatomic, copy) NSArray<id <THEOplayerAdDescription>> * _Nullable ads;
 /// The analytics property can be used to add an array of analytics integrations to the player.
-@property (nonatomic, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable analytics;
+@property (nonatomic, copy) NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable analytics SWIFT_DEPRECATED_MSG("This property will be removed with the next major release. Analytics will be moved to separate modules in the form of connectors. For more info check: https://github.com/THEOplayer/iOS-Connector");
 /// Constructs a SourceDescription.
 /// \param sources List of <code>TypedSource</code> which represent the media to be played.
 ///
@@ -11418,7 +11501,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param metadata The metadata which can be used to describe the content.
 ///
-- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+- (nonnull instancetype)initWithSources:(NSArray<THEOplayerTypedSource *> * _Nonnull)sources ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 /// Constructs a SourceDescription.
 /// \param source A <code>TypedSource</code> which represents the media to be played.
 ///
@@ -11432,7 +11515,7 @@ SWIFT_CLASS_NAMED("SourceDescription")
 ///
 /// \param metadata The metadata which can be used to describe the content.
 ///
-- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata;
+- (nonnull instancetype)initWithSource:(THEOplayerTypedSource * _Nonnull)source ads:(NSArray<id <THEOplayerAdDescription>> * _Nullable)ads textTracks:(NSArray<THEOplayerTextTrackDescription *> * _Nullable)textTracks poster:(NSString * _Nullable)poster analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nullable)analytics metadata:(THEOplayerMetadataDescription * _Nullable)metadata SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release.");
 @end
 
 /// The pre-integration identifier of a source
@@ -11468,7 +11551,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerStreamType, "StreamType", open) {
 
 
 /// A <code>THEOplayerAdDescription</code> object contains a description of an advertisement that will be added to the player.
-SWIFT_CLASS_NAMED("THEOAdDescription")
+SWIFT_CLASS_NAMED("THEOAdDescription") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerTHEOAdDescription : NSObject <THEOplayerAdDescription>
 /// The ad Integration.
 @property (nonatomic) enum THEOplayerAdIntegration integration;
@@ -11668,7 +11751,7 @@ SWIFT_CLASS_NAMED("THEOMargins")
 @end
 
 
-SWIFT_PROTOCOL_NAMED("THEOScriptMessage")
+SWIFT_PROTOCOL_NAMED("THEOScriptMessage") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerTHEOScriptMessage
 @property (nonatomic, readonly) id _Nonnull body;
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
@@ -11678,7 +11761,7 @@ SWIFT_PROTOCOL_NAMED("THEOScriptMessage")
 @end
 
 
-SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler")
+SWIFT_PROTOCOL_NAMED("THEOScriptMessageHandler") SWIFT_DEPRECATED_MSG("This protocol will be removed with the next major release.")
 @protocol THEOplayerTHEOScriptMessageHandler
 - (void)didReceiveWithMessage:(id <THEOplayerTHEOScriptMessage> _Nonnull)message;
 @end
@@ -11800,11 +11883,11 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 ///     For all possibilities, see <code>Preload</code>.
 ///   </li>
 /// </ul>
-@property (nonatomic, readonly) enum THEOplayerPreload preload;
+@property (nonatomic) enum THEOplayerPreload preload;
 /// Returns current playback rate of the player.
 /// remark:
 /// <em>1</em> referring to normal speed.
-@property (nonatomic, readonly) double playbackRate;
+@property (nonatomic) double playbackRate;
 /// Returns the buffered <code>TimeRange</code>s of the player.
 @property (nonatomic, readonly, copy) NSArray<THEOplayerTimeRange *> * _Nonnull buffered;
 /// Returns the played <code>TimeRange</code>s of the player.
@@ -11922,7 +12005,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
 ///
-- (void)setPreload:(enum THEOplayerPreload)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)setPreload:(enum THEOplayerPreload)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use the `preload` setter instead.");
 /// Requests the current ProgramDateTime of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
@@ -11938,7 +12021,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param completionHandler A closure to invoke when operation completes or fails, defaults to nil.
 ///
-- (void)setPlaybackRate:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)setPlaybackRate:(double)newValue completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release. Please use the `playbackRate` setter instead.");
 /// Request the buffered TimeRanges of the player.
 /// \param completionHandler A closure to invoke when operation completes or fails.
 ///
@@ -12019,7 +12102,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 @end
 
 
-
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -12045,6 +12127,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -12055,12 +12143,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 @class UIGestureRecognizer;
@@ -12093,7 +12175,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// A <code>PictureInPicture</code> object to configure Picture-In-Picture.
 @property (nonatomic, readonly, strong) id <THEOplayerPictureInPicture> _Nullable pip;
 /// A <code>RelatedContent</code> object to configure Related Content.
-@property (nonatomic, readonly, strong) id <THEOplayerRelatedContent> _Nonnull related;
+@property (nonatomic, readonly, strong) id <THEOplayerRelatedContent> _Nonnull related SWIFT_DEPRECATED_MSG("This property will be removed with the next major release.");
 /// Whether the fullscreen mode is coupled to device orientation, defaults to false.
 /// When enabled, landscape mode will trigger fullscreen mode and portrait mode will trigger non-fullscreen mode.
 /// remark:
@@ -12105,18 +12187,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 ///
 /// \param listener The callback invoked in native code.
 ///
-- (void)addJavascriptMessageListenerWithName:(NSString * _Nonnull)name listener:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))listener;
+- (void)addJavascriptMessageListenerWithName:(NSString * _Nonnull)name listener:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))listener SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// Remove a JavaScript message listener previously added with <code>addJavascriptMessageListener(...)</code>
 /// \param name The name of the message to be removed.
 ///
-- (void)removeJavascriptMessageListenerWithName:(NSString * _Nonnull)name;
+- (void)removeJavascriptMessageListenerWithName:(NSString * _Nonnull)name SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// Evaluates a JavaScript string.
 /// The method sends the result of the script evaluation (or an error) to the completion handler. The completion handler always runs on the main thread.
 /// \param javaScriptString The JavaScript string to evaluate.
 ///
 /// \param completionHandler A block to invoke when script evaluation completes or fails.
 ///
-- (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)evaluateJavaScript:(NSString * _Nonnull)javaScriptString completionHandler:(void (^ _Nullable)(id _Nullable, NSError * _Nullable))completionHandler SWIFT_DEPRECATED_MSG("This method will be removed with the next major release.");
 /// The Cache object to access the caching API.
 /// remark:
 /// Only available on iOS 10 and above.
@@ -12161,7 +12243,7 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param network The additional network configuration, defaults to nil.
 ///
-- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia network:(THEOplayerNetworkConfiguration * _Nullable)network;
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia network:(THEOplayerNetworkConfiguration * _Nullable)network SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
 /// \param chromeless Whether the chromeless player, without UI, is used.
 ///
@@ -12191,13 +12273,32 @@ SWIFT_CLASS("_TtC13THEOplayerSDK23THEOplayerConfiguration")
 ///
 /// \param licenseUrl the url to fetch the license for the player.
 ///
-- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia;
+- (nonnull instancetype)initWithChromeless:(BOOL)chromeless defaultCSS:(BOOL)defaultCSS cssPaths:(NSArray<NSString *> * _Nonnull)cssPaths jsPaths:(NSArray<NSString *> * _Nonnull)jsPaths jsPathsPre:(NSArray<NSString *> * _Nonnull)jsPathsPre analytics:(NSArray<id <THEOplayerAnalyticsDescription>> * _Nonnull)analytics pip:(THEOplayerPiPConfiguration * _Nullable)pip ads:(THEOplayerAdsConfiguration * _Nullable)ads ui:(THEOplayerUIConfiguration * _Nullable)ui cast:(THEOplayerCastConfiguration * _Nullable)cast hlsDateRange:(BOOL)hlsDateRange license:(NSString * _Nullable)license licenseUrl:(NSString * _Nullable)licenseUrl verizonMedia:(THEOplayerVerizonMediaConfiguration * _Nullable)verizonMedia SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
 /// \param pip The configuration for picture-in-picture.
 ///
-- (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip;
+- (nonnull instancetype)initWithPip:(THEOplayerPiPConfiguration * _Nullable)pip SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
 /// Constructs a THEOplayerConfiguration.
-- (nonnull instancetype)init;
+- (nonnull instancetype)init SWIFT_DEPRECATED_MSG("This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.");
+@end
+
+
+/// Builder class for the <code>THEOplayerConfiguration</code> object.
+SWIFT_CLASS("_TtC13THEOplayerSDK30THEOplayerConfigurationBuilder")
+@interface THEOplayerConfigurationBuilder : NSObject
+/// Setter for the <code>hlsDateRange</code> property.
+- (void)setHlsDateRange:(BOOL)hlsDateRange;
+/// The license for the player.
+@property (nonatomic, copy) NSString * _Nullable license;
+/// The url to fetch the license for the player.
+@property (nonatomic, copy) NSString * _Nullable licenseUrl;
+/// The picture in picture configuration of the player.
+@property (nonatomic, strong) THEOplayerPiPConfiguration * _Nullable pip;
+/// The network configuration of the player.
+@property (nonatomic, strong) THEOplayerNetworkConfiguration * _Nullable network;
+/// Builds and returns an object of type <code>THEOplayerConfiguration</code>.
+- (THEOplayerConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -12575,14 +12676,14 @@ SWIFT_CLASS_NAMED("TrackChangeEvent")
 /// An object to configure UI.
 /// remark:
 /// Only configuring the localization for Google IMA is supported.
-SWIFT_CLASS_NAMED("UIConfiguration")
+SWIFT_CLASS_NAMED("UIConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUIConfiguration : NSObject
 /// Construct a UIConfiguration object.
 /// remark:
 /// The values passed should be in a ISO-3166 Alpha-2 or ccTLD format.
 /// \param language Use a valid language code string (e.g. ‘es’ for Spanish) to be used for localizing Google IMA.
 ///
-- (nonnull instancetype)initWithLanguage:(NSString * _Nonnull)language OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithLanguage:(NSString * _Nonnull)language OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("This initializer will be removed with the next major release. To configure the language for Google IMA, set the language property on `IMASettings` and pass the settings to `GoogleIMAIntegrationFactory.createIntegration`. For more info check https://github.com/THEOplayer/theoplayer-sdk-ios/tree/master/THEOplayer-Integration-GoogleIMA");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -12593,13 +12694,13 @@ SWIFT_CLASS_NAMED("UIConfiguration")
 
 
 /// Fired when the <code>RelatedContent</code> UI is dismissed.
-SWIFT_CLASS_NAMED("UiRelatedContentHideEvent")
+SWIFT_CLASS_NAMED("UiRelatedContentHideEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUiRelatedContentHideEvent : THEOplayerRelatedContentEvent
 @end
 
 
 /// Fired when the <code>RelatedContent</code> UI is displayed.
-SWIFT_CLASS_NAMED("UiRelatedContentShowEvent")
+SWIFT_CLASS_NAMED("UiRelatedContentShowEvent") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerUiRelatedContentShowEvent : THEOplayerRelatedContentEvent
 @end
 
@@ -12626,7 +12727,7 @@ SWIFT_CLASS_NAMED("UplynkDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-in
 
 
 /// A VRConfiguration object contains the settings for 360 VR video playback.
-SWIFT_CLASS_NAMED("VRConfiguration")
+SWIFT_CLASS_NAMED("VRConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVRConfiguration : NSObject
 /// This attribute indicates the stereo mode of the VR video. If set to nil, no stereo mode will be enabled.
 @property (nonatomic) enum THEOplayerStereoMode stereoMode;
@@ -12660,7 +12761,7 @@ SWIFT_CLASS_NAMED("VerimatrixDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pr
 @class THEOplayerVerizonMediaUiConfiguration;
 
 /// An object to configure Verizon Media parameters.
-SWIFT_CLASS_NAMED("VerizonMediaConfiguration")
+SWIFT_CLASS_NAMED("VerizonMediaConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVerizonMediaConfiguration : NSObject
 /// Constructs a VerizonMediaConfiguration object.
 /// \param onSeekOverAd Defines the ad skip strategy when seeking over ads.
@@ -12676,7 +12777,7 @@ SWIFT_CLASS_NAMED("VerizonMediaConfiguration")
 
 
 /// The Verizon Media UI Configuration API.
-SWIFT_CLASS_NAMED("VerizonMediaUiConfiguration")
+SWIFT_CLASS_NAMED("VerizonMediaUiConfiguration") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerVerizonMediaUiConfiguration : NSObject
 /// When enabled, it provides an up next content countdown ten seconds in advance. Defaults to true.
 @property (nonatomic, readonly) BOOL contentNotification;
@@ -12784,7 +12885,6 @@ SWIFT_CLASS_NAMED("VudrmDRMConfiguration") SWIFT_DEPRECATED_MSG("All DRM pre-int
 - (nonnull instancetype)initWithToken:(NSString * _Nonnull)token keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithCustomIntegrationId:(NSString * _Nonnull)customIntegrationId integrationParameters:(NSDictionary<NSString *, id> * _Nonnull)integrationParameters keySystemConfigurations:(THEOplayerKeySystemConfigurationCollection * _Nonnull)keySystemConfigurations SWIFT_UNAVAILABLE;
 @end
-
 
 
 /// Fired when <code>PlayerEventTypes.WAITING</code> occurs for the <code>THEOplayer</code>.
@@ -12990,7 +13090,7 @@ SWIFT_CLASS_NAMED("YospaceServerSideAdInsertionConfiguration") SWIFT_DEPRECATED_
 
 
 /// Configure Youbora analytics pre-integration.
-SWIFT_CLASS_NAMED("YouboraOptions")
+SWIFT_CLASS_NAMED("YouboraOptions") SWIFT_DEPRECATED_MSG("This class will be removed with the next major release.")
 @interface THEOplayerYouboraOptions : NSObject <THEOplayerAnalyticsDescription>
 /// The type of <code>AnalyticsIntegration</code>.
 @property (nonatomic) enum THEOplayerAnalyticsIntegration integration;

@@ -158,16 +158,6 @@ extension THEOplayerSDK.TextTrackFormat : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-extension THEOplayerSDK.SourceDescription {
-  public var ads: [THEOplayerSDK.AdDescription]? {
-    get
-    set
-  }
-  @objc(ads) dynamic public var ads_Objc: [THEOplayerSDK.AdDescription_Objc]? {
-    @objc get
-    @objc set
-  }
-}
 @_hasMissingDesignatedInitializers @objc(THEOplayerFairPlayDRMConfiguration) public class FairPlayDRMConfiguration : ObjectiveC.NSObject, THEOplayerSDK.FairPlayDRMConfigurationProtocol, THEOplayerSDK.FairPlayDRMConfigurationProtocol_Objc {
   @objc public var fairplay: THEOplayerSDK.KeySystemConfiguration
   public var integration: THEOplayerSDK.DRMIntegration?
@@ -192,28 +182,15 @@ extension THEOplayerSDK.SourceDescription {
   required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "This class will be removed with the next major release.")
-@objc(THEOplayerMenuLayoutConfigurator) public class MenuLayoutConfigurator : ObjectiveC.NSObject {
-  @objc public func setPadding(withLeft left: Swift.Int, withRight right: Swift.Int, withBottom bottom: Swift.Int, withTop top: Swift.Int)
-  @objc deinit
-}
 public protocol GoogleDAI {
   var snapback: Swift.Bool { get set }
   func contentTime(from streamTime: Swift.Double) -> Swift.Double
   func streamTime(from contentTime: Swift.Double) -> Swift.Double
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
-  func requestSnapBack(completionHandler: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
-  func setSnapBack(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool?, Swift.Error?) -> Swift.Void)?)
 }
 @objc(THEOplayerGoogleDAI) public protocol GoogleDAI_Objc {
   @objc var snapback: Swift.Bool { get set }
   @objc(contentTimeFromStreamTime:) func contentTime(from streamTime: Swift.Double) -> Swift.Double
   @objc(streamTimeFromContentTime:) func streamTime(from contentTime: Swift.Double) -> Swift.Double
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
-  @objc(requestSnapBack:) func requestSnapBack_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use snapback instead.")
-  @objc(setSnapBack:completion:) func setSnapBack_Objc(_ newValue: Swift.Bool, completionHandler: ((Swift.Bool, Swift.Error?) -> Swift.Void)?)
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerGoogleDAIVodConfiguration) public class GoogleDAIVodConfiguration : THEOplayerSDK.GoogleDAIConfiguration {
   @objc public var contentSourceID: Swift.String
@@ -237,24 +214,16 @@ extension THEOplayerSDK.THEOplayer {
   }
 }
 public protocol Fullscreen : THEOplayerSDK.EventDispatcherProtocol {
-  @available(*, deprecated, message: "This property will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.")
-  var aspectRatio: THEOplayerSDK.AspectRatio { get }
   var viewController: THEOplayerSDK.FullscreenViewController? { get }
   var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
   var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.")
-  func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }
 @objc(THEOplayerFullscreen) public protocol Fullscreen_Objc {
-  @objc @available(*, deprecated, message: "This property will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.")
-  var aspectRatio: THEOplayerSDK.AspectRatio { get }
   @objc var viewController: THEOplayerSDK.FullscreenViewController? { get }
   @objc var viewControllerClass: THEOplayerSDK.FullscreenViewController.Type? { get set }
   @objc var presentationDelegate: THEOplayerSDK.FullscreenPresentationDelegate? { get set }
-  @objc @available(*, deprecated, message: "This method will be removed with the next major release. Please use `THEOplayer.aspectRatio` instead.")
-  func setAspectRatio(aspectRatio: THEOplayerSDK.AspectRatio)
   @objc @discardableResult
   func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.AspectRatioChangeEvent) -> ()) -> THEOplayerSDK.EventListener
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
@@ -373,14 +342,6 @@ extension THEOplayerSDK.AdIntegrationKind : Swift.Codable, Swift.CaseIterable {
   public static var allCases: [THEOplayerSDK.AdIntegrationKind] {
     get
   }
-}
-@objc @_inheritsConvenienceInitializers @available(*, deprecated, message: "This class will be removed with the next major release.")
-public class EventDispatcher : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
-  public func getMinimizeFunction() -> Swift.String
-  public func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
-  public func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
-  @objc override dynamic public init()
-  @objc deinit
 }
 public class THEOArray<Element> {
   public init()
@@ -647,6 +608,15 @@ public struct TextTrackEventTypes {
     @objc get
     @objc set
   }
+  public var ads: [THEOplayerSDK.AdDescription]? {
+    get
+    set
+  }
+  @available(swift, obsoleted: 1.0)
+  @objc(ads) public var ads_Objc: [THEOplayerSDK.AdDescription_Objc]? {
+    @objc get
+    @objc set
+  }
   @objc public var poster: Foundation.URL? {
     @objc get
     @objc set
@@ -899,24 +869,6 @@ public struct AudioTrackListEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
-@available(*, deprecated, message: "This class will be removed with the next major release.")
-@objc(THEOplayerVerizonMediaUiConfiguration) public class VerizonMediaUiConfiguration : ObjectiveC.NSObject, Swift.Encodable {
-  @objc public var contentNotification: Swift.Bool {
-    get
-  }
-  @objc public var adNotification: Swift.Bool {
-    get
-  }
-  @objc public var assetMarkers: Swift.Bool {
-    get
-  }
-  @objc public var adBreakMarkers: Swift.Bool {
-    get
-  }
-  @objc public init(contentNotification: Swift.Bool = true, adNotification: Swift.Bool = true, assetMarkers: Swift.Bool = true, adBreakMarkers: Swift.Bool = true)
-  @objc deinit
-  public func encode(to encoder: Swift.Encoder) throws
-}
 @_hasMissingDesignatedInitializers @objc(THEOplayerCustomAttribute) public class CustomAttribute : ObjectiveC.NSObject, Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   convenience required public init(from decoder: Swift.Decoder) throws
@@ -1166,25 +1118,6 @@ public protocol PictureInPicture {
 @_hasMissingDesignatedInitializers @objc(THEOplayerDestroyEvent) public class DestroyEvent : THEOplayerSDK.PlayerEvent {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "This class will be removed with the next major release.")
-@objc(THEOplayerAudioQuality) public class AudioQuality : ObjectiveC.NSObject {
-  @objc public var audioSamplingRate: Swift.Int {
-    get
-  }
-  @objc public var bandwidth: Swift.Int {
-    get
-  }
-  @objc public var codecs: Swift.String {
-    get
-  }
-  @objc public var id: Swift.Int {
-    get
-  }
-  @objc public var name: Swift.String {
-    get
-  }
-  @objc deinit
-}
 @objc(THEOplayerABRStrategyType) public enum ABRStrategyType : Swift.Int {
   @objc(THEOplayerABRStrategyTypePERFORMANCE) case performance = 1
   @objc(THEOplayerABRStrategyTypeQUALITY) case quality = 2
@@ -1406,6 +1339,12 @@ extension THEOplayerSDK.THEOplayer {
   @objc(THEOErrorCodeAD_ERROR) case AD_ERROR = 10000
   @objc(THEOErrorCodeAD_BLOCKER_DETECTED) case AD_BLOCKER_DETECTED = 10001
   @objc(THEOErrorCodeFULLSCREEN_ERROR) case FULLSCREEN_ERROR = 11000
+  @objc(THEOErrorCodeCACHE_SOURCE_ERROR) case CACHE_SOURCE_ERROR = 12000
+  @objc(THEOErrorCodeCACHE_CONTENT_PROTECTION_ERROR) case CACHE_CONTENT_PROTECTION_ERROR = 12001
+  @objc(THEOErrorCodeTHEO_LIVE_UNKNOWN_ERROR) case THEO_LIVE_UNKNOWN_ERROR = 13000
+  @objc(THEOErrorCodeTHEO_LIVE_CHANNEL_NOT_FOUND) case THEO_LIVE_CHANNEL_NOT_FOUND = 13001
+  @objc(THEOErrorCodeTHEO_LIVE_END_OF_DEMO) case THEO_LIVE_END_OF_DEMO = 13002
+  @objc(THEOErrorCodeTHEO_LIVE_ANALYTICS_ERROR) case THEO_LIVE_ANALYTICS_ERROR = 13003
   public init?(rawValue: Swift.Int32)
   public typealias AllCases = [THEOplayerSDK.THEOErrorCode]
   public typealias RawValue = Swift.Int32
@@ -1458,13 +1397,9 @@ public struct AdsEventTypes {
   @objc deinit
 }
 public struct FullscreenEventTypes {
-  @available(*, deprecated, message: "This type will be removed with the next major release. Please use `PlayerEventTypes.ASPECT_RATIO_CHANGE` instead, which should be attached to `THEOplayer.addEventListener`.")
-  public static var ASPECT_RATIO_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.AspectRatioChangeEvent>
 }
 @_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
 @objc(THEOplayerFullscreenEventTypes) public class FullscreenEventTypes_Objc : ObjectiveC.NSObject {
-  @available(*, deprecated, message: "This type will be removed with the next major release. Please use `PlayerEventTypes.ASPECT_RATIO_CHANGE` instead, which should be attached to `THEOplayer.addEventListener`.")
-  @objc public static let aspectratiochange: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1496,16 +1431,6 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   var currentAdBreak: THEOplayerSDK.AdBreak? { get }
   var scheduledAdBreaks: [THEOplayerSDK.AdBreak] { get }
   var scheduledAds: [THEOplayerSDK.ScheduledAd] { get }
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use playing instead.")
-  func requestPlaying(completionHandler: @escaping (Swift.Bool?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAds instead.")
-  func requestCurrentAds(completionHandler: @escaping ([THEOplayerSDK.Ad]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAdBreak instead.")
-  func requestCurrentAdBreak(completionHandler: @escaping (THEOplayerSDK.AdBreak?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAdBreaks instead.")
-  func requestScheduledAdBreaks(completionHandler: @escaping ([THEOplayerSDK.AdBreak]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAds instead.")
-  func requestScheduledAds(completionHandler: @escaping ([THEOplayerSDK.ScheduledAd]?, Swift.Error?) -> Swift.Void)
   func schedule(adDescription: THEOplayerSDK.AdDescription)
   func skip()
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
@@ -1519,16 +1444,6 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   @objc(currentAdBreak) var currentAdBreak_Objc: THEOplayerSDK.AdBreak_Objc? { get }
   @objc(scheduledAdBreaks) var scheduledAdBreaks_Objc: [THEOplayerSDK.AdBreak_Objc] { get }
   @objc(scheduledAds) var scheduledAds_Objc: [THEOplayerSDK.ScheduledAd_Objc] { get }
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use playing instead.")
-  @objc(requestPlaying:) func requestPlaying_Objc(completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAds instead.")
-  @objc(requestCurrentAds:) func requestCurrentAds_Objc(completionHandler: @escaping ([THEOplayerSDK.Ad_Objc]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentAdBreak instead.")
-  @objc(requestCurrentAdBreak:) func requestCurrentAdBreak_Objc(completionHandler: @escaping (THEOplayerSDK.AdBreak_Objc?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAdBreaks instead.")
-  @objc(requestScheduledAdBreaks:) func requestScheduledAdBreaks_Objc(completionHandler: @escaping ([THEOplayerSDK.AdBreak_Objc]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use scheduledAds instead.")
-  @objc(requestScheduledAds:) func requestScheduledAds_Objc(completionHandler: @escaping ([THEOplayerSDK.ScheduledAd_Objc]?, Swift.Error?) -> Swift.Void)
   @objc func schedule(adDescription: THEOplayerSDK.AdDescription_Objc)
   @objc func skip()
   @objc @discardableResult
@@ -1632,34 +1547,6 @@ public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   @objc var url: Swift.String? { get }
   @objc var status: Swift.Int { get }
   @objc var errorComment: Swift.String? { get }
-}
-@available(*, deprecated, message: "This enumration will be removed with the next major release.")
-public enum Boundary : Swift.Decodable {
-  case c3(THEOplayerSDK.BoundaryC3)
-  case c7(THEOplayerSDK.BoundaryC7)
-  case halfTime(THEOplayerSDK.BoundaryHalftime)
-  public init(from decoder: Swift.Decoder) throws
-}
-@available(*, deprecated, message: "This structure will be removed with the next major release.")
-public struct BoundaryC3 : Swift.Decodable {
-  public var c3: THEOplayerSDK.BoundaryInfo
-  public init(from decoder: Swift.Decoder) throws
-}
-@available(*, deprecated, message: "This structure will be removed with the next major release.")
-public struct BoundaryC7 : Swift.Decodable {
-  public var c7: THEOplayerSDK.BoundaryInfo
-  public init(from decoder: Swift.Decoder) throws
-}
-@available(*, deprecated, message: "This structure will be removed with the next major release.")
-public struct BoundaryHalftime : Swift.Decodable {
-  public var halftime: THEOplayerSDK.BoundaryInfo
-  public init(from decoder: Swift.Decoder) throws
-}
-@available(*, deprecated, message: "This structure will be removed with the next major release.")
-public struct BoundaryInfo : Swift.Decodable {
-  public var duration: Swift.Double
-  public var offset: Swift.Double
-  public init(from decoder: Swift.Decoder) throws
 }
 @objc(THEOplayerContentProtectionIntegration) public protocol ContentProtectionIntegration {
   @objc optional func onCertificateRequest(request: THEOplayerSDK.CertificateRequest, callback: THEOplayerSDK.CertificateRequestCallback)
@@ -1915,19 +1802,11 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
   @objc func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
 }
 @_inheritsConvenienceInitializers @objc public class THEOplayerConfiguration : ObjectiveC.NSObject, Swift.Encodable {
-  @available(*, deprecated, message: "This property will be removed with the next major release.")
-  public var chromeless: Swift.Bool {
-    get
-  }
   public var hlsDateRange: Swift.Bool? {
     get
   }
   @available(*, deprecated, message: "This property will be removed with the next major release.")
   public var ads: THEOplayerSDK.AdsConfiguration? {
-    get
-  }
-  @available(*, deprecated, message: "This property will be removed with the next major release.")
-  public var verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? {
     get
   }
   public var license: Swift.String? {
@@ -1947,13 +1826,13 @@ public protocol Track : THEOplayerSDK.EventDispatcherProtocol {
     get
   }
   @available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")
-  public init(chromeless: Swift.Bool = false, ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, network: THEOplayerSDK.NetworkConfiguration? = nil)
+  public init(ads: THEOplayerSDK.AdsConfiguration? = nil, hlsDateRange: Swift.Bool? = nil, license: Swift.String? = nil, licenseUrl: Swift.String? = nil, pip: THEOplayerSDK.PiPConfiguration? = nil, ui: THEOplayerSDK.UIConfiguration? = nil, network: THEOplayerSDK.NetworkConfiguration? = nil)
   @available(swift, obsoleted: 1.0)
   @available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")
-  @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?, network: THEOplayerSDK.NetworkConfiguration?)
+  @objc convenience public init(ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?, network: THEOplayerSDK.NetworkConfiguration?)
   @available(swift, obsoleted: 1.0)
   @available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")
-  @objc convenience public init(chromeless: Swift.Bool, ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, verizonMedia: THEOplayerSDK.VerizonMediaConfiguration?, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?)
+  @objc convenience public init(ads: THEOplayerSDK.AdsConfiguration?, hlsDateRange: Swift.Bool, license: Swift.String?, licenseUrl: Swift.String?, pip: THEOplayerSDK.PiPConfiguration?, ui: THEOplayerSDK.UIConfiguration?)
   @available(*, deprecated, message: "This initializer will be removed in future releases. Use the builder `THEOplayerConfigurationBuilder` instead.")
   @objc convenience override dynamic public init()
   @objc deinit
@@ -1979,8 +1858,6 @@ public protocol EventDispatcherProtocol {
 }
 @objc(THEOplayerSSAIIntegrationId) public enum SSAIIntegrationId : Swift.Int {
   @objc(THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID) case GoogleDAISSAIIntegrationID = 1
-  @available(*, deprecated, message: "This option is no longer available and will be removed in a future version.")
-  @objc(THEOplayerSSAIIntegrationIdYOSPACE_SSAI_INTEGRATION_ID) case YospaceSSAIIntegrationID = 2
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -2239,18 +2116,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc convenience public init(with frame: CoreGraphics.CGRect, configuration: THEOplayerSDK.THEOplayerConfiguration?)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(with frame: CoreGraphics.CGRect)
-  @available(*, deprecated, message: "This initializer will be removed in future releases.")
-  public init(appController: TVMLKit.TVApplicationController? = nil, with frame: CoreGraphics.CGRect? = nil, configuration: THEOplayerSDK.THEOplayerConfiguration? = nil)
-  @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This initializer will be removed in future releases.")
-  @objc convenience public init(with frame: CoreGraphics.CGRect, appController: TVMLKit.TVApplicationController?, configuration: THEOplayerSDK.THEOplayerConfiguration?)
-  @available(*, deprecated, message: "This initializer will be removed in future releases.")
-  @objc public static func prepare(withFirstViewController viewController: UIKit.UIViewController)
   @objc(playerVersion) public static var version: Swift.String {
-    @objc get
-  }
-  @available(*, deprecated, message: "Use `THEOplayer.version` instead")
-  @objc public static var playerSuiteVersion: Swift.String {
     @objc get
   }
   @objc public var frame: CoreGraphics.CGRect {
@@ -2407,42 +2273,17 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc public func addEventListener(type: Swift.String, listener: @escaping (THEOplayerSDK.PlayerEvent) -> ()) -> THEOplayerSDK.EventListener
   @available(swift, obsoleted: 1.0)
   @objc public func removeEventListener(type: Swift.String, listener: THEOplayerSDK.EventListener)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentTime instead.")
-  public func requestCurrentTime(completionHandler: @escaping (Swift.Double?, Swift.Error?) -> Swift.Void)
-  @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentTime instead.")
-  @objc(requestCurrentTime:) public func requestCurrentTime_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
   @objc public func setCurrentTime(_ newValue: Swift.Double, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoHeight instead.")
-  public func requestVideoHeight(completionHandler: @escaping (Swift.Int?, Swift.Error?) -> Swift.Void)
-  @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoHeight instead.")
-  @objc(requestVideoHeight:) public func requestVideoHeight_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoWidth instead.")
-  public func requestVideoWidth(completionHandler: @escaping (Swift.Int?, Swift.Error?) -> Swift.Void)
-  @available(swift, obsoleted: 1.0)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use videoWidth instead.")
-  @objc(requestVideoWidth:) public func requestVideoWidth_Objc(completionHandler: @escaping (Foundation.NSNumber?, Swift.Error?) -> Swift.Void)
   @available(*, deprecated, message: "This method will be removed with the next major release. Please use the `preload` setter instead.")
   @objc public func setPreload(_ newValue: THEOplayerSDK.Preload, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use currentProgramDateTime instead.")
-  @objc public func requestCurrentProgramDateTime(completionHandler: @escaping (Foundation.Date?, Swift.Error?) -> Swift.Void)
   @objc public func setCurrentProgramDateTime(_ newValue: Foundation.Date, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
   @available(*, deprecated, message: "This method will be removed with the next major release. Please use the `playbackRate` setter instead.")
   @objc public func setPlaybackRate(_ newValue: Swift.Double, completionHandler: ((Any?, Swift.Error?) -> Swift.Void)? = nil)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use buffered instead.")
-  @objc public func requestBuffered(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use played instead.")
-  @objc public func requestPlayed(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
   @objc public func addAsSubview(of view: UIKit.UIView)
   @objc public func insertAsSubview(of view: UIKit.UIView, at: Swift.Int)
   @objc public func insertAsSubview(of view: UIKit.UIView, belowSubview siblingSubview: UIKit.UIView)
   @objc public func insertAsSubview(of view: UIKit.UIView, aboveSubview siblingSubview: UIKit.UIView)
   @objc public func isContained(in views: [UIKit.UIView]) -> Swift.Bool
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use metrics instead.")
-  @objc public func requestMetrics(completionHandler: @escaping (Any?, Swift.Error?) -> Swift.Void)
-  @available(*, deprecated, message: "This method will be removed with the next major release. Please use seekable instead.")
-  @objc public func requestSeekable(completionHandler: @escaping ([THEOplayerSDK.TimeRange]?, Swift.Error?) -> Swift.Void)
   public static func registerContentProtectionIntegration(integrationId: Swift.String, keySystem: THEOplayerSDK.KeySystemId, integrationFactory: THEOplayerSDK.ContentProtectionIntegrationFactory)
   @available(swift, obsoleted: 1.0)
   @objc public static func registerContentProtectionIntegration(integrationId: Swift.String, keySystem: THEOplayerSDK.KeySystemId, integrationFactory: THEOplayerSDK.ContentProtectionIntegrationFactory_Objc)
@@ -2504,22 +2345,6 @@ extension THEOplayerSDK.CrossOrigin : Swift.Codable {
   public var _rawValue: Swift.String {
     get
     set
-  }
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
-}
-@available(*, deprecated, message: "This enum will be removed with the next major release.")
-@objc(THEOplayerSourceIntegration) public enum SourceIntegration : Swift.Int {
-  @objc(THEOplayerSourceIntegrationNONE) case none = 0
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-extension THEOplayerSDK.SourceIntegration : Swift.Codable {
-  public var _rawValue: Swift.String {
-    get
   }
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -2655,6 +2480,8 @@ public protocol CompanionAd {
   @objc(THEOplayerErrorCategoryVR) case VR = 9
   @objc(THEOplayerErrorCategoryADS) case ADS = 10
   @objc(THEOplayerErrorCategoryFULLSCREEN) case FULLSCREEN = 11
+  @objc(THEOplayerErrorCategoryCACHE) case CACHE = 12
+  @objc(THEOplayerErrorCategoryTHEOLIVE) case THEOLIVE = 13
   public init?(rawValue: Swift.Int32)
   public typealias AllCases = [THEOplayerSDK.ErrorCategory]
   public typealias RawValue = Swift.Int32
@@ -2677,18 +2504,6 @@ public protocol CompanionAd {
   }
   @objc deinit
 }
-@available(*, deprecated, message: "This protocol will be removed with the next major release.")
-@objc(THEOplayerTHEOScriptMessageHandler) public protocol THEOScriptMessageHandler {
-  @objc func didReceive(message: THEOplayerSDK.THEOScriptMessage)
-}
-@available(*, deprecated, message: "This protocol will be removed with the next major release.")
-@objc(THEOplayerTHEOScriptMessage) public protocol THEOScriptMessage {
-  @objc var body: Any { get }
-  @objc var name: Swift.String { get }
-  @objc var parsedBodyString: Swift.String? { get }
-  @objc var parsedBodyData: Foundation.Data? { get }
-  @objc var promise: THEOplayerSDK.Promise? { get }
-}
 @_inheritsConvenienceInitializers @objc(THEOplayerPiPConfiguration) public class PiPConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc public var retainPresentationModeOnSourceChange: Swift.Bool
   @objc public var requiresLinearPlayback: Swift.Bool
@@ -2709,42 +2524,6 @@ public protocol CompanionAd {
   @objc public func build() -> THEOplayerSDK.PiPConfiguration
   @objc override dynamic public init()
   @objc deinit
-}
-@_hasMissingDesignatedInitializers @available(*, deprecated, message: "This class will be removed with the next major release.")
-@objc(THEOplayerPromise) public class Promise : ObjectiveC.NSObject {
-  @objc deinit
-}
-@available(*, deprecated, message: "This enumeration will be removed with the next major release.")
-@objc(THEOplayerSkippedAdStrategy) public enum SkippedAdStrategy : Swift.Int {
-  @objc(THEOplayerSkippedAdStrategyPLAY_ALL) case PLAY_ALL = 1
-  @objc(THEOplayerSkippedAdStrategyPLAY_NONE) case PLAY_NONE = 2
-  @objc(THEOplayerSkippedAdStrategyPLAY_LAST) case PLAY_LAST = 3
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-extension THEOplayerSDK.SkippedAdStrategy : Swift.Encodable, Swift.CaseIterable {
-  public var _rawValue: Swift.String {
-    get
-    set
-  }
-  public func encode(to encoder: Swift.Encoder) throws
-  public typealias AllCases = [THEOplayerSDK.SkippedAdStrategy]
-  public static var allCases: [THEOplayerSDK.SkippedAdStrategy] {
-    get
-  }
-}
-@_inheritsConvenienceInitializers @available(*, deprecated, message: "This class will be removed with the next major release.")
-@objc(THEOplayerVerizonMediaConfiguration) public class VerizonMediaConfiguration : ObjectiveC.NSObject, Swift.Encodable {
-  public init(defaultSkipOffset: Swift.Int? = -1, onSeekOverAd: THEOplayerSDK.SkippedAdStrategy? = .PLAY_NONE, ui: THEOplayerSDK.VerizonMediaUiConfiguration? = nil)
-  @available(swift, obsoleted: 1.0)
-  @objc convenience public init(onSeekOverAd: THEOplayerSDK.SkippedAdStrategy, defaultSkipOffset: Foundation.NSNumber?, ui: THEOplayerSDK.VerizonMediaUiConfiguration?)
-  @available(swift, obsoleted: 1.0)
-  @objc convenience override dynamic public init()
-  @objc deinit
-  public func encode(to encoder: Swift.Encoder) throws
 }
 @objc(THEOplayerIntegrationType) public enum IntegrationType : Swift.Int {
   case ADS = 1
@@ -2772,12 +2551,6 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
 }
 @objc(THEOplayerContentProtectionIntegrationFactory) public protocol ContentProtectionIntegrationFactory_Objc {
   @objc func build(configuration: THEOplayerSDK.DRMConfiguration_Objc) -> THEOplayerSDK.ContentProtectionIntegration
-}
-@available(*, deprecated, message: "This protocol will be removed with the next major release.")
-@objc(THEOplayerMenuItem) public protocol MenuItem {
-  @objc var label: Swift.String { get }
-  @objc func getContent() -> UIKit.UIView
-  @objc func initializeLayout(layoutConfigurator: THEOplayerSDK.MenuLayoutConfigurator) -> [UIKit.NSLayoutConstraint]
 }
 public func serializeObjectToJSON<T>(object: T, dateEncodingStrategy: Foundation.JSONEncoder.DateEncodingStrategy? = nil) -> Swift.String where T : Swift.Encodable
 @available(*, deprecated, message: "This enumeration will be removed with the next major release.")
@@ -2861,12 +2634,6 @@ extension THEOplayerSDK.StreamType : Swift.RawRepresentable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Equatable {}
 extension THEOplayerSDK.CrossOrigin : Swift.Hashable {}
 extension THEOplayerSDK.CrossOrigin : Swift.RawRepresentable {}
-@available(*, deprecated, message: "This enum will be removed with the next major release.")
-extension THEOplayerSDK.SourceIntegration : Swift.Equatable {}
-@available(*, deprecated, message: "This enum will be removed with the next major release.")
-extension THEOplayerSDK.SourceIntegration : Swift.Hashable {}
-@available(*, deprecated, message: "This enum will be removed with the next major release.")
-extension THEOplayerSDK.SourceIntegration : Swift.RawRepresentable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Equatable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Hashable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.RawRepresentable {}
@@ -2876,12 +2643,6 @@ extension THEOplayerSDK.TextTrackMode : Swift.RawRepresentable {}
 extension THEOplayerSDK.ErrorCategory : Swift.Equatable {}
 extension THEOplayerSDK.ErrorCategory : Swift.Hashable {}
 extension THEOplayerSDK.ErrorCategory : Swift.RawRepresentable {}
-@available(*, deprecated, message: "This enumeration will be removed with the next major release.")
-extension THEOplayerSDK.SkippedAdStrategy : Swift.Equatable {}
-@available(*, deprecated, message: "This enumeration will be removed with the next major release.")
-extension THEOplayerSDK.SkippedAdStrategy : Swift.Hashable {}
-@available(*, deprecated, message: "This enumeration will be removed with the next major release.")
-extension THEOplayerSDK.SkippedAdStrategy : Swift.RawRepresentable {}
 extension THEOplayerSDK.IntegrationType : Swift.Equatable {}
 extension THEOplayerSDK.IntegrationType : Swift.Hashable {}
 extension THEOplayerSDK.IntegrationType : Swift.RawRepresentable {}

@@ -216,7 +216,7 @@ SWIFT_CLASS_NAMED("CastIntegrationHelper")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull theoplayerV2ReceiverApplicationID SWIFT_DEPRECATED_MSG("Please use CAF V3 receivers. Google deprecated V2 receivers and encourages the migration to V3. THEOplayer GoogleCastIntegration module officially supports CAF V3 receivers only.");)
 + (NSString * _Nonnull)theoplayerV2ReceiverApplicationID SWIFT_WARN_UNUSED_RESULT;
 + (void)setTheoplayerV2ReceiverApplicationID:(NSString * _Nonnull)value;
-/// Default Google Chromecast receiver application identifier.
+/// Default THEOplayer Chromecast receiver application identifier.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nonnull defaultV3ReceiverApplicationID;)
 + (NSString * _Nonnull)defaultV3ReceiverApplicationID SWIFT_WARN_UNUSED_RESULT;
 + (void)setDefaultV3ReceiverApplicationID:(NSString * _Nonnull)value;

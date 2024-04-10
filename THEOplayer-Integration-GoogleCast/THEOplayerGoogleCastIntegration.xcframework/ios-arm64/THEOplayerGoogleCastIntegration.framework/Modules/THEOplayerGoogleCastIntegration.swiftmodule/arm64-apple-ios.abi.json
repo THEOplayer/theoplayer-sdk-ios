@@ -1,0 +1,3758 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoogleCastIntegrationFactory",
+        "printedName": "GoogleCastIntegrationFactory",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "createIntegration",
+            "printedName": "createIntegration(on:with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CastIntegration",
+                "printedName": "THEOplayerGoogleCastIntegration.CastIntegration",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "THEOplayer",
+                "printedName": "THEOplayerSDK.THEOplayer",
+                "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CastConfiguration",
+                "printedName": "THEOplayerSDK.CastConfiguration",
+                "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerCastConfiguration"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0bcD7FactoryC06createD02on4withAA0cD0_p0A3SDK0A0C_AH0C13ConfigurationCtFZ",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0bcD7FactoryC06createD02on4withAA0cD0_p0A3SDK0A0C_AH0C13ConfigurationCtFZ",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoogleCastIntegrationFactory",
+                "printedName": "THEOplayerGoogleCastIntegration.GoogleCastIntegrationFactory",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerGoogleCastIntegrationFactory"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerGoogleCastIntegrationFactory(im)init",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0bcD7FactoryCACycfc",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerGoogleCastIntegrationFactory",
+        "mangledName": "$s31THEOplayerGoogleCastIntegration0bcD7FactoryC",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "objc_name": "THEOplayerGoogleCastIntegrationFactory",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CastIntegration",
+        "printedName": "CastIntegration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "casting",
+            "printedName": "casting",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P7castingSbvp",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P7castingSbvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P7castingSbvg",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P7castingSbvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "error",
+            "printedName": "error",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.CastError?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CastError",
+                    "printedName": "THEOplayerSDK.CastError",
+                    "usr": "s:13THEOplayerSDK9CastErrorC"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5error0A3SDK0C5ErrorCSgvp",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5error0A3SDK0C5ErrorCSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "THEOplayerSDK.CastError?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CastError",
+                        "printedName": "THEOplayerSDK.CastError",
+                        "usr": "s:13THEOplayerSDK9CastErrorC"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5error0A3SDK0C5ErrorCSgvg",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5error0A3SDK0C5ErrorCSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "receiverName",
+            "printedName": "receiverName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P12receiverNameSSSgvp",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P12receiverNameSSSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P12receiverNameSSSgvg",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P12receiverNameSSSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "state",
+            "printedName": "state",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.PlayerCastState?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PlayerCastState",
+                    "printedName": "THEOplayerSDK.PlayerCastState",
+                    "usr": "c:@M@THEOplayerSDK@E@THEOplayerPlayerCastState"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5state0A3SDK06PlayerC5StateOSgvp",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5state0A3SDK06PlayerC5StateOSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "THEOplayerSDK.PlayerCastState?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PlayerCastState",
+                        "printedName": "THEOplayerSDK.PlayerCastState",
+                        "usr": "c:@M@THEOplayerSDK@E@THEOplayerPlayerCastState"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5state0A3SDK06PlayerC5StateOSgvg",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5state0A3SDK06PlayerC5StateOSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "castButtonDelegate",
+            "printedName": "castButtonDelegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GCKUICastButtonDelegate",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                    "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P18castButtonDelegateSo09GCKUICastfG0_pSgvp",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P18castButtonDelegateSo09GCKUICastfG0_pSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GCKUICastButtonDelegate",
+                        "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                        "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD0P18castButtonDelegateSo09GCKUICastfG0_pSgvg",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P18castButtonDelegateSo09GCKUICastfG0_pSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setCastButtonDelegate",
+            "printedName": "setCastButtonDelegate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GCKUICastButtonDelegate",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                    "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P03setC14ButtonDelegateyySo09GCKUICastfG0_pSgF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P03setC14ButtonDelegateyySo09GCKUICastfG0_pSgF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setConnectionDelegate",
+            "printedName": "setConnectionDelegate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.ChromecastConnectionDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChromecastConnectionDelegate",
+                    "printedName": "THEOplayerSDK.ChromecastConnectionDelegate",
+                    "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerChromecastConnectionDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P21setConnectionDelegateyy0A3SDK010ChromecastfG0_pSgF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P21setConnectionDelegateyy0A3SDK010ChromecastfG0_pSgF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5startyyF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5startyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P4stopyyF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P4stopyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "join",
+            "printedName": "join()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P4joinyyF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P4joinyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leave",
+            "printedName": "leave()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P5leaveyyF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P5leaveyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addEventListener",
+            "printedName": "addEventListener(type:listener:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EventListener",
+                "printedName": "THEOplayerSDK.EventListener",
+                "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerEventListener"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EventType",
+                "printedName": "THEOplayerSDK.EventType<τ_1_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "usr": "s:13THEOplayerSDK9EventTypeC"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(τ_1_0) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P16addEventListener4type8listener0A3SDK0fG0_pAG0F4TypeCyqd__G_yqd__ctAG0F8ProtocolRd__lF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P16addEventListener4type8listener0A3SDK0fG0_pAG0F4TypeCyqd__G_yqd__ctAG0F8ProtocolRd__lF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0, τ_1_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration, τ_1_0 : THEOplayerSDK.EventProtocol>",
+            "sugared_genericSig": "<Self, E where Self : THEOplayerGoogleCastIntegration.CastIntegration, E : THEOplayerSDK.EventProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeEventListener",
+            "printedName": "removeEventListener(type:listener:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EventType",
+                "printedName": "THEOplayerSDK.EventType<τ_1_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  }
+                ],
+                "usr": "s:13THEOplayerSDK9EventTypeC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EventListener",
+                "printedName": "THEOplayerSDK.EventListener",
+                "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerEventListener"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:31THEOplayerGoogleCastIntegration0cD0P19removeEventListener4type8listenery0A3SDK0F4TypeCyqd__G_AG0fG0_ptAG0F8ProtocolRd__lF",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P19removeEventListener4type8listenery0A3SDK0F4TypeCyqd__G_AG0fG0_ptAG0F8ProtocolRd__lF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0, τ_1_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration, τ_1_0 : THEOplayerSDK.EventProtocol>",
+            "sugared_genericSig": "<Self, E where Self : THEOplayerGoogleCastIntegration.CastIntegration, E : THEOplayerSDK.EventProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:31THEOplayerGoogleCastIntegration0cD0P",
+        "mangledName": "$s31THEOplayerGoogleCastIntegration0cD0P",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.Integration>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.Integration>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Integration",
+            "printedName": "Integration",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerIntegration",
+            "mangledName": "$s13THEOplayerSDK11IntegrationP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CastIntegration_Objc",
+        "printedName": "CastIntegration_Objc",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "casting",
+            "printedName": "casting",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(py)casting",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP7castingSbvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)casting",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP7castingSbvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "error_Objc",
+            "printedName": "error_Objc",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.CastError_Objc?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CastError_Objc",
+                    "printedName": "THEOplayerSDK.CastError_Objc",
+                    "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerCastError"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(py)error",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP06error_E00A3SDK0c6Error_E0CSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "objc_name": "error",
+            "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "THEOplayerSDK.CastError_Objc?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CastError_Objc",
+                        "printedName": "THEOplayerSDK.CastError_Objc",
+                        "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerCastError"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)error",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP06error_E00A3SDK0c6Error_E0CSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "receiverName",
+            "printedName": "receiverName",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(py)receiverName",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP12receiverNameSSSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)receiverName",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP12receiverNameSSSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "state_Objc",
+            "printedName": "state_Objc",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PlayerCastState",
+                "printedName": "THEOplayerSDK.PlayerCastState",
+                "usr": "c:@M@THEOplayerSDK@E@THEOplayerPlayerCastState"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(py)state",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP06state_E00A3SDK06PlayerC5StateOvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "objc_name": "state",
+            "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PlayerCastState",
+                    "printedName": "THEOplayerSDK.PlayerCastState",
+                    "usr": "c:@M@THEOplayerSDK@E@THEOplayerPlayerCastState"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)state",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP06state_E00A3SDK06PlayerC5StateOvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "castButtonDelegate",
+            "printedName": "castButtonDelegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GCKUICastButtonDelegate",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                    "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(py)castButtonDelegate",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP18castButtonDelegateSo09GCKUICastgH0_pSgvp",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GCKUICastButtonDelegate",
+                        "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                        "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)castButtonDelegate",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP18castButtonDelegateSo09GCKUICastgH0_pSgvg",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setCastButtonDelegate",
+            "printedName": "setCastButtonDelegate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleCast.GCKUICastButtonDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GCKUICastButtonDelegate",
+                    "printedName": "GoogleCast.GCKUICastButtonDelegate",
+                    "usr": "c:objc(pl)GCKUICastButtonDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)setCastButtonDelegate:",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP03setC14ButtonDelegateyySo09GCKUICastgH0_pSgF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setConnectionDelegate",
+            "printedName": "setConnectionDelegate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.ChromecastConnectionDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChromecastConnectionDelegate",
+                    "printedName": "THEOplayerSDK.ChromecastConnectionDelegate",
+                    "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerChromecastConnectionDelegate"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)setConnectionDelegate:",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP21setConnectionDelegateyy0A3SDK010ChromecastgH0_pSgF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)start",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP5startyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)stop",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP4stopyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "join",
+            "printedName": "join()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)join",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP4joinyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leave",
+            "printedName": "leave()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)leave",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP5leaveyyF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addEventListener",
+            "printedName": "addEventListener(type:listener:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EventListener",
+                "printedName": "THEOplayerSDK.EventListener",
+                "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerEventListener"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(THEOplayerSDK.ChromeCastEvent) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ChromeCastEvent",
+                    "printedName": "THEOplayerSDK.ChromeCastEvent",
+                    "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerChromeCastEvent"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)addEventListenerWithType:listener:",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP16addEventListener4type8listener0A3SDK0gH0_pSS_yAG06ChromecG0CctF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "DiscardableResult",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeEventListener",
+            "printedName": "removeEventListener(type:listener:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EventListener",
+                "printedName": "THEOplayerSDK.EventListener",
+                "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerEventListener"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration(im)removeEventListenerWithType:listener:",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP19removeEventListener4type8listenerySS_0A3SDK0gH0_ptF",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleCastIntegration.CastIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(pl)THEOplayerCastIntegration",
+        "mangledName": "$s31THEOplayerGoogleCastIntegration0cD5_ObjcP",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.Integration>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.Integration>",
+        "objc_name": "THEOplayerCastIntegration",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Integration",
+            "printedName": "Integration",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerIntegration",
+            "mangledName": "$s13THEOplayerSDK11IntegrationP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CastIntegrationHelper",
+        "printedName": "CastIntegrationHelper",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "theoplayerV2ReceiverApplicationID",
+            "printedName": "theoplayerV2ReceiverApplicationID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cpy)theoplayerV2ReceiverApplicationID",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC33theoplayerV2ReceiverApplicationIDSSvpZ",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "static": true,
+            "deprecated": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "Available",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cm)theoplayerV2ReceiverApplicationID",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC33theoplayerV2ReceiverApplicationIDSSvgZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cm)setTheoplayerV2ReceiverApplicationID:",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC33theoplayerV2ReceiverApplicationIDSSvsZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD6HelperC33theoplayerV2ReceiverApplicationIDSSvMZ",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC33theoplayerV2ReceiverApplicationIDSSvMZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "deprecated": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultV3ReceiverApplicationID",
+            "printedName": "defaultV3ReceiverApplicationID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cpy)defaultV3ReceiverApplicationID",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC30defaultV3ReceiverApplicationIDSSvpZ",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cm)defaultV3ReceiverApplicationID",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC30defaultV3ReceiverApplicationIDSSvgZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cm)setDefaultV3ReceiverApplicationID:",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC30defaultV3ReceiverApplicationIDSSvsZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:31THEOplayerGoogleCastIntegration0cD6HelperC30defaultV3ReceiverApplicationIDSSvMZ",
+                "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC30defaultV3ReceiverApplicationIDSSvMZ",
+                "moduleName": "THEOplayerGoogleCastIntegration",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setGCKCastContextSharedInstanceWithDefaultCastOptions",
+            "printedName": "setGCKCastContextSharedInstanceWithDefaultCastOptions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(cm)setGCKCastContextSharedInstanceWithDefaultCastOptions",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC042setGCKCastContextSharedInstanceWithDefaultC7OptionsyyFZ",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CastIntegrationHelper",
+                "printedName": "THEOplayerGoogleCastIntegration.CastIntegrationHelper",
+                "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper(im)init",
+            "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperCACycfc",
+            "moduleName": "THEOplayerGoogleCastIntegration",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@THEOplayerGoogleCastIntegration@objc(cs)THEOplayerCastIntegrationHelper",
+        "mangledName": "$s31THEOplayerGoogleCastIntegration0cD6HelperC",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "objc_name": "THEOplayerCastIntegrationHelper",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 697,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 794,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 1323,
+      "length": 17,
+      "value": "\"com.google.cast\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1373,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1383,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1393,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1744,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3071,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3225,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3372,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3526,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 5126,
+      "length": 122,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 5148,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the ChromecastEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 5728,
+      "length": 122,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 5750,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the ChromecastEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6177,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6544,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6668,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6700,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6726,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6767,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7026,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7141,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7232,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7348,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7656,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7772,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7913,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8923,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8948,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10277,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10416,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11522,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11931,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 12409,
+      "length": 58,
+      "value": "\"[Chromecast][CastIntegrationImplementation] onCastError:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
+      "kind": "StringLiteral",
+      "offset": 12798,
+      "length": 59,
+      "value": "\"[Chromecast][CastIntegrationImplementation] onFullyLoaded\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/UidGenerator.swift",
+      "kind": "IntegerLiteral",
+      "offset": 171,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/UidGenerator.swift",
+      "kind": "IntegerLiteral",
+      "offset": 333,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "StringLiteral",
+      "offset": 767,
+      "length": 10,
+      "value": "\"1ADD53F3\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "StringLiteral",
+      "offset": 911,
+      "length": 10,
+      "value": "\"8E80B9CE\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1768,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1827,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1065,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 1129,
+      "length": 88,
+      "value": "\"[Chromecast][CastSessionController] handleManualStateChangeTrigger: trigger, wasPaused\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 1680,
+      "length": 49,
+      "value": "\"[Chromecast][CastSessionController] start logic\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 2417,
+      "length": 48,
+      "value": "\"[Chromecast][CastSessionController] join logic\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 3103,
+      "length": 49,
+      "value": "\"[Chromecast][CastSessionController] leave logic\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3504,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 3599,
+      "length": 54,
+      "value": "\"[Chromecast][CastSessionController] playback resumed\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 3802,
+      "length": 48,
+      "value": "\"[Chromecast][CastSessionController] stop logic\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4199,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
+      "kind": "StringLiteral",
+      "offset": 4343,
+      "length": 54,
+      "value": "\"[Chromecast][CastSessionController] playback resumed\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 942,
+      "length": 136,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 964,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerAudioTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1697,
+      "length": 136,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1719,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerAudioTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 877,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 1402,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1435,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1457,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 1960,
+      "length": 59,
+      "value": "\"[Chromecast][CastMediaController] loadSource with paused:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 2151,
+      "length": 75,
+      "value": "\"[Chromecast][CastMediaController] remoteMediaClient stop(), source is nil\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2357,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3656,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3667,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4171,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4182,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4714,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5097,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5540,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 5819,
+      "length": 79,
+      "value": "\"[Chromecast][CastMediaController] remoteMediaClient loadMedia request fired: \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 6040,
+      "length": 60,
+      "value": "\"[Chromecast][CastMediaController] Player reference is lost\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 6884,
+      "length": 71,
+      "value": "\"[Chromecast][CastMediaController] sourcechnage from updateLastSource:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6979,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 7741,
+      "length": 59,
+      "value": "\"[Chromecast][CastMediaController] processQuableOperations\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 7914,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 8291,
+      "length": 22,
+      "value": "\"application\/dash+xml\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 8373,
+      "length": 23,
+      "value": "\"application\/x-mpegurl\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 8432,
+      "length": 31,
+      "value": "\"application\/vnd.apple.mpegurl\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 8802,
+      "length": 61,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, DASH? HLS?\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 8912,
+      "length": 65,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, hasVideoTracks\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 9020,
+      "length": 65,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, hasAudioTracks\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 9128,
+      "length": 66,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, activeTracksIDs\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 9415,
+      "length": 79,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, track list are not ready yet\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9529,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9598,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9632,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 9699,
+      "length": 102,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v2 most probably, checking activeTrackIds\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9895,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 9970,
+      "length": 72,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, ActiveTrackIds are OK\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10085,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 10182,
+      "length": 88,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, ActiveTrackIds are still empty, wait.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10313,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10409,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 10476,
+      "length": 119,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v3 most probably with DASH + audiotracks, we can continue.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10630,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10698,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 10765,
+      "length": 118,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v3 most probably with HLS + videotracks, we can continue.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10918,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 11050,
+      "length": 109,
+      "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are NOT playing DASH or HLS, continue with best effort.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11224,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11263,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 11493,
+      "length": 143,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), no mediaStatus or mediaInformation populated yet, wait for the next round to process tracks\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 11862,
+      "length": 92,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), We can not proceed yet, try again later.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 12055,
+      "length": 87,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), We are good to go, handling tracks.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 12648,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 12966,
+      "length": 76,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), No track change, return.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 13339,
+      "length": 71,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), lastActiveTrackIDs:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 14213,
+      "length": 67,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), vid track added\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 14529,
+      "length": 69,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), vid track enabled\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 14695,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 15133,
+      "length": 67,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), aud track added\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 15450,
+      "length": 69,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), aud track enabled\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 15616,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 16071,
+      "length": 67,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), txt track added\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 16396,
+      "length": 69,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), txt track enabled\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 16695,
+      "length": 72,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), not recognized track\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 16889,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 16995,
+      "length": 75,
+      "value": "\"[Chromecast][CastMediaController] updateTracks(), source is fully loaded!\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 17327,
+      "length": 28,
+      "value": "\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 18954,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 19025,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19045,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19084,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 19188,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 19330,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19350,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19389,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 19493,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 19634,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19654,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19692,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 19828,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 20117,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 20411,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 20702,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 20854,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 21243,
+      "length": 97,
+      "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), isSourceFullyLoaded false, reschedule\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 21479,
+      "length": 94,
+      "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), runnin rescheduled setActiveTracks\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 21885,
+      "length": 90,
+      "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), setActiveTracks request fired:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 22336,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 22470,
+      "length": 79,
+      "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), seek request fired:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22698,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 23437,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23538,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24135,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 24165,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 24422,
+      "length": 82,
+      "value": "\"[Chromecast][CastMediaController] setPlaybackRate(), playbackrate request fired:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 25516,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 25613,
+      "length": 84,
+      "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 25942,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 25967,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 26042,
+      "length": 90,
+      "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change, muted\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 26134,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 26307,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 26412,
+      "length": 92,
+      "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change, unmuted\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 26720,
+      "length": 66,
+      "value": "\"[Chromecast][CastMediaController] onRemoteSourceChanged cleaning\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 26865,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 27045,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 27371,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 249,
+      "length": 19,
+      "value": "\"THEOplayerGoogleCastIntegration.CastMediaController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 27839,
+      "length": 57,
+      "value": "\"[Chromecast][CastMediaController] requestDidComplete():\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 28004,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 28167,
+      "length": 59,
+      "value": "\"[Chromecast][CastMediaController] request didAbortWith():\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 28420,
+      "length": 19,
+      "value": "\"Request cancelled\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 28545,
+      "length": 17,
+      "value": "\"Request aborted\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 28771,
+      "length": 63,
+      "value": "\"[Chromecast][CastMediaController] request didFailWithError():\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 29365,
+      "length": 72,
+      "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus lastContentID:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 29658,
+      "length": 70,
+      "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus volume+muted\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 30512,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 31092,
+      "length": 9,
+      "value": "\"CC died\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 31203,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 31466,
+      "length": 81,
+      "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus not handled idle reason\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 31859,
+      "length": 82,
+      "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus not handled player state\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 32336,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "FloatLiteral",
+      "offset": 32673,
+      "length": 5,
+      "value": "0.250"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 32799,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 32984,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 33324,
+      "length": 19,
+      "value": "\"sourceDescription\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "Array",
+      "offset": 33619,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackModuleImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 482,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 562,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 771,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 820,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1401,
+      "length": 29,
+      "value": "\"Failed to change track mode\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationDebug.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 37,
+      "value": "\"THEOPLAYER_LOGGING_CAST_INTEGRATION\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationDebug.swift",
+      "kind": "StringLiteral",
+      "offset": 247,
+      "length": 3,
+      "value": "\"1\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationDebug.swift",
+      "kind": "BooleanLiteral",
+      "offset": 419,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 973,
+      "length": 136,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 995,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerVideoTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1728,
+      "length": 136,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/VideoTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1750,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerVideoTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 406,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 758,
+      "length": 103,
+      "value": "\"This module only support `disabled` mode for not showing a track, we progress further with `disabled`\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1177,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1977,
+      "length": 29,
+      "value": "\"Failed to change track mode\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "Array",
+      "offset": 2098,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2128,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "Array",
+      "offset": 2187,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2244,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2669,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2728,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "Array",
+      "offset": 4130,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "Array",
+      "offset": 4199,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 5108,
+      "length": 131,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 5130,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 6098,
+      "length": 131,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 6120,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 6320,
+      "length": 42,
+      "value": "\"[Chromecast][TextTrackModuleImpl] deinit\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "Array",
+      "offset": 343,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 819,
+      "length": 24,
+      "value": "\"incompatible TextTrack\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1732,
+      "length": 49,
+      "value": "\"[Chromecast][TextTrackListImplModule] add track\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 3110,
+      "length": 135,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 3132,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 3844,
+      "length": 135,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 3866,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackListEventTypes\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 494,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackModuleImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 585,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 776,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 825,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/AudioTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1390,
+      "length": 29,
+      "value": "\"Failed to change track mode\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 690,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 895,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1265,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1469,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1528,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1551,
+      "length": 6,
+      "value": "\"main\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2372,
+      "length": 75,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2394,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2563,
+      "length": 75,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2585,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2719,
+      "length": 43,
+      "value": "\"[Chromecast][MediaTrackModuleImpl] deinit\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackListImplModule.swift",
+      "kind": "Array",
+      "offset": 347,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 826,
+      "length": 24,
+      "value": "\"incompatible TextTrack\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackListImplModule.swift",
+      "kind": "StringLiteral",
+      "offset": 1484,
+      "length": 50,
+      "value": "\"[Chromecast][MediaTrackListImplModule] add track\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1076,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3003,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 4123,
+      "length": 81,
+      "value": "\"[Chromecast][CastClientController] Resumed playback from handleCastDialogHide()\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 4738,
+      "length": 60,
+      "value": "\"[Chromecast][CastClientController] handleCastStateChange: \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5651,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5795,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5818,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 6027,
+      "length": 61,
+      "value": "\"[Chromecast][CastClientController] Player reference is lost\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 7309,
+      "length": 66,
+      "value": "\"[Chromecast][CastClientController] stopSession with killSession:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7712,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 274,
+      "length": 20,
+      "value": "\"THEOplayerGoogleCastIntegration.CastClientController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 11373,
+      "length": 54,
+      "value": "\"[Chromecast][CastClientController] didEnd withError:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 11796,
+      "length": 52,
+      "value": "\"[Chromecast][CastClientController] didFailToStart:\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 12219,
+      "length": 65,
+      "value": "\"[Chromecast][CastClientController] volumeChanged: volume, muted\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",
+      "kind": "StringLiteral",
+      "offset": 12611,
+      "length": 25,
+      "value": "\"[CHROMECAST][GCKLogger]\""
+    }
+  ]
+}

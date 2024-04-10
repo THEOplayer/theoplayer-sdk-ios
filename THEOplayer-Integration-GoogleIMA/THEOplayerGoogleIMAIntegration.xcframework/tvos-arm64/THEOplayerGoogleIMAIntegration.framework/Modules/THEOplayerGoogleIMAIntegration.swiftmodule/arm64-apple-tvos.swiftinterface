@@ -1,12 +1,15 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target arm64-apple-tvos12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name THEOplayerGoogleIMAIntegration
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 import GoogleInteractiveMediaAds
 import Swift
 import THEOplayerSDK
 import UIKit
 import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
 public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
   var imaAd: GoogleInteractiveMediaAds.IMAAd { get }
 }
@@ -14,9 +17,9 @@ public protocol NativeGoogleImaAd : THEOplayerSDK.GoogleImaAd {
   @objc var imaAd: GoogleInteractiveMediaAds.IMAAd { get }
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleIMAIntegrationFactory) public class GoogleIMAIntegrationFactory : ObjectiveC.NSObject {
-  public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings? = nil) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration
+  public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings? = nil) -> any THEOplayerGoogleIMAIntegration.GoogleImaIntegration
   @available(swift, obsoleted: 1.0)
-  @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings?) -> THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc
+  @objc public static func createIntegration(on player: THEOplayerSDK.THEOplayer, with imaSettings: GoogleInteractiveMediaAds.IMASettings?) -> any THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc
   @objc override dynamic public init()
   @objc deinit
 }
@@ -38,7 +41,7 @@ public protocol GoogleImaIntegration : THEOplayerSDK.Ads, THEOplayerSDK.Integrat
   @objc public init(adsResponse: Swift.String, timeOffset: Swift.String? = nil, renderingSettings: GoogleInteractiveMediaAds.IMAAdsRenderingSettings? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(adsResponse: Swift.String)
-  required convenience public init(from decoder: Swift.Decoder) throws
+  required convenience public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerGoogleImaAdErrorEvent) @_objcRuntimeName(THEOplayerGoogleImaAdErrorEvent) public class GoogleImaAdErrorEvent : THEOplayerSDK.AdErrorEvent {

@@ -1,0 +1,3887 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NativeGoogleImaAd",
+        "printedName": "NativeGoogleImaAd",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "imaAd",
+            "printedName": "imaAd",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "IMAAd",
+                "printedName": "GoogleInteractiveMediaAds.IMAAd",
+                "usr": "c:objc(cs)IMAAd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP03imaF0So5IMAAdCvp",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP03imaF0So5IMAAdCvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAd",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAd",
+                    "usr": "c:objc(cs)IMAAd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP03imaF0So5IMAAdCvg",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP03imaF0So5IMAAdCvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.NativeGoogleImaAd>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.NativeGoogleImaAd>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB5ImaAdP",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.GoogleImaAd>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.GoogleImaAd>",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "GoogleImaAd",
+            "printedName": "GoogleImaAd",
+            "usr": "s:13THEOplayerSDK11GoogleImaAdP",
+            "mangledName": "$s13THEOplayerSDK11GoogleImaAdP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Ad",
+            "printedName": "Ad",
+            "usr": "s:13THEOplayerSDK2AdP",
+            "mangledName": "$s13THEOplayerSDK2AdP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NativeGoogleImaAd_Objc",
+        "printedName": "NativeGoogleImaAd_Objc",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "imaAd",
+            "printedName": "imaAd",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "IMAAd",
+                "printedName": "GoogleInteractiveMediaAds.IMAAd",
+                "usr": "c:objc(cs)IMAAd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerNativeGoogleImaAd(py)imaAd",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB10ImaAd_ObjcP03imaF0So5IMAAdCvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAd",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAd",
+                    "usr": "c:objc(cs)IMAAd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerNativeGoogleImaAd(im)imaAd",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB10ImaAd_ObjcP03imaF0So5IMAAdCvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.NativeGoogleImaAd_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.NativeGoogleImaAd_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerNativeGoogleImaAd",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB10ImaAd_ObjcP",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.GoogleImaAd_Objc>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.GoogleImaAd_Objc>",
+        "objc_name": "THEOplayerNativeGoogleImaAd",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "GoogleImaAd_Objc",
+            "printedName": "GoogleImaAd_Objc",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerGoogleImaAd",
+            "mangledName": "$s13THEOplayerSDK16GoogleImaAd_ObjcP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Ad_Objc",
+            "printedName": "Ad_Objc",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerAd",
+            "mangledName": "$s13THEOplayerSDK7Ad_ObjcP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoogleIMAIntegrationFactory",
+        "printedName": "GoogleIMAIntegrationFactory",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "createIntegration",
+            "printedName": "createIntegration(on:with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoogleImaIntegration",
+                "printedName": "THEOplayerGoogleIMAIntegration.GoogleImaIntegration",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "THEOplayer",
+                "printedName": "THEOplayerSDK.THEOplayer",
+                "usr": "c:@M@THEOplayerSDK@objc(cs)THEOplayer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMASettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMASettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMASettings",
+                    "usr": "c:objc(cs)IMASettings"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0bC7FactoryC17createIntegration2on4withAA0b3ImaF0_p0A3SDK0A0C_So11IMASettingsCSgtFZ",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0bC7FactoryC17createIntegration2on4withAA0b3ImaF0_p0A3SDK0A0C_So11IMASettingsCSgtFZ",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoogleIMAIntegrationFactory",
+                "printedName": "THEOplayerGoogleIMAIntegration.GoogleIMAIntegrationFactory",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerGoogleIMAIntegrationFactory"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerGoogleIMAIntegrationFactory(im)init",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0bC7FactoryCACycfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerGoogleIMAIntegrationFactory",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration0bC7FactoryC",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "objc_name": "THEOplayerGoogleIMAIntegrationFactory",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoogleImaIntegration",
+        "printedName": "GoogleImaIntegration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "renderingSettings",
+            "printedName": "renderingSettings",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvp",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvg",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvs",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvs",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvM",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP17renderingSettingsSo015IMAAdsRenderingG0CSgvM",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "requestAds",
+            "printedName": "requestAds(src:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds3src17renderingSettingsySS_So015IMAAdsRenderingJ0CSgtF",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds3src17renderingSettingsySS_So015IMAAdsRenderingJ0CSgtF",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "requestAds",
+            "printedName": "requestAds(adsResponse:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds11adsResponse17renderingSettingsySS_So015IMAAdsRenderingK0CSgtF",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP10requestAds11adsResponse17renderingSettingsySS_So015IMAAdsRenderingK0CSgtF",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration0B14ImaIntegrationP",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.Ads, τ_0_0 : THEOplayerSDK.Integration>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.Ads, Self : THEOplayerSDK.Integration>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Ads",
+            "printedName": "Ads",
+            "usr": "s:13THEOplayerSDK3AdsP",
+            "mangledName": "$s13THEOplayerSDK3AdsP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "EventDispatcherProtocol",
+            "printedName": "EventDispatcherProtocol",
+            "usr": "s:13THEOplayerSDK23EventDispatcherProtocolP",
+            "mangledName": "$s13THEOplayerSDK23EventDispatcherProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Integration",
+            "printedName": "Integration",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerIntegration",
+            "mangledName": "$s13THEOplayerSDK11IntegrationP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoogleImaIntegration_Objc",
+        "printedName": "GoogleImaIntegration_Objc",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "renderingSettings",
+            "printedName": "renderingSettings",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration(py)renderingSettings",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP17renderingSettingsSo015IMAAdsRenderingH0CSgvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration(im)renderingSettings",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP17renderingSettingsSo015IMAAdsRenderingH0CSgvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration(im)setRenderingSettings:",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP17renderingSettingsSo015IMAAdsRenderingH0CSgvs",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+                "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+                "protocolReq": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "requestAds",
+            "printedName": "requestAds(src:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration(im)requestAdsWithSrc:renderingSettings:",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP10requestAds3src17renderingSettingsySS_So015IMAAdsRenderingK0CSgtF",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "requestAds",
+            "printedName": "requestAds(adsResponse:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration(im)requestAdsWithAdsResponse:renderingSettings:",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP10requestAds11adsResponse17renderingSettingsySS_So015IMAAdsRenderingL0CSgtF",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+            "sugared_genericSig": "<Self where Self : THEOplayerGoogleIMAIntegration.GoogleImaIntegration_Objc>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(pl)THEOplayerGoogleImaIntegration",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration0B19ImaIntegration_ObjcP",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "genericSig": "<τ_0_0 : THEOplayerSDK.Ads_Objc, τ_0_0 : THEOplayerSDK.Integration>",
+        "sugared_genericSig": "<Self : THEOplayerSDK.Ads_Objc, Self : THEOplayerSDK.Integration>",
+        "objc_name": "THEOplayerGoogleImaIntegration",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Ads_Objc",
+            "printedName": "Ads_Objc",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerAds",
+            "mangledName": "$s13THEOplayerSDK8Ads_ObjcP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Integration",
+            "printedName": "Integration",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerIntegration",
+            "mangledName": "$s13THEOplayerSDK11IntegrationP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "SPIAccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "NativeGoogleImaAdDescription",
+        "printedName": "NativeGoogleImaAdDescription",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "renderingSettings",
+            "printedName": "renderingSettings",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvp",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvg",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "IMAAdsRenderingSettings",
+                        "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                        "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvs",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvs",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvM",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvM",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "adsResponse",
+            "printedName": "adsResponse",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvp",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvg",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvs",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvs",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvM",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvM",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(src:timeOffset:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NativeGoogleImaAdDescription",
+                "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffsetACSS_SSSgtcfc",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffsetACSS_SSSgtcfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "overriding": true,
+            "objc_name": "initWithSrc:timeOffset:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(src:timeOffset:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NativeGoogleImaAdDescription",
+                "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingL0CSgtcfc",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingL0CSgtcfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "objc_name": "initWithSrc:timeOffset:renderingSettings:",
+            "declAttributes": [
+              "Convenience",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(adsResponse:timeOffset:renderingSettings:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NativeGoogleImaAdDescription",
+                "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdsRenderingSettings",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdsRenderingSettings",
+                    "usr": "c:objc(cs)IMAAdsRenderingSettings"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponse10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingM0CSgtcfc",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponse10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingM0CSgtcfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "objc_name": "initWithAdsResponse:timeOffset:renderingSettings:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NativeGoogleImaAdDescription",
+                "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
+                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "overriding": true,
+            "declAttributes": [
+              "AccessControl",
+              "Convenience",
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Convenience"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "objc_name": "THEOplayerNativeGoogleImaAdDescription",
+        "declAttributes": [
+          "ObjCRuntimeName",
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerGoogleImaAdDescription",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "THEOplayerSDK.GoogleImaAdDescription",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "AdDescription",
+            "printedName": "AdDescription",
+            "usr": "s:13THEOplayerSDK13AdDescriptionP",
+            "mangledName": "$s13THEOplayerSDK13AdDescriptionP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "AdDescription_Objc",
+            "printedName": "AdDescription_Objc",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerAdDescription",
+            "mangledName": "$s13THEOplayerSDK18AdDescription_ObjcP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleInteractiveMediaAds",
+        "printedName": "GoogleInteractiveMediaAds",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleIMAIntegration"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GoogleImaAdErrorEvent",
+        "printedName": "GoogleImaAdErrorEvent",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "imaAdError",
+            "printedName": "imaAdError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "IMAAdError",
+                "printedName": "GoogleInteractiveMediaAds.IMAAdError",
+                "usr": "c:objc(cs)IMAAdError"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC03imaeF0So05IMAAdF0Cvp",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC03imaeF0So05IMAAdF0Cvp",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "IMAAdError",
+                    "printedName": "GoogleInteractiveMediaAds.IMAAdError",
+                    "usr": "c:objc(cs)IMAAdError"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC03imaeF0So05IMAAdF0Cvg",
+                "mangledName": "$s30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC03imaeF0So05IMAAdF0Cvg",
+                "moduleName": "THEOplayerGoogleIMAIntegration",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(date:ad:error:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GoogleImaAdErrorEvent",
+                "printedName": "THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent",
+                "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "THEOplayerSDK.Ad?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Ad",
+                    "printedName": "THEOplayerSDK.Ad",
+                    "usr": "s:13THEOplayerSDK2AdP"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC4date2ad5errorAC10Foundation4DateV_0A3SDK0E0_pSgSSSgtcfc",
+            "mangledName": "$s30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC4date2ad5errorAC10Foundation4DateV_0A3SDK0E0_pSgSSSgtcfc",
+            "moduleName": "THEOplayerGoogleIMAIntegration",
+            "overriding": true,
+            "implicit": true,
+            "declAttributes": [
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC",
+        "mangledName": "$s30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC",
+        "moduleName": "THEOplayerGoogleIMAIntegration",
+        "objc_name": "THEOplayerGoogleImaAdErrorEvent",
+        "declAttributes": [
+          "ObjCRuntimeName",
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:@M@THEOplayerSDK@objc(cs)THEOplayerAdErrorEvent",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "THEOplayerSDK.AdErrorEvent",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "AdErrorEventProtocol",
+            "printedName": "AdErrorEventProtocol",
+            "usr": "s:13THEOplayerSDK20AdErrorEventProtocolP",
+            "mangledName": "$s13THEOplayerSDK20AdErrorEventProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "AdErrorEventProtocol_Objc",
+            "printedName": "AdErrorEventProtocol_Objc",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerAdErrorEventProtocol",
+            "mangledName": "$s13THEOplayerSDK25AdErrorEventProtocol_ObjcP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "EventProtocol",
+            "printedName": "EventProtocol",
+            "usr": "c:@M@THEOplayerSDK@objc(pl)THEOplayerEventProtocol",
+            "mangledName": "$s13THEOplayerSDK13EventProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Utils\/Utils+String.swift",
+      "kind": "IntegerLiteral",
+      "offset": 186,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Utils\/Utils+String.swift",
+      "kind": "Array",
+      "offset": 214,
+      "length": 13,
+      "value": "[3600, 60, 1]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Utils\/Utils+String.swift",
+      "kind": "StringLiteral",
+      "offset": 282,
+      "length": 3,
+      "value": "\":\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 213,
+      "length": 18,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAAdsLoader\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2127,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 2751,
+      "length": 12,
+      "value": "\"THEOplayer\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2872,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2959,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 3252,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 3265,
+      "length": 9,
+      "value": "\" deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 457,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 583,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 813,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 861,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "Array",
+      "offset": 1020,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1346,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1592,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "Array",
+      "offset": 1600,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1617,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2392,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3065,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 3168,
+      "length": 8,
+      "value": "\"linear\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3202,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3247,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 4530,
+      "length": 22,
+      "value": "\"prerollPhase started\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 4592,
+      "length": 20,
+      "value": "\"prerollPhase ended\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4707,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4960,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5006,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5062,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5140,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5179,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "Array",
+      "offset": 5277,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 5432,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 5445,
+      "length": 9,
+      "value": "\" deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 214,
+      "length": 29,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAAdsManagerController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 5777,
+      "length": 11,
+      "value": "\"ad loaded\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5934,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5976,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6562,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7290,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 9489,
+      "length": 12,
+      "value": "\"ad started\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9897,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9961,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10063,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "FloatLiteral",
+      "offset": 10467,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 10494,
+      "length": 46,
+      "value": "\"ad missing STARTED event, IMA BUG, faking it\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 10693,
+      "length": 22,
+      "value": "\"ad didProgressToTime\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 10956,
+      "length": 18,
+      "value": "\"adsManager error\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11011,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 11172,
+      "length": 24,
+      "value": "\"main content pause req\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11325,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 11483,
+      "length": 25,
+      "value": "\"main content resume req\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11547,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11697,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12138,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 12544,
+      "length": 14,
+      "value": "\"ad completed\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12848,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 12971,
+      "length": 19,
+      "value": "\"all ads completed\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 13021,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 13177,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1254,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 204,
+      "length": 31,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMADaiAdsLoaderController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 3834,
+      "length": 19,
+      "value": "\"adsLoader loaded!\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 4242,
+      "length": 17,
+      "value": "\"adsLoader error\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4374,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADebug.swift",
+      "kind": "BooleanLiteral",
+      "offset": 182,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADebug.swift",
+      "kind": "StringLiteral",
+      "offset": 247,
+      "length": 3,
+      "value": "\" \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADebug.swift",
+      "kind": "StringLiteral",
+      "offset": 273,
+      "length": 4,
+      "value": "\"\n\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADebug.swift",
+      "kind": "StringLiteral",
+      "offset": 347,
+      "length": 23,
+      "value": "\"IMA integration log: \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADebug.swift",
+      "kind": "StringLiteral",
+      "offset": 450,
+      "length": 59,
+      "value": "\"This method needs to be overriden by concrete subsclasses\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "Array",
+      "offset": 453,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "StringLiteral",
+      "offset": 1682,
+      "length": 87,
+      "value": "\"Deferring ad request. Reason: missing IMAAdDisplayContainer.adContainerViewController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "Array",
+      "offset": 2583,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2755,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2979,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3397,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3506,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3592,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4133,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4195,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "Array",
+      "offset": 5204,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "StringLiteral",
+      "offset": 183,
+      "length": 22,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAImaController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaController.swift",
+      "kind": "StringLiteral",
+      "offset": 5588,
+      "length": 25,
+      "value": "\"Requesting scheduled ad\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 344,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 794,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 928,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAContentPlayhead.swift",
+      "kind": "IntegerLiteral",
+      "offset": 582,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAContentPlayhead.swift",
+      "kind": "IntegerLiteral",
+      "offset": 888,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAContentPlayhead.swift",
+      "kind": "StringLiteral",
+      "offset": 333,
+      "length": 24,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAContentPlayhead\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAScheduledAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 185,
+      "length": 24,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAScheduledAdImpl\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdDisplayContainer.swift",
+      "kind": "Array",
+      "offset": 830,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdBreakImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 347,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdBreakImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 794,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdBreakImpl.swift",
+      "kind": "Array",
+      "offset": 1806,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdBreakImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2732,
+      "length": 19,
+      "value": "\"adbreak deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdBreakImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 181,
+      "length": 20,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAAdBreakImpl\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 383,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 2067,
+      "length": 41,
+      "value": "\"Ad already playing, defer scheduled ad.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 3572,
+      "length": 22,
+      "value": "\"adsLoader requestAds\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3636,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 4556,
+      "length": 22,
+      "value": "\"adsLoader requestAds\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4628,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5496,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 204,
+      "length": 31,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAImaAdsLoaderController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 5728,
+      "length": 19,
+      "value": "\"adsLoader loaded!\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5810,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "StringLiteral",
+      "offset": 6321,
+      "length": 17,
+      "value": "\"adsLoader error\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6444,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6485,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAOmidImpl.swift",
+      "kind": "Array",
+      "offset": 225,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 284,
+      "length": 3,
+      "value": "-20"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "Array",
+      "offset": 377,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 2129,
+      "length": 59,
+      "value": "\"The time offset format for the scheduled ad is incorrect.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2382,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2396,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "Array",
+      "offset": 2405,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2422,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "Array",
+      "offset": 3373,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3638,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 3809,
+      "length": 41,
+      "value": "\"Ad already playing, defer scheduled ad.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 4348,
+      "length": 7,
+      "value": "\"start\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4377,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 4406,
+      "length": 5,
+      "value": "\"end\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4508,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 4686,
+      "length": 3,
+      "value": "\"%\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4758,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "StringLiteral",
+      "offset": 4822,
+      "length": 3,
+      "value": "\"%\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4860,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5257,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5292,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5439,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5556,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAController.swift",
+      "kind": "StringLiteral",
+      "offset": 1813,
+      "length": 28,
+      "value": "\"PlayerAddedInViewHierarchy\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAController.swift",
+      "kind": "StringLiteral",
+      "offset": 2148,
+      "length": 28,
+      "value": "\"PlayerAddedInViewHierarchy\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAController.swift",
+      "kind": "StringLiteral",
+      "offset": 2675,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAController.swift",
+      "kind": "StringLiteral",
+      "offset": 2688,
+      "length": 9,
+      "value": "\" deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1332,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1450,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "FloatLiteral",
+      "offset": 1489,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1523,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 3263,
+      "length": 43,
+      "value": "\"com.google.tvos.GoogleInteractiveMediaAds\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3339,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3349,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3359,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4168,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4181,
+      "length": 9,
+      "value": "\" deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4326,
+      "length": 12,
+      "value": "\"Setting up\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4387,
+      "length": 34,
+      "value": "\"Setup was already done, skipping\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4476,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4775,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5137,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 5285,
+      "length": 6,
+      "value": "\"play\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5618,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5811,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6066,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6442,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6671,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6734,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 6815,
+      "length": 7,
+      "value": "\"pause\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7150,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7482,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7560,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7591,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7972,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 8120,
+      "length": 56,
+      "value": "\"In app pip is unsupported during IMA and DAI playback.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8197,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8238,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8397,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 8627,
+      "length": 42,
+      "value": "\"DAI seeking disabled while ad is active.\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8690,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 8823,
+      "length": 13,
+      "value": "\"Snapback to\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8963,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 9116,
+      "length": 17,
+      "value": "\"Seek through to\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9282,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9313,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9888,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10022,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10725,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "Array",
+      "offset": 11878,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "Array",
+      "offset": 12275,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 16418,
+      "length": 117,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 16440,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the `AdsEventTypes`\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 18576,
+      "length": 117,
+      "value": "\"The EventType \""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 18598,
+      "length": 2,
+      "value": "\" is NOT compatible with the current EventDispatcher, please consider using the `AdsEventTypes`\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 20006,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "Array",
+      "offset": 467,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 694,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "Array",
+      "offset": 740,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 827,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1628,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 1731,
+      "length": 8,
+      "value": "\"linear\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1765,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1810,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3563,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "Array",
+      "offset": 4092,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4129,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "Array",
+      "offset": 4168,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 4348,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 4361,
+      "length": 9,
+      "value": "\" deiniting\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 32,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAStreamManagerController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 4674,
+      "length": 11,
+      "value": "\"cuepoints\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4895,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5083,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "Array",
+      "offset": 5091,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5108,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5345,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6045,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8154,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9004,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9106,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9523,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9654,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "StringLiteral",
+      "offset": 9879,
+      "length": 36,
+      "value": "\"Seek to original time pre snapback\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10402,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAStreamManagerController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10547,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiController.swift",
+      "kind": "Array",
+      "offset": 434,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiController.swift",
+      "kind": "StringLiteral",
+      "offset": 1386,
+      "length": 91,
+      "value": "\"Deferring stream request. Reason: missing IMAAdDisplayContainer.adContainerViewController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiController.swift",
+      "kind": "Array",
+      "offset": 2089,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiController.swift",
+      "kind": "Array",
+      "offset": 2447,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiController.swift",
+      "kind": "StringLiteral",
+      "offset": 183,
+      "length": 22,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMADaiController\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 673,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 705,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 739,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1217,
+      "length": 5,
+      "value": "\"id3\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1434,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1516,
+      "length": 6,
+      "value": "\"text\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 1643,
+      "length": 6,
+      "value": "\"TXXX\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2043,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 198,
+      "length": 25,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleIMAVideoDisplayImpl\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3434,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3584,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 3700,
+      "length": 14,
+      "value": "\"streamURL is\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAVideoDisplayImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4174,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 249,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 2941,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 3053,
+      "length": 8,
+      "value": "\"linear\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 3064,
+      "length": 11,
+      "value": "\"nonlinear\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "Array",
+      "offset": 4264,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4497,
+      "length": 13,
+      "value": "\"progressive\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
+      "kind": "StringLiteral",
+      "offset": 4540,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/API\/NativeGoogleImaAdDescription.swift",
+      "kind": "StringLiteral",
+      "offset": 224,
+      "length": 6,
+      "value": "\"null\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/API\/NativeGoogleImaAdDescription.swift",
+      "kind": "StringLiteral",
+      "offset": 2802,
+      "length": 38,
+      "value": "\"init(from:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/API\/GoogleImaAdErrorEvent.swift",
+      "kind": "StringLiteral",
+      "offset": 307,
+      "length": 21,
+      "value": "\"THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent\""
+    }
+  ]
+}

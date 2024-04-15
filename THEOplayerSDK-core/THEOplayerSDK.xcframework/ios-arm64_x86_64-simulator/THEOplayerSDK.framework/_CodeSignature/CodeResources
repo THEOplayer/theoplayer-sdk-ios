@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8SrOiPaOmHMyKA46H1hW3vdLi4s=
+		M8PuLj5SbDGGeiXXAfdNrF8+eH8=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		6jln8OC9HKXJq5+/RjJ6WzFxouQ=
+		p/MmQqRE/g8sb/W6t3IGlo6zQQg=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		H+tNt2X0GlqRfaayM6zourt3xjI=
+		zhK3RbRbT5cIVAUARvOCii7mUMw=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		6jln8OC9HKXJq5+/RjJ6WzFxouQ=
+		p/MmQqRE/g8sb/W6t3IGlo6zQQg=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		owssCJbdPc+deOSDLv0aLM8KQW8=
+		yJuPaFBwUEuWPWkTz9/okL304OQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -89,7 +89,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k2eEEKGU7Ofx5MfqQ+L+DPxAfQCib9dwiVzrpvoIEsA=
+			ZWB6CEAx0t2ZwOQ04nYarNzuWKEB+hm03nTfpQf1EO0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -117,14 +117,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			f4/dyVpBpdxRSQbjv3nl4nyZkkPkVPR+UsuHubG/+Ck=
+			WSIFjdtB8uqAPyEJYfOyx19FrC2lLBYw+unAJUxNJs8=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k2eEEKGU7Ofx5MfqQ+L+DPxAfQCib9dwiVzrpvoIEsA=
+			ZWB6CEAx0t2ZwOQ04nYarNzuWKEB+hm03nTfpQf1EO0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -152,7 +152,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dq/uU58f0o0JCr/dXReLSqW1cMk1JRvKYHBFT9BrDm0=
+			3+/5zHcg0dF9FHnCJ2ke166o9UHXzzO33v3o1hs/6OI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

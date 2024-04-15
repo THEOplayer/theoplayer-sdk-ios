@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		n+sGHb+5sFK2U49KZbxCuioefzw=
+		3AfwbN6rGfcmmW+84zOoBq3lmO4=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		Zibs50z1wsC2ROpJq93QtL/jZI8=
+		RAZutZfHaqe7WuZLy/4weaAFEYI=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		Zn4lSna8kmnZDNqVnemtH6DwYbk=
+		choNCMZOAhaRRPZxNB28VxlwETE=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		Zibs50z1wsC2ROpJq93QtL/jZI8=
+		RAZutZfHaqe7WuZLy/4weaAFEYI=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		Q+8U5rcoKp8mJulqomVpMCT61k0=
+		Ts9iZtUGwtGE8xaCMDCpApm4czY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -85,7 +85,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZFLdvrDCLS6R92z9gXYzjASo9Evjo+77BfO+XxiO5kQ=
+			6eC6r81ytv7TC0Ds0DxCTqGW3lR6Jx2RF3/EFihOXlw=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
@@ -113,14 +113,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oYVrNuYwPdHKDkkvU4avn2RKrcJtzcR/BEPjURkvDCk=
+			2bKr2Ft6ej1IWoW1OlVDGQZETAKOeweVO67NBg45ezg=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZFLdvrDCLS6R92z9gXYzjASo9Evjo+77BfO+XxiO5kQ=
+			6eC6r81ytv7TC0Ds0DxCTqGW3lR6Jx2RF3/EFihOXlw=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
@@ -148,7 +148,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PCcVuLl7x3HJ3oV3foKFtJ36EehQLIHEufzZZQqtqsI=
+			JP7wxm4uut8IEYBmuBmV6pUbs70EMctIjdmzZT1EWyo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

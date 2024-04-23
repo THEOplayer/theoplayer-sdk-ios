@@ -615,6 +615,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
   var src: Swift.String { get }
   var activeCues: [any THEOplayerSDK.TextTrackCue] { get }
   var type: Swift.String { get }
+  var forced: Swift.Bool { get }
   func addEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: @escaping (E) -> ()) -> any THEOplayerSDK.EventListener where E : THEOplayerSDK.EventProtocol
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: any THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
 }

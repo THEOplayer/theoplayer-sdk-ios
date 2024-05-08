@@ -1391,6 +1391,23 @@
       },
       {
         "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -1975,6 +1992,33 @@
       },
       {
         "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "THEOplayerSDK",
+        "printedName": "THEOplayerSDK",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "GoogleCast",
+        "printedName": "GoogleCast",
+        "declKind": "Import",
+        "moduleName": "THEOplayerGoogleCastIntegration"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -2299,6 +2343,20 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1946,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationHelper.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2159,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastSessionController.swift",
       "kind": "BooleanLiteral",
       "offset": 1065,
@@ -2482,645 +2540,652 @@
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
+      "kind": "StringLiteral",
+      "offset": 5430,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 5097,
+      "offset": 6105,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 5540,
+      "offset": 6548,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 5819,
+      "offset": 7103,
       "length": 79,
       "value": "\"[Chromecast][CastMediaController] remoteMediaClient loadMedia request fired: \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 6040,
+      "offset": 7324,
       "length": 60,
       "value": "\"[Chromecast][CastMediaController] Player reference is lost\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 6884,
+      "offset": 8168,
       "length": 71,
       "value": "\"[Chromecast][CastMediaController] sourcechnage from updateLastSource:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 6979,
+      "offset": 8263,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 7741,
+      "offset": 9025,
       "length": 59,
       "value": "\"[Chromecast][CastMediaController] processQuableOperations\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 7914,
+      "offset": 9198,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 8291,
+      "offset": 9575,
       "length": 22,
       "value": "\"application\/dash+xml\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 8373,
+      "offset": 9657,
       "length": 23,
       "value": "\"application\/x-mpegurl\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 8432,
+      "offset": 9716,
       "length": 31,
       "value": "\"application\/vnd.apple.mpegurl\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 8802,
+      "offset": 10086,
       "length": 61,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, DASH? HLS?\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 8912,
+      "offset": 10196,
       "length": 65,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, hasVideoTracks\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 9020,
+      "offset": 10304,
       "length": 65,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, hasAudioTracks\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 9128,
+      "offset": 10412,
       "length": 66,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, activeTracksIDs\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 9415,
+      "offset": 10699,
       "length": 79,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, track list are not ready yet\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9529,
+      "offset": 10813,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9598,
+      "offset": 10882,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9632,
+      "offset": 10916,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 9699,
+      "offset": 10983,
       "length": 102,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v2 most probably, checking activeTrackIds\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9895,
+      "offset": 11179,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 9970,
+      "offset": 11254,
       "length": 72,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, ActiveTrackIds are OK\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10085,
+      "offset": 11369,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 10182,
+      "offset": 11466,
       "length": 88,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, ActiveTrackIds are still empty, wait.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10313,
+      "offset": 11597,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 10409,
+      "offset": 11693,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 10476,
+      "offset": 11760,
       "length": 119,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v3 most probably with DASH + audiotracks, we can continue.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10630,
+      "offset": 11914,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 10698,
+      "offset": 11982,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 10765,
+      "offset": 12049,
       "length": 118,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are on v3 most probably with HLS + videotracks, we can continue.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10918,
+      "offset": 12202,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 11050,
+      "offset": 12334,
       "length": 109,
       "value": "\"[Chromecast][CastMediaController] canWeProceed?, We are NOT playing DASH or HLS, continue with best effort.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 11224,
+      "offset": 12508,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 11263,
+      "offset": 12547,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 11493,
+      "offset": 12777,
       "length": 143,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), no mediaStatus or mediaInformation populated yet, wait for the next round to process tracks\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 11862,
+      "offset": 13146,
       "length": 92,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), We can not proceed yet, try again later.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 12055,
+      "offset": 13339,
       "length": 87,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), We are good to go, handling tracks.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 12648,
+      "offset": 13932,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 12966,
+      "offset": 14250,
       "length": 76,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), No track change, return.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 13339,
+      "offset": 14623,
       "length": 71,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), lastActiveTrackIDs:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 14213,
+      "offset": 15497,
       "length": 67,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), vid track added\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 14529,
+      "offset": 15813,
       "length": 69,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), vid track enabled\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 14695,
+      "offset": 15979,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 15133,
+      "offset": 16417,
       "length": 67,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), aud track added\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 15450,
+      "offset": 16734,
       "length": 69,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), aud track enabled\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 15616,
+      "offset": 16900,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 16071,
+      "offset": 17355,
       "length": 67,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), txt track added\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 16396,
+      "offset": 17680,
       "length": 69,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), txt track enabled\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 16695,
+      "offset": 17979,
       "length": 72,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), not recognized track\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 16889,
+      "offset": 18173,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 16995,
+      "offset": 18279,
       "length": 75,
       "value": "\"[Chromecast][CastMediaController] updateTracks(), source is fully loaded!\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 17327,
+      "offset": 18611,
       "length": 28,
       "value": "\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 18954,
+      "offset": 20238,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 19025,
+      "offset": 20301,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19045,
+      "offset": 20321,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19084,
+      "offset": 20360,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 19188,
+      "offset": 20464,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 19330,
+      "offset": 20606,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19350,
+      "offset": 20626,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19389,
+      "offset": 20665,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 19493,
+      "offset": 20769,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 19634,
+      "offset": 20910,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19654,
+      "offset": 20930,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 19692,
+      "offset": 20968,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 19828,
+      "offset": 21104,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 20117,
+      "offset": 21393,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 20411,
+      "offset": 21687,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 20702,
+      "offset": 21978,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 20854,
+      "offset": 22130,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 21243,
+      "offset": 22519,
       "length": 97,
       "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), isSourceFullyLoaded false, reschedule\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 21479,
+      "offset": 22755,
       "length": 94,
       "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), runnin rescheduled setActiveTracks\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 21885,
+      "offset": 23161,
       "length": 90,
       "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), setActiveTracks request fired:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 22336,
+      "offset": 23612,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 22470,
+      "offset": 23746,
       "length": 79,
       "value": "\"[Chromecast][CastMediaController] setActiveMediaTracks(), seek request fired:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 22698,
+      "offset": 23974,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 23437,
+      "offset": 24713,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 23538,
+      "offset": 24814,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 24135,
+      "offset": 25411,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 24165,
+      "offset": 25441,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 24422,
+      "offset": 25698,
       "length": 82,
       "value": "\"[Chromecast][CastMediaController] setPlaybackRate(), playbackrate request fired:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 25516,
+      "offset": 26792,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 25613,
+      "offset": 26889,
       "length": 84,
       "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 25942,
+      "offset": 27218,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 25967,
+      "offset": 27243,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 26042,
+      "offset": 27318,
       "length": 90,
       "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change, muted\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 26134,
+      "offset": 27410,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 26307,
+      "offset": 27583,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 26412,
+      "offset": 27688,
       "length": 92,
       "value": "\"[Chromecast][CastMediaController] onRemoteVolumeChanged(), dispatch volume change, unmuted\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 26720,
+      "offset": 27996,
       "length": 66,
       "value": "\"[Chromecast][CastMediaController] onRemoteSourceChanged cleaning\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 26865,
+      "offset": 28141,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 27045,
+      "offset": 28321,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 27371,
+      "offset": 28647,
       "length": 5,
       "value": "false"
     },
@@ -3134,133 +3199,133 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 27839,
+      "offset": 29115,
       "length": 57,
       "value": "\"[Chromecast][CastMediaController] requestDidComplete():\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 28004,
+      "offset": 29280,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 28167,
+      "offset": 29443,
       "length": 59,
       "value": "\"[Chromecast][CastMediaController] request didAbortWith():\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 28420,
+      "offset": 29696,
       "length": 19,
       "value": "\"Request cancelled\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 28545,
+      "offset": 29821,
       "length": 17,
       "value": "\"Request aborted\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 28771,
+      "offset": 30047,
       "length": 63,
       "value": "\"[Chromecast][CastMediaController] request didFailWithError():\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 29365,
+      "offset": 30641,
       "length": 72,
       "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus lastContentID:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 29658,
+      "offset": 30934,
       "length": 70,
       "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus volume+muted\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 30512,
+      "offset": 31788,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 31092,
+      "offset": 32368,
       "length": 9,
       "value": "\"CC died\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 31203,
+      "offset": 32479,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 31466,
+      "offset": 32742,
       "length": 81,
       "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus not handled idle reason\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 31859,
+      "offset": 33135,
       "length": 82,
       "value": "\"[Chromecast][CastMediaController] didUpdate mediaStatus not handled player state\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 32336,
+      "offset": 33612,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "FloatLiteral",
-      "offset": 32673,
+      "offset": 33949,
       "length": 5,
       "value": "0.250"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "BooleanLiteral",
-      "offset": 32799,
+      "offset": 34075,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "IntegerLiteral",
-      "offset": 32984,
+      "offset": 34260,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "StringLiteral",
-      "offset": 33324,
+      "offset": 34600,
       "length": 19,
       "value": "\"sourceDescription\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastMediaController.swift",
       "kind": "Array",
-      "offset": 33619,
+      "offset": 34895,
       "length": 2,
       "value": "[]"
     },
@@ -3477,49 +3542,49 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "Array",
-      "offset": 343,
+      "offset": 342,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 819,
+      "offset": 818,
       "length": 24,
       "value": "\"incompatible TextTrack\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 1732,
+      "offset": 1727,
       "length": 49,
       "value": "\"[Chromecast][TextTrackListImplModule] add track\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 3110,
+      "offset": 3105,
       "length": 135,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 3132,
+      "offset": 3127,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackListEventTypes\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 3844,
+      "offset": 3839,
       "length": 135,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/TextTrackListImplModule.swift",
       "kind": "StringLiteral",
-      "offset": 3866,
+      "offset": 3861,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackListEventTypes\""
     },
@@ -3655,6 +3720,27 @@
       "offset": 1484,
       "length": 50,
       "value": "\"[Chromecast][MediaTrackListImplModule] add track\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/Extensions\/THEOplayerSDK\/TextTrackFormat+Extensions.swift",
+      "kind": "StringLiteral",
+      "offset": 280,
+      "length": 10,
+      "value": "\"text\/vtt\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/Extensions\/THEOplayerSDK\/TextTrackFormat+Extensions.swift",
+      "kind": "StringLiteral",
+      "offset": 321,
+      "length": 22,
+      "value": "\"application\/x-subrip\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/Extensions\/THEOplayerSDK\/TextTrackFormat+Extensions.swift",
+      "kind": "StringLiteral",
+      "offset": 422,
+      "length": 2,
+      "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastClientController.swift",

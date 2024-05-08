@@ -384,6 +384,7 @@ SWIFT_CLASS_NAMED("GoogleCastIntegrationFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
 #endif
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -777,6 +778,7 @@ SWIFT_CLASS_NAMED("GoogleCastIntegrationFactory")
 + (id <THEOplayerCastIntegration> _Nonnull)createIntegrationOn:(THEOplayer * _Nonnull)player with:(THEOplayerCastConfiguration * _Nonnull)config SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 #endif
 #if __has_attribute(external_source_symbol)

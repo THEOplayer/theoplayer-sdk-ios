@@ -10,15 +10,15 @@
 		</data>
 		<key>Headers/THEOplayerGoogleCastIntegration-Swift.h</key>
 		<data>
-		MglZ0FwRh4UbghWsBvmbB1bffEY=
+		2Nx3+xTqYg8aDs5BcJCSpF3RNHs=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		P8Ugkaw+gHjBMbZOz8QDy85nfVI=
+		H02bET47pD+JzV8t5wD5nMJrShA=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		ifmpk921QjOti6Vb56uvZ9+/e5k=
+		rjfIa9MrR9+cOOBu0AwFQR9h0LM=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		io61gNVN/t/SzI9Fy6t21d4OKuU=
+		jqn4vPkwFTK2P8ROMrfIA8cF85o=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		ifmpk921QjOti6Vb56uvZ9+/e5k=
+		rjfIa9MrR9+cOOBu0AwFQR9h0LM=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		uGMNJNVjGlBx7I1qq87qAErdFv0=
+		yi8whfPXtIHp6bFMPIlnDC7avMk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -74,14 +74,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QoRTwSkBtLXBSYKPm5N7s36kfBlSnqj+3atfwx9HBls=
+			EhJW96g/F4AtZRu1IzWG4l/piNhmHv2lrlSBjCU39oY=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/iQlAM63VLYXI0tv23UY+sife8zLTU1+pgNHAcuUBiA=
+			4PgicWHtQUTFucBXF8VZ0G08CUScVL6/y1gOseYHloQ=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -109,14 +109,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			T5DR8DBBZ0AYjDWmvSza1+0rjrG5RLmr34oUvXj9Hvc=
+			JkPoX5olQSVPX2wQqDk2e5gnVjt/9VZQkQ7sgZsIDQM=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/iQlAM63VLYXI0tv23UY+sife8zLTU1+pgNHAcuUBiA=
+			4PgicWHtQUTFucBXF8VZ0G08CUScVL6/y1gOseYHloQ=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gwpvz15X9mcMMvlj9jATU1FZEo5LpfEqtiu+0xhY8V4=
+			BSSpPwETeWOmkEK8sTwWddYuhuJSzMkF70yT5CxUKFQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -10,15 +10,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		KungeOFzxUZ/zTQztRdiNQ8XKLc=
+		L5+Hj69g5/WWFfQFmh4LLWb0Pe0=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		bhucLzLgqHelC7r6qf0wLS0XWrM=
+		iJmYv2h6i1rw9Ua5A0AhTEb7DYc=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		GnjnLDal8OLL1Hln+3YXLwIDx7I=
+		mV++HYy69JcDozJJw0lKbeNWOQo=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -26,19 +26,19 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		qsoRn1dSGImQoSEPrwJNBqlDLI0=
+		gcVO/uySeAvmJzsMWY7ZoRbMMvg=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		UDFGYRqZ2It159XoWGe1abX90Ls=
+		jT2DIpBtZGjqlavTTPYPHXv7adA=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		bhucLzLgqHelC7r6qf0wLS0XWrM=
+		iJmYv2h6i1rw9Ua5A0AhTEb7DYc=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		EFMUc7VaAjoGZKuj6BzksVIPkt0=
+		2PSbzCqwxBpe39rN23QwmUipWYs=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		USg3cEfMeXNI/GNhIugYLK/BaHY=
+		UpNFTArkd/8fQpfV6P9CNmm8yRI=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		0Co7wAD2b3sZoddSWma0vrVqh2s=
+		JunF2zhbrS51J8PceNtWUuoyQTY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,14 +70,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Urf8W77/yt4iiHME5Ke5FY63ssg6YetUB3HEVT30uo0=
+			Ej1+11N8COAQEwLOcHuUIqxq5aw6mIgFAlfrl/9W4zs=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kXJ0waIWcUfZ2QT5CNlmO2/WZ4eFPxuh/OTiC9JB0tQ=
+			wTDqoPGSP7nIoF6ubueLQgQcUEuN5jqoWwrSFvnKnjU=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
@@ -91,28 +91,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gUqXhoQolvzqYDwUj+73QOJ7U0U+OEtoQeiA32pBzNE=
+			1XjIJt1l2oflLNYkDZkRjWNgupXikxDB0XmYH12EJs0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NRsGr2RjizwevPxQS9fF8FxXZRneql64FXBd2ILL3Rs=
+			qZkFupDKvPU+nQo4pB9JKRCDXuVFjEllN1d81t6JNWk=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Urf8W77/yt4iiHME5Ke5FY63ssg6YetUB3HEVT30uo0=
+			Ej1+11N8COAQEwLOcHuUIqxq5aw6mIgFAlfrl/9W4zs=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uV7bkVslqxshgWyNVsexIkxkRHkItFObM77BypNdPLY=
+			rDQbE3KEpjUwCVk9YJeSdPbSy8fKul7MB7wCElf5KcM=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
@@ -126,14 +126,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6TNBUtYlCIDLZ5MGrH1jxCAYT+yZKP13WMi+uh149sg=
+			YKWJOYI+br5NZunsrq+vAKbL6pVLujBQX1IfZiWjS+I=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3mN7iX8iqJ6RAm9meEzQinFuAheXbp0SWMNLmZpfqPI=
+			9Ot8tPKqQVtWeslNUCXw/XWWQoUIyl8He+i3GS3K2tg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

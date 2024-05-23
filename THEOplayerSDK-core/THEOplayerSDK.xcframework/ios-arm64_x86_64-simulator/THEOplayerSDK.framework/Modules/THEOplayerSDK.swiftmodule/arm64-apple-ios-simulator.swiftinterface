@@ -695,6 +695,22 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
+@objc(THEOplayerTrackUpdateEvent) public class TrackUpdateEvent : ObjectiveC.NSObject {
+  @objc public var type: Swift.String {
+    get
+  }
+  @objc public var date: Foundation.Date {
+    get
+  }
+  public var track: any THEOplayerSDK.Track {
+    get
+  }
+  @objc(track) public var track_Objc: any THEOplayerSDK.Track_Objc {
+    @objc get
+  }
+  public init(date: Foundation.Date, track: any THEOplayerSDK.Track)
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerResponse) public class Response : ObjectiveC.NSObject, Swift.Codable {
   @objc public var request: THEOplayerSDK.Request
   @objc public var url: Swift.String
@@ -1487,6 +1503,15 @@ public protocol DeveloperSettings {
   override public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
 }
+public struct TrackEventTypes {
+  public static var UPDATE: THEOplayerSDK.EventType<THEOplayerSDK.TrackUpdateEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerTrackEventTypes) public class TrackEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let update: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 infix operator >>> : BitwiseShiftPrecedence
 @_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
 @objc(THEOplayerVerimatrixDRMConfiguration) public class VerimatrixDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
@@ -2226,6 +2251,7 @@ extension THEOplayerSDK.AdIntegrationKind : Swift.Codable, Swift.CaseIterable {
 }
 public protocol MediaTrack : THEOplayerSDK.Track {
   var enabled: Swift.Bool { get set }
+  var activeQualityBandwidth: Swift.Int { get }
 }
 @objc(THEOplayerMediaTrack) public protocol MediaTrack_Objc : THEOplayerSDK.Track_Objc {
   @objc var enabled: Swift.Bool { get set }
@@ -2760,6 +2786,10 @@ public struct NetworkEventTypes {
   @objc dynamic public var videoRect: CoreFoundation.CGRect {
     get
   }
+  @objc public var resizeTransitionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @objc public var abr: any THEOplayerSDK.ABRConfiguration {
     @objc get
     @objc set
@@ -3183,6 +3213,8 @@ extension THEOplayerSDK.AspectRatio : Swift.RawRepresentable {}
 extension THEOplayerSDK.AdIntegration : Swift.Equatable {}
 extension THEOplayerSDK.AdIntegration : Swift.Hashable {}
 extension THEOplayerSDK.AdIntegration : Swift.RawRepresentable {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.TextTrackMode : Swift.Equatable {}
 extension THEOplayerSDK.TextTrackMode : Swift.Hashable {}
 extension THEOplayerSDK.TextTrackMode : Swift.RawRepresentable {}

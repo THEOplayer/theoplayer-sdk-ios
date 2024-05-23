@@ -55,6 +55,7 @@ extension THEOplayerSDK.THEOplayer {
   @_spi(Core) var videoHeight: Swift.Int { get }
   @_spi(Core) var videoWidth: Swift.Int { get }
   @_spi(Core) var videoRect: CoreFoundation.CGRect { get }
+  @_spi(Core) var resizeTransitionEnabled: Swift.Bool { get set }
   @_spi(Core) var abr: any THEOplayerSDK.ABRConfiguration { get set }
   @_spi(Core) var aspectRatioConfig: THEOplayerSDK.AspectRatio { get set }
   @_spi(Core) var textTracks: any THEOplayerSDK.TextTrackList & THEOplayerSDK.TextTrackList_Objc { get }
@@ -107,6 +108,7 @@ extension THEOplayerSDK.THEOplayer {
   @_spi(Core) var playerView: UIKit.UIView { get }
   @_spi(Core) var inlineView: UIKit.UIView { get }
   @_spi(Core) var aspectRatio: Swift.Float { get }
+  @_spi(Core) var resizeTransitionEnabled: Swift.Bool { get }
 }
 @_hasMissingDesignatedInitializers @available(*, deprecated, message: "All DRM pre-integrations are deprecated and will be removed in later versions. Please use the custom integration approach instead. For more info, check the guide and sample app at: https://github.com/THEOplayer/samples-ios-sdk/tree/master/DRM-Playback")
 @objc(THEOplayerVudrmDRMConfiguration) public class VudrmDRMConfiguration : THEOplayerSDK.MultiplatformDRMConfiguration {
@@ -626,6 +628,15 @@ public struct TextTrackCueEventTypes {
   @objc public init(language: Swift.String)
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct TrackEventTypes {
+  public static var UPDATE: THEOplayerSDK.EventType<THEOplayerSDK.TrackUpdateEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerTrackEventTypes) public class TrackEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let update: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
 }
 @objc(THEOplayerTextTrackDescription) open class TextTrackDescription : ObjectiveC.NSObject, Swift.Codable {
   public var isDefault: Swift.Bool?
@@ -1613,6 +1624,22 @@ public struct NetworkEventTypes {
   @_spi(Core) public func stop()
   @_spi(Core) @objc deinit
 }
+@objc(THEOplayerTrackUpdateEvent) public class TrackUpdateEvent : ObjectiveC.NSObject {
+  @objc public var type: Swift.String {
+    get
+  }
+  @objc public var date: Foundation.Date {
+    get
+  }
+  public var track: any THEOplayerSDK.Track {
+    get
+  }
+  @objc(track) public var track_Objc: any THEOplayerSDK.Track_Objc {
+    @objc get
+  }
+  public init(date: Foundation.Date, track: any THEOplayerSDK.Track)
+  @objc deinit
+}
 public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   var url: Swift.String? { get }
   var status: Swift.Int? { get }
@@ -2251,6 +2278,10 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc dynamic public var videoRect: CoreFoundation.CGRect {
     get
   }
+  @objc public var resizeTransitionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @objc public var abr: any THEOplayerSDK.ABRConfiguration {
     @objc get
     @objc set
@@ -2419,6 +2450,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
 }
 public protocol MediaTrack : THEOplayerSDK.Track {
   var enabled: Swift.Bool { get set }
+  var activeQualityBandwidth: Swift.Int { get }
 }
 @objc(THEOplayerMediaTrack) public protocol MediaTrack_Objc : THEOplayerSDK.Track_Objc {
   @objc var enabled: Swift.Bool { get set }
@@ -2729,6 +2761,8 @@ extension THEOplayerSDK.THEOErrorCode : Swift.RawRepresentable {}
 extension THEOplayerSDK.AdIntegration : Swift.Equatable {}
 extension THEOplayerSDK.AdIntegration : Swift.Hashable {}
 extension THEOplayerSDK.AdIntegration : Swift.RawRepresentable {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.KeySystemId : Swift.Equatable {}
 extension THEOplayerSDK.KeySystemId : Swift.Hashable {}
 extension THEOplayerSDK.KeySystemId : Swift.RawRepresentable {}

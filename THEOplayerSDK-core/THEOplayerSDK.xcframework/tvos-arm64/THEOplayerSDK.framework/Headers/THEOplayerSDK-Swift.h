@@ -3726,6 +3726,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// remark:
 /// This property is key-value observable.
 @property (nonatomic, readonly) CGRect videoRect;
+/// Enables or disables the transition animation when resizing the player. Defaults to <code>true</code>.
+@property (nonatomic) BOOL resizeTransitionEnabled;
 /// Allows you to modify the player’s ABR behavior. See documentation for <code>ABRConfiguration</code> to see how this is done.
 @property (nonatomic, strong) id <THEOplayerABRConfiguration> _Nonnull abr;
 /// Specifies how to handle the aspect ratio of the content.
@@ -3983,6 +3985,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
 @protocol THEOTextTrackStyle;
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -4004,7 +4007,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 /// \endcode
 @property (nonatomic, readonly, strong) id <THEOTextTrackStyle> _Nullable textTrackStyle;
 @end
-
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
@@ -4458,6 +4460,30 @@ SWIFT_CLASS_NAMED("TrackChangeEvent")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+
+/// The events fired by a <code>Track</code>.
+SWIFT_CLASS_NAMED("TrackEventTypes_Objc")
+@interface THEOplayerTrackEventTypes : NSObject
+/// Fired when one or more properties of a track have been updated.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull update;)
++ (NSString * _Nonnull)update SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Fired when one or more properties of a track have been updated.
+SWIFT_CLASS_NAMED("TrackUpdateEvent")
+@interface THEOplayerTrackUpdateEvent : NSObject <THEOplayerTrackEventProtocol>
+/// The textual representation of the type of event, “update”.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+/// The track that has been updated.
+@property (nonatomic, readonly, strong) id <THEOplayerTrack> _Nonnull track;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 

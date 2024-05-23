@@ -557,6 +557,15 @@ public struct TextTrackCueEventTypes {
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
+public struct TrackEventTypes {
+  public static var UPDATE: THEOplayerSDK.EventType<THEOplayerSDK.TrackUpdateEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerTrackEventTypes) public class TrackEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let update: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc(THEOplayerTextTrackDescription) open class TextTrackDescription : ObjectiveC.NSObject, Swift.Codable {
   public var isDefault: Swift.Bool?
   @objc(isDefault) public var isDefault_Objc: Swift.Bool {
@@ -1519,6 +1528,22 @@ public struct NetworkEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc(THEOplayerTrackUpdateEvent) public class TrackUpdateEvent : ObjectiveC.NSObject {
+  @objc public var type: Swift.String {
+    get
+  }
+  @objc public var date: Foundation.Date {
+    get
+  }
+  public var track: any THEOplayerSDK.Track {
+    get
+  }
+  @objc(track) public var track_Objc: any THEOplayerSDK.Track_Objc {
+    @objc get
+  }
+  public init(date: Foundation.Date, track: any THEOplayerSDK.Track)
+  @objc deinit
+}
 public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   var url: Swift.String? { get }
   var status: Swift.Int? { get }
@@ -2148,6 +2173,10 @@ public protocol TextTrack : THEOplayerSDK.Track {
   @objc dynamic public var videoRect: CoreFoundation.CGRect {
     get
   }
+  @objc public var resizeTransitionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
   @objc public var abr: any THEOplayerSDK.ABRConfiguration {
     @objc get
     @objc set
@@ -2316,6 +2345,7 @@ public protocol TextTrack : THEOplayerSDK.Track {
 }
 public protocol MediaTrack : THEOplayerSDK.Track {
   var enabled: Swift.Bool { get set }
+  var activeQualityBandwidth: Swift.Int { get }
 }
 @objc(THEOplayerMediaTrack) public protocol MediaTrack_Objc : THEOplayerSDK.Track_Objc {
   @objc var enabled: Swift.Bool { get set }
@@ -2617,6 +2647,8 @@ extension THEOplayerSDK.THEOErrorCode : Swift.RawRepresentable {}
 extension THEOplayerSDK.AdIntegration : Swift.Equatable {}
 extension THEOplayerSDK.AdIntegration : Swift.Hashable {}
 extension THEOplayerSDK.AdIntegration : Swift.RawRepresentable {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol {}
+extension THEOplayerSDK.TrackUpdateEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.KeySystemId : Swift.Equatable {}
 extension THEOplayerSDK.KeySystemId : Swift.Hashable {}
 extension THEOplayerSDK.KeySystemId : Swift.RawRepresentable {}

@@ -3640,63 +3640,63 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "BooleanLiteral",
-      "offset": 1265,
+      "offset": 1310,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 1469,
+      "offset": 1514,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 1528,
+      "offset": 1573,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 1551,
+      "offset": 1596,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 2372,
+      "offset": 2417,
       "length": 75,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 2394,
+      "offset": 2439,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 2563,
+      "offset": 2608,
       "length": 75,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 2585,
+      "offset": 2630,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/THEOplayerInternals\/Models\/Player\/TrackLists\/MediaTrackModuleImpl.swift",
       "kind": "StringLiteral",
-      "offset": 2719,
+      "offset": 2764,
       "length": 43,
       "value": "\"[Chromecast][MediaTrackModuleImpl] deinit\""
     },

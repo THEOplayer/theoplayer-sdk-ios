@@ -94344,14 +94344,14 @@
       "kind": "StringLiteral",
       "offset": 32,
       "length": 7,
-      "value": "\"7.4.1\""
+      "value": "\"7.5.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
       "kind": "StringLiteral",
       "offset": 77,
       "length": 10,
-      "value": "\"2024.2.4\""
+      "value": "\"2024.2.5\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/ContentProtectionIntegrationInitProvider.swift",

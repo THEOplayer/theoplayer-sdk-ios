@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		2JIg+5dWac6RRYeemPdfGG1UnVg=
+		vKzIUoreUUQT2m2eOLoCwYXSojI=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		DUFzPCgcLh1ifzm3nIbXdX+keZs=
+		XyKnPMaSs57ptm/SR87Tsbi2vQE=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		DUFzPCgcLh1ifzm3nIbXdX+keZs=
+		XyKnPMaSs57ptm/SR87Tsbi2vQE=
 		</data>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -85,7 +85,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qc8qBwzh4bsYFJc0dwNHmkF5icN6wKGErO7B1GF2ElI=
+			5MUQAN98uOx0a7Ir8ziqK1IarlpwGvUJLSeZM3BQpX4=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
@@ -120,7 +120,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qc8qBwzh4bsYFJc0dwNHmkF5icN6wKGErO7B1GF2ElI=
+			5MUQAN98uOx0a7Ir8ziqK1IarlpwGvUJLSeZM3BQpX4=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerSDK.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>

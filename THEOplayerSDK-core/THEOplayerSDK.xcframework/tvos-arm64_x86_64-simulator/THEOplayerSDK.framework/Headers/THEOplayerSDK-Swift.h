@@ -426,6 +426,18 @@ SWIFT_PROTOCOL_NAMED("EventProtocol")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull date;
 @end
 
+
+/// Fired when the media track’s active quality bandwidth changes.
+SWIFT_CLASS_NAMED("ActiveQualityChangedEvent")
+@interface THEOplayerActiveQualityChangedEvent : NSObject <THEOplayerEventProtocol>
+/// A textual representation of the type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @protocol THEOplayerAd;
 
 SWIFT_PROTOCOL_NAMED("AdEventProtocol_Objc")
@@ -2911,6 +2923,16 @@ SWIFT_PROTOCOL_NAMED("MediaFile")
 @end
 
 
+/// The events fired by a <code>MediaTrack</code>.
+SWIFT_CLASS_NAMED("MediaTrackEventTypes_Objc")
+@interface THEOplayerMediaTrackEventTypes : NSObject
+/// Fired when the <code>activeQualityBandwidth</code> property of a <code>MediaTrack</code> has been updated.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull activequalitychanged;)
++ (NSString * _Nonnull)activequalitychanged SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 
 /// The MetadataDescription object is used to describe content.
@@ -4010,12 +4032,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -4026,6 +4042,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 
@@ -5191,6 +5213,18 @@ SWIFT_PROTOCOL_NAMED("EventProtocol")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull date;
 @end
 
+
+/// Fired when the media track’s active quality bandwidth changes.
+SWIFT_CLASS_NAMED("ActiveQualityChangedEvent")
+@interface THEOplayerActiveQualityChangedEvent : NSObject <THEOplayerEventProtocol>
+/// A textual representation of the type of the event.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The date at which the event occurred.
+@property (nonatomic, readonly, copy) NSDate * _Nonnull date;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @protocol THEOplayerAd;
 
 SWIFT_PROTOCOL_NAMED("AdEventProtocol_Objc")
@@ -7676,6 +7710,16 @@ SWIFT_PROTOCOL_NAMED("MediaFile")
 @end
 
 
+/// The events fired by a <code>MediaTrack</code>.
+SWIFT_CLASS_NAMED("MediaTrackEventTypes_Objc")
+@interface THEOplayerMediaTrackEventTypes : NSObject
+/// Fired when the <code>activeQualityBandwidth</code> property of a <code>MediaTrack</code> has been updated.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull activequalitychanged;)
++ (NSString * _Nonnull)activequalitychanged SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 
 
 /// The MetadataDescription object is used to describe content.
@@ -8775,12 +8819,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -8791,6 +8829,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 

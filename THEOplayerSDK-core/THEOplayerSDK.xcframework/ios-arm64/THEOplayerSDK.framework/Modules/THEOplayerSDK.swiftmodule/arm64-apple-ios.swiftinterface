@@ -353,6 +353,15 @@ public protocol TextTrackStyleRule {
     get
   }
 }
+public struct MediaTrackEventTypes {
+  public static let ACTIVE_QUALITY_CHANGED: THEOplayerSDK.EventType<THEOplayerSDK.ActiveQualityChangedEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerMediaTrackEventTypes) public class MediaTrackEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let activequalitychanged: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc(THEOplayerKeySystemConfiguration) public class KeySystemConfiguration : ObjectiveC.NSObject, Swift.Codable {
   @objc public var licenseAcquisitionURL: Foundation.URL?
   @objc public var certificateURL: Foundation.URL?
@@ -598,6 +607,11 @@ public struct VideoTrackListEventTypes {
 }
 extension Swift.Encodable {
   public func toJSONEncodableDictionary() -> [Swift.String : Any]
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerActiveQualityChangedEvent) public class ActiveQualityChangedEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
+  @objc final public let type: Swift.String
+  @objc final public let date: Foundation.Date
+  @objc deinit
 }
 public protocol CachingTaskLicense {
   func renew()

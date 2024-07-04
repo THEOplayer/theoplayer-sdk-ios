@@ -594,6 +594,11 @@ public protocol CueEventProtocol : THEOplayerSDK.EventProtocol {
   }
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerActiveQualityChangedEvent) public class ActiveQualityChangedEvent : ObjectiveC.NSObject, THEOplayerSDK.EventProtocol {
+  @objc final public let type: Swift.String
+  @objc final public let date: Foundation.Date
+  @objc deinit
+}
 public struct TextTrackCueEventTypes {
   public static var ENTER: THEOplayerSDK.EventType<THEOplayerSDK.CueEnterEvent>
   public static var EXIT: THEOplayerSDK.EventType<THEOplayerSDK.CueExitEvent>
@@ -2701,6 +2706,15 @@ public protocol ContentProtectionIntegrationFactory : AnyObject {
   @objc func build(configuration: any THEOplayerSDK.DRMConfiguration_Objc) -> any THEOplayerSDK.ContentProtectionIntegration
 }
 public func serializeObjectToJSON<T>(object: T, dateEncodingStrategy: Foundation.JSONEncoder.DateEncodingStrategy? = nil) -> Swift.String where T : Swift.Encodable
+public struct MediaTrackEventTypes {
+  public static let ACTIVE_QUALITY_CHANGED: THEOplayerSDK.EventType<THEOplayerSDK.ActiveQualityChangedEvent>
+}
+@_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
+@objc(THEOplayerMediaTrackEventTypes) public class MediaTrackEventTypes_Objc : ObjectiveC.NSObject {
+  @objc public static let activequalitychanged: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
 @available(*, deprecated, message: "This enumeration will be removed with the next major release.")
 extension THEOplayerSDK.AdPreloadType : Swift.Equatable {}
 @available(*, deprecated, message: "This enumeration will be removed with the next major release.")

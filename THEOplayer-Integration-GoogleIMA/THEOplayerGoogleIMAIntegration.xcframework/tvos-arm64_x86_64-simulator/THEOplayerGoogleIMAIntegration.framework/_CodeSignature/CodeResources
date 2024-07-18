@@ -10,11 +10,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		x7GvBrQJT3lJcZ22QBB2t1Hi/EA=
+		5H/KXTiL0gm3YRKJhHcgcFF80gc=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
-		iJmYv2h6i1rw9Ua5A0AhTEb7DYc=
+		egMmy+101xijJBbg2Zxu3LH/QfM=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		jT2DIpBtZGjqlavTTPYPHXv7adA=
+		uBx0qjIK5wkojFkXxhJ5xWzNjCs=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
-		iJmYv2h6i1rw9Ua5A0AhTEb7DYc=
+		egMmy+101xijJBbg2Zxu3LH/QfM=
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		JunF2zhbrS51J8PceNtWUuoyQTY=
+		S7nL1H+CnAcYW9F6/5iLKzXFYmM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ej1+11N8COAQEwLOcHuUIqxq5aw6mIgFAlfrl/9W4zs=
+			g6cVa8BkNNd7f4K9H/sOPMrZO12CsRYY4dtoB/LxQ3A=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
@@ -98,14 +98,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qZkFupDKvPU+nQo4pB9JKRCDXuVFjEllN1d81t6JNWk=
+			CPEvK76hsCQ94duyMnJ8VSWoXrnYFEONR36LRDkQ2eE=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ej1+11N8COAQEwLOcHuUIqxq5aw6mIgFAlfrl/9W4zs=
+			g6cVa8BkNNd7f4K9H/sOPMrZO12CsRYY4dtoB/LxQ3A=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleIMAIntegration.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
@@ -133,7 +133,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9Ot8tPKqQVtWeslNUCXw/XWWQoUIyl8He+i3GS3K2tg=
+			YlwZZQwgz4SuINfAf15+o0GgVWmSCG0S+NM4YTsloLM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

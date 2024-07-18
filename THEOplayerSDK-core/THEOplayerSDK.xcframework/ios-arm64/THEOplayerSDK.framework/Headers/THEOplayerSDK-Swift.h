@@ -497,6 +497,17 @@ SWIFT_CLASS_NAMED("AdBreakBeginEvent")
 @end
 
 
+/// Thrown to indicate that an adbreak has changed.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AdBreakChangeEvent")
+@interface THEOplayerAdBreakChangeEvent : THEOplayerAdBreakEvent
+@end
+
+
 /// Thrown to indicate that an ad has begun.
 /// <ul>
 ///   <li>
@@ -508,6 +519,17 @@ SWIFT_CLASS_NAMED("AdBreakEndEvent")
 @end
 
 
+
+
+/// An initializer for a custom <code>AdBreak</code>.
+/// remark:
+/// Experimental
+SWIFT_CLASS_NAMED("AdBreakInit")
+@interface THEOplayerAdBreakInit : NSObject
+- (nonnull instancetype)initWith:(NSInteger)timeOffset maxDuration:(NSNumber * _Nullable)maxDuration;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 
 /// An AdBreak is an object that represents a collection of ads that are scheduled at a certain time.
@@ -614,6 +636,18 @@ SWIFT_CLASS_NAMED("AdImpressionEvent")
 @interface THEOplayerAdImpressionEvent : THEOplayerAdEventProtocol
 @end
 
+@protocol THEOplayerCompanionAd;
+
+/// An initializer for a custom <code>Ad</code>.
+/// remark:
+/// Experimental
+SWIFT_CLASS_NAMED("AdInit")
+@interface THEOplayerAdInit : NSObject
+- (nonnull instancetype)initWithType:(NSString * _Nonnull)type timeOffset:(NSNumber * _Nullable)timeOffset companions:(NSArray<id <THEOplayerCompanionAd>> * _Nonnull)companions id:(NSString * _Nullable)id skipOffset:(NSNumber * _Nullable)skipOffset resourceURI:(NSString * _Nullable)resourceURI width:(NSNumber * _Nullable)width height:(NSNumber * _Nullable)height duration:(NSNumber * _Nullable)duration clickThrough:(NSString * _Nullable)clickThrough;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 /// The integration of the ad break.
 typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegration, "AdIntegration", open) {
   THEOplayerAdIntegrationNONE SWIFT_COMPILE_NAME("none") = 0,
@@ -633,6 +667,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerAdIntegrationKind, "AdIntegrationK
   THEOplayerAdIntegrationKindGOOGLE_IMA SWIFT_COMPILE_NAME("google_ima") = 4,
 /// The ad is of integration type Google DAI.
   THEOplayerAdIntegrationKindGOOGLE_DAI SWIFT_COMPILE_NAME("google_dai") = 6,
+/// The ad is of custom integration type.
+  THEOplayerAdIntegrationKindCUSTOM SWIFT_COMPILE_NAME("custom") = 7,
 };
 
 
@@ -713,7 +749,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@protocol THEOplayerCompanionAd;
 
 /// An Ad is an abstract object that represents a single ad, which is a creative in the VAST specification.
 /// remark:
@@ -771,6 +806,49 @@ SWIFT_PROTOCOL_NAMED("Ad_Objc")
 /// remark:
 /// For possible values, see <code>AdIntegrationKind</code>
 @property (nonatomic, readonly) enum THEOplayerAdIntegrationKind integration;
+/// The duration of the ad, in seconds.
+/// remark:
+/// Only available for <code>LinearAd</code>.
+@property (nonatomic, readonly, strong) NSNumber * _Nullable duration;
+/// The url that redirects to the website of the advertiser.
+@property (nonatomic, readonly, copy) NSString * _Nullable clickThrough;
+/// The type of custom ad integration.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Only available if <code>integration</code> equals <code>AdIntegrationKind.custom</code>.
+///   </li>
+///   <li>
+///     Custom ad integrations are registered using <code>Ads.registerServerSideIntegration</code>.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// The custom ad integration type.
+@property (nonatomic, readonly, copy) NSString * _Nullable customIntegration;
+@end
+
+
+/// Thrown to indicate that an adbreak has been added.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AddAdBreakEvent")
+@interface THEOplayerAddAdBreakEvent : THEOplayerAdBreakEvent
+@end
+
+
+/// Thrown to indicate that an ad was added.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("AddAdEvent")
+@interface THEOplayerAddAdEvent : THEOplayerAdEventProtocol
 @end
 
 @protocol THEOplayerTextTrackCue;
@@ -899,6 +977,24 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 /// Fired when <code>AdTappedEvent</code> occurs.
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adtapped;)
 + (NSString * _Nonnull)adtapped SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AddAdBreakEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addadbreak;)
++ (NSString * _Nonnull)addadbreak SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>UpdateAdBreakEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull updateadbreak;)
++ (NSString * _Nonnull)updateadbreak SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>RemoveAdBreakEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull removeadbreak;)
++ (NSString * _Nonnull)removeadbreak SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AdBreakChangeEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull adbreakchange;)
++ (NSString * _Nonnull)adbreakchange SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>AddAdEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull addad;)
++ (NSString * _Nonnull)addad SWIFT_WARN_UNUSED_RESULT;
+/// Fired when <code>UpdateAdEvent</code> occurs.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull updatead;)
++ (NSString * _Nonnull)updatead SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -906,6 +1002,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @protocol THEOplayerEventListener;
 @protocol THEOplayerOmid;
 @protocol THEOplayerGoogleDAI;
+@protocol THEOplayerServerSideAdIntegrationController;
+@protocol THEOplayerServerSideAdIntegrationHandler;
 
 /// The Ads object helps you configure and control ads within THEOplayer.
 SWIFT_PROTOCOL_NAMED("Ads_Objc")
@@ -979,6 +1077,14 @@ SWIFT_PROTOCOL_NAMED("Ads_Objc")
 @property (nonatomic, readonly, strong) id <THEOplayerOmid> _Nonnull omid;
 /// The Google DAI API which can be used to query information about dynamically inserted advertisements.
 @property (nonatomic, readonly, strong) id <THEOplayerGoogleDAI> _Nullable dai_Objc;
+/// Register a custom advertisement integration. This allows you to integrate with third-party advertisement providers, and have them report their ads and ad-related events through the THEOplayer <code>Ads</code> API.
+/// remark:
+/// This API is <em>experimental</em> and is subject to change in any minor version of THEOplayer. Please consult with THEO Technologies before using this API.
+/// \param integrationId An identifier of the integration.
+///
+/// \param integrationFactory Factory that will construct an <code>ServerSideAdIntegrationHandler</code> for this integration.
+///
+- (void)registerServerSideIntegrationWithIntegrationId:(NSString * _Nonnull)integrationId integrationFactory:(SWIFT_NOESCAPE id <THEOplayerServerSideAdIntegrationHandler> _Nonnull (^ _Nonnull)(id <THEOplayerServerSideAdIntegrationController> _Nonnull))integrationFactory;
 @end
 
 
@@ -2533,6 +2639,29 @@ SWIFT_CLASS_NAMED("CustomAttributes")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum THEOplayerSSAIIntegrationId : NSInteger;
+
+/// The ServerSideAdInsertionConfiguration protocol which specifies information to play a stream with server-side-inserted ads.
+/// remark:
+///
+/// To integrate with specific SSAI vendors, check the Server-Side Ad Insertion pre-integration API.
+SWIFT_PROTOCOL_NAMED("ServerSideAdInsertionConfiguration")
+@protocol THEOplayerServerSideAdInsertionConfiguration
+/// Specifies an identifier for a supported SSAI integration.
+/// remark:
+///
+/// Check the Server-Side Ad Insertion pre-integration API for more information.
+@property (nonatomic, readonly) enum THEOplayerSSAIIntegrationId integration;
+@end
+
+
+/// The configuration for a custom server-side ad insertion (SSAI) integration.
+SWIFT_PROTOCOL_NAMED("CustomServerSideAdInsertionConfiguration")
+@protocol THEOplayerCustomServerSideAdInsertionConfiguration <THEOplayerServerSideAdInsertionConfiguration>
+/// The ID of the custom SSAI integration.
+@property (nonatomic, readonly, copy) NSString * _Nonnull customIntegration;
+@end
+
 
 /// The DRMConfiguration object provides a set of DRM parameters for DRM streaming.
 SWIFT_PROTOCOL_NAMED("DRMConfiguration_Objc")
@@ -3106,21 +3235,6 @@ SWIFT_CLASS_NAMED("GoogleDAIAdsConfigurationBuilder") SWIFT_DEPRECATED_MSG("This
 /// Builds and returns an object of type <code>GoogleDAIAdsConfiguration</code>.
 - (THEOplayerGoogleDAIAdsConfiguration * _Nonnull)build SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("This method will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-enum THEOplayerSSAIIntegrationId : NSInteger;
-
-/// The ServerSideAdInsertionConfiguration protocol which specifies information to play a stream with server-side-inserted ads.
-/// remark:
-///
-/// To integrate with specific SSAI vendors, check the Server-Side Ad Insertion pre-integration API.
-SWIFT_PROTOCOL_NAMED("ServerSideAdInsertionConfiguration")
-@protocol THEOplayerServerSideAdInsertionConfiguration
-/// Specifies an identifier for a supported SSAI integration.
-/// remark:
-///
-/// Check the Server-Side Ad Insertion pre-integration API for more information.
-@property (nonatomic, readonly) enum THEOplayerSSAIIntegrationId integration;
 @end
 
 enum THEOplayerStreamType : NSInteger;
@@ -4353,6 +4467,17 @@ SWIFT_CLASS_NAMED("ReadyStateChangeEvent")
 
 
 
+/// Thrown to indicate that an adbreak has been removed.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("RemoveAdBreakEvent")
+@interface THEOplayerRemoveAdBreakEvent : THEOplayerAdBreakEvent
+@end
+
+
 /// Fired when <code>TextTrackEventTypes.REMOVE_CUE</code> occurs for the list of <code>TextTrackCue</code>s.
 /// remark:
 ///
@@ -4406,11 +4531,13 @@ SWIFT_CLASS_NAMED("ResizeEvent")
 typedef SWIFT_ENUM_NAMED(NSInteger, THEOplayerSSAIIntegrationId, "SSAIIntegrationId", open) {
 /// The configuration with this identifier is a GoogleDaiConfiguration.
   THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID SWIFT_COMPILE_NAME("GoogleDAISSAIIntegrationID") = 1,
+/// The configuration with this identifier is a custom ServerSideAdInsertionConfiguration.
+  THEOplayerSSAIIntegrationIdCUSTOM_SSAI_INTEGRATION_ID SWIFT_COMPILE_NAME("CustomSSAIIntegrationID") = 2,
 };
 
 
 /// An ad that is scheduled to appear at a certain point.
-SWIFT_PROTOCOL_NAMED("ScheduledAd_Objc")
+SWIFT_PROTOCOL_NAMED("ScheduledAd_Objc") SWIFT_DEPRECATED_MSG("With the next major version, `THEOplayerScheduledAd` will de obsoleted")
 @protocol THEOplayerScheduledAd
 /// A reference to the <code>AdBreak</code> of which the ad is a part of.
 @property (nonatomic, readonly, strong) id <THEOplayerAdBreak> _Nonnull adBreak;
@@ -4444,6 +4571,141 @@ SWIFT_CLASS_NAMED("SeekingEvent")
 @interface THEOplayerSeekingEvent : THEOplayerCurrentTimeEvent
 @end
 
+
+
+SWIFT_PROTOCOL_NAMED("ServerSideAdIntegrationController_Objc")
+@protocol THEOplayerServerSideAdIntegrationController
+/// The identifier for this integration, as it was passed to <code>Ads.registerServerSideIntegration</code>.
+@property (nonatomic, readonly, copy) NSString * _Nonnull integration;
+/// The scheduled ads managed by this integration.
+/// remark:
+/// Use <code>ServerSideAdIntegrationController.createAd</code> and <code>ServerSideAdIntegrationController.removeAd</code> to add or remove ads.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAd>> * _Nonnull ads;
+/// The scheduled ad breaks managed by this integration.
+/// remark:
+/// Use <code>ServerSideAdIntegrationController.createAdBreak</code> and <code>ServerSideAdIntegrationController.removeAdBreak</code> to add or remove ad breaks.
+@property (nonatomic, readonly, copy) NSArray<id <THEOplayerAdBreak>> * _Nonnull adBreaks;
+/// Create a new ad.
+/// remark:
+/// The ad will be added to <code>Ads.scheduledAds</code>.
+/// \param params The initial properties to be set on the created ad.
+///
+/// \param adBreak If given, appends the ad to the given existing <code>AdBreak</code>. Otherwise, appends the ad to a new or existing <code>AdBreak</code> with the configured <code>AdInit.timeOffset</code>.
+///
+///
+/// returns:
+/// The created <code>Ad</code> object.
+- (id <THEOplayerAd> _Nonnull)createAdWithParams:(THEOplayerAdInit * _Nonnull)params adBreak:(id <THEOplayerAdBreak> _Nullable)adBreak SWIFT_WARN_UNUSED_RESULT;
+/// Update the given ad.
+/// \param ad The ad to be updated.
+///
+/// \param params The properties to be updated on the ad.
+///
+- (void)updateAdWithAd:(id <THEOplayerAd> _Nonnull)ad params:(THEOplayerAdInit * _Nonnull)params;
+/// Update the playback progression of the given ad.
+/// remark:
+/// The player will fire progression events such as <code>AdsEventTypes.AD_FIRST_QUARTILE</code>, <code>AdsEventTypes.AD_MIDPOINT</code> and <code>AdsEventTypes.AD_THIRD_QUARTILE</code>.
+/// \param ad The ad to be updated.
+///
+/// \param progress The playback progress, as a number between 0 (at the start of the ad) and 1 (at the end of the ad).
+///
+- (void)updateAdProgressWithAd:(id <THEOplayerAd> _Nonnull)ad progress:(double)progress;
+- (void)beginAdWithAd:(id <THEOplayerAd> _Nonnull)ad;
+/// End the given ad.
+/// remark:
+/// The ad will be removed from <code>Ads.currentAds</code>. If the ad was currently playing, an <code>AdsEventTypes.AD_END</code> event will be fired.
+/// \param ad The <code>Ad</code> that will end.
+///
+- (void)endAdWithAd:(id <THEOplayerAd> _Nonnull)ad;
+/// Skip the given ad.
+/// remark:
+/// The ad will be removed from <code>Ads.currentAds</code>. If the ad was currently playing, an <code>AdsEventTypes.AD_SKIP</code> event will be fired.
+/// \param ad The <code>Ad</code> that will be skipped.
+///
+- (void)skipAdWithAd:(id <THEOplayerAd> _Nonnull)ad;
+/// Remove the given ad.
+/// remark:
+/// The ad will be removed from <code>Ads.currentAds</code> and <code>Ads.scheduledAds</code>. If the ad was currently playing, it will first be ended.
+/// \param ad The <code>Ad</code> that will be removed.
+///
+- (void)removeAdWithAd:(id <THEOplayerAd> _Nonnull)ad;
+/// Create a new ad break.
+/// This can be used to indicate where ad breaks can be expected in advance, before populating those ad breaks with ads.
+/// remark:
+/// The ad break will be added to <code>ServerSideAdIntegrationController.adBreaks</code> and <code>Ads.scheduledAdBreaks</code>.
+/// \param params The initial properties to be set on the created ad break.
+///
+///
+/// returns:
+/// The created <code>AdBreak</code> object.
+- (id <THEOplayerAdBreak> _Nonnull)createAdBreakWithParams:(THEOplayerAdBreakInit * _Nonnull)params SWIFT_WARN_UNUSED_RESULT;
+/// Update the given ad break.
+/// \param adBreak The ad break to be updated.
+///
+/// \param params The properties to be updated on the ad break.
+///
+- (void)updateAdBreakWithAdBreak:(id <THEOplayerAdBreak> _Nonnull)adBreak params:(THEOplayerAdBreakInit * _Nonnull)params;
+/// Remove the given ad break and all of its ads.
+/// remark:
+/// The ad break will be removed from <code>ServerSideAdIntegrationController.adBreaks</code> and <code>Ads.scheduledAdBreaks</code>. Any remaining ads in the ad break will be removed.
+/// \param adBreak The ad break to be removed.
+///
+- (void)removeAdBreakWithAdBreak:(id <THEOplayerAdBreak> _Nonnull)adBreak;
+/// Remove all ads and ad breaks.
+/// remark:
+/// This is a shorthand for calling <code>ServerSideAdIntegrationController.removeAdBreak</code> on all ad breaks in <code>ServerSideAdIntegrationController.adBreaks</code>.
+- (void)removeAllAds;
+/// Fire an <code>AdsEventTypes.AD_ERROR</code> event on the player’s <code>Ads</code> interface.
+/// This does not stop playback.
+/// \param error The error.
+///
+- (void)errorWithError:(NSError * _Nonnull)error;
+/// Fire a fatal <code>PlayerEventMap.ERROR</code> event on the player.
+/// This stops playback immediately. Use <code>THEOplayer.source</code> to load a new source.
+/// \param error The error.
+///
+/// \param code The error code. By default, this is set to <code>THEOErrorCode.AD_ERROR</code>.
+///
+- (void)fatalErrorWithError:(NSError * _Nonnull)error code:(enum THEOplayerTHEOErrorCode)code;
+@end
+
+
+/// A handler for a server-side ad integration. You can implement one or more of these methods to hook into various parts of the player’s lifecycle and perform your integration-specific ad handling.
+/// Use the <code>ServerSideAdIntegrationController</code> provided by <code>Ads.registerServerSideIntegration</code> to update the state of your integration.
+/// remark:
+/// Experimental
+SWIFT_PROTOCOL_NAMED("ServerSideAdIntegrationHandler_Objc")
+@protocol THEOplayerServerSideAdIntegrationHandler
+/// Handler which will be called when a new source is loaded into the player.
+/// This allows the integration to transform the source description, e.g. by calling an external service to replace <code>TypedSource.src</code> (the content URL), or by adding a fixed pre-roll linear ad to <code>SourceDescription.ads</code> (the list of ads).
+/// \param source The original source description.
+///
+///
+/// returns:
+/// Returns whether the handler will be responsible for transforming the source. Should return <code>false</code> in order to invoke default player behavior.
+- (BOOL)setSourceWithSource:(THEOplayerSourceDescription * _Nonnull)source SWIFT_WARN_UNUSED_RESULT;
+/// Handler which will be called when an ad is requested to be skipped.
+/// To skip the ad, the handler should call <code>ServerSideAdIntegrationController.skipAd</code>.
+/// remark:
+/// This is only called for ads whose <code>Ad.integration</code> matches <code>ServerSideAdIntegrationController.integration</code>.
+/// \param ad The <code>Ad</code> to be skipped.
+///
+///
+/// returns:
+/// Returns whether the handler will be responsible for skipping the ad. Should return <code>false</code> in order to invoke default player behavior.
+- (BOOL)skipAdWithAd:(id <THEOplayerAd> _Nonnull)ad SWIFT_WARN_UNUSED_RESULT;
+/// Handler which will be called before a new source is loaded into the player, or before the player is destroyed.
+/// This allows the integration to clean up any source-specific resources, such as scheduled ads or pending HTTP requests.
+/// remark:
+/// If this handler is missing, the player will remove all remaining ads by calling<code>ServerSideAdIntegrationController.removeAllAds</code>.
+///
+/// returns:
+/// Returns whether the handler will be responsible for resetting the source. Should return <code>false</code> in order to invoke default player behavior.
+- (BOOL)resetSource SWIFT_WARN_UNUSED_RESULT;
+/// Handler which will be called when the player is destroyed.
+/// This allows the integration to clean up any resources, such as event listeners.
+- (void)destroy;
+@end
 
 
 /// Fired when <code>PlayerEventTypes.SOURCE_CHANGE</code> occurs for the <code>THEOplayer</code>.
@@ -5006,6 +5268,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -5016,12 +5284,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 @class UIGestureRecognizer;
@@ -5554,6 +5816,28 @@ SWIFT_PROTOCOL_NAMED("UniversalAdId")
 @property (nonatomic, readonly, copy) NSString * _Nonnull adIdValue;
 /// The registry associated with cataloging the UniversalAdId of the selected creative for the ad.
 @property (nonatomic, readonly, copy) NSString * _Nonnull adIdRegistry;
+@end
+
+
+/// Thrown to indicate that an adbreak has been updated.
+/// <ul>
+///   <li>
+///     ad : the AdBreak
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("UpdateAdBreakEvent")
+@interface THEOplayerUpdateAdBreakEvent : THEOplayerAdBreakEvent
+@end
+
+
+/// Thrown to indicate that an ad was updated.
+/// <ul>
+///   <li>
+///     ad : the Ad (either LinearAd or NonLinearAd)
+///   </li>
+/// </ul>
+SWIFT_CLASS_NAMED("UpdateAdEvent")
+@interface THEOplayerUpdateAdEvent : THEOplayerAdEventProtocol
 @end
 
 

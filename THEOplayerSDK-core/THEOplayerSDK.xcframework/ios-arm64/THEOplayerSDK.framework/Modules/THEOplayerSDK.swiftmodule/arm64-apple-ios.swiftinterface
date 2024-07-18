@@ -749,6 +749,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   var currentAds: [any THEOplayerSDK.Ad] { get }
   var currentAdBreak: (any THEOplayerSDK.AdBreak)? { get }
   var scheduledAdBreaks: [any THEOplayerSDK.AdBreak] { get }
+  @available(*, deprecated, message: "With the next major version, the array element type will change to `Ad`.")
   var scheduledAds: [any THEOplayerSDK.ScheduledAd] { get }
   func schedule(adDescription: any THEOplayerSDK.AdDescription)
   func skip()
@@ -756,6 +757,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   func removeEventListener<E>(type: THEOplayerSDK.EventType<E>, listener: any THEOplayerSDK.EventListener) where E : THEOplayerSDK.EventProtocol
   var omid: any THEOplayerSDK.Omid { get }
   var dai: (any THEOplayerSDK.GoogleDAI)? { get }
+  func registerServerSideIntegration(integrationId: Swift.String, integrationFactory: (_ controller: any THEOplayerSDK.ServerSideAdIntegrationController) -> any THEOplayerSDK.ServerSideAdIntegrationHandler)
 }
 @objc(THEOplayerAds) public protocol Ads_Objc {
   @objc var playing: Swift.Bool { get }
@@ -770,6 +772,7 @@ public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   @objc func removeEventListener(type: Swift.String, listener: any THEOplayerSDK.EventListener)
   @objc var omid: any THEOplayerSDK.Omid { get }
   @objc var dai_Objc: (any THEOplayerSDK.GoogleDAI_Objc)? { get }
+  @objc func registerServerSideIntegration(integrationId: Swift.String, integrationFactory: (_ controller: any THEOplayerSDK.ServerSideAdIntegrationController_Objc) -> any THEOplayerSDK.ServerSideAdIntegrationHandler_Objc)
 }
 public protocol AdEventProtocol : THEOplayerSDK.EventProtocol {
   var ad: (any THEOplayerSDK.Ad)? { get }
@@ -871,6 +874,14 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdTappedEvent) public class AdTappedEvent : THEOplayerSDK.AdEvent {
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc(THEOplayerAddAdEvent) public class AddAdEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.Ad)?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerUpdateAdEvent) public class UpdateAdEvent : THEOplayerSDK.AdEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.Ad)?)
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakEvent) public class AdBreakEvent : ObjectiveC.NSObject, THEOplayerSDK.AdBreakEventProtocol, THEOplayerSDK.AdBreakEventProtocol_Objc {
   @objc public var type: Swift.String {
     get
@@ -891,6 +902,22 @@ public protocol AdBreakEventProtocol : THEOplayerSDK.EventProtocol {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakEndEvent) public class AdBreakEndEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.AdBreak)?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerAddAdBreakEvent) public class AddAdBreakEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.AdBreak)?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerUpdateAdBreakEvent) public class UpdateAdBreakEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.AdBreak)?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerRemoveAdBreakEvent) public class RemoveAdBreakEvent : THEOplayerSDK.AdBreakEvent {
+  public init(date: Foundation.Date, ad: (any THEOplayerSDK.AdBreak)?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(THEOplayerAdBreakChangeEvent) public class AdBreakChangeEvent : THEOplayerSDK.AdBreakEvent {
   public init(date: Foundation.Date, ad: (any THEOplayerSDK.AdBreak)?)
   @objc deinit
 }
@@ -1409,10 +1436,80 @@ public protocol TextTrackCueEventProtocol : THEOplayerSDK.EventProtocol {
   @objc var status: Swift.Int { get }
   @objc var errorComment: Swift.String? { get }
 }
-@_hasMissingDesignatedInitializers public class EventType<T> where T : THEOplayerSDK.EventProtocol {
-  public var name: Swift.String {
-    get
-  }
+@objc(THEOplayerAdInit) public class AdInit : ObjectiveC.NSObject {
+  public init(type: Swift.String, timeOffset: Swift.Double? = nil, companions: [any THEOplayerSDK.CompanionAd] = [], id: Swift.String? = nil, skipOffset: Swift.Int? = nil, resourceURI: Swift.String? = nil, width: Swift.Int? = nil, height: Swift.Int? = nil, duration: Swift.Int? = nil, clickThrough: Swift.String? = nil)
+  @available(swift, obsoleted: 1.0)
+  @objc convenience public init(type: Swift.String, timeOffset: Foundation.NSNumber? = nil, companions: [any THEOplayerSDK.CompanionAd_Objc] = [], id: Swift.String? = nil, skipOffset: Foundation.NSNumber? = nil, resourceURI: Swift.String? = nil, width: Foundation.NSNumber? = nil, height: Foundation.NSNumber? = nil, duration: Foundation.NSNumber? = nil, clickThrough: Swift.String? = nil)
+  @objc deinit
+}
+@objc(THEOplayerAdBreakInit) public class AdBreakInit : ObjectiveC.NSObject {
+  public init(timeOffset: Swift.Int, maxDuration: Swift.Int? = nil)
+  @objc convenience public init(with timeOffset: Swift.Int, maxDuration: Foundation.NSNumber? = nil)
+  @objc deinit
+}
+public protocol ServerSideAdIntegrationHandler {
+  func setSource(source: THEOplayerSDK.SourceDescription) -> Swift.Bool
+  func skipAd(ad: any THEOplayerSDK.Ad) -> Swift.Bool
+  func resetSource() -> Swift.Bool
+  func destroy()
+}
+extension THEOplayerSDK.ServerSideAdIntegrationHandler {
+  public func setSource(source: THEOplayerSDK.SourceDescription) -> Swift.Bool
+  public func skipAd(ad: any THEOplayerSDK.Ad) -> Swift.Bool
+  public func resetSource() -> Swift.Bool
+  public func destroy()
+}
+@objc(THEOplayerServerSideAdIntegrationHandler) public protocol ServerSideAdIntegrationHandler_Objc {
+  @objc func setSource(source: THEOplayerSDK.SourceDescription) -> Swift.Bool
+  @objc func skipAd(ad: any THEOplayerSDK.Ad_Objc) -> Swift.Bool
+  @objc func resetSource() -> Swift.Bool
+  @objc func destroy()
+}
+extension THEOplayerSDK.ServerSideAdIntegrationHandler_Objc {
+  public func setSource(source: THEOplayerSDK.SourceDescription) -> Swift.Bool
+  public func skipAd(ad: any THEOplayerSDK.Ad_Objc) -> Swift.Bool
+  public func resetSource() -> Swift.Bool
+  public func destroy()
+}
+public protocol ServerSideAdIntegrationController {
+  var integration: Swift.String { get }
+  var ads: [any THEOplayerSDK.Ad] { get }
+  var adBreaks: [any THEOplayerSDK.AdBreak] { get }
+  func createAd(params: THEOplayerSDK.AdInit, adBreak: (any THEOplayerSDK.AdBreak)?) -> any THEOplayerSDK.Ad
+  func updateAd(ad: any THEOplayerSDK.Ad, params: THEOplayerSDK.AdInit)
+  func updateAdProgress(ad: any THEOplayerSDK.Ad, progress: Swift.Double)
+  func beginAd(ad: any THEOplayerSDK.Ad)
+  func endAd(ad: any THEOplayerSDK.Ad)
+  func skipAd(ad: any THEOplayerSDK.Ad)
+  func removeAd(ad: any THEOplayerSDK.Ad)
+  func createAdBreak(params: THEOplayerSDK.AdBreakInit) -> any THEOplayerSDK.AdBreak
+  func updateAdBreak(adBreak: any THEOplayerSDK.AdBreak, params: THEOplayerSDK.AdBreakInit)
+  func removeAdBreak(adBreak: any THEOplayerSDK.AdBreak)
+  func removeAllAds()
+  func error(error: any Swift.Error)
+  func fatalError(error: any Swift.Error, code: THEOplayerSDK.THEOErrorCode?)
+}
+@objc(THEOplayerServerSideAdIntegrationController) public protocol ServerSideAdIntegrationController_Objc {
+  @objc var integration: Swift.String { get }
+  @objc(ads) var ads_Objc: [any THEOplayerSDK.Ad_Objc] { get }
+  @objc(adBreaks) var adBreaks_Objc: [any THEOplayerSDK.AdBreak_Objc] { get }
+  @objc func createAd(params: THEOplayerSDK.AdInit, adBreak: (any THEOplayerSDK.AdBreak_Objc)?) -> any THEOplayerSDK.Ad_Objc
+  @objc func updateAd(ad: any THEOplayerSDK.Ad_Objc, params: THEOplayerSDK.AdInit)
+  @objc func updateAdProgress(ad: any THEOplayerSDK.Ad_Objc, progress: Swift.Double)
+  @objc func beginAd(ad: any THEOplayerSDK.Ad_Objc)
+  @objc func endAd(ad: any THEOplayerSDK.Ad_Objc)
+  @objc func skipAd(ad: any THEOplayerSDK.Ad_Objc)
+  @objc func removeAd(ad: any THEOplayerSDK.Ad_Objc)
+  @objc func createAdBreak(params: THEOplayerSDK.AdBreakInit) -> any THEOplayerSDK.AdBreak_Objc
+  @objc func updateAdBreak(adBreak: any THEOplayerSDK.AdBreak_Objc, params: THEOplayerSDK.AdBreakInit)
+  @objc func removeAdBreak(adBreak: any THEOplayerSDK.AdBreak_Objc)
+  @objc func removeAllAds()
+  @objc func error(error: any Swift.Error)
+  @objc(fatalErrorWithError:code:) func fatalError_Objc(error: any Swift.Error, code: THEOplayerSDK.THEOErrorCode)
+}
+open class EventType<T> where T : THEOplayerSDK.EventProtocol {
+  final public let name: Swift.String
+  public init(name: Swift.String)
   @objc deinit
 }
 public struct AudioTrackListEventTypes {
@@ -1629,6 +1726,8 @@ public protocol AdBreak {
   var maxDuration: Swift.Int { get }
   var maxRemainingDuration: Swift.Double { get }
   var timeOffset: Swift.Int { get }
+  var integration: THEOplayerSDK.AdIntegrationKind { get }
+  var customIntegration: Swift.String? { get }
 }
 @objc(THEOplayerAdBreak) public protocol AdBreak_Objc {
   @objc(ads) var ads_Objc: [any THEOplayerSDK.Ad_Objc] { get }
@@ -1783,8 +1882,17 @@ extension THEOplayerSDK.CrossOrigin : Swift.Codable {
 @objc(THEOplayerServerSideAdInsertionConfiguration) public protocol ServerSideAdInsertionConfiguration {
   @objc var integration: THEOplayerSDK.SSAIIntegrationId { get }
 }
+@objc(THEOplayerCustomServerSideAdInsertionConfiguration) public protocol CustomServerSideAdInsertionConfiguration : THEOplayerSDK.ServerSideAdInsertionConfiguration {
+  @objc var customIntegration: Swift.String { get }
+}
+extension THEOplayerSDK.CustomServerSideAdInsertionConfiguration {
+  public var integration: THEOplayerSDK.SSAIIntegrationId {
+    get
+  }
+}
 @objc(THEOplayerSSAIIntegrationId) public enum SSAIIntegrationId : Swift.Int {
   @objc(THEOplayerSSAIIntegrationIdGOOGLE_DAI_SSAI_INTEGRATION_ID) case GoogleDAISSAIIntegrationID = 1
+  @objc(THEOplayerSSAIIntegrationIdCUSTOM_SSAI_INTEGRATION_ID) case CustomSSAIIntegrationID = 2
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -2055,6 +2163,12 @@ public struct AdsEventTypes {
   public static var AD_BREAK_BEGIN: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakBeginEvent>
   public static var AD_BREAK_END: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakEndEvent>
   public static var AD_TAPPED: THEOplayerSDK.EventType<THEOplayerSDK.AdTappedEvent>
+  public static var ADD_AD_BREAK: THEOplayerSDK.EventType<THEOplayerSDK.AddAdBreakEvent>
+  public static var UPDATE_AD_BREAK: THEOplayerSDK.EventType<THEOplayerSDK.UpdateAdBreakEvent>
+  public static var REMOVE_AD_BREAK: THEOplayerSDK.EventType<THEOplayerSDK.RemoveAdBreakEvent>
+  public static var AD_BREAK_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.AdBreakChangeEvent>
+  public static var ADD_AD: THEOplayerSDK.EventType<THEOplayerSDK.AddAdEvent>
+  public static var UPDATE_AD: THEOplayerSDK.EventType<THEOplayerSDK.UpdateAdEvent>
 }
 @_inheritsConvenienceInitializers @available(swift, obsoleted: 1.0)
 @objc(THEOplayerAdsEventTypes) public class AdsEventTypes_Objc : ObjectiveC.NSObject {
@@ -2070,6 +2184,12 @@ public struct AdsEventTypes {
   @objc public static let adbreakbegin: Swift.String
   @objc public static let adbreakend: Swift.String
   @objc public static let adtapped: Swift.String
+  @objc public static let addadbreak: Swift.String
+  @objc public static let updateadbreak: Swift.String
+  @objc public static let removeadbreak: Swift.String
+  @objc public static let adbreakchange: Swift.String
+  @objc public static let addad: Swift.String
+  @objc public static let updatead: Swift.String
   @objc override dynamic public init()
   @objc deinit
 }
@@ -2165,7 +2285,9 @@ public struct AdsEventTypes {
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public protocol Ad {
+  @available(*, deprecated, message: "With the next major version, the type will no longer be optional.")
   var adBreak: (any THEOplayerSDK.AdBreak)? { get }
+  @available(*, deprecated, message: "With the next major version, the array element type will no longer be optional.")
   var companions: [(any THEOplayerSDK.CompanionAd)?] { get }
   var type: Swift.String { get }
   var id: Swift.String? { get }
@@ -2174,6 +2296,9 @@ public protocol Ad {
   var width: Swift.Int? { get }
   var height: Swift.Int? { get }
   var integration: THEOplayerSDK.AdIntegrationKind { get }
+  var duration: Swift.Int? { get }
+  var clickThrough: Swift.String? { get }
+  var customIntegration: Swift.String? { get }
 }
 @objc(THEOplayerAd) public protocol Ad_Objc {
   @objc(adBreak) var adBreak_Objc: (any THEOplayerSDK.AdBreak_Objc)? { get }
@@ -2185,8 +2310,12 @@ public protocol Ad {
   @objc(width) var width_Objc: Foundation.NSNumber? { get }
   @objc(height) var height_Objc: Foundation.NSNumber? { get }
   @objc var integration: THEOplayerSDK.AdIntegrationKind { get }
+  @objc(duration) var duration_Objc: Foundation.NSNumber? { get }
+  @objc var clickThrough: Swift.String? { get }
+  @objc var customIntegration: Swift.String? { get }
 }
 public protocol LinearAd : THEOplayerSDK.Ad {
+  @available(*, deprecated, message: "With the next major version, the return type will no longer be optional.")
   var duration: Swift.Int? { get }
   var mediaFiles: [any THEOplayerSDK.MediaFile] { get }
 }
@@ -2207,10 +2336,12 @@ public protocol NonLinearAd : THEOplayerSDK.Ad {
 @objc(THEOplayerNonLinearAd) public protocol NonLinearAd_Objc : THEOplayerSDK.Ad_Objc {
   @objc var clickThrough: Swift.String? { get }
 }
+@available(*, deprecated, message: "With the next major version, `ScheduledAd` will de obsoleted.")
 public protocol ScheduledAd {
   var adBreak: any THEOplayerSDK.AdBreak { get }
   var resourceURI: Swift.String { get }
 }
+@available(*, deprecated, message: "With the next major version, `THEOplayerScheduledAd` will de obsoleted")
 @objc(THEOplayerScheduledAd) public protocol ScheduledAd_Objc {
   @objc(adBreak) var adBreak_Objc: any THEOplayerSDK.AdBreak_Objc { get }
   @objc var resourceURI: Swift.String { get }
@@ -2245,6 +2376,7 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   @objc(THEOplayerAdIntegrationKindFREEWHEEL) case freewheel = 3
   @objc(THEOplayerAdIntegrationKindGOOGLE_IMA) case google_ima = 4
   @objc(THEOplayerAdIntegrationKindGOOGLE_DAI) case google_dai = 6
+  @objc(THEOplayerAdIntegrationKindCUSTOM) case custom = 7
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -2973,8 +3105,10 @@ public protocol CompanionAd {
   var adSlotId: Swift.String? { get }
   var altText: Swift.String? { get }
   var clickThrough: Swift.String? { get }
+  @available(*, deprecated, message: "With the next major version, the return type will no longer be optional.")
   var height: Swift.Int? { get }
   var resourceURI: Swift.String? { get }
+  @available(*, deprecated, message: "With the next major version, the return type will no longer be optional.")
   var width: Swift.Int? { get }
   var type: Swift.String { get }
 }

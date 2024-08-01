@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nbWamY0Ep1GgwT5TN/K36THUeRU=
+		IqPUkNT0/bDhEnloPxen50MXekA=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		sEHZkauxVs5Bt//NrhOdR56rvZo=
+		3YEuzGsoLTJFTkxZqMPtbJuO1OI=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		MoFskyiFU8NLdMCdm2rExDZFmsE=
+		ZHiZV7q9GTwGTYCcPv6omwrFV1g=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		sEHZkauxVs5Bt//NrhOdR56rvZo=
+		3YEuzGsoLTJFTkxZqMPtbJuO1OI=
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9ckOjWv25Rqpnf+gRZTSyISxwxo=
+		zHUKmIYAW+/lR5RfO2mu869TnvU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -81,7 +81,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YK1TDEQKfLLQHAKVO+Qu6tcACTEDPN0QEEIo/96EYhE=
+			qg84md52DAcCh14IxKODNFVGm0z6aclWXL/vgy3MHgA=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -109,14 +109,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			G0tWerCr9GYKZEGPtN5fDmcRZf10hpsm67aY0dGcZHo=
+			+5Ju/XH3xFRq5FuUvf9vGPwFb+7ykctF5Pw+8b9IGa0=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YK1TDEQKfLLQHAKVO+Qu6tcACTEDPN0QEEIo/96EYhE=
+			qg84md52DAcCh14IxKODNFVGm0z6aclWXL/vgy3MHgA=
 			</data>
 		</dict>
 		<key>Modules/THEOplayerGoogleCastIntegration.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -144,7 +144,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9397c6x43TcrAiIy510Ue+IjLlEe0A/ftOSiIZLXk4s=
+			m1vbnOxAeRrFlyuaY4W6uYOtVeXjJ6sD1bM1+r7CBdg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

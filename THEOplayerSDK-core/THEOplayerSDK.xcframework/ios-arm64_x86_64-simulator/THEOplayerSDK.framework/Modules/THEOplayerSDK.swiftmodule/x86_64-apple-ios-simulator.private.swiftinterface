@@ -745,6 +745,10 @@ extension THEOplayerSDK.AdIntegration : Swift.Codable {
   @objc public init(licenseRequest: THEOplayerSDK.LicenseRequest, url: Swift.String, status: Swift.Int, statusText: Swift.String, headers: [Swift.String : Swift.String], body: Foundation.Data)
   @objc deinit
 }
+@_spi(WebVTT) @_hasMissingDesignatedInitializers public class WebVTTParser {
+  @_spi(WebVTT) public static func getVttContent(urlString: Swift.String, completion: @escaping (_ content: Swift.String, _ error: (any Swift.Error)?) -> Swift.Void) -> Foundation.URLSessionTask?
+  @_spi(WebVTT) @objc deinit
+}
 public protocol Ads : THEOplayerSDK.EventDispatcherProtocol {
   var playing: Swift.Bool { get }
   var currentAds: [any THEOplayerSDK.Ad] { get }
@@ -1529,6 +1533,15 @@ public struct AudioTrackListEventTypes {
   @objc public static let change: Swift.String
   @objc override dynamic public init()
   @objc deinit
+}
+@_spi(WebVTT) public struct WebVTT {
+  @_spi(WebVTT) public let cues: [THEOplayerSDK.WebVTTCue]
+  @_spi(WebVTT) public init(webVttContent: Swift.String)
+}
+@_spi(WebVTT) public struct WebVTTCue {
+  @_spi(WebVTT) public let startTime: Foundation.TimeInterval
+  @_spi(WebVTT) public let endTime: Foundation.TimeInterval
+  @_spi(WebVTT) public let text: Swift.String
 }
 @_hasMissingDesignatedInitializers @available(*, deprecated, message: "This class will be removed in future releases. Configuration for Google DAI is moved to `THEOplayerGoogleIMAIntegration`.")
 @objc(THEOplayerGoogleDAIAdsConfiguration) public class GoogleDAIAdsConfiguration : ObjectiveC.NSObject, Swift.Codable {

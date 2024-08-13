@@ -10542,6 +10542,298 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "WebVTT",
+        "printedName": "WebVTT",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "cues",
+            "printedName": "cues",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[THEOplayerSDK.WebVTTCue]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "WebVTTCue",
+                    "printedName": "THEOplayerSDK.WebVTTCue",
+                    "usr": "s:13THEOplayerSDK9WebVTTCueV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK6WebVTTV4cuesSayAA0C6VTTCueVGvp",
+            "mangledName": "$s13THEOplayerSDK6WebVTTV4cuesSayAA0C6VTTCueVGvp",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[THEOplayerSDK.WebVTTCue]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "WebVTTCue",
+                        "printedName": "THEOplayerSDK.WebVTTCue",
+                        "usr": "s:13THEOplayerSDK9WebVTTCueV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK6WebVTTV4cuesSayAA0C6VTTCueVGvg",
+                "mangledName": "$s13THEOplayerSDK6WebVTTV4cuesSayAA0C6VTTCueVGvg",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "WebVTT"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(webVttContent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WebVTT",
+                "printedName": "THEOplayerSDK.WebVTT",
+                "usr": "s:13THEOplayerSDK6WebVTTV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:13THEOplayerSDK6WebVTTV13webVttContentACSS_tcfc",
+            "mangledName": "$s13THEOplayerSDK6WebVTTV13webVttContentACSS_tcfc",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:13THEOplayerSDK6WebVTTV",
+        "mangledName": "$s13THEOplayerSDK6WebVTTV",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "WebVTT"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "WebVTTCue",
+        "printedName": "WebVTTCue",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "startTime",
+            "printedName": "startTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK9WebVTTCueV9startTimeSdvp",
+            "mangledName": "$s13THEOplayerSDK9WebVTTCueV9startTimeSdvp",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK9WebVTTCueV9startTimeSdvg",
+                "mangledName": "$s13THEOplayerSDK9WebVTTCueV9startTimeSdvg",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "WebVTT"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "endTime",
+            "printedName": "endTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK9WebVTTCueV7endTimeSdvp",
+            "mangledName": "$s13THEOplayerSDK9WebVTTCueV7endTimeSdvp",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK9WebVTTCueV7endTimeSdvg",
+                "mangledName": "$s13THEOplayerSDK9WebVTTCueV7endTimeSdvg",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "WebVTT"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK9WebVTTCueV4textSSvp",
+            "mangledName": "$s13THEOplayerSDK9WebVTTCueV4textSSvp",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK9WebVTTCueV4textSSvg",
+                "mangledName": "$s13THEOplayerSDK9WebVTTCueV4textSSvg",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "spi_group_names": [
+                  "WebVTT"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:13THEOplayerSDK9WebVTTCueV",
+        "mangledName": "$s13THEOplayerSDK9WebVTTCueV",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "WebVTT"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -55098,6 +55390,114 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "WebVTTParser",
+        "printedName": "WebVTTParser",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "getVttContent",
+            "printedName": "getVttContent(urlString:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URLSessionTask?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URLSessionTask",
+                    "printedName": "Foundation.URLSessionTask",
+                    "usr": "c:objc(cs)NSURLSessionTask"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String, Swift.Error?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String, Swift.Error?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Error?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:13THEOplayerSDK12WebVTTParserC13getVttContent9urlString10completionSo16NSURLSessionTaskCSgSS_ySS_s5Error_pSgtctFZ",
+            "mangledName": "$s13THEOplayerSDK12WebVTTParserC13getVttContent9urlString10completionSo16NSURLSessionTaskCSgSS_ySS_s5Error_pSgtctFZ",
+            "moduleName": "THEOplayerSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "WebVTT"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:13THEOplayerSDK12WebVTTParserC",
+        "mangledName": "$s13THEOplayerSDK12WebVTTParserC",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "WebVTT"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "AdDescription",
         "printedName": "AdDescription",
         "children": [
@@ -97202,127 +97602,120 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
-      "kind": "Array",
-      "offset": 824,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
-      "kind": "Array",
-      "offset": 928,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "Dictionary",
-      "offset": 998,
+      "offset": 942,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
+      "kind": "Array",
+      "offset": 1076,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 1112,
+      "offset": 1199,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 1143,
+      "offset": 1230,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "Array",
-      "offset": 1578,
+      "offset": 1665,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "Array",
-      "offset": 1646,
+      "offset": 1733,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 1842,
+      "offset": 1929,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 3037,
+      "offset": 3124,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 3786,
+      "offset": 3873,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 4229,
+      "offset": 4316,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 4958,
+      "offset": 5045,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 7050,
+      "offset": 7137,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 7681,
+      "offset": 7768,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 9012,
+      "offset": 9099,
       "length": 131,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 9034,
+      "offset": 9121,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackEventTypes\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 9982,
+      "offset": 10069,
       "length": 131,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 10004,
+      "offset": 10091,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the THEOplayerTextTrackEventTypes\""
     },
@@ -97336,14 +97729,14 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 11005,
+      "offset": 11092,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/TextTrackImplNative.swift",
       "kind": "StringLiteral",
-      "offset": 11005,
+      "offset": 11092,
       "length": 2,
       "value": "\"\""
     },
@@ -97363,113 +97756,141 @@
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
+      "kind": "Array",
+      "offset": 1195,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "Dictionary",
-      "offset": 1678,
+      "offset": 1733,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1984,
+      "offset": 2039,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 2016,
+      "offset": 2071,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "Array",
-      "offset": 3225,
+      "offset": 3326,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 7183,
+      "offset": 7284,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "Dictionary",
-      "offset": 7248,
+      "offset": 7349,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "Array",
-      "offset": 7291,
+      "offset": 7392,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
+      "kind": "Array",
+      "offset": 7903,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "StringLiteral",
-      "offset": 8583,
+      "offset": 8855,
       "length": 15,
       "value": "\"TextTrack\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "StringLiteral",
-      "offset": 8597,
+      "offset": 8869,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 8774,
+      "offset": 9046,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "IntegerLiteral",
-      "offset": 8805,
+      "offset": 9077,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9022,
+      "offset": 9294,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "IntegerLiteral",
-      "offset": 9574,
+      "offset": 9846,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 9689,
+      "offset": 9961,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
+      "kind": "StringLiteral",
+      "offset": 12018,
+      "length": 14,
+      "value": "\"vtt_metadata\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12115,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "BooleanLiteral",
-      "offset": 11662,
+      "offset": 13369,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerTextTracksController.swift",
       "kind": "Array",
-      "offset": 12439,
+      "offset": 14146,
       "length": 2,
       "value": "[]"
     },
@@ -98228,6 +98649,41 @@
       "offset": 1338,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/StringExtensions.swift",
+      "kind": "Array",
+      "offset": 1827,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/StringExtensions.swift",
+      "kind": "Array",
+      "offset": 1922,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/StringExtensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1951,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/StringExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 2275,
+      "length": 6,
+      "value": "\"\r\n\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/StringExtensions.swift",
+      "kind": "StringLiteral",
+      "offset": 2289,
+      "length": 4,
+      "value": "\"\n\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/TrackLists\/AudioTrackListHolder.swift",
@@ -99752,15 +100208,15 @@
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
       "kind": "StringLiteral",
       "offset": 32,
-      "length": 7,
-      "value": "\"7.9.0\""
+      "length": 8,
+      "value": "\"7.10.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
       "kind": "StringLiteral",
-      "offset": 77,
+      "offset": 78,
       "length": 10,
-      "value": "\"2024.3.2\""
+      "value": "\"2024.3.3\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/ContentProtectionIntegrationInitProvider.swift",
@@ -104724,6 +105180,188 @@
       "offset": 574,
       "length": 25,
       "value": "\"THEOplayerSDK.SourceDescriptionInternal\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 602,
+      "length": 32,
+      "value": "\"The URL provided is incorrect.\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 699,
+      "length": 36,
+      "value": "\"The content is not a valid WebVTT.\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 1243,
+      "length": 8,
+      "value": "\"WEBVTT\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "Array",
+      "offset": 1670,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 1794,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 2057,
+      "length": 67,
+      "value": "\"(\\d{2}:)?(\\d{2}:\\d{2}\\.\\d{3}) --> (\\d{2}:)?(\\d{2}:\\d{2}\\.\\d{3})\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2291,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 2298,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2376,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 2383,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2476,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2569,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 3838,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 4172,
+      "length": 4,
+      "value": "\"\n\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "StringLiteral",
+      "offset": 4968,
+      "length": 3,
+      "value": "\":\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5031,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5079,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5198,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5205,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5254,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5261,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5317,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5324,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5328,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5374,
+      "length": 4,
+      "value": "3600"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/Tracks\/WebVTT\/WebVTTParser.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5393,
+      "length": 2,
+      "value": "60"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Models\/Player\/SourceDescription\/Ads\/AdDescription.swift",

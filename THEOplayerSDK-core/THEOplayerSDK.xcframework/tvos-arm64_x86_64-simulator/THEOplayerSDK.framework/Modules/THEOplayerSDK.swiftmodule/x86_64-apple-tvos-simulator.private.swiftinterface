@@ -282,6 +282,15 @@ public protocol GoogleDAI {
   @objc var type: Swift.String { get }
   @objc var date: Foundation.Date { get }
 }
+@_spi(WebVTT) public struct WebVTT {
+  @_spi(WebVTT) public let cues: [THEOplayerSDK.WebVTTCue]
+  @_spi(WebVTT) public init(webVttContent: Swift.String)
+}
+@_spi(WebVTT) public struct WebVTTCue {
+  @_spi(WebVTT) public let startTime: Foundation.TimeInterval
+  @_spi(WebVTT) public let endTime: Foundation.TimeInterval
+  @_spi(WebVTT) public let text: Swift.String
+}
 infix operator >>> : BitwiseShiftPrecedence
 extension THEOplayerSDK.THEOplayer {
   public var fullscreen: any THEOplayerSDK.Fullscreen {
@@ -1639,6 +1648,10 @@ public protocol TextTrackStyleRule {
   @objc public static let dropShadow: Swift.String
   @objc override dynamic public init()
   @objc deinit
+}
+@_spi(WebVTT) @_hasMissingDesignatedInitializers public class WebVTTParser {
+  @_spi(WebVTT) public static func getVttContent(urlString: Swift.String, completion: @escaping (_ content: Swift.String, _ error: (any Swift.Error)?) -> Swift.Void) -> Foundation.URLSessionTask?
+  @_spi(WebVTT) @objc deinit
 }
 public protocol AdDescription {
   var integration: THEOplayerSDK.AdIntegration? { get }

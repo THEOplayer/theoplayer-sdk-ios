@@ -1815,6 +1815,10 @@ public protocol AudioTrackList : THEOplayerSDK.MediaTrackList {
   @objc func removeEventListener(type: Swift.String, listener: any THEOplayerSDK.EventListener)
 }
 public typealias _AudioTrackList = THEOplayerSDK.AudioTrackList & THEOplayerSDK.AudioTrackList_Objc
+@_spi(Core) public class DispatchObserver {
+  @_spi(Core) public init(dispatcher: any THEOplayerSDK.EventDispatcherProtocol, eventListeners: [any THEOplayerSDK.RemovableEventListenerProtocol])
+  @_spi(Core) @objc deinit
+}
 @objc(THEOplayerTextTrackKind) public enum TextTrackKind : Swift.Int {
   @objc(THEOplayerTextTrackKindNONE) case none = 0
   @objc(THEOplayerTextTrackKindSUBTITLES) case subtitles = 1
@@ -2714,6 +2718,21 @@ extension THEOplayerSDK.PlayerCastState : Swift.Decodable {
     get
   }
 }
+@_spi(Core) public protocol RemovableEventListenerProtocol {
+  @_spi(Core) func remove(from dispatcher: any THEOplayerSDK.EventDispatcherProtocol)
+  @_spi(Core) var description: Swift.String { get }
+}
+@_spi(Core) public struct RemovableEventListener<Event> : THEOplayerSDK.RemovableEventListenerProtocol where Event : THEOplayerSDK.EventProtocol {
+  @_spi(Core) public init(type: THEOplayerSDK.EventType<Event>, listener: any THEOplayerSDK.EventListener)
+  @_spi(Core) public func remove(from dispatcher: any THEOplayerSDK.EventDispatcherProtocol)
+  @_spi(Core) public var description: Swift.String {
+    @_spi(Core) get
+  }
+}
+extension THEOplayerSDK.EventDispatcherProtocol {
+  @_spi(Core) public func addRemovableEventListener<Event>(type: THEOplayerSDK.EventType<Event>, listener: @escaping (Event) -> Swift.Void) -> THEOplayerSDK.RemovableEventListener<Event> where Event : THEOplayerSDK.EventProtocol
+  @_spi(Core) public func remove(eventListener: any THEOplayerSDK.RemovableEventListenerProtocol)
+}
 public struct ChromecastEventTypes {
   public static var STATE_CHANGE: THEOplayerSDK.EventType<THEOplayerSDK.StateChangeEvent>
   public static var ERROR: THEOplayerSDK.EventType<THEOplayerSDK.CastErrorEvent>
@@ -2989,7 +3008,6 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   func getVolume() -> Swift.Double?
   func setMuted(muted: Swift.Bool)
   func isMuted() -> Swift.Bool?
-  func willPreload() -> Swift.Bool
   func reset()
   func destroy()
 }
@@ -3335,6 +3353,16 @@ public protocol ContentProtectionError : THEOplayerSDK.THEOError {
   public init(error: THEOplayerSDK.CastError, date: Foundation.Date)
   @objc deinit
 }
+@_spi(Core) public enum TextTrackType : Swift.String {
+  @_spi(Core) case defaultType
+  @_spi(Core) case daterange
+  @_spi(Core) case id3
+  @_spi(Core) public init?(rawValue: Swift.String)
+  @_spi(Core) public typealias RawValue = Swift.String
+  @_spi(Core) public var rawValue: Swift.String {
+    @_spi(Core) get
+  }
+}
 public protocol TrackEventProtocol : THEOplayerSDK.EventProtocol {
   var track: any THEOplayerSDK.Track { get }
 }
@@ -3576,6 +3604,9 @@ extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.Hashable {}
 extension THEOplayerSDK.OmidFriendlyObstructionPurpose : Swift.RawRepresentable {}
 extension THEOplayerSDK.WidevineDRMConfiguration : THEOplayerSDK.WidevineDRMConfigurationProtocol {}
 extension THEOplayerSDK.WidevineDRMConfiguration : THEOplayerSDK.WidevineDRMConfigurationProtocol_Objc {}
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.Equatable {}
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.Hashable {}
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.RawRepresentable {}
 extension THEOplayerSDK.TrackChangeEvent : THEOplayerSDK.TrackEventProtocol {}
 extension THEOplayerSDK.TrackChangeEvent : THEOplayerSDK.TrackEventProtocol_Objc {}
 extension THEOplayerSDK.AddTrackEvent : THEOplayerSDK.TrackEventProtocol {}

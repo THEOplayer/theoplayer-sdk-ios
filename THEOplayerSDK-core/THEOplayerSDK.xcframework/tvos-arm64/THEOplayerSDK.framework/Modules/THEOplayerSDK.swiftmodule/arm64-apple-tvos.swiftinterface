@@ -1682,7 +1682,6 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   func getVolume() -> Swift.Double?
   func setMuted(muted: Swift.Bool)
   func isMuted() -> Swift.Bool?
-  func willPreload() -> Swift.Bool
   func reset()
   func destroy()
 }

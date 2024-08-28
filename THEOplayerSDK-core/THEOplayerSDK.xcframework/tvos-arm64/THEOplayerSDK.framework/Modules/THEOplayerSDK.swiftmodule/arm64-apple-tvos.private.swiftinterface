@@ -39,6 +39,16 @@ import _SwiftConcurrencyShims
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
+@_spi(Core) public enum TextTrackType : Swift.String {
+  @_spi(Core) case defaultType
+  @_spi(Core) case daterange
+  @_spi(Core) case id3
+  @_spi(Core) public init?(rawValue: Swift.String)
+  @_spi(Core) public typealias RawValue = Swift.String
+  @_spi(Core) public var rawValue: Swift.String {
+    @_spi(Core) get
+  }
+}
 extension THEOplayerSDK.THEOplayer {
   @objc dynamic public func addIntegration(_ integration: any THEOplayerSDK.Integration)
   @objc dynamic public func removeIntegration(_ integration: any THEOplayerSDK.Integration)
@@ -1799,7 +1809,6 @@ public protocol InternalIntegration : THEOplayerSDK.Integration {
   func getVolume() -> Swift.Double?
   func setMuted(muted: Swift.Bool)
   func isMuted() -> Swift.Bool?
-  func willPreload() -> Swift.Bool
   func reset()
   func destroy()
 }
@@ -2873,6 +2882,9 @@ public struct MediaTrackEventTypes {
   @objc override dynamic public init()
   @objc deinit
 }
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.Equatable {}
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.Hashable {}
+@_spi(Core) extension THEOplayerSDK.TextTrackType : Swift.RawRepresentable {}
 @available(*, deprecated, message: "This enumeration will be removed with the next major release.")
 extension THEOplayerSDK.AdPreloadType : Swift.Equatable {}
 @available(*, deprecated, message: "This enumeration will be removed with the next major release.")

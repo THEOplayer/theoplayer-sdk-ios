@@ -2247,63 +2247,56 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 8797,
+      "offset": 8919,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 8984,
+      "offset": 8944,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 9009,
+      "offset": 10273,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 10338,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
-      "kind": "BooleanLiteral",
-      "offset": 10477,
+      "offset": 10412,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 11583,
+      "offset": 11518,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "BooleanLiteral",
-      "offset": 11992,
+      "offset": 11927,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "StringLiteral",
-      "offset": 12470,
+      "offset": 12405,
       "length": 58,
       "value": "\"[Chromecast][CastIntegrationImplementation] onCastError:\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleCastIntegration\/GoogleCastIntegration\/CastIntegrationImplementation.swift",
       "kind": "StringLiteral",
-      "offset": 12859,
+      "offset": 12794,
       "length": 59,
       "value": "\"[Chromecast][CastIntegrationImplementation] onFullyLoaded\""
     },

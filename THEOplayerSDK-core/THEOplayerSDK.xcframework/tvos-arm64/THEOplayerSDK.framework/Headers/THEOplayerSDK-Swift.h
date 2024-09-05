@@ -3430,6 +3430,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @end
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK10PlayerView")
+@interface PlayerView : UIView
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.PLAYING</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -4297,6 +4307,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 
 
 @interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
+/// The <code>Fullscreen</code> api of theoplayer.
+@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
+@end
+
+
+@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
 /// Add an <code>Integration</code> to the THEOplayer instance .
 /// remark:
 /// For possible options, please check: https://docs.theoplayer.com/getting-started/01-sdks/03-ios/01-features.md
@@ -4307,12 +4323,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL automaticallyManageAudioS
 - (void)removeAllIntegrations;
 /// Returns all registered <code>Integration</code>s  on the THEOplayer instance
 - (NSArray<id <THEOplayerIntegration>> * _Nonnull)getAllIntegrations SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface THEOplayer (SWIFT_EXTENSION(THEOplayerSDK))
-/// The <code>Fullscreen</code> api of theoplayer.
-@property (nonatomic, readonly, strong) id <THEOplayerFullscreen> _Nonnull fullscreen;
 @end
 
 
@@ -4771,6 +4781,7 @@ SWIFT_CLASS_NAMED("TrackUpdateEvent")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

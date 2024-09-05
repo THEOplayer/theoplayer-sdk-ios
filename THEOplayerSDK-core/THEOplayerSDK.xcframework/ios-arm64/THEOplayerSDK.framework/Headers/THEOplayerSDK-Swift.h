@@ -4355,6 +4355,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @end
 
 
+SWIFT_CLASS("_TtC13THEOplayerSDK10PlayerView")
+@interface PlayerView : UIView
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+@end
+
+
 /// Fired when <code>PlayerEventTypes.PLAYING</code> occurs for the <code>THEOplayer</code>.
 /// remark:
 ///
@@ -5783,6 +5793,7 @@ SWIFT_CLASS_NAMED("TrackUpdateEvent")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

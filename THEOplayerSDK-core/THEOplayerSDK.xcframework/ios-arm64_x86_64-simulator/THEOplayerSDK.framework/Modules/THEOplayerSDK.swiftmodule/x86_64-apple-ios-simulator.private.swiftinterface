@@ -1359,6 +1359,10 @@ extension THEOplayerSDK.THEOplayer {
     @objc get
   }
 }
+@_spi(Core) public protocol AVPlayerContentPlayerNativeViewInterface : AnyObject {
+  @_spi(Core) var playerLayer: AVFoundation.AVPlayerLayer { get }
+  @_spi(Core) var avPlayer: AVFoundation.AVPlayer { get }
+}
 @_hasMissingDesignatedInitializers @objc(THEOplayerCueChangeEvent) public class CueChangeEvent : ObjectiveC.NSObject {
   @objc public var type: Swift.String {
     get
@@ -1860,7 +1864,7 @@ extension THEOplayerSDK.TextTrackFormat : Swift.Codable {
 }
 @_inheritsConvenienceInitializers @objc(THEOplayerGoogleDAITypedSource) public class GoogleDAITypedSource : THEOplayerSDK.TypedSource {
   @objc convenience public init(ssai: THEOplayerSDK.GoogleDAIConfiguration)
-  override public init(src: Swift.String, type: Swift.String, drm: (any THEOplayerSDK.DRMConfiguration)? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)? = nil, hlsDateRange: Swift.Bool? = nil)
+  override public init(src: Swift.String, type: Swift.String, drm: (any THEOplayerSDK.DRMConfiguration)? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)? = nil, hlsDateRange: Swift.Bool? = nil, headers: [Swift.String : Swift.String]? = nil)
   @objc deinit
 }
 @objc(THEOplayerCrossOrigin) public enum CrossOrigin : Swift.Int {
@@ -1903,7 +1907,8 @@ extension THEOplayerSDK.CrossOrigin : Swift.Codable {
     @objc set
   }
   @objc public var ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)?
-  public init(src: Swift.String, type: Swift.String, drm: (any THEOplayerSDK.DRMConfiguration)? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)? = nil, hlsDateRange: Swift.Bool? = nil)
+  public var headers: [Swift.String : Swift.String]?
+  public init(src: Swift.String, type: Swift.String, drm: (any THEOplayerSDK.DRMConfiguration)? = nil, crossOrigin: THEOplayerSDK.CrossOrigin? = nil, ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)? = nil, hlsDateRange: Swift.Bool? = nil, headers: [Swift.String : Swift.String]? = nil)
   @available(swift, obsoleted: 1.0)
   @objc convenience public init(src: Swift.String, type: Swift.String, drm: (any THEOplayerSDK.DRMConfiguration_Objc)?, crossOrigin: THEOplayerSDK.CrossOrigin, ssai: (any THEOplayerSDK.ServerSideAdInsertionConfiguration)?, hlsDateRange: Swift.Bool)
   @available(swift, obsoleted: 1.0)
@@ -2245,7 +2250,7 @@ extension THEOplayerSDK.THEOArray where Element : Swift.Equatable {
   @_spi(Core) func destroy()
 }
 @_spi(Core) public protocol THEOplayerInternalViewInterface : AnyObject {
-  @_spi(Core) var playerView: UIKit.UIView { get }
+  @_spi(Core) var playerView: THEOplayerSDK.PlayerView { get }
   @_spi(Core) var inlineView: UIKit.UIView { get }
   @_spi(Core) var aspectRatio: Swift.Float { get }
   @_spi(Core) var resizeTransitionEnabled: Swift.Bool { get }
@@ -2481,8 +2486,11 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   @objc var adIdRegistry: Swift.String { get }
 }
 @objc(THEOplayerAdIntegrationKind) public enum AdIntegrationKind : Swift.Int {
+  @available(*, deprecated, message: "This obsolete case will be removed with the next major release.")
   @objc(THEOplayerAdIntegrationKindDEFAULT_KIND) case defaultKind = 1
+  @available(*, deprecated, message: "This obsolete case will be removed with the next major release.")
   @objc(THEOplayerAdIntegrationKindTHEO) case theo = 2
+  @available(*, deprecated, message: "This obsolete case will be removed with the next major release.")
   @objc(THEOplayerAdIntegrationKindFREEWHEEL) case freewheel = 3
   @objc(THEOplayerAdIntegrationKindGOOGLE_IMA) case google_ima = 4
   @objc(THEOplayerAdIntegrationKindGOOGLE_DAI) case google_dai = 6
@@ -2494,6 +2502,9 @@ public protocol GoogleImaAd : THEOplayerSDK.Ad {
   }
 }
 extension THEOplayerSDK.AdIntegrationKind : Swift.Codable, Swift.CaseIterable {
+  public static var allCases: [THEOplayerSDK.AdIntegrationKind] {
+    get
+  }
   public var _rawValue: Swift.String {
     get
     set
@@ -2501,9 +2512,6 @@ extension THEOplayerSDK.AdIntegrationKind : Swift.Codable, Swift.CaseIterable {
   public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   public typealias AllCases = [THEOplayerSDK.AdIntegrationKind]
-  public static var allCases: [THEOplayerSDK.AdIntegrationKind] {
-    get
-  }
 }
 public protocol MediaTrack : THEOplayerSDK.Track {
   var enabled: Swift.Bool { get set }
@@ -3035,6 +3043,10 @@ public struct NetworkEventTypes {
   @objc public static let error: Swift.String
   @objc override dynamic public init()
   @objc deinit
+}
+@_spi(Core) @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class PlayerView : UIKit.UIView {
+  @_spi(Core) @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_spi(Core) @objc deinit
 }
 @objc public class THEOplayer : ObjectiveC.NSObject, THEOplayerSDK.EventDispatcherProtocol {
   @_spi(Core) public var theoplayer: (any THEOplayerSDK.THEOplayerInternalInterface)?

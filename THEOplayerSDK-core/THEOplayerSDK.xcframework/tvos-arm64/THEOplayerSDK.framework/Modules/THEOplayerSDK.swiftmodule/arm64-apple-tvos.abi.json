@@ -5292,14 +5292,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "UIView",
-                "printedName": "UIKit.UIView",
-                "usr": "c:objc(cs)UIView"
+                "name": "PlayerView",
+                "printedName": "THEOplayerSDK.PlayerView",
+                "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView"
               }
             ],
             "declKind": "Var",
-            "usr": "s:13THEOplayerSDK0A21InternalViewInterfaceP06playerD0So6UIViewCvp",
-            "mangledName": "$s13THEOplayerSDK0A21InternalViewInterfaceP06playerD0So6UIViewCvp",
+            "usr": "s:13THEOplayerSDK0A21InternalViewInterfaceP06playerD0AA06PlayerD0Cvp",
+            "mangledName": "$s13THEOplayerSDK0A21InternalViewInterfaceP06playerD0AA06PlayerD0Cvp",
             "moduleName": "THEOplayerSDK",
             "protocolReq": true,
             "spi_group_names": [
@@ -5313,14 +5313,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "UIView",
-                    "printedName": "UIKit.UIView",
-                    "usr": "c:objc(cs)UIView"
+                    "name": "PlayerView",
+                    "printedName": "THEOplayerSDK.PlayerView",
+                    "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:13THEOplayerSDK0A21InternalViewInterfaceP06playerD0So6UIViewCvg",
-                "mangledName": "$s13THEOplayerSDK0A21InternalViewInterfaceP06playerD0So6UIViewCvg",
+                "usr": "s:13THEOplayerSDK0A21InternalViewInterfaceP06playerD0AA06PlayerD0Cvg",
+                "mangledName": "$s13THEOplayerSDK0A21InternalViewInterfaceP06playerD0AA06PlayerD0Cvg",
                 "moduleName": "THEOplayerSDK",
                 "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerSDK.THEOplayerInternalViewInterface>",
                 "sugared_genericSig": "<Self where Self : THEOplayerSDK.THEOplayerInternalViewInterface>",
@@ -9887,6 +9887,123 @@
         "printedName": "MediaPlayer",
         "declKind": "Import",
         "moduleName": "THEOplayerSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AVPlayerContentPlayerNativeViewInterface",
+        "printedName": "AVPlayerContentPlayerNativeViewInterface",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "playerLayer",
+            "printedName": "playerLayer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AVPlayerLayer",
+                "printedName": "AVFoundation.AVPlayerLayer",
+                "usr": "c:objc(cs)AVPlayerLayer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP11playerLayerSo0cJ0Cvp",
+            "mangledName": "$s13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP11playerLayerSo0cJ0Cvp",
+            "moduleName": "THEOplayerSDK",
+            "protocolReq": true,
+            "spi_group_names": [
+              "Core"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AVPlayerLayer",
+                    "printedName": "AVFoundation.AVPlayerLayer",
+                    "usr": "c:objc(cs)AVPlayerLayer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP11playerLayerSo0cJ0Cvg",
+                "mangledName": "$s13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP11playerLayerSo0cJ0Cvg",
+                "moduleName": "THEOplayerSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerSDK.AVPlayerContentPlayerNativeViewInterface>",
+                "sugared_genericSig": "<Self where Self : THEOplayerSDK.AVPlayerContentPlayerNativeViewInterface>",
+                "protocolReq": true,
+                "spi_group_names": [
+                  "Core"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "avPlayer",
+            "printedName": "avPlayer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AVPlayer",
+                "printedName": "AVFoundation.AVPlayer",
+                "usr": "c:objc(cs)AVPlayer"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP02avE0So0C0Cvp",
+            "mangledName": "$s13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP02avE0So0C0Cvp",
+            "moduleName": "THEOplayerSDK",
+            "protocolReq": true,
+            "spi_group_names": [
+              "Core"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AVPlayer",
+                    "printedName": "AVFoundation.AVPlayer",
+                    "usr": "c:objc(cs)AVPlayer"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP02avE0So0C0Cvg",
+                "mangledName": "$s13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP02avE0So0C0Cvg",
+                "moduleName": "THEOplayerSDK",
+                "genericSig": "<τ_0_0 where τ_0_0 : THEOplayerSDK.AVPlayerContentPlayerNativeViewInterface>",
+                "sugared_genericSig": "<Self where Self : THEOplayerSDK.AVPlayerContentPlayerNativeViewInterface>",
+                "protocolReq": true,
+                "spi_group_names": [
+                  "Core"
+                ],
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP",
+        "mangledName": "$s13THEOplayerSDK40AVPlayerContentPlayerNativeViewInterfaceP",
+        "moduleName": "THEOplayerSDK",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "Core"
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -16121,9 +16238,11 @@
             "usr": "c:@M@THEOplayerSDK@E@THEOplayerAdIntegrationKind@THEOplayerAdIntegrationKindDEFAULT_KIND",
             "mangledName": "$s13THEOplayerSDK17AdIntegrationKindO07defaultE0yA2CmF",
             "moduleName": "THEOplayerSDK",
+            "deprecated": true,
             "objc_name": "THEOplayerAdIntegrationKindDEFAULT_KIND",
             "declAttributes": [
               "ObjC",
+              "Available",
               "RawDocComment"
             ],
             "fixedbinaryorder": 0
@@ -16331,6 +16450,66 @@
           },
           {
             "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[THEOplayerSDK.AdIntegrationKind]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdIntegrationKind",
+                    "printedName": "THEOplayerSDK.AdIntegrationKind",
+                    "usr": "c:@M@THEOplayerSDK@E@THEOplayerAdIntegrationKind"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvpZ",
+            "mangledName": "$s13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvpZ",
+            "moduleName": "THEOplayerSDK",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[THEOplayerSDK.AdIntegrationKind]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AdIntegrationKind",
+                        "printedName": "THEOplayerSDK.AdIntegrationKind",
+                        "usr": "c:@M@THEOplayerSDK@E@THEOplayerAdIntegrationKind"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvgZ",
+                "mangledName": "$s13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvgZ",
+                "moduleName": "THEOplayerSDK",
+                "static": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "_rawValue",
             "printedName": "_rawValue",
             "children": [
@@ -16476,65 +16655,6 @@
             "isFromExtension": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "allCases",
-            "printedName": "allCases",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[THEOplayerSDK.AdIntegrationKind]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AdIntegrationKind",
-                    "printedName": "THEOplayerSDK.AdIntegrationKind",
-                    "usr": "c:@M@THEOplayerSDK@E@THEOplayerAdIntegrationKind"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvpZ",
-            "mangledName": "$s13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvpZ",
-            "moduleName": "THEOplayerSDK",
-            "static": true,
-            "implicit": true,
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[THEOplayerSDK.AdIntegrationKind]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "AdIntegrationKind",
-                        "printedName": "THEOplayerSDK.AdIntegrationKind",
-                        "usr": "c:@M@THEOplayerSDK@E@THEOplayerAdIntegrationKind"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvgZ",
-                "mangledName": "$s13THEOplayerSDK17AdIntegrationKindO8allCasesSayACGvgZ",
-                "moduleName": "THEOplayerSDK",
-                "static": true,
-                "implicit": true,
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Enum",
@@ -31685,6 +31805,23 @@
             "mangledName": "$s13THEOplayerSDK21DRMConfiguration_ObjcP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerSDK"
       },
       {
         "kind": "Import",
@@ -61392,7 +61529,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(src:type:drm:crossOrigin:ssai:hlsDateRange:)",
+            "printedName": "init(src:type:drm:crossOrigin:ssai:hlsDateRange:headers:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -61471,11 +61608,40 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:13THEOplayerSDK20GoogleDAITypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRangeACSS_SSAA16DRMConfiguration_pSgAA05CrossJ0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgtcfc",
-            "mangledName": "$s13THEOplayerSDK20GoogleDAITypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRangeACSS_SSAA16DRMConfiguration_pSgAA05CrossJ0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgtcfc",
+            "usr": "s:13THEOplayerSDK20GoogleDAITypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headersACSS_SSAA16DRMConfiguration_pSgAA05CrossJ0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgtcfc",
+            "mangledName": "$s13THEOplayerSDK20GoogleDAITypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headersACSS_SSAA16DRMConfiguration_pSgAA05CrossJ0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgtcfc",
             "moduleName": "THEOplayerSDK",
             "overriding": true,
             "implicit": true,
@@ -72955,6 +73121,173 @@
         "moduleName": "THEOplayerSDK",
         "declAttributes": [
           "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "PlayerView",
+        "printedName": "PlayerView",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "layoutSubviews",
+            "printedName": "layoutSubviews()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView(im)layoutSubviews",
+            "mangledName": "$s13THEOplayerSDK10PlayerViewC14layoutSubviewsyyF",
+            "moduleName": "THEOplayerSDK",
+            "overriding": true,
+            "objc_name": "layoutSubviews",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "spi_group_names": [
+              "Core"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PlayerView",
+                "printedName": "THEOplayerSDK.PlayerView",
+                "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView(im)initWithFrame:",
+            "mangledName": "$s13THEOplayerSDK10PlayerViewC5frameACSo6CGRectV_tcfc",
+            "moduleName": "THEOplayerSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "spi_group_names": [
+              "Core"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@THEOplayerSDK@objc(cs)PlayerView",
+        "mangledName": "$s13THEOplayerSDK10PlayerViewC",
+        "moduleName": "THEOplayerSDK",
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "SPIAccessControl",
+          "ObjC"
+        ],
+        "spi_group_names": [
+          "Core"
+        ],
+        "superclassUsr": "c:objc(cs)UIView",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          }
         ]
       },
       {
@@ -88265,9 +88598,162 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "headers",
+            "printedName": "headers",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvp",
+            "mangledName": "$s13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvp",
+            "moduleName": "THEOplayerSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Swift.String]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvg",
+                "mangledName": "$s13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvg",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Swift.String]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Swift.String]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvs",
+                "mangledName": "$s13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvs",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvM",
+                "mangledName": "$s13THEOplayerSDK11TypedSourceC7headersSDyS2SGSgvM",
+                "moduleName": "THEOplayerSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(src:type:drm:crossOrigin:ssai:hlsDateRange:)",
+            "printedName": "init(src:type:drm:crossOrigin:ssai:hlsDateRange:headers:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -88346,11 +88832,40 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Swift.String]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRangeACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgtcfc",
-            "mangledName": "$s13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRangeACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgtcfc",
+            "usr": "s:13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headersACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgtcfc",
+            "mangledName": "$s13THEOplayerSDK11TypedSourceC3src4type3drm11crossOrigin4ssai12hlsDateRange7headersACSS_SSAA16DRMConfiguration_pSgAA05CrossI0OSgAA34ServerSideAdInsertionConfiguration_pSgSbSgSDyS2SGSgtcfc",
             "moduleName": "THEOplayerSDK",
             "declAttributes": [
               "AccessControl",
@@ -98448,30 +98963,23 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Presentation Mode\/Fullscreen\/FullscreenControllerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 1773,
+      "offset": 1000,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Presentation Mode\/Fullscreen\/FullscreenControllerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2230,
+      "offset": 1831,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Presentation Mode\/Fullscreen\/FullscreenControllerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2674,
+      "offset": 2769,
       "length": 5,
       "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Presentation Mode\/Fullscreen\/FullscreenControllerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3089,
-      "length": 4,
-      "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/TrackLists\/VideoTrackListImplNative.swift",
@@ -99055,6 +99563,48 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2454,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "FloatLiteral",
+      "offset": 2464,
+      "length": 6,
+      "value": "0.7725"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "FloatLiteral",
+      "offset": 2478,
+      "length": 6,
+      "value": "0.0588"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2493,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "Dictionary",
+      "offset": 2635,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/Util.swift",
+      "kind": "StringLiteral",
+      "offset": 2709,
+      "length": 12,
+      "value": "\"User-Agent\""
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Cache\/CacheUtils.swift",
       "kind": "FloatLiteral",
       "offset": 262,
@@ -99267,819 +99817,798 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 536,
+      "offset": 555,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 571,
+      "offset": 590,
       "length": 11,
       "value": "\"main-desc\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 606,
+      "offset": 625,
       "length": 13,
       "value": "\"description\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 643,
+      "offset": 662,
       "length": 13,
       "value": "\"alternative\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 536,
+      "offset": 555,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 571,
+      "offset": 590,
       "length": 11,
       "value": "\"main-desc\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 606,
+      "offset": 625,
       "length": 13,
       "value": "\"description\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 643,
+      "offset": 662,
       "length": 13,
       "value": "\"alternative\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 1663,
+      "offset": 1756,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 1902,
+      "offset": 1995,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 2013,
+      "offset": 2106,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2189,
+      "offset": 2282,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Array",
-      "offset": 2250,
+      "offset": 2343,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2293,
+      "offset": 2386,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2340,
+      "offset": 2433,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2391,
+      "offset": 2484,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 2719,
+      "offset": 2812,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 2758,
+      "offset": 2851,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 3223,
+      "offset": 3316,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 3399,
+      "offset": 3492,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "FloatLiteral",
-      "offset": 3488,
+      "offset": 3581,
       "length": 3,
       "value": "0.2"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "FloatLiteral",
-      "offset": 3551,
+      "offset": 3644,
       "length": 3,
       "value": "0.1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 4362,
+      "offset": 4455,
       "length": 31,
       "value": "\"AVPlayerItemNewAccessLogEntry\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 6622,
+      "offset": 6747,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 7785,
+      "offset": 7910,
       "length": 58,
       "value": "\"Error while updating source: \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 7842,
+      "offset": 7967,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 8196,
+      "offset": 8321,
       "length": 33,
       "value": "\"[ManifestInterceptor] Setup on \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 8647,
+      "offset": 8772,
       "length": 39,
       "value": "\"[ManifestInterceptor] URL changed to \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "Dictionary",
-      "offset": 8976,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 9029,
-      "length": 12,
-      "value": "\"User-Agent\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "StringLiteral",
-      "offset": 9080,
+      "offset": 9151,
       "length": 31,
       "value": "\"AVURLAssetHTTPHeaderFieldsKey\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 9457,
+      "offset": 9517,
       "length": 54,
       "value": "\"[ManifestInterceptor] Successfully applied on asset.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 11486,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 13624,
+      "offset": 13432,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 14161,
+      "offset": 13969,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 14492,
+      "offset": 14300,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 14541,
+      "offset": 14349,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 15565,
+      "offset": 15373,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 15606,
+      "offset": 15414,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 15832,
+      "offset": 15640,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 15883,
+      "offset": 15691,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 16345,
+      "offset": 16153,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 16386,
+      "offset": 16194,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 16562,
+      "offset": 16370,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 16613,
+      "offset": 16421,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 16830,
+      "offset": 16638,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 16909,
+      "offset": 16717,
       "length": 65,
       "value": "\"Setting playback rate to 0 is not supported, use pause instead.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 17155,
+      "offset": 16963,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 17433,
+      "offset": 17241,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 17512,
+      "offset": 17320,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 17550,
+      "offset": 17358,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 17966,
+      "offset": 17774,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 18147,
+      "offset": 17955,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 18189,
+      "offset": 17997,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 20479,
+      "offset": 20251,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 21379,
+      "offset": 21151,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 21624,
+      "offset": 21396,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 21949,
+      "offset": 21721,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Dictionary",
-      "offset": 21995,
+      "offset": 21767,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22175,
+      "offset": 21947,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22255,
+      "offset": 22027,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22287,
+      "offset": 22059,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22413,
+      "offset": 22185,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22445,
+      "offset": 22217,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 23297,
+      "offset": 23069,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 23364,
+      "offset": 23136,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 23421,
+      "offset": 23193,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 23790,
+      "offset": 23562,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 24988,
+      "offset": 24760,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Array",
-      "offset": 26294,
+      "offset": 26066,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 27142,
+      "offset": 26914,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 27965,
+      "offset": 27737,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 27983,
+      "offset": 27755,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 27994,
+      "offset": 27766,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 28007,
+      "offset": 27779,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Array",
-      "offset": 28105,
+      "offset": 27877,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 28699,
+      "offset": 28471,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 28717,
+      "offset": 28489,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 28728,
+      "offset": 28500,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 28741,
+      "offset": 28513,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "StringLiteral",
-      "offset": 29101,
+      "offset": 28873,
       "length": 6,
       "value": "\"main\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 29144,
+      "offset": 28916,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "Array",
-      "offset": 30490,
+      "offset": 30262,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 30781,
+      "offset": 30553,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "FloatLiteral",
-      "offset": 31403,
+      "offset": 31175,
       "length": 4,
       "value": "10.0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 31438,
+      "offset": 31210,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 31483,
+      "offset": 31255,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 31535,
+      "offset": 31307,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 31600,
+      "offset": 31372,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 31807,
+      "offset": 31579,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 35294,
+      "offset": 35066,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 37966,
+      "offset": 37738,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 41023,
+      "offset": 40795,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 41057,
+      "offset": 40829,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 41095,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "IntegerLiteral",
-      "offset": 41382,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 41416,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 41487,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 42525,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 42750,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 44360,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 45408,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 45448,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 45554,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 47607,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 47779,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
-      "kind": "BooleanLiteral",
-      "offset": 47805,
+      "offset": 40867,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 47969,
+      "offset": 41154,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 48004,
+      "offset": 41188,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 41259,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 42297,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 42522,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 44132,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 45180,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 48186,
+      "offset": 45220,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 48276,
+      "offset": 45326,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 48310,
+      "offset": 47379,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 48379,
+      "offset": 47551,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 47577,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 48765,
+      "offset": 47741,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 52215,
+      "offset": 47776,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 52303,
+      "offset": 47958,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 52377,
+      "offset": 48048,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 48082,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 48151,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "IntegerLiteral",
+      "offset": 48537,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 51987,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 52075,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerContentPlayerNative.swift",
+      "kind": "BooleanLiteral",
+      "offset": 52149,
       "length": 4,
       "value": "true"
     },
@@ -100445,14 +100974,14 @@
       "kind": "StringLiteral",
       "offset": 32,
       "length": 8,
-      "value": "\"7.11.0\""
+      "value": "\"7.12.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
       "kind": "StringLiteral",
       "offset": 78,
       "length": 10,
-      "value": "\"2024.3.4\""
+      "value": "\"2024.3.5\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/ContentProtectionIntegrationInitProvider.swift",
@@ -100478,105 +101007,112 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 10645,
+      "offset": 10781,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11052,
+      "offset": 11460,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11173,
+      "offset": 11581,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11282,
+      "offset": 11690,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 10645,
+      "offset": 10781,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11052,
+      "offset": 11460,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11173,
+      "offset": 11581,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "IntegerLiteral",
-      "offset": 11282,
+      "offset": 11690,
       "length": 1,
       "value": "7"
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
-      "kind": "StringLiteral",
-      "offset": 11510,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
-      "kind": "StringLiteral",
-      "offset": 11727,
-      "length": 12,
-      "value": "\"google-ima\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
-      "kind": "StringLiteral",
-      "offset": 11793,
-      "length": 12,
-      "value": "\"google-dai\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
-      "kind": "StringLiteral",
-      "offset": 11855,
-      "length": 8,
-      "value": "\"custom\""
-    },
-    {
-      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
-      "kind": "StringLiteral",
-      "offset": 11922,
-      "length": 23,
-      "value": "\"Setter is not allowed\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "Array",
-      "offset": 12709,
+      "offset": 11843,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
       "kind": "StringLiteral",
-      "offset": 12731,
+      "offset": 12217,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "StringLiteral",
+      "offset": 12434,
+      "length": 12,
+      "value": "\"google-ima\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "StringLiteral",
+      "offset": 12500,
+      "length": 12,
+      "value": "\"google-dai\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "StringLiteral",
+      "offset": 12562,
+      "length": 8,
+      "value": "\"custom\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "StringLiteral",
+      "offset": 12629,
+      "length": 23,
+      "value": "\"Setter is not allowed\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "Array",
+      "offset": 13416,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/Ads\/Ad_API.swift",
+      "kind": "StringLiteral",
+      "offset": 13438,
       "length": 55,
       "value": "\"Could Not determine the type of the AdIntegrationKind\""
     },
@@ -101682,261 +102218,268 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 4657,
+      "offset": 4660,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 4662,
+      "offset": 4665,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 5239,
+      "offset": 5242,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "Array",
-      "offset": 5292,
+      "offset": 5295,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "Array",
-      "offset": 5367,
+      "offset": 5370,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 7390,
+      "offset": 7393,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 10241,
+      "offset": 10548,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 10585,
+      "offset": 10892,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 10739,
+      "offset": 11046,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 11478,
+      "offset": 11785,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "IntegerLiteral",
-      "offset": 11806,
+      "offset": 12113,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 11862,
+      "offset": 12169,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 13529,
+      "offset": 13836,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 14790,
+      "offset": 15097,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 15794,
+      "offset": 16101,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "Array",
-      "offset": 16373,
+      "offset": 16680,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "Array",
-      "offset": 16457,
+      "offset": 16764,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "Array",
-      "offset": 16841,
+      "offset": 17148,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 17549,
+      "offset": 17856,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 18105,
+      "offset": 18412,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "StringLiteral",
-      "offset": 18768,
+      "offset": 19075,
       "length": 88,
       "value": "\"THEOplayer error: Picture in picture is not possible at this moment. Please try again.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 20276,
+      "offset": 20583,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 20336,
+      "offset": 20643,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 20654,
+      "offset": 20961,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 20715,
+      "offset": 21022,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 21156,
+      "offset": 21463,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 21311,
+      "offset": 21618,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 22583,
+      "offset": 22890,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 25178,
+      "offset": 25485,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 25955,
+      "offset": 26262,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 26361,
+      "offset": 26668,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 26539,
+      "offset": 26846,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 26587,
+      "offset": 26894,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 27024,
+      "offset": 27331,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 27345,
+      "offset": 27652,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "StringLiteral",
-      "offset": 27943,
+      "offset": 28250,
       "length": 44,
       "value": "\"Something is wrong with the AD integration\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "StringLiteral",
-      "offset": 28272,
+      "offset": 28579,
       "length": 53,
       "value": "\"Something is wrong with removing the AD integration\""
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
+      "kind": "IntegerLiteral",
+      "offset": 28950,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
@@ -101948,49 +102491,49 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 29011,
+      "offset": 29690,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 29269,
+      "offset": 29948,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 29450,
+      "offset": 30129,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 30509,
+      "offset": 31188,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 30557,
+      "offset": 31236,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "BooleanLiteral",
-      "offset": 36036,
+      "offset": 36715,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/THEOplayerInternalNative.swift",
       "kind": "StringLiteral",
-      "offset": 36475,
+      "offset": 37154,
       "length": 54,
       "value": "\"ManifestInterceptor is not supported on this player!\""
     },
@@ -107490,6 +108033,62 @@
       "value": "true"
     },
     {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "FloatLiteral",
+      "offset": 454,
+      "length": 4,
+      "value": "0.25"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1025,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1087,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2787,
+      "length": 4,
+      "value": "0.75"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2836,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3326,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3421,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/PlayerView\/PlayerView.swift",
+      "kind": "StringLiteral",
+      "offset": 277,
+      "length": 10,
+      "value": "\"THEOplayerSDK.PlayerView\""
+    },
+    {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Analytics\/AnalyticsInvalidLicenseEvent.swift",
       "kind": "StringLiteral",
       "offset": 184,
@@ -108920,56 +109519,56 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 5530,
+      "offset": 5884,
       "length": 46,
       "value": "\"THEOplayer warning: parsing \""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 5565,
+      "offset": 5919,
       "length": 2,
       "value": "\" to NSURL.\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 7920,
+      "offset": 8305,
       "length": 19,
       "value": "\"contentProtection\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 7969,
+      "offset": 8354,
       "length": 5,
       "value": "\"drm\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 7920,
+      "offset": 8305,
       "length": 19,
       "value": "\"contentProtection\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 7969,
+      "offset": 8354,
       "length": 5,
       "value": "\"drm\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "BooleanLiteral",
-      "offset": 9857,
+      "offset": 10242,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 12547,
+      "offset": 12932,
       "length": 34,
       "value": "\"DRM integration cannot be parsed\""
     },
@@ -108983,84 +109582,84 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 14058,
+      "offset": 14443,
       "length": 11,
       "value": "\"video\/mp4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 14104,
+      "offset": 14489,
       "length": 6,
       "value": "\"m3u8\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 14133,
+      "offset": 14518,
       "length": 31,
       "value": "\"application\/vnd.apple.mpegurl\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "Array",
-      "offset": 14892,
+      "offset": 15277,
       "length": 13,
       "value": "[\"video\/mp4\"]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 14922,
+      "offset": 15307,
       "length": 5,
       "value": "\"mp4\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "Array",
-      "offset": 15001,
+      "offset": 15386,
       "length": 13,
       "value": "[\"audio\/mp3\"]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 15031,
+      "offset": 15416,
       "length": 5,
       "value": "\"mp3\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "Array",
-      "offset": 15189,
+      "offset": 15574,
       "length": 58,
       "value": "[\"application\/x-mpegurl\", \"application\/vnd.apple.mpegurl\"]"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "StringLiteral",
-      "offset": 15264,
+      "offset": 15649,
       "length": 6,
       "value": "\"m3u8\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "BooleanLiteral",
-      "offset": 15477,
+      "offset": 15862,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "BooleanLiteral",
-      "offset": 15573,
+      "offset": 15958,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/API\/TypedSource_API.swift",
       "kind": "BooleanLiteral",
-      "offset": 15603,
+      "offset": 15988,
       "length": 5,
       "value": "false"
     },

@@ -317,6 +317,12 @@ SWIFT_CLASS_NAMED("GoogleIMAIntegrationFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+/// Extended class of <code>AdErrorEvent</code> that exposes additional information such as <code>IMAAdError</code>.
+SWIFT_RESILIENT_CLASS_NAMED("GoogleImaAdErrorEvent")
+@interface THEOplayerGoogleImaAdErrorEvent : THEOplayerAdErrorEvent
+@end
+
 @class IMAAdsRenderingSettings;
 @class NSString;
 
@@ -337,6 +343,49 @@ SWIFT_PROTOCOL_NAMED("GoogleImaIntegration_Objc")
 /// \param renderingSettings The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.
 ///
 - (void)requestAdsWithAdsResponse:(NSString * _Nonnull)adsResponse renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings;
+@end
+
+
+/// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Subclass of <code>GoogleImaAdDescription</code>, but additionally provides an interface to pass renderingSettings and make requests via adsResponse.
+///   </li>
+/// </ul>
+SWIFT_RESILIENT_CLASS_NAMED("NativeGoogleImaAdDescription")
+@interface THEOplayerNativeGoogleImaAdDescription : THEOplayerGoogleImaAdDescription
+/// The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.
+@property (nonatomic, strong) IMAAdsRenderingSettings * _Nullable renderingSettings;
+/// The response string returned from a GET request of an adTagUrl.
+@property (nonatomic, copy) NSString * _Nullable adsResponse;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+/// \param timeOffset the optional time offset, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param src The adTagUrl source string.
+///
+/// \param timeOffset The optional time offset, defaults to nil.
+///
+/// \param renderingSettings The ads rendering settings which will be used when requesting an ad, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param adsResponse The response string returned from a GET request of an adTagUrl.
+///
+/// \param timeOffset The optional time offset, defaults to nil.
+///
+/// \param renderingSettings The ads rendering settings which will be used when requesting an ad, defaults to nil.
+///
+- (nonnull instancetype)initWithAdsResponse:(NSString * _Nonnull)adsResponse timeOffset:(NSString * _Nullable)timeOffset renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param adsResponse The response string returned from a GET request of an adTagUrl.
+///
+- (nonnull instancetype)initWithAdsResponse:(NSString * _Nonnull)adsResponse;
 @end
 
 @class IMAAd;
@@ -674,6 +723,12 @@ SWIFT_CLASS_NAMED("GoogleIMAIntegrationFactory")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+/// Extended class of <code>AdErrorEvent</code> that exposes additional information such as <code>IMAAdError</code>.
+SWIFT_RESILIENT_CLASS_NAMED("GoogleImaAdErrorEvent")
+@interface THEOplayerGoogleImaAdErrorEvent : THEOplayerAdErrorEvent
+@end
+
 @class IMAAdsRenderingSettings;
 @class NSString;
 
@@ -694,6 +749,49 @@ SWIFT_PROTOCOL_NAMED("GoogleImaIntegration_Objc")
 /// \param renderingSettings The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.
 ///
 - (void)requestAdsWithAdsResponse:(NSString * _Nonnull)adsResponse renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings;
+@end
+
+
+/// An <code>AdDescription</code> object that will be added to the player when using the Google Ima ad integration.
+/// remark:
+///
+/// <ul>
+///   <li>
+///     Subclass of <code>GoogleImaAdDescription</code>, but additionally provides an interface to pass renderingSettings and make requests via adsResponse.
+///   </li>
+/// </ul>
+SWIFT_RESILIENT_CLASS_NAMED("NativeGoogleImaAdDescription")
+@interface THEOplayerNativeGoogleImaAdDescription : THEOplayerGoogleImaAdDescription
+/// The <code>IMAAdsRenderingSettings</code> to be used to request the Google IMA ad.
+@property (nonatomic, strong) IMAAdsRenderingSettings * _Nullable renderingSettings;
+/// The response string returned from a GET request of an adTagUrl.
+@property (nonatomic, copy) NSString * _Nullable adsResponse;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param src the source of the ad.
+///
+/// \param timeOffset the optional time offset, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param src The adTagUrl source string.
+///
+/// \param timeOffset The optional time offset, defaults to nil.
+///
+/// \param renderingSettings The ads rendering settings which will be used when requesting an ad, defaults to nil.
+///
+- (nonnull instancetype)initWithSrc:(NSString * _Nonnull)src timeOffset:(NSString * _Nullable)timeOffset renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param adsResponse The response string returned from a GET request of an adTagUrl.
+///
+/// \param timeOffset The optional time offset, defaults to nil.
+///
+/// \param renderingSettings The ads rendering settings which will be used when requesting an ad, defaults to nil.
+///
+- (nonnull instancetype)initWithAdsResponse:(NSString * _Nonnull)adsResponse timeOffset:(NSString * _Nullable)timeOffset renderingSettings:(IMAAdsRenderingSettings * _Nullable)renderingSettings OBJC_DESIGNATED_INITIALIZER;
+/// Constructs a NativeGoogleImaAdDescription.
+/// \param adsResponse The response string returned from a GET request of an adTagUrl.
+///
+- (nonnull instancetype)initWithAdsResponse:(NSString * _Nonnull)adsResponse;
 @end
 
 @class IMAAd;

@@ -1457,7 +1457,7 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvp",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(py)renderingSettings",
             "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvp",
             "moduleName": "THEOplayerGoogleIMAIntegration",
             "declAttributes": [
@@ -1490,7 +1490,7 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvg",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)renderingSettings",
                 "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvg",
                 "moduleName": "THEOplayerGoogleIMAIntegration",
                 "implicit": true,
@@ -1525,7 +1525,7 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvs",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)setRenderingSettings:",
                 "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC17renderingSettingsSo015IMAAdsRenderingI0CSgvs",
                 "moduleName": "THEOplayerGoogleIMAIntegration",
                 "implicit": true,
@@ -1575,7 +1575,7 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvp",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(py)adsResponse",
             "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvp",
             "moduleName": "THEOplayerGoogleIMAIntegration",
             "declAttributes": [
@@ -1608,7 +1608,7 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvg",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)adsResponse",
                 "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvg",
                 "moduleName": "THEOplayerGoogleIMAIntegration",
                 "implicit": true,
@@ -1643,7 +1643,7 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvs",
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)setAdsResponse:",
                 "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponseSSSgvs",
                 "moduleName": "THEOplayerGoogleIMAIntegration",
                 "implicit": true,
@@ -1681,7 +1681,7 @@
                 "kind": "TypeNominal",
                 "name": "NativeGoogleImaAdDescription",
                 "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription"
               },
               {
                 "kind": "TypeNominal",
@@ -1706,7 +1706,7 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffsetACSS_SSSgtcfc",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)initWithSrc:timeOffset:",
             "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffsetACSS_SSSgtcfc",
             "moduleName": "THEOplayerGoogleIMAIntegration",
             "overriding": true,
@@ -1728,7 +1728,7 @@
                 "kind": "TypeNominal",
                 "name": "NativeGoogleImaAdDescription",
                 "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription"
               },
               {
                 "kind": "TypeNominal",
@@ -1768,7 +1768,7 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingL0CSgtcfc",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)initWithSrc:timeOffset:renderingSettings:",
             "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC3src10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingL0CSgtcfc",
             "moduleName": "THEOplayerGoogleIMAIntegration",
             "objc_name": "initWithSrc:timeOffset:renderingSettings:",
@@ -1789,7 +1789,7 @@
                 "kind": "TypeNominal",
                 "name": "NativeGoogleImaAdDescription",
                 "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription"
               },
               {
                 "kind": "TypeNominal",
@@ -1829,7 +1829,7 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponse10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingM0CSgtcfc",
+            "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription(im)initWithAdsResponse:timeOffset:renderingSettings:",
             "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC11adsResponse10timeOffset17renderingSettingsACSS_SSSgSo015IMAAdsRenderingM0CSgtcfc",
             "moduleName": "THEOplayerGoogleIMAIntegration",
             "objc_name": "initWithAdsResponse:timeOffset:renderingSettings:",
@@ -1849,7 +1849,7 @@
                 "kind": "TypeNominal",
                 "name": "NativeGoogleImaAdDescription",
                 "printedName": "THEOplayerGoogleIMAIntegration.NativeGoogleImaAdDescription",
-                "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC"
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription"
               },
               {
                 "kind": "TypeNominal",
@@ -1873,12 +1873,11 @@
           }
         ],
         "declKind": "Class",
-        "usr": "s:30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC",
+        "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerNativeGoogleImaAdDescription",
         "mangledName": "$s30THEOplayerGoogleIMAIntegration06NativeB16ImaAdDescriptionC",
         "moduleName": "THEOplayerGoogleIMAIntegration",
         "objc_name": "THEOplayerNativeGoogleImaAdDescription",
         "declAttributes": [
-          "ObjCRuntimeName",
           "AccessControl",
           "ObjC",
           "RawDocComment"
@@ -2049,7 +2048,7 @@
                 "kind": "TypeNominal",
                 "name": "GoogleImaAdErrorEvent",
                 "printedName": "THEOplayerGoogleIMAIntegration.GoogleImaAdErrorEvent",
-                "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC"
+                "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerGoogleImaAdErrorEvent"
               },
               {
                 "kind": "TypeNominal",
@@ -2099,12 +2098,11 @@
           }
         ],
         "declKind": "Class",
-        "usr": "s:30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC",
+        "usr": "c:@M@THEOplayerGoogleIMAIntegration@objc(cs)THEOplayerGoogleImaAdErrorEvent",
         "mangledName": "$s30THEOplayerGoogleIMAIntegration0B15ImaAdErrorEventC",
         "moduleName": "THEOplayerGoogleIMAIntegration",
         "objc_name": "THEOplayerGoogleImaAdErrorEvent",
         "declAttributes": [
-          "ObjCRuntimeName",
           "AccessControl",
           "ObjC",
           "RawDocComment"
@@ -2223,42 +2221,35 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 2127,
+      "offset": 1890,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 2751,
+      "offset": 2514,
       "length": 12,
       "value": "\"THEOplayer\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 2872,
+      "offset": 2635,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2959,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 3252,
+      "offset": 2858,
       "length": 24,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 3265,
+      "offset": 2871,
       "length": 9,
       "value": "\" deiniting\""
     },
@@ -2622,7 +2613,7 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1254,
+      "offset": 1094,
       "length": 4,
       "value": "true"
     },
@@ -2636,21 +2627,21 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 3834,
+      "offset": 3674,
       "length": 19,
       "value": "\"adsLoader loaded!\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 4242,
+      "offset": 4082,
       "length": 17,
       "value": "\"adsLoader error\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMADaiAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 4374,
+      "offset": 4214,
       "length": 5,
       "value": "false"
     },
@@ -2881,42 +2872,42 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 2067,
+      "offset": 1908,
       "length": 41,
       "value": "\"Ad already playing, defer scheduled ad.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 3572,
+      "offset": 3413,
       "length": 22,
       "value": "\"adsLoader requestAds\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 3636,
+      "offset": 3477,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 4556,
+      "offset": 4397,
       "length": 22,
       "value": "\"adsLoader requestAds\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 4628,
+      "offset": 4469,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 5496,
+      "offset": 5337,
       "length": 5,
       "value": "false"
     },
@@ -2930,35 +2921,35 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 5728,
+      "offset": 5569,
       "length": 19,
       "value": "\"adsLoader loaded!\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 5810,
+      "offset": 5651,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "StringLiteral",
-      "offset": 6600,
+      "offset": 6441,
       "length": 17,
       "value": "\"adsLoader error\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 6723,
+      "offset": 6564,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAImaAdsLoaderController.swift",
       "kind": "BooleanLiteral",
-      "offset": 6764,
+      "offset": 6605,
       "length": 5,
       "value": "false"
     },
@@ -2986,140 +2977,140 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 2129,
+      "offset": 2147,
       "length": 59,
       "value": "\"The time offset format for the scheduled ad is incorrect.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 2408,
+      "offset": 2426,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 2422,
-      "length": 2,
-      "value": "-1"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
-      "kind": "Array",
-      "offset": 2431,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2448,
+      "offset": 2440,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "Array",
-      "offset": 3399,
+      "offset": 2449,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 3664,
+      "offset": 2466,
+      "length": 2,
+      "value": "-1"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "Array",
+      "offset": 3417,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3682,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 3835,
+      "offset": 3853,
       "length": 41,
       "value": "\"Ad already playing, defer scheduled ad.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 4374,
+      "offset": 4392,
       "length": 7,
       "value": "\"start\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 4403,
+      "offset": 4421,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 4432,
+      "offset": 4450,
       "length": 5,
       "value": "\"end\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 4534,
+      "offset": 4552,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 4712,
+      "offset": 4730,
       "length": 3,
       "value": "\"%\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 4784,
+      "offset": 4802,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "StringLiteral",
-      "offset": 4848,
+      "offset": 4866,
       "length": 3,
       "value": "\"%\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 4886,
+      "offset": 4904,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 5283,
+      "offset": 5301,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 5318,
+      "offset": 5336,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 5465,
+      "offset": 5483,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdScheduler.swift",
       "kind": "IntegerLiteral",
-      "offset": 5582,
+      "offset": 5600,
       "length": 3,
       "value": "100"
     },
@@ -3462,49 +3453,49 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 13241,
+      "offset": 13232,
       "length": 78,
       "value": "\"GoogleImaIntegration does not support registering a server side integration.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 14846,
+      "offset": 14819,
       "length": 78,
       "value": "\"GoogleImaIntegration does not support registering a server side integration.\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 17032,
+      "offset": 17005,
       "length": 117,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 17054,
+      "offset": 17027,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the `AdsEventTypes`\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 19190,
+      "offset": 19163,
       "length": 117,
       "value": "\"The EventType \""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "StringLiteral",
-      "offset": 19212,
+      "offset": 19185,
       "length": 2,
       "value": "\" is NOT compatible with the current EventDispatcher, please consider using the `AdsEventTypes`\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAIntegrationImpl.swift",
       "kind": "IntegerLiteral",
-      "offset": 20620,
+      "offset": 20593,
       "length": 1,
       "value": "0"
     },
@@ -3854,42 +3845,42 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "StringLiteral",
-      "offset": 3201,
+      "offset": 3199,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "StringLiteral",
-      "offset": 3313,
+      "offset": 3311,
       "length": 8,
       "value": "\"linear\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "StringLiteral",
-      "offset": 3324,
+      "offset": 3322,
       "length": 11,
       "value": "\"nonlinear\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "Array",
-      "offset": 4527,
+      "offset": 4525,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "StringLiteral",
-      "offset": 4761,
+      "offset": 4759,
       "length": 13,
       "value": "\"progressive\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/Models\/GoogleIMAAdImpl.swift",
       "kind": "StringLiteral",
-      "offset": 4804,
+      "offset": 4802,
       "length": 2,
       "value": "\"\""
     },

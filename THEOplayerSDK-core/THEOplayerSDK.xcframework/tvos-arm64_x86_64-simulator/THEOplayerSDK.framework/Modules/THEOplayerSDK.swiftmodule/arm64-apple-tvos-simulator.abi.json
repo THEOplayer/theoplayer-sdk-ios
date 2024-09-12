@@ -97669,7 +97669,7 @@
       "kind": "StringLiteral",
       "offset": 32,
       "length": 7,
-      "value": "\"8.0.0\""
+      "value": "\"8.0.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",

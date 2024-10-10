@@ -2914,126 +2914,126 @@
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 10180,
+      "offset": 10485,
       "length": 12,
       "value": "\"ad started\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10588,
+      "offset": 10893,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10652,
+      "offset": 10957,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 10754,
+      "offset": 11059,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 11384,
+      "offset": 11689,
       "length": 22,
       "value": "\"ad didProgressToTime\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 11647,
+      "offset": 11952,
       "length": 18,
       "value": "\"adsManager error\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 11702,
+      "offset": 12007,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 11863,
+      "offset": 12168,
       "length": 24,
       "value": "\"main content pause req\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 12016,
+      "offset": 12321,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 12174,
+      "offset": 12479,
       "length": 25,
       "value": "\"main content resume req\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 12238,
+      "offset": 12543,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 12388,
+      "offset": 12693,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 12829,
+      "offset": 13134,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 13235,
+      "offset": 13540,
       "length": 14,
       "value": "\"ad completed\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 13539,
+      "offset": 13844,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "StringLiteral",
-      "offset": 13662,
+      "offset": 13967,
       "length": 19,
       "value": "\"all ads completed\""
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 13712,
+      "offset": 14017,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/jenkins-agent\/workspace\/PackagePublishers\/Cocoapods-Integration\/ios\/GoogleIMAIntegration\/GoogleIMAIntegration\/GoogleIMAAdsManagerController.swift",
       "kind": "BooleanLiteral",
-      "offset": 13868,
+      "offset": 14173,
       "length": 5,
       "value": "false"
     },

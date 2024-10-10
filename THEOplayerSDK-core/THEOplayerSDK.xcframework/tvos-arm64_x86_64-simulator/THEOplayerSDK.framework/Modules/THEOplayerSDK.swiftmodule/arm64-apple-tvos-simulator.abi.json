@@ -97669,14 +97669,14 @@
       "kind": "StringLiteral",
       "offset": 32,
       "length": 7,
-      "value": "\"8.1.2\""
+      "value": "\"8.2.0\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
       "kind": "StringLiteral",
       "offset": 77,
       "length": 10,
-      "value": "\"2024.3.7\""
+      "value": "\"2024.3.8\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/ContentProtectionIntegrationInitProvider.swift",

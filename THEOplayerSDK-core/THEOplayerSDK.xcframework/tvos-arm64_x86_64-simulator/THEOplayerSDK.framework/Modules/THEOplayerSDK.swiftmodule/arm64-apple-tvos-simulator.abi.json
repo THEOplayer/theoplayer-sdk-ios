@@ -97669,7 +97669,7 @@
       "kind": "StringLiteral",
       "offset": 32,
       "length": 7,
-      "value": "\"8.2.0\""
+      "value": "\"8.2.1\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Core\/Util\/THEOplayerVersion.swift",
@@ -103736,7 +103736,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/ios\/THEOplayer_SDK\/Native\/Models\/Player\/ContentPlayers\/AVPlayerLayerDetacher.swift",
       "kind": "BooleanLiteral",
-      "offset": 2080,
+      "offset": 3048,
       "length": 5,
       "value": "false"
     },
